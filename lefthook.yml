@@ -1,0 +1,18 @@
+# spell-checker: ignore esac
+
+pre-commit:
+  parallel: true
+  commands:
+    rustfmt:
+      glob: '*.rs'
+      run: rustfmt "{staged_files}"
+      stage_fixed: true
+    clippy:
+      glob: '{*.rs,Cargo.toml,Cargo.lock,rust-toolchain.toml}'
+      run: cargo clippy -- -D warnings
+    dprint:
+      glob: '*.{json,jsonc,json5,md,toml}'
+      run: pnpm dprint fmt "{staged_files}"
+      stage_fixed: true
+    spell-check:
+      run: pnpm cspell lint --no-progress --no-summary --no-must-find-files "{staged_files}"

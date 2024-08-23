@@ -1,0 +1,29 @@
+[package]
+name = "swc-plugin-minify-graphql"
+version = "0.0.0"
+authors = ["hikiko4ern"]
+categories = ["swc-plugin"]
+edition = "2021"
+license = "Unlicense"
+publish = false
+repository = "https://github.com/hikiko4ern/swc-plugin-minify-graphql"
+description = "GraphQL query and schema minimizer plugin for SWC"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+graphql-minify = "0.1.0"
+swc_core = { version = "1.0", features = ["ecma_plugin_transform"] }
+tracing = { version = "0.1", features = ["release_max_level_info"] }
+
+# let's use `cargo-run-bin` while there is no built-in solution for
+# https://github.com/rust-lang/cargo/issues/2267
+[workspace.metadata.bin]
+cargo-binstall = { version = "1.10.7", locked = true }
+cargo-watch = { version = "8.5.3", locked = true, bins = ["cargo-watch"] }
+
+[profile.release]
+codegen-units = 1
+strip = true
+lto = true

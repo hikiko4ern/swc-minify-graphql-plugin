@@ -1,0 +1,31 @@
+{
+	"version": "0.2",
+	"$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
+	"import": ["@cspell/dict-en-gb/cspell-ext.json"],
+	"language": "en",
+	"enableFiletypes": ["toml"],
+	"dictionaries": ["css", "fonts", "node", "npm", "softwareTerms", "typescript", "rust", "en-gb"],
+	"minWordLength": 3,
+	"flagWords": [],
+	"cache": {
+		"useCache": true
+	},
+	"validateDirectives": true,
+	"useGitignore": true,
+	"words": ["Binaryen", "fnm", "rustup", "SWC", "whitespaces"],
+	"ignoreWords": [
+		"binstall",
+		"cdylib",
+		"codegen",
+		"Corepack",
+		"dprint",
+		"fmt",
+		"hikiko4ern",
+		"lefthook",
+		"lto",
+		"rustfmt",
+		"sed",
+		"xeo"
+	],
+	"ignorePaths": ["/.gitattributes", "/.gitignore", "/cspell.json", "/pnpm-lock.yaml"]
+}

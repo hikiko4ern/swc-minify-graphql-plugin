@@ -1,0 +1,44 @@
+{
+	"name": "swc-plugin-minify-graphql",
+	"version": "0.0.0",
+	"description": "GraphQL query and schema minimizer plugin for SWC",
+	"keywords": [
+		"swc-plugin",
+		"graphql"
+	],
+	"main": "lib/swc_minify_graphql_plugin.wasm",
+	"scripts": {
+		"prepare": "lefthook install || true",
+		"prepack": "./utils/build.sh",
+		"dev": "pnpm _watch -w utils/build.sh -s \"./utils/build.sh debug\"",
+		"test": "cargo test",
+		"test:watch": "pnpm _watch test",
+		"bump": "./utils/bump.sh",
+		"version": "run-s \"version:*\"",
+		"version:gen-changelog": "git-cliff --bump -o",
+		"version:cargo-version": "./utils/cargo_set_version.sh",
+		"version:add-files": "git add Cargo.toml Cargo.lock CHANGELOG.md",
+		"_watch": "cargo bin cargo-watch -w src -w Cargo.lock -w Cargo.toml -w rust-toolchain.toml"
+	},
+	"devDependencies": {
+		"binaryen": "^119.0.0",
+		"cspell": "^8.15.4",
+		"dprint": "^0.47.4",
+		"git-cliff": "^2.6.1",
+		"lefthook": "^1.7.22",
+		"npm-run-all2": "^7.0.0"
+	},
+	"files": [
+		"README.md",
+		"LICENSE",
+		"lib/swc_minify_graphql_plugin.wasm"
+	],
+	"preferUnplugged": true,
+	"license": "Unlicensed",
+	"author": "hikiko4ern",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/hikiko4ern/swc-plugin-minify-graphql.git"
+	},
+	"packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228"
+}
