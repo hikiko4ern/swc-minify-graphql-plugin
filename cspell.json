@@ -12,7 +12,7 @@
 	},
 	"validateDirectives": true,
 	"useGitignore": true,
-	"words": ["Binaryen", "dedented", "fnm", "rustup", "SWC", "whitespaces"],
+	"words": ["Binaryen", "bumpalo", "dedented", "fnm", "rustup", "SWC", "whitespaces"],
 	"ignoreWords": [
 		"binstall",
 		"cdylib",

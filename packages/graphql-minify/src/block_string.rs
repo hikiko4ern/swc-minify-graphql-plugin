@@ -1,5 +1,9 @@
 use std::ops::Deref;
 
+use bumpalo::{
+    collections::{String as BumpaloString, Vec as BumpaloVec},
+    Bump,
+};
 use logos::Logos;
 
 #[derive(Logos, Debug, PartialEq)]
@@ -23,35 +27,45 @@ pub(crate) enum BlockStringToken {
     TripleQuote,
 }
 
-#[derive(Default)]
-pub(crate) struct BlockStringLines {
-    lines: Vec<String>,
+pub(crate) struct BlockStringLines<'bump> {
+    lines: BumpaloVec<'bump, BumpaloString<'bump>>,
     total_len: usize,
 }
 
-impl BlockStringLines {
-    pub fn with_capacity(capacity: usize) -> Self {
+impl<'bump> BlockStringLines<'bump> {
+    #[cfg(test)]
+    pub fn new_in(bump: &'bump Bump) -> Self {
         Self {
-            lines: Vec::with_capacity(capacity),
-            ..Default::default()
+            lines: BumpaloVec::new_in(bump),
+            total_len: 0,
         }
     }
 
-    pub fn push(&mut self, line: String) {
+    pub fn with_capacity_in(capacity: usize, bump: &'bump Bump) -> Self {
+        Self {
+            lines: BumpaloVec::with_capacity_in(capacity, bump),
+            total_len: 0,
+        }
+    }
+
+    pub fn push(&mut self, line: BumpaloString<'bump>) {
         self.total_len += line.len();
         self.lines.push(line);
     }
 }
 
-impl Deref for BlockStringLines {
-    type Target = [String];
+impl<'bump> Deref for BlockStringLines<'bump> {
+    type Target = [BumpaloString<'bump>];
 
     fn deref(&self) -> &Self::Target {
         &self.lines
     }
 }
 
-pub(crate) fn print_block_string(lines: &BlockStringLines) -> String {
+pub(crate) fn print_block_string<'bump>(
+    bump: &'bump Bump,
+    lines: &BlockStringLines<'bump>,
+) -> BumpaloString<'bump> {
     let force_leading_new_line = lines.len() > 1
         && lines[1..].iter().all(|line| {
             line.is_empty()
@@ -66,7 +80,7 @@ pub(crate) fn print_block_string(lines: &BlockStringLines) -> String {
     let force_trailing_newline =
         last_line.is_some_and(|line| line.ends_with(['"', '\\']) && !line.ends_with(r#"\""""#));
 
-    let mut result = String::with_capacity(lines.total_len + 7);
+    let mut result = BumpaloString::with_capacity_in(lines.total_len + 7, bump);
 
     result.push_str(r#"""""#);
 
@@ -84,6 +98,7 @@ pub(crate) fn print_block_string(lines: &BlockStringLines) -> String {
     }
 
     result.push_str(r#"""""#);
+
     result
 }
 
@@ -100,27 +115,29 @@ pub(crate) fn dedent_block_lines_mut(lines: &mut BlockStringLines) {
             last_non_empty_line = Some(i);
 
             if i != 0 && indent < common_indent {
-                common_indent = indent;
+                common_indent = common_indent.min(indent);
             }
         }
     }
 
-    let lines = &mut lines.lines;
+    let buf = &mut lines.lines;
 
     match (first_non_empty_line, last_non_empty_line) {
         (Some(start), Some(end)) => {
-            for line in lines.iter_mut().skip(1) {
+            for line in buf.iter_mut().skip(1) {
                 if line.len() > common_indent {
-                    *line = line.split_off(common_indent);
+                    lines.total_len -= common_indent;
+                    line.drain(0..common_indent);
                 } else {
+                    lines.total_len -= line.len();
                     line.clear();
                 }
             }
 
-            lines.drain(..start);
-            lines.drain((end + 1 - start)..);
+            buf.drain(..start);
+            buf.drain((end + 1 - start)..);
         }
-        _ => lines.clear(),
+        _ => buf.clear(),
     }
 }
 
@@ -140,12 +157,34 @@ mod test_dedent {
     use super::{dedent_block_lines_mut, BlockStringLines};
 
     fn get_dedented_vec(lines: &[&str]) -> Vec<String> {
-        let mut bsl = BlockStringLines::with_capacity(lines.len());
-        for line in lines {
-            bsl.push(String::from(*line));
+        use std::cell::RefCell;
+
+        use bumpalo::{collections::String as BumpaloString, Bump};
+
+        thread_local! {
+            static BUMP: RefCell<Bump> = RefCell::new(Bump::new());
         }
-        dedent_block_lines_mut(&mut bsl);
-        bsl.lines
+
+        BUMP.with_borrow_mut(|bump| {
+            let mut bsl = BlockStringLines::with_capacity_in(lines.len(), bump);
+
+            for line in lines {
+                bsl.push(BumpaloString::from_str_in(line, bump));
+            }
+
+            dedent_block_lines_mut(&mut bsl);
+
+            let lines = bsl
+                .lines
+                .iter()
+                .map(|str| String::from(str.as_str()))
+                .collect::<Vec<_>>();
+
+            drop(bsl);
+            bump.reset();
+
+            lines
+        })
     }
 
     #[test]
@@ -282,15 +321,33 @@ mod test_dedent {
 #[cfg(test)]
 mod test_print {
     fn print_block_string<I: AsRef<str>>(input: I) -> String {
+        use std::cell::RefCell;
+
+        use bumpalo::{collections::String as BumpaloString, Bump};
+
         use super::BlockStringLines;
 
-        let mut lines = BlockStringLines::default();
-
-        for line in input.as_ref().lines() {
-            lines.push(line.replace(r#"""""#, r#"\""""#));
+        thread_local! {
+            static BUMP: RefCell<Bump> = RefCell::new(Bump::new());
         }
 
-        super::print_block_string(&lines)
+        BUMP.with_borrow_mut(|bump| {
+            let mut lines = BlockStringLines::new_in(bump);
+
+            for line in input.as_ref().lines() {
+                lines.push(BumpaloString::from_str_in(
+                    line.replace(r#"""""#, r#"\""""#).as_str(),
+                    bump,
+                ));
+            }
+
+            let res = String::from(super::print_block_string(bump, &lines).as_str());
+
+            drop(lines);
+            bump.reset();
+
+            res
+        })
     }
 
     #[test]

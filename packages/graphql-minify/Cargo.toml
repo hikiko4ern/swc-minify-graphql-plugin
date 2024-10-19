@@ -10,6 +10,7 @@ repository = "https://github.com/dan-lee/graphql-minify-rs"
 description = "Minify GraphQL queries"
 
 [dependencies]
+bumpalo = { version = "3.16.0", features = ["collections"] }
 logos = "0.14.2"
 
 [dev-dependencies]

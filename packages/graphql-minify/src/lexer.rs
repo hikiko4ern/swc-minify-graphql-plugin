@@ -1,3 +1,4 @@
+use bumpalo::{collections::String as BumpaloString, Bump};
 use logos::{Lexer, Logos, Span};
 
 use super::block_string::{dedent_block_lines_mut, print_block_string, BlockStringToken};
@@ -61,7 +62,7 @@ pub(crate) enum Token<'a> {
     #[regex(r#""([^"\\]*(\\.[^"\\]*)*)""#, |lexer| match lexer.slice() {
       s if s.contains(['\n', '\r']) => Err(LexingError::UnterminatedString(lexer.span())),
       s => Ok(s),
-  })]
+    })]
     String(&'a str),
 
     #[regex("-?[0-9]+")]
@@ -83,38 +84,43 @@ pub(crate) enum Token<'a> {
     Identifier(&'a str),
 }
 
-pub(crate) fn parse_block_string<'a>(lexer: &mut Lexer<'a, Token<'a>>) -> String {
+pub(crate) fn parse_block_string<'a, 'bump>(
+    lexer: &mut Lexer<'a, Token<'a>>,
+    bump: &'bump mut Bump,
+) -> BumpaloString<'bump> {
     let remainder = lexer.remainder();
 
-    let mut lines = BlockStringLines::with_capacity(5);
-    let mut current_line = String::new();
-    let mut max_line_length = 0;
+    let mut block_string_lines = BlockStringLines::with_capacity_in(5, bump);
 
-    let mut block_lexer = BlockStringToken::lexer(remainder);
+    {
+        let mut block_lexer = BlockStringToken::lexer(remainder);
+        let mut current_line = BumpaloString::new_in(bump);
+        let mut max_line_length = 0;
 
-    while let Some(Ok(token)) = block_lexer.next() {
-        match token {
-            BlockStringToken::NewLine => {
-                max_line_length = max_line_length.max(current_line.len());
-                lines.push(current_line);
-                current_line = String::with_capacity(max_line_length);
+        while let Some(Ok(token)) = block_lexer.next() {
+            match token {
+                BlockStringToken::NewLine => {
+                    max_line_length = max_line_length.max(current_line.len());
+                    block_string_lines.push(current_line);
+                    current_line = BumpaloString::with_capacity_in(max_line_length, bump);
+                }
+                BlockStringToken::Text
+                | BlockStringToken::Quote
+                | BlockStringToken::EscapeSeq
+                | BlockStringToken::EscapedTripleQuote => {
+                    current_line.push_str(block_lexer.slice());
+                }
+                BlockStringToken::TripleQuote => break,
             }
-            BlockStringToken::Text
-            | BlockStringToken::Quote
-            | BlockStringToken::EscapeSeq
-            | BlockStringToken::EscapedTripleQuote => {
-                current_line.push_str(block_lexer.slice());
-            }
-            BlockStringToken::TripleQuote => break,
         }
+
+        if !current_line.is_empty() {
+            block_string_lines.push(current_line);
+        }
+
+        lexer.bump(remainder.len() - block_lexer.remainder().len());
     }
 
-    if !current_line.is_empty() {
-        lines.push(current_line);
-    }
-
-    lexer.bump(remainder.len() - block_lexer.remainder().len());
-
-    dedent_block_lines_mut(&mut lines);
-    print_block_string(&lines)
+    dedent_block_lines_mut(&mut block_string_lines);
+    print_block_string(bump, &block_string_lines)
 }

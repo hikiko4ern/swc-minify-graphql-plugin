@@ -70,6 +70,7 @@ pub fn minify<T: AsRef<str>>(value: T) -> Result<String, MinifyError> {
     let mut lexer = Token::lexer(value);
     let mut result = String::with_capacity(value.len());
     let mut last_token = None;
+    let mut bump = bumpalo::Bump::new();
 
     while let Some(token) = lexer.next() {
         let token = match token {
@@ -87,7 +88,10 @@ pub fn minify<T: AsRef<str>>(value: T) -> Result<String, MinifyError> {
         }
 
         match token {
-            Token::BlockStringDelimiter => result.push_str(&parse_block_string(&mut lexer)),
+            Token::BlockStringDelimiter => {
+                result.push_str(&parse_block_string(&mut lexer, &mut bump));
+                bump.reset();
+            }
             _ => result.push_str(lexer.slice()),
         }
         last_token = Some(token);
