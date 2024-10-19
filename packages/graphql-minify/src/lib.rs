@@ -66,8 +66,9 @@ impl MinifyError {
 ///
 /// This function does not use any unsafe code.
 pub fn minify<T: AsRef<str>>(value: T) -> Result<String, MinifyError> {
-    let mut lexer = Token::lexer(value.as_ref());
-    let mut result = String::new();
+    let value = value.as_ref();
+    let mut lexer = Token::lexer(value);
+    let mut result = String::with_capacity(value.len());
     let mut last_token = None;
 
     while let Some(token) = lexer.next() {
@@ -130,12 +131,12 @@ fn needs_space_before_token(token: &Token) -> bool {
     )
 }
 
-fn needs_space(curr_token: &Token, last_token: Option<&Token>) -> bool {
+fn needs_space(cur_token: &Token, last_token: Option<&Token>) -> bool {
     match last_token {
         Some(last) if is_non_punctuator(last) => {
-            is_non_punctuator(curr_token) || *curr_token == Token::Ellipsis
+            is_non_punctuator(cur_token) || *cur_token == Token::Ellipsis
         }
-        Some(last) if needs_space_after_token(last) => needs_space_before_token(curr_token),
+        Some(last) if needs_space_after_token(last) => needs_space_before_token(cur_token),
         _ => false,
     }
 }

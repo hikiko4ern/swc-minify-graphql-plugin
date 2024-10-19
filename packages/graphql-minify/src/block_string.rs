@@ -1,3 +1,5 @@
+use std::ops::Deref;
+
 use logos::Logos;
 
 #[derive(Logos, Debug, PartialEq)]
@@ -21,23 +23,50 @@ pub(crate) enum BlockStringToken {
     TripleQuote,
 }
 
-pub(crate) fn print_block_string<T: AsRef<str>>(input: T) -> String {
-    let str = input.as_ref();
-    let str = str.replace(r#"""""#, r#"\""""#);
-    let lines = str.lines().collect::<Vec<_>>();
+#[derive(Default)]
+pub(crate) struct BlockStringLines {
+    lines: Vec<String>,
+    total_len: usize,
+}
 
+impl BlockStringLines {
+    pub fn with_capacity(capacity: usize) -> Self {
+        Self {
+            lines: Vec::with_capacity(capacity),
+            ..Default::default()
+        }
+    }
+
+    pub fn push(&mut self, line: String) {
+        self.total_len += line.len();
+        self.lines.push(line);
+    }
+}
+
+impl Deref for BlockStringLines {
+    type Target = [String];
+
+    fn deref(&self) -> &Self::Target {
+        &self.lines
+    }
+}
+
+pub(crate) fn print_block_string(lines: &BlockStringLines) -> String {
     let force_leading_new_line = lines.len() > 1
-        && lines[1..].iter().all(|line| match line.chars().next() {
-            Some(c) => line.is_empty() || is_graphql_whitespace(c),
-            None => true,
+        && lines[1..].iter().all(|line| {
+            line.is_empty()
+                || line
+                    .as_bytes()
+                    .first()
+                    .copied()
+                    .is_some_and(is_graphql_whitespace)
         });
 
-    let has_trailing_triple_quotes = str.ends_with(r#"\""""#);
-    let has_trailing_quote = str.ends_with('"') && !has_trailing_triple_quotes;
-    let has_trailing_slash = str.ends_with('\\');
-    let force_trailing_newline = has_trailing_quote || has_trailing_slash;
+    let last_line = lines.last();
+    let force_trailing_newline =
+        last_line.is_some_and(|line| line.ends_with(['"', '\\']) && !line.ends_with(r#"\""""#));
 
-    let mut result = String::with_capacity(str.len() + 7);
+    let mut result = String::with_capacity(lines.total_len + 7);
 
     result.push_str(r#"""""#);
 
@@ -45,8 +74,8 @@ pub(crate) fn print_block_string<T: AsRef<str>>(input: T) -> String {
         result.push('\n');
     }
 
-    for line in lines {
-        result.push_str(line);
+    for line in lines.iter() {
+        result.push_str(line.as_str());
         result.push('\n');
     }
 
@@ -58,7 +87,7 @@ pub(crate) fn print_block_string<T: AsRef<str>>(input: T) -> String {
     result
 }
 
-pub(crate) fn dedent_block_lines_mut(lines: &mut Vec<String>) {
+pub(crate) fn dedent_block_lines_mut(lines: &mut BlockStringLines) {
     let mut common_indent = usize::MAX;
     let mut first_non_empty_line = None;
     let mut last_non_empty_line = None;
@@ -75,6 +104,8 @@ pub(crate) fn dedent_block_lines_mut(lines: &mut Vec<String>) {
             }
         }
     }
+
+    let lines = &mut lines.lines;
 
     match (first_non_empty_line, last_non_empty_line) {
         (Some(start), Some(end)) => {
@@ -93,22 +124,28 @@ pub(crate) fn dedent_block_lines_mut(lines: &mut Vec<String>) {
     }
 }
 
-fn is_graphql_whitespace(c: char) -> bool {
-    c == ' ' || c == '\t'
+fn is_graphql_whitespace(b: u8) -> bool {
+    b == b' ' || b == b'\t'
 }
 
 fn leading_whitespace(s: &str) -> usize {
-    s.chars().take_while(|&c| is_graphql_whitespace(c)).count()
+    s.as_bytes()
+        .iter()
+        .position(|&b| !is_graphql_whitespace(b))
+        .unwrap_or(s.len())
 }
 
 #[cfg(test)]
 mod test_dedent {
-    use super::dedent_block_lines_mut;
+    use super::{dedent_block_lines_mut, BlockStringLines};
 
     fn get_dedented_vec(lines: &[&str]) -> Vec<String> {
-        let mut lines = lines.iter().map(ToString::to_string).collect::<Vec<_>>();
-        dedent_block_lines_mut(&mut lines);
-        lines.iter().map(ToString::to_string).collect()
+        let mut bsl = BlockStringLines::with_capacity(lines.len());
+        for line in lines {
+            bsl.push(String::from(*line));
+        }
+        dedent_block_lines_mut(&mut bsl);
+        bsl.lines
     }
 
     #[test]
@@ -244,7 +281,17 @@ mod test_dedent {
 
 #[cfg(test)]
 mod test_print {
-    use super::print_block_string;
+    fn print_block_string<I: AsRef<str>>(input: I) -> String {
+        use super::BlockStringLines;
+
+        let mut lines = BlockStringLines::default();
+
+        for line in input.as_ref().lines() {
+            lines.push(line.replace(r#"""""#, r#"\""""#));
+        }
+
+        super::print_block_string(&lines)
+    }
 
     #[test]
     fn does_not_escape_characters() {

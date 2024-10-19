@@ -1,6 +1,7 @@
 use logos::{Lexer, Logos, Span};
 
 use super::block_string::{dedent_block_lines_mut, print_block_string, BlockStringToken};
+use crate::block_string::BlockStringLines;
 
 #[derive(Debug, PartialEq, Clone, Default)]
 /// An enumeration of errors that can occur during the lexing process.
@@ -83,22 +84,27 @@ pub(crate) enum Token<'a> {
 }
 
 pub(crate) fn parse_block_string<'a>(lexer: &mut Lexer<'a, Token<'a>>) -> String {
-    let mut lines = vec![];
-    let mut current_line = String::new();
-
     let remainder = lexer.remainder();
+
+    let mut lines = BlockStringLines::with_capacity(5);
+    let mut current_line = String::new();
+    let mut max_line_length = 0;
+
     let mut block_lexer = BlockStringToken::lexer(remainder);
 
     while let Some(Ok(token)) = block_lexer.next() {
         match token {
             BlockStringToken::NewLine => {
+                max_line_length = max_line_length.max(current_line.len());
                 lines.push(current_line);
-                current_line = String::new();
+                current_line = String::with_capacity(max_line_length);
             }
-            BlockStringToken::Text | BlockStringToken::Quote | BlockStringToken::EscapeSeq => {
+            BlockStringToken::Text
+            | BlockStringToken::Quote
+            | BlockStringToken::EscapeSeq
+            | BlockStringToken::EscapedTripleQuote => {
                 current_line.push_str(block_lexer.slice());
             }
-            BlockStringToken::EscapedTripleQuote => current_line.push_str(r#"""""#),
             BlockStringToken::TripleQuote => break,
         }
     }
@@ -110,5 +116,5 @@ pub(crate) fn parse_block_string<'a>(lexer: &mut Lexer<'a, Token<'a>>) -> String
     lexer.bump(remainder.len() - block_lexer.remainder().len());
 
     dedent_block_lines_mut(&mut lines);
-    print_block_string(lines.join("\n"))
+    print_block_string(&lines)
 }

@@ -19,3 +19,6 @@ indoc = "2.0.5"
 [[bench]]
 name = "minify"
 harness = false
+
+[[example]]
+name = "github_schema"

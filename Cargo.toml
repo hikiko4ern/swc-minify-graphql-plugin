@@ -37,3 +37,8 @@ cargo-watch = { version = "8.5.3", locked = true, bins = ["cargo-watch"] }
 codegen-units = 1
 strip = true
 lto = true
+
+[profile.profiling]
+inherits = "release"
+debug = true
+strip = false
