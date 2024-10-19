@@ -4,9 +4,9 @@ set -xeo pipefail
 
 PROFILE="${1:-release}"
 TRIPLET="wasm32-unknown-unknown"
-WASM="target/$TRIPLET/${PROFILE}/swc_minify_graphql_plugin.wasm"
+WASM="target/$TRIPLET/${PROFILE}/swc_plugin_minify_graphql.wasm"
 OUT_DIR="lib"
-OUT="${OUT_DIR}/swc_minify_graphql_plugin.wasm"
+OUT="${OUT_DIR}/swc_plugin_minify_graphql.wasm"
 
 profile_arg=()
 

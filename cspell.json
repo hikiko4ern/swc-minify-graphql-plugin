@@ -12,7 +12,7 @@
 	},
 	"validateDirectives": true,
 	"useGitignore": true,
-	"words": ["Binaryen", "fnm", "rustup", "SWC", "whitespaces"],
+	"words": ["Binaryen", "dedented", "fnm", "rustup", "SWC", "whitespaces"],
 	"ignoreWords": [
 		"binstall",
 		"cdylib",
@@ -21,11 +21,13 @@
 		"dprint",
 		"fmt",
 		"hikiko4ern",
+		"indoc",
 		"lefthook",
 		"lto",
 		"rustfmt",
 		"sed",
+		"vec",
 		"xeo"
 	],
-	"ignorePaths": ["/.gitattributes", "/.gitignore", "/cspell.json", "/pnpm-lock.yaml"]
+	"ignorePaths": ["/.gitattributes", "/.gitignore", "/cspell.json", "/pnpm-lock.yaml", "test_data"]
 }

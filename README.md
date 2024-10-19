@@ -117,6 +117,10 @@ While the minified code may be correct in some cases, this usage is not intended
 
 `gql`/`graphql` tagged template literals are not currently supported, and there are no plans to add support. You can use other plugins like [`graphql-tag-swc-plugin`] that support minification.
 
+## Credits
+
+- [`graphql-minify`](https://github.com/dan-lee/graphql-minify-rs): a re-implementation of [`stripIgnoredCharacters`](https://graphql-js.org/api/function/stripignoredcharacters/) from the [GraphQL.js reference implementation](https://github.com/graphql/graphql-js) in Rust
+
 <!-- links -->
 
 [GraphQL]: https://graphql.org

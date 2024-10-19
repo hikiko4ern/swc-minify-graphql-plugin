@@ -1,19 +1,29 @@
-[package]
-name = "swc-plugin-minify-graphql"
+[workspace.package]
 version = "0.0.0"
 authors = ["hikiko4ern"]
-categories = ["swc-plugin"]
 edition = "2021"
 license = "Unlicense"
 publish = false
+
+[package]
+name = "swc-plugin-minify-graphql"
+version.workspace = true
+authors.workspace = true
+categories = ["swc-plugin"]
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
 repository = "https://github.com/hikiko4ern/swc-plugin-minify-graphql"
 description = "GraphQL query and schema minimizer plugin for SWC"
+
+[workspace]
+members = [".", "packages/graphql-minify"]
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-graphql-minify = "0.1.0"
+graphql-minify = { version = "0.1.0", path = "packages/graphql-minify" }
 swc_core = { version = "1.0", features = ["ecma_plugin_transform"] }
 tracing = { version = "0.1", features = ["release_max_level_info"] }
 

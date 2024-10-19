@@ -27,8 +27,10 @@
 use swc_core::{
     atoms::Atom,
     common::errors::HANDLER,
-    ecma::ast::{Str, Tpl},
+    ecma::ast::{Str, Tpl, TplElement},
 };
+
+use crate::str_span::StrSpan;
 
 /// [`Punctuator`] characters
 ///
@@ -51,47 +53,23 @@ const PUNCTUATORS: &[char] = &[
 
 /// minifies [`Str`]
 pub fn minify_graphql_str(str: &mut Str) {
-    let value = str.value.as_str();
-
-    if !value.is_empty() {
-        match graphql_minify::minify(value) {
-            Ok(min) => {
-                str.value = Atom::new(min);
-                str.raw = None;
-            }
-            Err(err) => HANDLER.with(|handler| {
-                handler
-                    .struct_span_err(str.span, &format!("failed to minify GraphQL: {err:#?}"))
-                    .emit();
-            }),
-        }
+    if let Some(min) = try_minify(str.value.as_str(), str) {
+        str.value = Atom::new(min);
+        str.raw = None;
     }
 }
 
 /// minifies [`Tpl`]
 pub fn minify_graphql_tpl(tpl: &mut Tpl) {
+    // If there are no expressions, we take the shortest path and
+    // minify the single `TplElement` without additional checks
+
     if tpl.exprs.is_empty() {
-        // If there are no expressions, we take the shortest path and
-        // minify the single `TplElement` without additional checks
-
         let tpl_el = unsafe { tpl.quasis.get_unchecked_mut(0) };
-        let query = tpl_el.cooked.as_ref().unwrap_or(&tpl_el.raw).as_str();
 
-        if !query.is_empty() {
-            match graphql_minify::minify(query) {
-                Ok(min) => {
-                    tpl_el.raw = Atom::new(min);
-                    tpl_el.cooked = Some(tpl_el.raw.clone());
-                }
-                Err(err) => HANDLER.with(|handler| {
-                    handler
-                        .struct_span_err(
-                            tpl_el.span,
-                            &format!("failed to minify GraphQL: {err:#?}"),
-                        )
-                        .emit();
-                }),
-            }
+        if let Some(min) = try_minify(tpl_el_value(tpl_el), tpl_el) {
+            tpl_el.raw = Atom::new(min);
+            tpl_el.cooked = Some(tpl_el.raw.clone());
         }
 
         return;
@@ -104,44 +82,67 @@ pub fn minify_graphql_tpl(tpl: &mut Tpl) {
     let last_quasis_index = tpl.quasis.len() - 1;
 
     for (i, tpl_el) in tpl.quasis.iter_mut().enumerate() {
-        let query = tpl_el.cooked.as_ref().unwrap_or(&tpl_el.raw).as_str();
         let next_is_expr = expr_it.next().is_some();
 
-        if !query.is_empty() {
-            match graphql_minify::minify(query) {
-                Ok(mut min) => {
-                    let is_empty = min.is_empty();
-                    let mut is_space_inserted = false;
+        if let Some(mut min) = try_minify(tpl_el_value(tpl_el), tpl_el) {
+            let is_empty = min.is_empty();
+            let mut is_space_inserted = false;
 
-                    if has_prev_expr
-                        && !(is_empty && last_quasis_index == i)
-                        && !min.starts_with(PUNCTUATORS)
-                    {
-                        min.insert(0, ' ');
-                        is_space_inserted = true;
-                    }
-
-                    if next_is_expr
-                        && !(is_empty && (is_space_inserted || i == 0))
-                        && !min.ends_with(PUNCTUATORS)
-                    {
-                        min.push(' ');
-                    }
-
-                    tpl_el.raw = Atom::new(min);
-                    tpl_el.cooked = Some(tpl_el.raw.clone());
-                }
-                Err(err) => HANDLER.with(|handler| {
-                    handler
-                        .struct_span_err(
-                            tpl_el.span,
-                            &format!("failed to minify GraphQL: {err:#?}"),
-                        )
-                        .emit();
-                }),
+            if has_prev_expr
+                && !(is_empty && last_quasis_index == i)
+                && !min.starts_with(PUNCTUATORS)
+            {
+                min.insert(0, ' ');
+                is_space_inserted = true;
             }
+
+            if next_is_expr
+                && !(is_empty && (is_space_inserted || i == 0))
+                && !min.ends_with(PUNCTUATORS)
+            {
+                min.push(' ');
+            }
+
+            tpl_el.raw = Atom::new(min);
+            tpl_el.cooked = Some(tpl_el.raw.clone());
         }
 
         has_prev_expr = next_is_expr;
+    }
+}
+
+fn tpl_el_value(tpl_el: &TplElement) -> &str {
+    tpl_el.cooked.as_ref().unwrap_or(&tpl_el.raw).as_str()
+}
+
+fn try_minify<Str>(code: &str, str: &Str) -> Option<String>
+where
+    Str: StrSpan,
+{
+    if code.is_empty() {
+        return None;
+    }
+
+    match graphql_minify::minify(code) {
+        Ok(min) => Some(min),
+        Err(err) => HANDLER.with(|handler| {
+            handler
+                .struct_span_err(str.outer_span(), "failed to minify GraphQL")
+                .span_label(
+                    {
+                        let err_span = err.span();
+                        str.value_span()
+                            .from_inner_byte_pos(err_span.start, err_span.end)
+                    },
+                    format!(
+                        "{} ({}, {})",
+                        err.as_str(),
+                        err.span().start,
+                        err.span().end
+                    ),
+                )
+                .emit();
+            None
+        }),
     }
 }

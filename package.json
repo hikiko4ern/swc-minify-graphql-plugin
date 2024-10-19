@@ -6,19 +6,19 @@
 		"swc-plugin",
 		"graphql"
 	],
-	"main": "lib/swc_minify_graphql_plugin.wasm",
+	"main": "lib/swc_plugin_minify_graphql.wasm",
 	"scripts": {
 		"prepare": "lefthook install || true",
 		"prepack": "./utils/build.sh",
 		"dev": "pnpm _watch -w utils/build.sh -s \"./utils/build.sh debug\"",
-		"test": "cargo test",
-		"test:watch": "pnpm _watch test",
+		"test": "cargo test --workspace",
+		"test:watch": "pnpm _watch test --workspace",
 		"bump": "./utils/bump.sh",
 		"version": "run-s \"version:*\"",
 		"version:gen-changelog": "git-cliff --bump -o",
 		"version:cargo-version": "./utils/cargo_set_version.sh",
 		"version:add-files": "git add Cargo.toml Cargo.lock CHANGELOG.md",
-		"_watch": "cargo bin cargo-watch -w src -w Cargo.lock -w Cargo.toml -w rust-toolchain.toml"
+		"_watch": "cargo bin cargo-watch -w src -w packages/graphql-minify -w Cargo.lock -w Cargo.toml -w rust-toolchain.toml"
 	},
 	"devDependencies": {
 		"binaryen": "^119.0.0",
@@ -31,7 +31,7 @@
 	"files": [
 		"README.md",
 		"LICENSE",
-		"lib/swc_minify_graphql_plugin.wasm"
+		"lib/swc_plugin_minify_graphql.wasm"
 	],
 	"preferUnplugged": true,
 	"license": "Unlicensed",

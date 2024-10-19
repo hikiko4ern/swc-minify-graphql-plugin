@@ -1,7 +1,8 @@
 #![warn(clippy::pedantic)]
-#![allow(clippy::default_trait_access)]
+#![allow(clippy::default_trait_access, clippy::module_name_repetitions)]
 
-mod minimizer;
+mod str_span;
+mod visitor;
 
 use swc_core::{
     common::{comments::Comments, BytePos, Spanned},
@@ -16,7 +17,7 @@ use swc_core::{
     },
 };
 
-use crate::minimizer::{minify_graphql_str, minify_graphql_tpl};
+use crate::visitor::{minify_graphql_str, minify_graphql_tpl};
 
 pub struct MinifyGraphqlVisitor<C: Comments> {
     comments: C,
@@ -59,7 +60,7 @@ impl<C: Comments> VisitMut for MinifyGraphqlVisitor<C> {
 
 #[plugin_transform]
 #[must_use]
-pub fn swc_minify_graphql_plugin(
+pub fn swc_plugin_minify_graphql(
     mut program: Program,
     _: TransformPluginProgramMetadata,
 ) -> Program {
