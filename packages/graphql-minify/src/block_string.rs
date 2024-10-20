@@ -66,38 +66,51 @@ pub(crate) fn print_block_string<'bump>(
     bump: &'bump Bump,
     lines: &BlockStringLines<'bump>,
 ) -> BumpaloString<'bump> {
-    let force_leading_new_line = lines.len() > 1
+    const TRIPLE_QUOTES: &str = r#"""""#;
+    const EMPTY_BLOCK_STRING: &str = r#""""""""#;
+
+    let (start_lines, last_line) = match lines.lines.as_slice() {
+        [start_lines @ .., last_line] => (start_lines, last_line),
+        [] => return BumpaloString::from_str_in(EMPTY_BLOCK_STRING, bump),
+    };
+
+    let with_leading_new_line = lines.len() > 1
         && lines[1..].iter().all(|line| {
-            line.is_empty()
-                || line
-                    .as_bytes()
-                    .first()
-                    .copied()
-                    .is_some_and(is_graphql_whitespace)
+            line.as_bytes()
+                .first()
+                .copied()
+                .is_none_or(is_graphql_whitespace)
         });
 
-    let last_line = lines.last();
-    let force_trailing_newline =
-        last_line.is_some_and(|line| line.ends_with(['"', '\\']) && !line.ends_with(r#"\""""#));
+    let with_trailing_newline = last_line.ends_with(['"', '\\']) && !last_line.ends_with(r#"\""""#);
 
-    let mut result = BumpaloString::with_capacity_in(lines.total_len + 7, bump);
+    let mut result = BumpaloString::with_capacity_in(
+        lines.total_len
+            + (TRIPLE_QUOTES.len() * 2)
+            + (with_leading_new_line as usize)
+            + (lines.len() - 1)
+            + (with_trailing_newline as usize),
+        bump,
+    );
 
-    result.push_str(r#"""""#);
+    result.push_str(TRIPLE_QUOTES);
 
-    if force_leading_new_line {
+    if with_leading_new_line {
         result.push('\n');
     }
 
-    for line in lines.iter() {
-        result.push_str(line.as_str());
+    for line in start_lines {
+        result.push_str(line);
         result.push('\n');
     }
 
-    if !force_trailing_newline && result.ends_with('\n') {
-        result.pop();
+    result.push_str(last_line);
+
+    if with_trailing_newline {
+        result.push('\n');
     }
 
-    result.push_str(r#"""""#);
+    result.push_str(TRIPLE_QUOTES);
 
     result
 }
