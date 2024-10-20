@@ -116,22 +116,22 @@ fn is_non_punctuator(token: &Token) -> bool {
             | Token::Ellipsis
             | Token::Ampersand
             | Token::Pipe
-            | Token::Variable(_)
-            | Token::Directive(_)
+            | Token::Variable
+            | Token::Directive
     )
 }
 
 fn needs_space_after_token(token: &Token) -> bool {
     matches!(
         token,
-        Token::Variable(_) | Token::String(_) | Token::Identifier(_) | Token::Directive(_)
+        Token::Variable | Token::String | Token::Identifier | Token::Directive
     )
 }
 
 fn needs_space_before_token(token: &Token) -> bool {
     matches!(
         token,
-        Token::Identifier(_) | Token::BlockStringDelimiter | Token::Ellipsis
+        Token::Identifier | Token::BlockStringDelimiter | Token::Ellipsis
     )
 }
 

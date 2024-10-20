@@ -16,7 +16,7 @@ pub enum LexingError {
 #[derive(Logos, Debug, PartialEq)]
 #[logos(skip r"([\s,]+|#[^\r\n]*)+")]
 #[logos(error = LexingError)]
-pub(crate) enum Token<'a> {
+pub(crate) enum Token {
     #[token("{")]
     BraceOpen,
 
@@ -56,36 +56,36 @@ pub(crate) enum Token<'a> {
     #[token("...")]
     Ellipsis,
 
-    #[regex(r#"""""#)]
+    #[token(r#"""""#)]
     BlockStringDelimiter,
 
     #[regex(r#""([^"\\]*(\\.[^"\\]*)*)""#, |lexer| match lexer.slice() {
-      s if s.contains(['\n', '\r']) => Err(LexingError::UnterminatedString(lexer.span())),
-      s => Ok(s),
+        s if s.contains(['\n', '\r']) => Err(LexingError::UnterminatedString(lexer.span())),
+        _ => Ok(()),
     })]
-    String(&'a str),
+    String,
 
     #[regex("-?[0-9]+")]
-    Int(&'a str),
+    Int,
 
     #[regex("-?[0-9]+\\.[0-9]+(e-?[0-9]+)?")]
-    Float(&'a str),
+    Float,
 
     #[regex("true|false")]
-    Bool(&'a str),
+    Bool,
 
     #[regex("@[a-zA-Z_][a-zA-Z0-9_]*")]
-    Directive(&'a str),
+    Directive,
 
     #[regex("\\$[a-zA-Z_][a-zA-Z0-9_]*")]
-    Variable(&'a str),
+    Variable,
 
     #[regex(r"[a-zA-Z_][a-zA-Z0-9_]*")]
-    Identifier(&'a str),
+    Identifier,
 }
 
-pub(crate) fn parse_block_string<'a, 'bump>(
-    lexer: &mut Lexer<'a, Token<'a>>,
+pub(crate) fn parse_block_string<'bump>(
+    lexer: &mut Lexer<Token>,
     bump: &'bump mut Bump,
 ) -> BumpaloString<'bump> {
     let remainder = lexer.remainder();
