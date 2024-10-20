@@ -129,17 +129,12 @@ fn needs_space_after_token(token: &Token) -> bool {
 }
 
 fn needs_space_before_token(token: &Token) -> bool {
-    matches!(
-        token,
-        Token::Identifier | Token::BlockStringDelimiter | Token::Ellipsis
-    )
+    matches!(token, Token::Identifier | Token::BlockStringDelimiter)
 }
 
 fn needs_space(cur_token: &Token, last_token: Option<&Token>) -> bool {
     match last_token {
-        Some(last) if is_non_punctuator(last) => {
-            is_non_punctuator(cur_token) || *cur_token == Token::Ellipsis
-        }
+        Some(last) if is_non_punctuator(last) => is_non_punctuator(cur_token),
         Some(last) if needs_space_after_token(last) => needs_space_before_token(cur_token),
         _ => false,
     }
@@ -249,9 +244,9 @@ mod test {
 
     #[test]
     fn replace_ignored_tokens_between_non_punctuator_tokens_and_spread_with_space() {
-        assert_eq!(minify("a ...").unwrap(), "a ...");
-        assert_eq!(minify("1 ...").unwrap(), "1 ...");
-        assert_eq!(minify("1 ... ...").unwrap(), "1 ......");
+        assert_eq!(minify("a ...").unwrap(), "a...");
+        assert_eq!(minify("1 ...").unwrap(), "1...");
+        assert_eq!(minify("1 ... ...").unwrap(), "1......");
     }
 
     #[test]
