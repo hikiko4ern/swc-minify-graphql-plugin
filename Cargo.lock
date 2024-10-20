@@ -575,6 +575,7 @@ dependencies = [
  "criterion",
  "indoc",
  "logos",
+ "memchr",
 ]
 
 [[package]]

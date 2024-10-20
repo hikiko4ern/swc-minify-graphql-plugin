@@ -69,9 +69,8 @@ pub(crate) fn print_block_string<'bump>(
     const TRIPLE_QUOTES: &str = r#"""""#;
     const EMPTY_BLOCK_STRING: &str = r#""""""""#;
 
-    let (start_lines, last_line) = match lines.lines.as_slice() {
-        [start_lines @ .., last_line] => (start_lines, last_line),
-        [] => return BumpaloString::from_str_in(EMPTY_BLOCK_STRING, bump),
+    let [start_lines @ .., last_line] = lines.lines.as_slice() else {
+        return BumpaloString::from_str_in(EMPTY_BLOCK_STRING, bump);
     };
 
     let with_leading_new_line = lines.len() > 1
@@ -87,9 +86,9 @@ pub(crate) fn print_block_string<'bump>(
     let mut result = BumpaloString::with_capacity_in(
         lines.total_len
             + (TRIPLE_QUOTES.len() * 2)
-            + (with_leading_new_line as usize)
+            + usize::from(with_leading_new_line)
             + (lines.len() - 1)
-            + (with_trailing_newline as usize),
+            + usize::from(with_trailing_newline),
         bump,
     );
 

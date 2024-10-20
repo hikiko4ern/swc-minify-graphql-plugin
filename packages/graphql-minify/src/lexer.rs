@@ -59,10 +59,7 @@ pub(crate) enum Token {
     #[token(r#"""""#)]
     BlockStringDelimiter,
 
-    #[regex(r#""([^"\\]*(\\.[^"\\]*)*)""#, |lexer| match lexer.slice() {
-        s if s.contains(['\n', '\r']) => Err(LexingError::UnterminatedString(lexer.span())),
-        _ => Ok(()),
-    })]
+    #[regex(r#""([^"\\]*(\\.[^"\\]*)*)""#, validate_string)]
     String,
 
     #[regex("-?[0-9]+")]
@@ -123,4 +120,32 @@ pub(crate) fn parse_block_string<'bump>(
 
     dedent_block_lines_mut(&mut block_string_lines);
     print_block_string(bump, &block_string_lines)
+}
+
+#[inline]
+fn validate_string(lexer: &Lexer<Token>) -> Result<(), LexingError> {
+    let str = lexer.slice().as_bytes();
+
+    if have_newline(str) {
+        Err(LexingError::UnterminatedString(lexer.span()))
+    } else {
+        Ok(())
+    }
+}
+
+#[inline]
+fn have_newline(text: &[u8]) -> bool {
+    const USIZE_BYTES: usize = size_of::<usize>();
+
+    // Fast path for small slices.
+    if text.len() < 2 * USIZE_BYTES {
+        return have_newline_naive(text);
+    }
+
+    memchr::memchr2(b'\n', b'\r', text).is_some()
+}
+
+#[inline]
+fn have_newline_naive(text: &[u8]) -> bool {
+    text.iter().any(|&b| b == b'\n' || b == b'\r')
 }
