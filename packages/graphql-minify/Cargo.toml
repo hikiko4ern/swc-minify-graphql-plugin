@@ -13,4 +13,9 @@ description = "Minify GraphQL queries"
 logos = "0.14.2"
 
 [dev-dependencies]
+criterion = "0.5.1"
 indoc = "2.0.5"
+
+[[bench]]
+name = "minify"
+harness = false
