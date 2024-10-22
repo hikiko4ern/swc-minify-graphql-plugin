@@ -2,7 +2,7 @@ use bumpalo::{collections::String as BumpaloString, Bump};
 use logos::{Lexer, Logos, Span};
 
 use super::block_string::{dedent_block_lines_mut, print_block_string, BlockStringToken};
-use crate::block_string::BlockStringLines;
+use crate::block_string::{BlockStringLines, PrintedBlockString};
 
 #[derive(Debug, PartialEq, Clone, Default)]
 /// An enumeration of errors that can occur during the lexing process.
@@ -84,7 +84,7 @@ pub(crate) enum Token {
 pub(crate) fn parse_block_string<'bump>(
     lexer: &mut Lexer<Token>,
     bump: &'bump mut Bump,
-) -> BumpaloString<'bump> {
+) -> PrintedBlockString<'bump> {
     let remainder = lexer.remainder();
 
     let mut block_string_lines = BlockStringLines::with_capacity_in(5, bump);
