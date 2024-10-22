@@ -1,11 +1,13 @@
 use std::time::Duration;
 
 use criterion::{criterion_group, criterion_main, Criterion};
-use graphql_minify::minify;
+use graphql_minify::{minify, MinifyAllocator};
 
 macro_rules! bench {
     ($group:ident, $id:literal, $input:ident) => {
-        $group.bench_with_input($id, $input, |b, input| b.iter(|| minify(input)));
+        $group.bench_with_input($id, $input, |b, input| {
+            b.iter(|| minify(input, &mut MinifyAllocator::default()))
+        });
     };
 }
 

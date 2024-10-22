@@ -34,16 +34,16 @@ pub(crate) struct BlockStringLines<'bump> {
 
 impl<'bump> BlockStringLines<'bump> {
     #[cfg(test)]
-    pub fn new_in(bump: &'bump Bump) -> Self {
+    pub fn new_in(alloc: &'bump Bump) -> Self {
         Self {
-            lines: BumpaloVec::new_in(bump),
+            lines: BumpaloVec::new_in(alloc),
             total_len: 0,
         }
     }
 
-    pub fn with_capacity_in(capacity: usize, bump: &'bump Bump) -> Self {
+    pub fn with_capacity_in(capacity: usize, alloc: &'bump Bump) -> Self {
         Self {
-            lines: BumpaloVec::with_capacity_in(capacity, bump),
+            lines: BumpaloVec::with_capacity_in(capacity, alloc),
             total_len: 0,
         }
     }
@@ -62,15 +62,28 @@ impl<'bump> Deref for BlockStringLines<'bump> {
     }
 }
 
+pub(crate) enum PrintedBlockString<'bump> {
+    Empty,
+    String(BumpaloString<'bump>),
+}
+
+impl AsRef<str> for PrintedBlockString<'_> {
+    fn as_ref(&self) -> &str {
+        match self {
+            PrintedBlockString::Empty => r#""""""""#,
+            PrintedBlockString::String(str) => str.as_str(),
+        }
+    }
+}
+
 pub(crate) fn print_block_string<'bump>(
-    bump: &'bump Bump,
     lines: &BlockStringLines<'bump>,
-) -> BumpaloString<'bump> {
+    alloc: &'bump Bump,
+) -> PrintedBlockString<'bump> {
     const TRIPLE_QUOTES: &str = r#"""""#;
-    const EMPTY_BLOCK_STRING: &str = r#""""""""#;
 
     let [start_lines @ .., last_line] = lines.lines.as_slice() else {
-        return BumpaloString::from_str_in(EMPTY_BLOCK_STRING, bump);
+        return PrintedBlockString::Empty;
     };
 
     let with_leading_new_line = lines.len() > 1
@@ -89,7 +102,7 @@ pub(crate) fn print_block_string<'bump>(
             + usize::from(with_leading_new_line)
             + (lines.len() - 1)
             + usize::from(with_trailing_newline),
-        bump,
+        alloc,
     );
 
     result.push_str(TRIPLE_QUOTES);
@@ -111,7 +124,7 @@ pub(crate) fn print_block_string<'bump>(
 
     result.push_str(TRIPLE_QUOTES);
 
-    result
+    PrintedBlockString::String(result)
 }
 
 pub(crate) fn dedent_block_lines_mut(lines: &mut BlockStringLines) {
@@ -353,7 +366,7 @@ mod test_print {
                 ));
             }
 
-            let res = String::from(super::print_block_string(bump, &lines).as_str());
+            let res = String::from(super::print_block_string(&lines, bump).as_ref());
 
             drop(lines);
             bump.reset();
