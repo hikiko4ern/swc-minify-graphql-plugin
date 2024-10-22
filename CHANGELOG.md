@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.1] - 2024-10-22
+
+### Bug Fixes
+
+- fix `license` to `Unlicense`
+
 ## [0.1.0] - 2024-10-22
 
 ### Features
