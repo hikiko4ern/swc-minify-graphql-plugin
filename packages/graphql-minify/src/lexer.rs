@@ -59,7 +59,7 @@ pub(crate) enum Token {
     #[token(r#"""""#)]
     BlockStringDelimiter,
 
-    #[regex(r#""([^"\\]*(\\.[^"\\]*)*)""#, validate_string)]
+    #[regex(r#""([^"\\]+|\\.)*""#, validate_string)]
     String,
 
     #[regex("-?[0-9]+")]

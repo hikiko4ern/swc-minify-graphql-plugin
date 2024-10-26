@@ -8,8 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+.vscode
 .idea
 .DS_Store
 *.suo
@@ -24,6 +23,6 @@ lerna-debug.log*
 
 # packages
 /lib
-/target
+target
 /node_modules
 *.tgz

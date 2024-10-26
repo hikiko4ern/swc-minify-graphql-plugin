@@ -1,2 +1,5 @@
 * text eol=lf
 *.wasm binary
+
+# test data
+test_data/** binary linguist-generated=true

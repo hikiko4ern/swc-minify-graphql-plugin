@@ -11,6 +11,7 @@ use crate::lexer::{parse_block_string, LexingError, Token};
 pub use crate::minify_alloc::MinifyAllocator;
 
 #[derive(Debug)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum MinifyError {
     UnknownToken(Span),
     UnterminatedString(Span),
@@ -332,5 +333,22 @@ mod test {
         let expected = include_str!("../test_data/kitchen_sink_schema_expected.graphql");
 
         assert_eq!(minify(schema).unwrap(), expected);
+    }
+
+    /// [`Token::String`]'s regex causes [stack overflow]
+    ///
+    /// release build optimizations help to avoid at least some of the stack overflows,
+    /// so this test is performed in release mode only
+    ///
+    /// [`Token::String`]: super::Token::String
+    /// [stack overflow]: https://github.com/maciejhirsz/logos/issues/384
+    #[cfg_attr(not(debug_assertions), test)]
+    #[cfg_attr(debug_assertions, allow(dead_code))]
+    fn test_stack_overflow() {
+        let schema = include_str!("../test_data/fuzz/stack_overflow");
+        assert_eq!(
+            minify(schema),
+            Err(MinifyError::UnknownToken(11..schema.len()))
+        );
     }
 }
