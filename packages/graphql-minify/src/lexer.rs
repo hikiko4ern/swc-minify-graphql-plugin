@@ -14,7 +14,7 @@ pub enum LexingError {
 }
 
 #[derive(Logos, Debug, PartialEq)]
-#[logos(skip r"([\s,]+|#[^\r\n]*)+")]
+#[logos(skip r"[\s,]+")]
 #[logos(error = LexingError)]
 pub(crate) enum Token {
     #[token("{")]
@@ -79,6 +79,9 @@ pub(crate) enum Token {
 
     #[regex(r"[a-zA-Z_][a-zA-Z0-9_]*")]
     Identifier,
+
+    #[regex(r"#[^\r\n]*", logos::skip)]
+    Comment,
 }
 
 pub(crate) fn parse_block_string<'bump>(
