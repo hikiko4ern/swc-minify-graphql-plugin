@@ -24,7 +24,7 @@
 //! [`Punctuator`]: https://spec.graphql.org/October2021/#Punctuator
 // spell-checker: ignore idurl
 
-use bumpalo::Bump;
+use graphql_minify::MinifyAllocator;
 use swc_core::{
     atoms::Atom,
     common::errors::HANDLER,
@@ -52,19 +52,16 @@ const PUNCTUATORS: &[char] = &[
     '!', '$', '&', '(', ')', '.', ':', '@', '[', ']', '{', ',', '}',
 ];
 
+#[derive(Default)]
 pub(crate) struct Minifier {
-    bump: Bump,
+    alloc: MinifyAllocator,
 }
 
 impl Minifier {
-    pub fn new() -> Self {
-        Self { bump: Bump::new() }
-    }
-
     /// minifies [`Str`]
     pub fn minify_str(&mut self, str: &mut Str) {
         if let Some(min) = self.try_minify(str.value.as_str(), str) {
-            str.value = Atom::new(min);
+            str.value = Atom::new(&*min);
             str.raw = None;
         }
     }
@@ -78,7 +75,7 @@ impl Minifier {
             let tpl_el = unsafe { tpl.quasis.get_unchecked_mut(0) };
 
             if let Some(min) = self.try_minify(tpl_el_value(tpl_el), tpl_el) {
-                tpl_el.raw = Atom::new(min);
+                tpl_el.raw = Atom::new(&*min);
                 tpl_el.cooked = Some(tpl_el.raw.clone());
             }
 
@@ -113,7 +110,7 @@ impl Minifier {
                     min.push(' ');
                 }
 
-                tpl_el.raw = Atom::new(min);
+                tpl_el.raw = Atom::new(&*min);
                 tpl_el.cooked = Some(tpl_el.raw.clone());
             }
 
@@ -129,9 +126,7 @@ impl Minifier {
             return None;
         }
 
-        self.bump.reset();
-
-        match graphql_minify::minify(code, &mut self.bump) {
+        match graphql_minify::minify(code, &mut self.alloc) {
             Ok(min) => Some(min),
             Err(err) => HANDLER.with(|handler| {
                 handler

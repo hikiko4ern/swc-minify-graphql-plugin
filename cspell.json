@@ -12,7 +12,16 @@
 	},
 	"validateDirectives": true,
 	"useGitignore": true,
-	"words": ["Binaryen", "bumpalo", "dedented", "fnm", "memchr", "rustup", "SWC", "whitespaces"],
+	"words": [
+		"Binaryen",
+		"bumpalo",
+		"dedented",
+		"fnm",
+		"memchr",
+		"rustup",
+		"SWC",
+		"whitespaces"
+	],
 	"ignoreWords": [
 		"binstall",
 		"cdylib",
@@ -24,6 +33,7 @@
 		"indoc",
 		"lefthook",
 		"lto",
+		"nonoverlapping",
 		"rustfmt",
 		"sed",
 		"vec",

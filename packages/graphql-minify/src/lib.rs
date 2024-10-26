@@ -1,13 +1,18 @@
+#![feature(allocator_api)]
 #![warn(clippy::pedantic)]
 #![allow(clippy::must_use_candidate)]
 
 mod block_string;
 mod lexer;
+mod minify_alloc;
+mod vec_str;
 
-use bumpalo::Bump;
+use core::str;
+
 use logos::{Logos, Span};
 
 use self::lexer::{parse_block_string, LexingError, Token};
+pub use crate::minify_alloc::MinifyAllocator;
 
 #[derive(Debug)]
 pub enum MinifyError {
@@ -41,7 +46,7 @@ impl MinifyError {
 /// # Examples
 ///
 /// ```
-/// use graphql_minify::minify;
+/// use graphql_minify::{minify, MinifyAllocator};
 /// use bumpalo::Bump;
 ///
 /// let original = r#"
@@ -51,8 +56,8 @@ impl MinifyError {
 ///  }
 /// }
 /// "#;
-/// let mut bump = Bump::new();
-/// let minified = minify(original, &mut bump).unwrap();
+/// let mut alloc = MinifyAllocator::default();
+/// let minified = &*minify(original, &mut alloc).unwrap();
 ///
 /// assert_eq!(minified, "query SomeQuery($foo:String!$bar:String){someField(foo:$foo bar:$bar){...fragmented}}");
 /// ```
@@ -68,10 +73,10 @@ impl MinifyError {
 /// # Safety
 ///
 /// This function does not use any unsafe code.
-pub fn minify<T: AsRef<str>>(value: T, bump: &mut Bump) -> Result<String, MinifyError> {
-    let value = value.as_ref();
-    let mut lexer = Token::lexer(value);
-    let mut result = String::with_capacity(value.len());
+pub fn minify<T: AsRef<str>>(input: T, alloc: &mut MinifyAllocator) -> Result<String, MinifyError> {
+    let input = input.as_ref();
+    let mut lexer = Token::lexer(input);
+    let mut result = String::with_capacity(input.len());
     let mut last_token = None;
 
     while let Some(token) = lexer.next() {
@@ -91,8 +96,8 @@ pub fn minify<T: AsRef<str>>(value: T, bump: &mut Bump) -> Result<String, Minify
 
         match token {
             Token::BlockStringDelimiter => {
-                result.push_str(parse_block_string(&mut lexer, bump).as_ref());
-                bump.reset();
+                alloc.block_string.reset();
+                result.push_str(parse_block_string(&mut lexer, &alloc.block_string).as_ref());
             }
             _ => result.push_str(lexer.slice()),
         }
@@ -146,10 +151,11 @@ fn needs_space(cur_token: &Token, last_token: Option<&Token>) -> bool {
 mod test {
     use indoc::indoc;
 
-    use super::MinifyError;
+    use super::{MinifyAllocator, MinifyError};
 
     fn minify<T: AsRef<str>>(value: T) -> Result<String, MinifyError> {
-        super::minify(value, &mut bumpalo::Bump::new())
+        super::minify(value, &mut MinifyAllocator::default())
+            .map(|minified| String::from(&*minified))
     }
 
     #[test]

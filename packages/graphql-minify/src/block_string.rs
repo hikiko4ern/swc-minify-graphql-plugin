@@ -1,10 +1,9 @@
 use std::ops::Deref;
 
-use bumpalo::{
-    collections::{String as BumpaloString, Vec as BumpaloVec},
-    Bump,
-};
+use bumpalo::Bump;
 use logos::Logos;
+
+use crate::vec_str::VecStr;
 
 #[derive(Logos, Debug, PartialEq)]
 pub(crate) enum BlockStringToken {
@@ -28,34 +27,34 @@ pub(crate) enum BlockStringToken {
 }
 
 pub(crate) struct BlockStringLines<'bump> {
-    lines: BumpaloVec<'bump, BumpaloString<'bump>>,
+    lines: Vec<VecStr<&'bump Bump>, &'bump Bump>,
     total_len: usize,
 }
 
 impl<'bump> BlockStringLines<'bump> {
     #[cfg(test)]
-    pub fn new_in(bump: &'bump Bump) -> Self {
+    pub fn new_in(alloc: &'bump Bump) -> Self {
         Self {
-            lines: BumpaloVec::new_in(bump),
+            lines: Vec::new_in(alloc),
             total_len: 0,
         }
     }
 
-    pub fn with_capacity_in(capacity: usize, bump: &'bump Bump) -> Self {
+    pub fn with_capacity_in(capacity: usize, alloc: &'bump Bump) -> Self {
         Self {
-            lines: BumpaloVec::with_capacity_in(capacity, bump),
+            lines: Vec::with_capacity_in(capacity, alloc),
             total_len: 0,
         }
     }
 
-    pub fn push(&mut self, line: BumpaloString<'bump>) {
+    pub fn push(&mut self, line: VecStr<&'bump Bump>) {
         self.total_len += line.len();
         self.lines.push(line);
     }
 }
 
 impl<'bump> Deref for BlockStringLines<'bump> {
-    type Target = [BumpaloString<'bump>];
+    type Target = [VecStr<&'bump Bump>];
 
     fn deref(&self) -> &Self::Target {
         &self.lines
@@ -64,21 +63,21 @@ impl<'bump> Deref for BlockStringLines<'bump> {
 
 pub(crate) enum PrintedBlockString<'bump> {
     Empty,
-    String(BumpaloString<'bump>),
+    String(VecStr<&'bump Bump>),
 }
 
 impl AsRef<str> for PrintedBlockString<'_> {
     fn as_ref(&self) -> &str {
         match self {
             PrintedBlockString::Empty => r#""""""""#,
-            PrintedBlockString::String(str) => str.as_str(),
+            PrintedBlockString::String(str) => str.as_ref(),
         }
     }
 }
 
 pub(crate) fn print_block_string<'bump>(
-    bump: &'bump Bump,
     lines: &BlockStringLines<'bump>,
+    alloc: &'bump Bump,
 ) -> PrintedBlockString<'bump> {
     const TRIPLE_QUOTES: &str = r#"""""#;
 
@@ -87,39 +86,38 @@ pub(crate) fn print_block_string<'bump>(
     };
 
     let with_leading_new_line = lines.len() > 1
-        && lines[1..].iter().all(|line| {
-            line.as_bytes()
-                .first()
-                .copied()
-                .is_none_or(is_graphql_whitespace)
-        });
+        && lines[1..]
+            .iter()
+            .all(|line| line.first().copied().is_none_or(is_graphql_whitespace));
 
-    let with_trailing_newline = last_line.ends_with(['"', '\\']) && !last_line.ends_with(r#"\""""#);
+    let with_trailing_newline = last_line
+        .last()
+        .is_some_and(|&last| last == b'\\' || (last == b'"' && !last_line.ends_with(br#"\""""#)));
 
-    let mut result = BumpaloString::with_capacity_in(
+    let mut result = VecStr::with_capacity_in(
         lines.total_len
             + (TRIPLE_QUOTES.len() * 2)
             + usize::from(with_leading_new_line)
             + (lines.len() - 1)
             + usize::from(with_trailing_newline),
-        bump,
+        alloc,
     );
 
     result.push_str(TRIPLE_QUOTES);
 
     if with_leading_new_line {
-        result.push('\n');
+        result.push(b'\n');
     }
 
     for line in start_lines {
         result.push_str(line);
-        result.push('\n');
+        result.push(b'\n');
     }
 
     result.push_str(last_line);
 
     if with_trailing_newline {
-        result.push('\n');
+        result.push(b'\n');
     }
 
     result.push_str(TRIPLE_QUOTES);
@@ -170,21 +168,21 @@ fn is_graphql_whitespace(b: u8) -> bool {
     b == b' ' || b == b'\t'
 }
 
-fn leading_whitespace(s: &str) -> usize {
-    s.as_bytes()
-        .iter()
+fn leading_whitespace(str: &[u8]) -> usize {
+    str.iter()
         .position(|&b| !is_graphql_whitespace(b))
-        .unwrap_or(s.len())
+        .unwrap_or(str.len())
 }
 
 #[cfg(test)]
 mod test_dedent {
-    use super::{dedent_block_lines_mut, BlockStringLines};
-
     fn get_dedented_vec(lines: &[&str]) -> Vec<String> {
         use std::cell::RefCell;
 
-        use bumpalo::{collections::String as BumpaloString, Bump};
+        use bumpalo::Bump;
+
+        use super::{dedent_block_lines_mut, BlockStringLines};
+        use crate::vec_str::VecStr;
 
         thread_local! {
             static BUMP: RefCell<Bump> = RefCell::new(Bump::new());
@@ -194,7 +192,7 @@ mod test_dedent {
             let mut bsl = BlockStringLines::with_capacity_in(lines.len(), bump);
 
             for line in lines {
-                bsl.push(BumpaloString::from_str_in(line, bump));
+                bsl.push(VecStr::from_str_in(line, bump));
             }
 
             dedent_block_lines_mut(&mut bsl);
@@ -202,7 +200,7 @@ mod test_dedent {
             let lines = bsl
                 .lines
                 .iter()
-                .map(|str| String::from(str.as_str()))
+                .map(|str| String::from(str.as_ref()))
                 .collect::<Vec<_>>();
 
             drop(bsl);
@@ -348,9 +346,10 @@ mod test_print {
     fn print_block_string<I: AsRef<str>>(input: I) -> String {
         use std::cell::RefCell;
 
-        use bumpalo::{collections::String as BumpaloString, Bump};
+        use bumpalo::Bump;
 
         use super::BlockStringLines;
+        use crate::vec_str::VecStr;
 
         thread_local! {
             static BUMP: RefCell<Bump> = RefCell::new(Bump::new());
@@ -360,13 +359,13 @@ mod test_print {
             let mut lines = BlockStringLines::new_in(bump);
 
             for line in input.as_ref().lines() {
-                lines.push(BumpaloString::from_str_in(
+                lines.push(VecStr::from_str_in(
                     line.replace(r#"""""#, r#"\""""#).as_str(),
                     bump,
                 ));
             }
 
-            let res = String::from(super::print_block_string(bump, &lines).as_ref());
+            let res = String::from(super::print_block_string(&lines, bump).as_ref());
 
             drop(lines);
             bump.reset();

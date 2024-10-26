@@ -1,8 +1,11 @@
-use bumpalo::{collections::String as BumpaloString, Bump};
+use bumpalo::Bump;
 use logos::{Lexer, Logos, Span};
 
 use super::block_string::{dedent_block_lines_mut, print_block_string, BlockStringToken};
-use crate::block_string::{BlockStringLines, PrintedBlockString};
+use crate::{
+    block_string::{BlockStringLines, PrintedBlockString},
+    vec_str::VecStr,
+};
 
 #[derive(Debug, PartialEq, Clone, Default)]
 /// An enumeration of errors that can occur during the lexing process.
@@ -83,15 +86,15 @@ pub(crate) enum Token {
 
 pub(crate) fn parse_block_string<'bump>(
     lexer: &mut Lexer<Token>,
-    bump: &'bump mut Bump,
+    alloc: &'bump Bump,
 ) -> PrintedBlockString<'bump> {
     let remainder = lexer.remainder();
 
-    let mut block_string_lines = BlockStringLines::with_capacity_in(5, bump);
+    let mut block_string_lines = BlockStringLines::with_capacity_in(5, alloc);
 
     {
         let mut block_lexer = BlockStringToken::lexer(remainder);
-        let mut current_line = BumpaloString::new_in(bump);
+        let mut current_line = VecStr::new_in(alloc);
         let mut max_line_length = 0;
 
         while let Some(Ok(token)) = block_lexer.next() {
@@ -99,7 +102,7 @@ pub(crate) fn parse_block_string<'bump>(
                 BlockStringToken::NewLine => {
                     max_line_length = max_line_length.max(current_line.len());
                     block_string_lines.push(current_line);
-                    current_line = BumpaloString::with_capacity_in(max_line_length, bump);
+                    current_line = VecStr::with_capacity_in(max_line_length, alloc);
                 }
                 BlockStringToken::Text
                 | BlockStringToken::Quote
@@ -119,7 +122,7 @@ pub(crate) fn parse_block_string<'bump>(
     }
 
     dedent_block_lines_mut(&mut block_string_lines);
-    print_block_string(bump, &block_string_lines)
+    print_block_string(&block_string_lines, alloc)
 }
 
 #[inline]
