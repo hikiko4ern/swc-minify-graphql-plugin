@@ -128,20 +128,27 @@ impl Minifier {
         match graphql_minify::minify(code, &mut self.alloc) {
             Ok(min) => Some(min),
             Err(err) => HANDLER.with(|handler| {
+                let err_value_span = err.span();
+                let is_single_byte_err_span = (err_value_span.end - err_value_span.start) == 1;
+
+                let err_file_span = str
+                    .value_span()
+                    .from_inner_byte_pos(err_value_span.start, err_value_span.end);
+
                 handler
                     .struct_span_err(str.outer_span(), "failed to minify GraphQL")
                     .span_label(
-                        {
-                            let err_span = err.span();
-                            str.value_span()
-                                .from_inner_byte_pos(err_span.start, err_span.end)
+                        err_file_span,
+                        if is_single_byte_err_span {
+                            format!("{} at {}", err.as_str(), err_file_span.lo.0)
+                        } else {
+                            format!(
+                                "{} at {}-{}",
+                                err.as_str(),
+                                err_file_span.lo.0,
+                                err_file_span.hi.0
+                            )
                         },
-                        format!(
-                            "{} ({}, {})",
-                            err.as_str(),
-                            err.span().start,
-                            err.span().end
-                        ),
                     )
                     .emit();
                 None
