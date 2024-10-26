@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.1.2] - 2024-10-26
+
+### Bug Fixes
+
+- include `graphql-minify` license in pack
+
+### Features
+
+- print the parsing error span relative to the file
+
+### Performance
+
+- re-use single allocator for `graphql_minify::minify`
+
 ## [0.1.1] - 2024-10-22
 
 ### Bug Fixes
