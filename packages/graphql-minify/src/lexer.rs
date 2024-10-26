@@ -83,7 +83,7 @@ pub(crate) enum Token {
 
 pub(crate) fn parse_block_string<'bump>(
     lexer: &mut Lexer<Token>,
-    bump: &'bump mut Bump,
+    bump: &'bump Bump,
 ) -> PrintedBlockString<'bump> {
     let remainder = lexer.remainder();
 

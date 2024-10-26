@@ -28,7 +28,7 @@ impl<C: Comments> MinifyGraphqlVisitor<C> {
     fn new(comments: C) -> Self {
         Self {
             comments,
-            minifier: Minifier::new(),
+            minifier: Minifier::default(),
         }
     }
 
