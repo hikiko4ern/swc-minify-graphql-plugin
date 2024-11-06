@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__closeDiscussion__input: CloseDiscussionInput!) {
+  closeDiscussion(input: $Mutation__closeDiscussion__input) {
+    clientMutationId
+  }
+}

@@ -1,0 +1,176 @@
+query RandomQuery($Query__marketplaceListings__first: Int, $Query__codeOfConduct__key: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $Query__marketplaceCategory__slug: String!, $Organization__isSponsoredBy__accountLogin: String!, $Query__organization__login: String!, $Query__topic__name: String!, $Query__repository__name: String!, $Query__repository__owner: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityAdvisories__first: Int) {
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    totalCount
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    url
+  }
+  codesOfConduct {
+    body
+    key
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    role
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    invitee {
+      avatarUrl
+      bio
+      company
+      databaseId
+      email
+      estimatedNextSponsorsPayoutInCents
+      hasSponsorsListing
+      id
+      isBountyHunter
+      isCampusExpert
+      isEmployee
+      isFollowingViewer
+      isHireable
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      isSponsoringViewer
+      isViewer
+      login
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      projectsResourcePath
+      pronouns
+      resourcePath
+      twitterUsername
+      viewerCanChangePinnedItems
+      viewerCanCreateProjects
+      viewerCanFollow
+      viewerIsFollowing
+    }
+    email
+    role
+  }
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    email
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    name
+    primaryListingCount
+    resourcePath
+    slug
+  }
+  organization(login: $Query__organization__login) {
+    announcementUserDismissible
+    archivedAt
+    createdAt
+    databaseId
+    description
+    email
+    ipAllowListEnabledSetting
+    isSponsoredBy(accountLogin: $Organization__isSponsoredBy__accountLogin)
+    location
+    membersCanForkPrivateRepositories
+    monthlyEstimatedSponsorsIncomeInCents
+    name
+    pinnedItemsRemaining
+    projectsResourcePath
+    requiresTwoFactorAuthentication
+    resourcePath
+    teamsResourcePath
+    teamsUrl
+    url
+    viewerCanAdminister
+    viewerCanChangePinnedItems
+    viewerCanSponsor
+    viewerIsAMember
+    viewerIsFollowing
+    viewerIsSponsoring
+    webCommitSignoffRequired
+    websiteUrl
+  }
+  rateLimit {
+    limit
+    remaining
+    resetAt
+  }
+  relay {
+    topic(name: $Query__topic__name) {
+      id
+      viewerHasStarred
+    }
+  }
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    allowUpdateBranch
+    deleteBranchOnMerge
+    descriptionHTML
+    diskUsage
+    forkingAllowed
+    hasDiscussionsEnabled
+    hasIssuesEnabled
+    hasProjectsEnabled
+    hasWikiEnabled
+    homepageUrl
+    isInOrganization
+    isMirror
+    isPrivate
+    isSecurityPolicyEnabled
+    isTemplate
+    isUserConfigurationRepository
+    lockReason
+    mirrorUrl
+    openGraphImageUrl
+    projectsUrl
+    securityPolicyUrl
+    shortDescriptionHTML
+    squashMergeCommitMessage
+    squashMergeCommitTitle
+    squashPrTitleUsedAsDefault
+    stargazerCount
+    tempCloneToken
+    usesCustomOpenGraphImage
+    viewerCanCreateProjects
+    viewerPossibleCommitEmails
+    viewerSubscription
+    visibility
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    edges {
+      textMatches {
+        fragment
+        property
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+    }
+    discussionCount
+    issueCount
+    repositoryCount
+    userCount
+    wikiCount
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    nodes {
+      databaseId
+      description
+      origin
+      permalink
+      publishedAt
+      severity
+    }
+    edges {
+      node {
+        classification
+        databaseId
+        description
+        notificationsPermalink
+        origin
+        permalink
+        publishedAt
+        summary
+        updatedAt
+        withdrawnAt
+      }
+    }
+    totalCount
+  }
+  topic(name: $Query__topic__name) {
+    id
+  }
+  id
+}

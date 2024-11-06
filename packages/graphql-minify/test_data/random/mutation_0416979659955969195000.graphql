@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__updateRepositoryRuleset__input: UpdateRepositoryRulesetInput!) {
+  updateRepositoryRuleset(input: $Mutation__updateRepositoryRuleset__input) {
+    clientMutationId
+  }
+}

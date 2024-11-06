@@ -1,0 +1,9 @@
+query RandomQuery {
+  marketplaceCategories {
+    description
+    id
+    name
+    primaryListingCount
+    resourcePath
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__startRepositoryMigration__input: StartRepositoryMigrationInput!) {
+  startRepositoryMigration(input: $Mutation__startRepositoryMigration__input) {
+    clientMutationId
+  }
+}

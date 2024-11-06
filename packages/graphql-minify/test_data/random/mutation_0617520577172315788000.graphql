@@ -1,0 +1,197 @@
+mutation RandomMutation($ProjectV2__fields__first: Int, $ProjectV2__repositories__first: Int, $ProjectV2__statusUpdates__first: Int, $ProjectV2__view__number: Int!, $ProjectV2__items__first: Int, $ProjectV2__teams__first: Int, $ProjectV2View__verticalGroupByFields__first: Int, $ProjectV2View__fields__first: Int, $ProjectV2View__groupBy__first: Int, $ProjectV2View__sortBy__first: Int, $ProjectV2View__sortByFields__first: Int, $ProjectV2__views__first: Int, $ProjectV2__workflow__number: Int!, $ProjectV2__workflows__first: Int, $Mutation__updateProjectV2__input: UpdateProjectV2Input!) {
+  updateProjectV2(input: $Mutation__updateProjectV2__input) {
+    projectV2 {
+      fields(first: $ProjectV2__fields__first) {
+        totalCount
+      }
+      repositories(first: $ProjectV2__repositories__first) {
+        nodes {
+          autoMergeAllowed
+          createdAt
+          databaseId
+          description
+          diskUsage
+          forkingAllowed
+          hasDiscussionsEnabled
+          hasSponsorshipsEnabled
+          hasWikiEnabled
+          isDisabled
+          isFork
+          isLocked
+          isSecurityPolicyEnabled
+          isTemplate
+          mergeCommitAllowed
+          mergeCommitMessage
+          mirrorUrl
+          nameWithOwner
+          openGraphImageUrl
+          projectsResourcePath
+          resourcePath
+          securityPolicyUrl
+          squashMergeCommitTitle
+          squashPrTitleUsedAsDefault
+          stargazerCount
+          tempCloneToken
+          updatedAt
+          url
+          usesCustomOpenGraphImage
+          viewerPossibleCommitEmails
+          viewerSubscription
+          webCommitSignoffRequired
+        }
+        totalDiskUsage
+      }
+      statusUpdates(first: $ProjectV2__statusUpdates__first) {
+        edges {
+          node {
+            body
+            createdAt
+            startDate
+            status
+            targetDate
+          }
+          cursor
+        }
+        pageInfo {
+          hasNextPage
+        }
+      }
+      view(number: $ProjectV2__view__number) {
+        filter
+        layout
+        name
+        number
+        updatedAt
+      }
+      workflow(number: $ProjectV2__workflow__number) {
+        project {
+          statusUpdates(first: $ProjectV2__statusUpdates__first) {
+            nodes {
+              body
+              createdAt
+              databaseId
+              id
+              startDate
+              targetDate
+            }
+          }
+          items(first: $ProjectV2__items__first) {
+            pageInfo {
+              hasPreviousPage
+              startCursor
+            }
+            nodes {
+              createdAt
+              databaseId
+              type
+              updatedAt
+            }
+          }
+          repositories(first: $ProjectV2__repositories__first) {
+            totalDiskUsage
+          }
+          teams(first: $ProjectV2__teams__first) {
+            totalCount
+          }
+          view(number: $ProjectV2__view__number) {
+            verticalGroupByFields(first: $ProjectV2View__verticalGroupByFields__first) {
+              edges {
+                cursor
+              }
+            }
+            fields(first: $ProjectV2View__fields__first) {
+              pageInfo {
+                hasPreviousPage
+              }
+            }
+            groupBy(first: $ProjectV2View__groupBy__first) {
+              totalCount
+            }
+            sortBy(first: $ProjectV2View__sortBy__first) {
+              nodes {
+                direction
+              }
+              totalCount
+            }
+            sortByFields(first: $ProjectV2View__sortByFields__first) {
+              totalCount
+            }
+            filter
+            name
+          }
+          views(first: $ProjectV2__views__first) {
+            nodes {
+              createdAt
+              databaseId
+              fullDatabaseId
+              id
+              name
+              number
+              updatedAt
+            }
+            pageInfo {
+              startCursor
+            }
+          }
+          workflow(number: $ProjectV2__workflow__number) {
+            createdAt
+            enabled
+            fullDatabaseId
+            id
+          }
+          workflows(first: $ProjectV2__workflows__first) {
+            edges {
+              node {
+                project {
+                  view(number: $ProjectV2__view__number) {
+                    createdAt
+                    databaseId
+                    filter
+                    layout
+                    number
+                  }
+                  items(first: $ProjectV2__items__first) {
+                    totalCount
+                  }
+                  workflows(first: $ProjectV2__workflows__first) {
+                    totalCount
+                  }
+                  closed
+                  createdAt
+                  databaseId
+                  id
+                  number
+                  resourcePath
+                  title
+                  viewerCanReopen
+                }
+                createdAt
+                name
+                number
+              }
+            }
+          }
+          fullDatabaseId
+          public
+          resourcePath
+          title
+          updatedAt
+          viewerCanClose
+          viewerCanUpdate
+        }
+        createdAt
+        enabled
+        fullDatabaseId
+        id
+      }
+      workflows(first: $ProjectV2__workflows__first) {
+        totalCount
+      }
+      closed
+      updatedAt
+      url
+      viewerCanClose
+      viewerCanUpdate
+    }
+  }
+}

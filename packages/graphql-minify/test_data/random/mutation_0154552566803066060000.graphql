@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__deleteLinkedBranch__input: DeleteLinkedBranchInput!) {
+  deleteLinkedBranch(input: $Mutation__deleteLinkedBranch__input) {
+    clientMutationId
+  }
+}

@@ -1,0 +1,17 @@
+mutation RandomMutation($Mutation__updateIssueComment__input: UpdateIssueCommentInput!) {
+  updateIssueComment(input: $Mutation__updateIssueComment__input) {
+    issueComment {
+      authorAssociation
+      body
+      bodyText
+      id
+      lastEditedAt
+      minimizedReason
+      publishedAt
+      resourcePath
+      updatedAt
+      url
+      viewerCanUpdate
+    }
+  }
+}

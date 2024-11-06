@@ -1,0 +1,22 @@
+query RandomQuery($User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!, $Query__user__login: String!) {
+  user(login: $Query__user__login) {
+    avatarUrl
+    bio
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    isCampusExpert
+    isDeveloperProgramMember
+    isGitHubStar
+    isHireable
+    isSiteAdmin
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    monthlyEstimatedSponsorsIncomeInCents
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    pinnedItemsRemaining
+    projectsUrl
+    resourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    url
+    viewerIsSponsoring
+  }
+}

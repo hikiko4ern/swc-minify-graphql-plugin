@@ -1,0 +1,7 @@
+query RandomQuery($Query__securityAdvisories__first: Int) {
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    edges {
+      cursor
+    }
+  }
+}

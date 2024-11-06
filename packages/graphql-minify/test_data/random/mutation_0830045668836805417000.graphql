@@ -1,0 +1,40 @@
+mutation RandomMutation($Mutation__linkRepositoryToProject__input: LinkRepositoryToProjectInput!) {
+  linkRepositoryToProject(input: $Mutation__linkRepositoryToProject__input) {
+    repository {
+      autoMergeAllowed
+      deleteBranchOnMerge
+      descriptionHTML
+      forkingAllowed
+      hasProjectsEnabled
+      hasSponsorshipsEnabled
+      hasWikiEnabled
+      homepageUrl
+      isDisabled
+      isEmpty
+      isFork
+      isInOrganization
+      isLocked
+      isSecurityPolicyEnabled
+      isTemplate
+      isUserConfigurationRepository
+      mergeCommitMessage
+      mirrorUrl
+      nameWithOwner
+      projectsUrl
+      rebaseMergeAllowed
+      shortDescriptionHTML
+      squashPrTitleUsedAsDefault
+      sshUrl
+      updatedAt
+      url
+      usesCustomOpenGraphImage
+      viewerCanAdminister
+      viewerCanCreateProjects
+      viewerCanUpdateTopics
+      viewerHasStarred
+      viewerPermission
+      visibility
+    }
+    clientMutationId
+  }
+}

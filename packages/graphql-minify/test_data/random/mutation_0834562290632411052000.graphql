@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__removeLabelsFromLabelable__input: RemoveLabelsFromLabelableInput!) {
+  removeLabelsFromLabelable(input: $Mutation__removeLabelsFromLabelable__input) {
+    clientMutationId
+  }
+}

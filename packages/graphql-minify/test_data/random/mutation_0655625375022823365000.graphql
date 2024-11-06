@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__mergePullRequest__input: MergePullRequestInput!) {
+  mergePullRequest(input: $Mutation__mergePullRequest__input) {
+    clientMutationId
+  }
+}

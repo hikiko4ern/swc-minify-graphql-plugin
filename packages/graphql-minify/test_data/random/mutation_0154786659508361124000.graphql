@@ -1,0 +1,25 @@
+mutation RandomMutation($Mutation__updateDiscussion__input: UpdateDiscussionInput!) {
+  updateDiscussion(input: $Mutation__updateDiscussion__input) {
+    discussion {
+      bodyHTML
+      bodyText
+      closed
+      createdViaEmail
+      databaseId
+      includesCreatedEdit
+      lastEditedAt
+      locked
+      number
+      resourcePath
+      stateReason
+      updatedAt
+      url
+      viewerCanClose
+      viewerCanLabel
+      viewerCanUpdate
+      viewerDidAuthor
+      viewerHasUpvoted
+    }
+    clientMutationId
+  }
+}

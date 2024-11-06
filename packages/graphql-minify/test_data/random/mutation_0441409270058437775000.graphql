@@ -1,0 +1,41 @@
+mutation RandomMutation($Mutation__unarchiveRepository__input: UnarchiveRepositoryInput!) {
+  unarchiveRepository(input: $Mutation__unarchiveRepository__input) {
+    repository {
+      allowUpdateBranch
+      autoMergeAllowed
+      createdAt
+      databaseId
+      diskUsage
+      forkCount
+      forkingAllowed
+      hasDiscussionsEnabled
+      hasIssuesEnabled
+      hasSponsorshipsEnabled
+      hasVulnerabilityAlertsEnabled
+      hasWikiEnabled
+      homepageUrl
+      id
+      isArchived
+      isBlankIssuesEnabled
+      isEmpty
+      isInOrganization
+      isLocked
+      isUserConfigurationRepository
+      mergeCommitAllowed
+      mirrorUrl
+      name
+      openGraphImageUrl
+      projectsResourcePath
+      projectsUrl
+      pushedAt
+      squashMergeCommitTitle
+      squashPrTitleUsedAsDefault
+      sshUrl
+      stargazerCount
+      viewerCanAdminister
+      viewerCanCreateProjects
+      viewerDefaultCommitEmail
+      viewerDefaultMergeMethod
+    }
+  }
+}

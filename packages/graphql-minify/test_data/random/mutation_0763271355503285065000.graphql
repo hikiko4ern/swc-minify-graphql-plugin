@@ -1,0 +1,9 @@
+mutation RandomMutation($Mutation__changeUserStatus__input: ChangeUserStatusInput!) {
+  changeUserStatus(input: $Mutation__changeUserStatus__input) {
+    status {
+      emoji
+      indicatesLimitedAvailability
+      message
+    }
+  }
+}

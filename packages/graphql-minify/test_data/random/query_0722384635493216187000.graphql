@@ -1,0 +1,26 @@
+query RandomQuery($Organization__isSponsoredBy__accountLogin: String!, $Query__organization__login: String!) {
+  organization(login: $Query__organization__login) {
+    announcement
+    announcementExpiresAt
+    anyPinnableItems
+    avatarUrl
+    createdAt
+    description
+    descriptionHTML
+    email
+    id
+    isSponsoredBy(accountLogin: $Organization__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    monthlyEstimatedSponsorsIncomeInCents
+    organizationBillingEmail
+    projectsUrl
+    totalSponsorshipAmountAsSponsorInCents
+    updatedAt
+    viewerCanCreateProjects
+    viewerCanCreateRepositories
+    viewerCanCreateTeams
+    viewerCanSponsor
+    viewerIsSponsoring
+    webCommitSignoffRequired
+  }
+}

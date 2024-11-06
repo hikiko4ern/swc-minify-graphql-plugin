@@ -1,0 +1,15 @@
+mutation RandomMutation($Mutation__dismissPullRequestReview__input: DismissPullRequestReviewInput!) {
+  dismissPullRequestReview(input: $Mutation__dismissPullRequestReview__input) {
+    pullRequestReview {
+      createdAt
+      createdViaEmail
+      includesCreatedEdit
+      state
+      url
+      viewerCanMinimize
+      viewerCannotUpdateReasons
+      viewerDidAuthor
+    }
+    clientMutationId
+  }
+}

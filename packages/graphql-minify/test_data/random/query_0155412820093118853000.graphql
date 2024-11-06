@@ -1,0 +1,197 @@
+query RandomQuery($Query__securityAdvisories__first: Int, $Query__codeOfConduct__key: String!, $Query__marketplaceListings__first: Int, $Query__repository__name: String!, $Query__repository__owner: String!, $Query__securityVulnerabilities__first: Int, $Query__sponsorables__first: Int, $Topic__relatedTopics__first: Int, $Topic__repositories__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!, $Topic__stargazers__first: Int, $Query__topic__name: String!, $Query__user__login: String!) {
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    edges {
+      cursor
+    }
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    key
+    resourcePath
+    url
+  }
+  licenses {
+    limitations {
+      key
+      label
+    }
+    conditions {
+      description
+      key
+    }
+    hidden
+    name
+    nickname
+    pseudoLicense
+    spdxId
+    url
+  }
+  marketplaceCategories {
+    description
+    id
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    totalCount
+  }
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    allowUpdateBranch
+    autoMergeAllowed
+    createdAt
+    databaseId
+    deleteBranchOnMerge
+    descriptionHTML
+    diskUsage
+    hasDiscussionsEnabled
+    hasIssuesEnabled
+    hasSponsorshipsEnabled
+    hasVulnerabilityAlertsEnabled
+    hasWikiEnabled
+    homepageUrl
+    isArchived
+    isEmpty
+    isFork
+    isInOrganization
+    isLocked
+    isMirror
+    isPrivate
+    isSecurityPolicyEnabled
+    mirrorUrl
+    pushedAt
+    rebaseMergeAllowed
+    shortDescriptionHTML
+    squashMergeAllowed
+    squashMergeCommitMessage
+    stargazerCount
+    updatedAt
+    viewerCanAdminister
+    viewerCanSubscribe
+    viewerCanUpdateTopics
+    viewerDefaultCommitEmail
+    viewerPermission
+    visibility
+    webCommitSignoffRequired
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    pageInfo {
+      endCursor
+      startCursor
+    }
+    totalCount
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    edges {
+      cursor
+    }
+    totalCount
+  }
+  topic(name: $Query__topic__name) {
+    relatedTopics(first: $Topic__relatedTopics__first) {
+      id
+      stargazerCount
+    }
+    repositories(first: $Topic__repositories__first) {
+      totalCount
+    }
+    stargazers(first: $Topic__stargazers__first) {
+      edges {
+        node {
+          anyPinnableItems
+          avatarUrl
+          bio
+          bioHTML
+          canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+          company
+          createdAt
+          estimatedNextSponsorsPayoutInCents
+          hasSponsorsListing
+          id
+          isBountyHunter
+          isDeveloperProgramMember
+          isGitHubStar
+          isViewer
+          location
+          login
+          monthlyEstimatedSponsorsIncomeInCents
+          projectsResourcePath
+          pronouns
+          resourcePath
+          updatedAt
+          url
+          viewerCanFollow
+          viewerCanSponsor
+          viewerIsFollowing
+          websiteUrl
+        }
+        cursor
+      }
+      nodes {
+        anyPinnableItems
+        avatarUrl
+        company
+        companyHTML
+        createdAt
+        email
+        hasSponsorsListing
+        isBountyHunter
+        isCampusExpert
+        isDeveloperProgramMember
+        isEmployee
+        isFollowingViewer
+        isGitHubStar
+        isSiteAdmin
+        isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+        isSponsoringViewer
+        location
+        login
+        monthlyEstimatedSponsorsIncomeInCents
+        name
+        organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+        pinnedItemsRemaining
+        totalSponsorshipAmountAsSponsorInCents
+        twitterUsername
+        updatedAt
+        url
+        viewerCanChangePinnedItems
+        viewerCanCreateProjects
+        viewerCanSponsor
+      }
+      pageInfo {
+        endCursor
+        hasPreviousPage
+        startCursor
+      }
+    }
+    name
+    stargazerCount
+    viewerHasStarred
+  }
+  user(login: $Query__user__login) {
+    anyPinnableItems
+    avatarUrl
+    bio
+    bioHTML
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    company
+    databaseId
+    estimatedNextSponsorsPayoutInCents
+    id
+    isBountyHunter
+    isCampusExpert
+    isDeveloperProgramMember
+    isEmployee
+    isGitHubStar
+    isSponsoringViewer
+    isViewer
+    location
+    login
+    monthlyEstimatedSponsorsIncomeInCents
+    name
+    projectsUrl
+    pronouns
+    totalSponsorshipAmountAsSponsorInCents
+    updatedAt
+    viewerCanFollow
+    viewerCanSponsor
+    websiteUrl
+  }
+  id
+}

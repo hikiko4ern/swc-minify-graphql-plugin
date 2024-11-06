@@ -1,0 +1,38 @@
+mutation RandomMutation($Mutation__cloneTemplateRepository__input: CloneTemplateRepositoryInput!) {
+  cloneTemplateRepository(input: $Mutation__cloneTemplateRepository__input) {
+    repository {
+      allowUpdateBranch
+      descriptionHTML
+      hasDiscussionsEnabled
+      hasIssuesEnabled
+      hasVulnerabilityAlertsEnabled
+      isArchived
+      isDisabled
+      isEmpty
+      isInOrganization
+      isSecurityPolicyEnabled
+      isUserConfigurationRepository
+      lockReason
+      mergeCommitAllowed
+      mergeCommitTitle
+      name
+      nameWithOwner
+      openGraphImageUrl
+      projectsUrl
+      pushedAt
+      securityPolicyUrl
+      squashMergeAllowed
+      squashPrTitleUsedAsDefault
+      tempCloneToken
+      updatedAt
+      usesCustomOpenGraphImage
+      viewerCanCreateProjects
+      viewerCanSubscribe
+      viewerDefaultMergeMethod
+      viewerHasStarred
+      viewerPermission
+      viewerSubscription
+      webCommitSignoffRequired
+    }
+  }
+}

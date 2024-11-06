@@ -1,0 +1,28 @@
+mutation RandomMutation($Mutation__updateOrganizationWebCommitSignoffSetting__input: UpdateOrganizationWebCommitSignoffSettingInput!) {
+  updateOrganizationWebCommitSignoffSetting(input: $Mutation__updateOrganizationWebCommitSignoffSetting__input) {
+    organization {
+      announcement
+      announcementExpiresAt
+      createdAt
+      databaseId
+      description
+      estimatedNextSponsorsPayoutInCents
+      ipAllowListEnabledSetting
+      isVerified
+      membersCanForkPrivateRepositories
+      monthlyEstimatedSponsorsIncomeInCents
+      newTeamResourcePath
+      notificationDeliveryRestrictionEnabledSetting
+      pinnedItemsRemaining
+      resourcePath
+      updatedAt
+      url
+      viewerCanChangePinnedItems
+      viewerCanCreateTeams
+      viewerCanSponsor
+      viewerIsFollowing
+      websiteUrl
+    }
+    message
+  }
+}

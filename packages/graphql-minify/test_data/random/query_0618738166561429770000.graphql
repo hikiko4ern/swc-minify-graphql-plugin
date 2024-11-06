@@ -1,0 +1,199 @@
+query RandomQuery($Enterprise__members__first: Int, $Query__enterprise__slug: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $Enterprise__organizations__first: Int, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__license__key: String!, $Query__marketplaceCategory__slug: String!, $Query__marketplaceListing__slug: String!, $Query__marketplaceListings__first: Int, $Query__securityVulnerabilities__first: Int, $Query__sponsorables__first: Int) {
+  meta {
+    gitHubServicesSha
+    gitIpAddresses
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    billingInfo {
+      assetPacks
+      bandwidthUsagePercentage
+      storageQuota
+    }
+    members(first: $Enterprise__members__first) {
+      pageInfo {
+        endCursor
+        startCursor
+      }
+      edges {
+        cursor
+      }
+    }
+    announcement
+    announcementCreatedAt
+    announcementExpiresAt
+    billingEmail
+    createdAt
+    databaseId
+    description
+    descriptionHTML
+    id
+    location
+    readmeHTML
+    url
+    websiteUrl
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    createdAt
+    email
+    id
+  }
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    createdAt
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    enterprise {
+      members(first: $Enterprise__members__first) {
+        edges {
+          cursor
+        }
+        pageInfo {
+          endCursor
+        }
+        totalCount
+      }
+      billingInfo {
+        allLicensableUsersCount
+        bandwidthUsagePercentage
+        storageQuota
+        storageUsagePercentage
+      }
+      organizations(first: $Enterprise__organizations__first) {
+        edges {
+          cursor
+        }
+      }
+      ownerInfo {
+        allowPrivateRepositoryForkingSetting
+        isUpdatingDefaultRepositoryPermission
+        membersCanChangeRepositoryVisibilitySetting
+        membersCanCreatePrivateRepositoriesSetting
+        membersCanCreatePublicRepositoriesSetting
+        membersCanCreateRepositoriesSetting
+        membersCanDeleteRepositoriesSetting
+        membersCanInviteCollaboratorsSetting
+        membersCanMakePurchasesSetting
+        membersCanUpdateProtectedBranchesSetting
+        membersCanViewDependencyInsightsSetting
+        teamDiscussionsSetting
+        twoFactorDisallowedMethodsSetting
+      }
+      announcementExpiresAt
+      announcementUserDismissible
+      description
+      id
+      location
+      readmeHTML
+      resourcePath
+      viewerIsAdmin
+    }
+    inviter {
+      companyHTML
+      email
+      estimatedNextSponsorsPayoutInCents
+      hasSponsorsListing
+      isBountyHunter
+      isDeveloperProgramMember
+      isEmployee
+      isGitHubStar
+      isSiteAdmin
+      isSponsoringViewer
+      monthlyEstimatedSponsorsIncomeInCents
+      pinnedItemsRemaining
+      updatedAt
+      url
+      viewerCanFollow
+      viewerIsFollowing
+      websiteUrl
+    }
+    email
+    id
+  }
+  license(key: $Query__license__key) {
+    body
+    description
+    featured
+    implementation
+    name
+    spdxId
+  }
+  licenses {
+    permissions {
+      description
+    }
+    conditions {
+      key
+    }
+    limitations {
+      label
+    }
+    body
+    hidden
+    id
+    implementation
+    key
+    name
+    spdxId
+  }
+  marketplaceCategories {
+    description
+    name
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    howItWorks
+    id
+    name
+    primaryListingCount
+    resourcePath
+    secondaryListingCount
+    slug
+    url
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    companyUrl
+    configurationResourcePath
+    documentationUrl
+    fullDescription
+    fullDescriptionHTML
+    hasTermsOfService
+    id
+    installationUrl
+    installedForViewer
+    isPublic
+    isRejected
+    isUnverified
+    isVerificationPendingFromDraft
+    logoBackgroundColor
+    logoUrl
+    name
+    normalizedShortDescription
+    supportEmail
+    url
+    viewerCanDelist
+    viewerCanEdit
+    viewerCanReject
+    viewerHasPurchased
+    viewerIsListingAdmin
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    totalCount
+  }
+  rateLimit {
+    cost
+    limit
+    resetAt
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    pageInfo {
+      startCursor
+    }
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    pageInfo {
+      endCursor
+      hasPreviousPage
+    }
+    totalCount
+  }
+  id
+}

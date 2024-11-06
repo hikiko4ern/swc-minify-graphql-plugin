@@ -1,0 +1,11 @@
+query RandomQuery {
+  licenses {
+    featured
+    hidden
+    implementation
+    key
+    nickname
+    pseudoLicense
+    url
+  }
+}

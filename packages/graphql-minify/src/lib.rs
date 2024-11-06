@@ -329,8 +329,8 @@ mod test {
 
     #[test]
     fn test_kitchen_sink_schema() {
-        let schema = include_str!("../test_data/kitchen_sink_schema.graphql");
-        let expected = include_str!("../test_data/kitchen_sink_schema_expected.graphql");
+        let schema = include_str!("../test_data/valid/kitchen_sink_schema.graphql");
+        let expected = include_str!("../test_data/valid/kitchen_sink_schema_expected.graphql");
 
         assert_eq!(minify(schema).unwrap(), expected);
     }

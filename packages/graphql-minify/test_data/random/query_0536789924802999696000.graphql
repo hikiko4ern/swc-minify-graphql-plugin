@@ -1,0 +1,162 @@
+query RandomQuery($Query__marketplaceCategory__slug: String!, $Query__codeOfConduct__key: String!, $Organization__isSponsoredBy__accountLogin: String!, $Enterprise__organizations__first: Int, $Query__enterprise__slug: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $Query__marketplaceListing__slug: String!, $Query__marketplaceListings__first: Int, $Query__securityAdvisories__first: Int, $Query__securityAdvisory__ghsaId: String!, $Query__securityVulnerabilities__first: Int, $Query__sponsorables__first: Int) {
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    url
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    body
+    key
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    billingInfo {
+      allLicensableUsersCount
+      bandwidthQuota
+      bandwidthUsagePercentage
+      storageUsage
+      totalLicenses
+    }
+    organizations(first: $Enterprise__organizations__first) {
+      edges {
+        node {
+          announcement
+          announcementExpiresAt
+          announcementUserDismissible
+          avatarUrl
+          databaseId
+          description
+          descriptionHTML
+          email
+          estimatedNextSponsorsPayoutInCents
+          hasSponsorsListing
+          id
+          isSponsoredBy(accountLogin: $Organization__isSponsoredBy__accountLogin)
+          isSponsoringViewer
+          isVerified
+          membersCanForkPrivateRepositories
+          monthlyEstimatedSponsorsIncomeInCents
+          name
+          newTeamResourcePath
+          resourcePath
+          teamsResourcePath
+          totalSponsorshipAmountAsSponsorInCents
+          twitterUsername
+          url
+          viewerCanCreateProjects
+          viewerCanSponsor
+        }
+        cursor
+      }
+    }
+    announcementCreatedAt
+    announcementExpiresAt
+    announcementUserDismissible
+    billingEmail
+    databaseId
+    descriptionHTML
+    readmeHTML
+    websiteUrl
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    email
+    role
+  }
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    id
+  }
+  licenses {
+    body
+    description
+    implementation
+    key
+    nickname
+    spdxId
+    url
+  }
+  marketplaceCategories {
+    primaryListingCount
+    resourcePath
+    url
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    primaryCategory {
+      howItWorks
+      id
+      primaryListingCount
+      resourcePath
+      secondaryListingCount
+      slug
+      url
+    }
+    companyUrl
+    documentationUrl
+    extendedDescriptionHTML
+    hasPublishedFreeTrialPlans
+    hasVerifiedOwner
+    howItWorks
+    id
+    installationUrl
+    installedForViewer
+    isPaid
+    isVerified
+    logoBackgroundColor
+    logoUrl
+    name
+    statusUrl
+    supportEmail
+    viewerCanAddPlans
+    viewerCanDelist
+    viewerCanRedraft
+    viewerCanRequestApproval
+    viewerIsListingAdmin
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    totalCount
+  }
+  meta {
+    gitHubServicesSha
+    hookIpAddresses
+    importerIpAddresses
+    pagesIpAddresses
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    totalCount
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    notificationsPermalink
+    permalink
+    severity
+    summary
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    nodes {
+      package {
+        ecosystem
+      }
+      advisory {
+        description
+        notificationsPermalink
+        origin
+        publishedAt
+      }
+      firstPatchedVersion {
+        identifier
+      }
+      severity
+    }
+    edges {
+      node {
+        vulnerableVersionRange
+      }
+      cursor
+    }
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    pageInfo {
+      hasPreviousPage
+      startCursor
+    }
+    edges {
+      cursor
+    }
+    totalCount
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__revokeMigratorRole__input: RevokeMigratorRoleInput!) {
+  revokeMigratorRole(input: $Mutation__revokeMigratorRole__input) {
+    success
+  }
+}

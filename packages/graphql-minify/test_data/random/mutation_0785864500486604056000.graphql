@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__deleteDeployment__input: DeleteDeploymentInput!) {
+  deleteDeployment(input: $Mutation__deleteDeployment__input) {
+    clientMutationId
+  }
+}

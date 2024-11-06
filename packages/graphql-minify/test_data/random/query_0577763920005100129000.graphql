@@ -1,0 +1,19 @@
+query RandomQuery($Query__securityVulnerabilities__first: Int) {
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    nodes {
+      firstPatchedVersion {
+        identifier
+      }
+      updatedAt
+      vulnerableVersionRange
+    }
+    edges {
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    totalCount
+  }
+}

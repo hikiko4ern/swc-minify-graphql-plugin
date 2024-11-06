@@ -1,0 +1,80 @@
+mutation RandomMutation($ProjectV2View__verticalGroupBy__first: Int, $ProjectV2View__fields__first: Int, $ProjectV2View__groupBy__first: Int, $ProjectV2View__sortByFields__first: Int, $ProjectV2View__visibleFields__first: Int, $ProjectV2__view__number: Int!, $ProjectV2__fields__first: Int, $ProjectV2__repositories__first: Int, $ProjectV2__statusUpdates__first: Int, $ProjectV2__teams__first: Int, $ProjectV2__workflows__first: Int, $Mutation__deleteProjectV2Workflow__input: DeleteProjectV2WorkflowInput!) {
+  deleteProjectV2Workflow(input: $Mutation__deleteProjectV2Workflow__input) {
+    projectV2 {
+      view(number: $ProjectV2__view__number) {
+        verticalGroupBy(first: $ProjectV2View__verticalGroupBy__first) {
+          totalCount
+        }
+        fields(first: $ProjectV2View__fields__first) {
+          edges {
+            cursor
+          }
+          pageInfo {
+            endCursor
+            hasNextPage
+          }
+        }
+        groupBy(first: $ProjectV2View__groupBy__first) {
+          pageInfo {
+            endCursor
+            hasNextPage
+            hasPreviousPage
+          }
+        }
+        sortByFields(first: $ProjectV2View__sortByFields__first) {
+          pageInfo {
+            startCursor
+          }
+        }
+        visibleFields(first: $ProjectV2View__visibleFields__first) {
+          pageInfo {
+            hasPreviousPage
+          }
+        }
+        createdAt
+        databaseId
+        filter
+        fullDatabaseId
+        layout
+        updatedAt
+      }
+      fields(first: $ProjectV2__fields__first) {
+        pageInfo {
+          endCursor
+        }
+      }
+      repositories(first: $ProjectV2__repositories__first) {
+        totalDiskUsage
+      }
+      statusUpdates(first: $ProjectV2__statusUpdates__first) {
+        edges {
+          cursor
+        }
+        totalCount
+      }
+      teams(first: $ProjectV2__teams__first) {
+        pageInfo {
+          endCursor
+          hasNextPage
+          startCursor
+        }
+        totalCount
+      }
+      workflows(first: $ProjectV2__workflows__first) {
+        totalCount
+      }
+      closed
+      closedAt
+      createdAt
+      fullDatabaseId
+      id
+      number
+      public
+      resourcePath
+      updatedAt
+      viewerCanReopen
+      viewerCanUpdate
+    }
+    deletedWorkflowId
+  }
+}

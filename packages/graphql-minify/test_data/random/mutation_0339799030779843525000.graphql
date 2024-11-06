@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__deleteBranchProtectionRule__input: DeleteBranchProtectionRuleInput!) {
+  deleteBranchProtectionRule(input: $Mutation__deleteBranchProtectionRule__input) {
+    clientMutationId
+  }
+}

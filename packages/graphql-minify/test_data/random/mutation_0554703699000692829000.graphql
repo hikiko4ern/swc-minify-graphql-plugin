@@ -1,0 +1,17 @@
+mutation RandomMutation($Mutation__createBranchProtectionRule__input: CreateBranchProtectionRuleInput!) {
+  createBranchProtectionRule(input: $Mutation__createBranchProtectionRule__input) {
+    branchProtectionRule {
+      allowsForcePushes
+      databaseId
+      isAdminEnforced
+      pattern
+      requiredApprovingReviewCount
+      requiredDeploymentEnvironments
+      requiresCodeOwnerReviews
+      requiresLinearHistory
+      requiresStatusChecks
+      restrictsPushes
+    }
+    clientMutationId
+  }
+}

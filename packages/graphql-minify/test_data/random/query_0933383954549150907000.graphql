@@ -1,0 +1,108 @@
+query RandomQuery($SecurityAdvisory__vulnerabilities__first: Int, $Query__securityAdvisories__first: Int, $Query__enterprise__slug: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__marketplaceCategory__slug: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__sponsorables__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__organizationVerifiedDomainEmails__login: String!) {
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    edges {
+      node {
+        epss {
+          percentage
+        }
+        cvss {
+          score
+        }
+        vulnerabilities(first: $SecurityAdvisory__vulnerabilities__first) {
+          pageInfo {
+            hasNextPage
+            hasPreviousPage
+            startCursor
+          }
+        }
+        databaseId
+        ghsaId
+        origin
+        severity
+      }
+      cursor
+    }
+    nodes {
+      databaseId
+      ghsaId
+      notificationsPermalink
+      updatedAt
+    }
+    totalCount
+  }
+  codesOfConduct {
+    id
+    url
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcement
+    announcementCreatedAt
+    announcementExpiresAt
+    avatarUrl
+    billingEmail
+    databaseId
+    description
+    id
+    name
+    resourcePath
+    slug
+    viewerIsAdmin
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    createdAt
+    email
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    howItWorks
+    id
+    name
+    primaryListingCount
+    secondaryListingCount
+    slug
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    edges {
+      textMatches {
+        highlights {
+          endIndice
+        }
+        fragment
+        property
+      }
+    }
+    codeCount
+    issueCount
+    repositoryCount
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    pageInfo {
+      endCursor
+      hasNextPage
+      startCursor
+    }
+    totalCount
+  }
+  viewer {
+    avatarUrl
+    bioHTML
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    estimatedNextSponsorsPayoutInCents
+    id
+    isCampusExpert
+    isDeveloperProgramMember
+    isEmployee
+    isGitHubStar
+    isSiteAdmin
+    login
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    projectsResourcePath
+    projectsUrl
+    resourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    viewerCanChangePinnedItems
+    viewerCanFollow
+    viewerIsFollowing
+  }
+  id
+}

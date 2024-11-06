@@ -1,0 +1,7 @@
+query RandomQuery($Query__enterpriseAdministratorInvitationByToken__invitationToken: String!) {
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    createdAt
+    id
+    role
+  }
+}

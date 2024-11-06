@@ -1,0 +1,114 @@
+mutation RandomMutation($ReactionGroup__reactors__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!, $ReactionGroup__users__first: Int, $IssueComment__userContentEdits__first: Int, $Mutation__updateIssueComment__input: UpdateIssueCommentInput!) {
+  updateIssueComment(input: $Mutation__updateIssueComment__input) {
+    issueComment {
+      reactionGroups {
+        reactors(first: $ReactionGroup__reactors__first) {
+          edges {
+            reactedAt
+          }
+        }
+        users(first: $ReactionGroup__users__first) {
+          edges {
+            node {
+              avatarUrl
+              bioHTML
+              canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+              companyHTML
+              email
+              hasSponsorsListing
+              isBountyHunter
+              isGitHubStar
+              isHireable
+              isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+              isSponsoringViewer
+              isViewer
+              monthlyEstimatedSponsorsIncomeInCents
+              name
+              organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+              resourcePath
+              twitterUsername
+              updatedAt
+              url
+              userViewType
+              viewerCanFollow
+              viewerIsSponsoring
+            }
+            cursor
+            reactedAt
+          }
+          nodes {
+            avatarUrl
+            company
+            createdAt
+            email
+            estimatedNextSponsorsPayoutInCents
+            hasSponsorsListing
+            isBountyHunter
+            isDeveloperProgramMember
+            isEmployee
+            isFollowingViewer
+            isGitHubStar
+            isHireable
+            isSiteAdmin
+            isSponsoringViewer
+            login
+            pinnedItemsRemaining
+            resourcePath
+            updatedAt
+            url
+            userViewType
+            viewerCanChangePinnedItems
+            viewerCanCreateProjects
+            viewerCanFollow
+            viewerCanSponsor
+            viewerIsSponsoring
+            websiteUrl
+          }
+          totalCount
+        }
+        viewerHasReacted
+      }
+      issue {
+        activeLockReason
+        authorAssociation
+        body
+        bodyHTML
+        bodyUrl
+        closedAt
+        includesCreatedEdit
+        stateReason
+        trackedIssuesCount
+        viewerCanDelete
+        viewerCannotUpdateReasons
+        viewerCanReact
+        viewerCanReopen
+        viewerCanSubscribe
+        viewerThreadSubscriptionFormAction
+        viewerThreadSubscriptionStatus
+      }
+      userContentEdits(first: $IssueComment__userContentEdits__first) {
+        edges {
+          node {
+            id
+          }
+          cursor
+        }
+      }
+      body
+      bodyHTML
+      bodyText
+      createdAt
+      createdViaEmail
+      fullDatabaseId
+      includesCreatedEdit
+      lastEditedAt
+      resourcePath
+      updatedAt
+      url
+      viewerCannotUpdateReasons
+      viewerCanReact
+      viewerDidAuthor
+    }
+    clientMutationId
+  }
+}

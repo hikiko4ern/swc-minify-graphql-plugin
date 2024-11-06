@@ -1,0 +1,122 @@
+query RandomQuery($Query__codeOfConduct__key: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__license__key: String!, $Query__marketplaceCategory__slug: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityAdvisories__first: Int, $Query__securityAdvisory__ghsaId: String!, $Query__securityVulnerabilities__first: Int, $Query__topic__name: String!, $User__organizationVerifiedDomainEmails__login: String!, $Query__user__login: String!) {
+  rateLimit {
+    limit
+    nodeCount
+    resetAt
+    used
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    body
+    name
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    email
+    id
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    createdAt
+  }
+  license(key: $Query__license__key) {
+    limitations {
+      description
+      label
+    }
+    conditions {
+      description
+    }
+    permissions {
+      description
+    }
+    description
+    id
+    key
+    name
+    nickname
+    pseudoLicense
+    url
+  }
+  licenses {
+    limitations {
+      description
+    }
+    permissions {
+      description
+    }
+    featured
+    key
+    name
+    nickname
+    spdxId
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    howItWorks
+    name
+    primaryListingCount
+    slug
+  }
+  meta {
+    gitHubServicesSha
+    isPasswordAuthenticationVerifiable
+    pagesIpAddresses
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    codeCount
+    userCount
+    wikiCount
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    totalCount
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    classification
+    databaseId
+    origin
+    permalink
+    summary
+    updatedAt
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    nodes {
+      vulnerableVersionRange
+    }
+    edges {
+      node {
+        package {
+          name
+        }
+      }
+      cursor
+    }
+  }
+  topic(name: $Query__topic__name) {
+    id
+    name
+    stargazerCount
+    viewerHasStarred
+  }
+  user(login: $Query__user__login) {
+    anyPinnableItems
+    bioHTML
+    companyHTML
+    estimatedNextSponsorsPayoutInCents
+    isBountyHunter
+    isCampusExpert
+    isHireable
+    location
+    login
+    name
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    pinnedItemsRemaining
+    projectsResourcePath
+    projectsUrl
+    pronouns
+    totalSponsorshipAmountAsSponsorInCents
+    userViewType
+    viewerCanCreateProjects
+    viewerCanSponsor
+    viewerIsFollowing
+    viewerIsSponsoring
+  }
+  id
+}

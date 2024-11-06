@@ -1,0 +1,28 @@
+query RandomQuery($User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!) {
+  viewer {
+    bio
+    bioHTML
+    company
+    companyHTML
+    createdAt
+    databaseId
+    email
+    hasSponsorsListing
+    isDeveloperProgramMember
+    isEmployee
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    login
+    monthlyEstimatedSponsorsIncomeInCents
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    pinnedItemsRemaining
+    projectsResourcePath
+    resourcePath
+    updatedAt
+    url
+    userViewType
+    viewerCanCreateProjects
+    viewerIsFollowing
+    viewerIsSponsoring
+  }
+}

@@ -1,0 +1,6 @@
+query RandomQuery {
+  meta {
+    importerIpAddresses
+    isPasswordAuthenticationVerifiable
+  }
+}

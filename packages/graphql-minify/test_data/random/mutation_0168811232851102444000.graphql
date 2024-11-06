@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__updateEnterpriseTeamDiscussionsSetting__input: UpdateEnterpriseTeamDiscussionsSettingInput!) {
+  updateEnterpriseTeamDiscussionsSetting(input: $Mutation__updateEnterpriseTeamDiscussionsSetting__input) {
+    clientMutationId
+  }
+}

@@ -1,0 +1,216 @@
+query RandomQuery($Query__marketplaceCategory__slug: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $User__isSponsoredBy__accountLogin: String!, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $Query__marketplaceListing__slug: String!, $Query__marketplaceListings__first: Int, $Organization__isSponsoredBy__accountLogin: String!, $Query__organization__login: String!, $Query__repository__name: String!, $Query__repository__owner: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityAdvisories__first: Int) {
+  relay {
+    marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+      howItWorks
+      id
+      name
+      primaryListingCount
+      secondaryListingCount
+      slug
+    }
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    createdAt
+    email
+    role
+  }
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    enterprise {
+      announcement
+      announcementCreatedAt
+      announcementExpiresAt
+      announcementUserDismissible
+      databaseId
+      description
+      location
+      name
+      readme
+      readmeHTML
+      resourcePath
+    }
+    invitee {
+      anyPinnableItems
+      avatarUrl
+      bioHTML
+      company
+      databaseId
+      estimatedNextSponsorsPayoutInCents
+      isBountyHunter
+      isDeveloperProgramMember
+      isEmployee
+      isGitHubStar
+      isHireable
+      isSiteAdmin
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      isSponsoringViewer
+      login
+      monthlyEstimatedSponsorsIncomeInCents
+      name
+      projectsResourcePath
+      pronouns
+      resourcePath
+      totalSponsorshipAmountAsSponsorInCents
+      twitterUsername
+      viewerCanCreateProjects
+      viewerCanSponsor
+      viewerIsFollowing
+    }
+    email
+  }
+  licenses {
+    limitations {
+      description
+      key
+      label
+    }
+    conditions {
+      key
+    }
+    body
+    description
+    id
+    nickname
+    spdxId
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    primaryCategory {
+      description
+      id
+      primaryListingCount
+      resourcePath
+      secondaryListingCount
+      slug
+      url
+    }
+    app {
+      createdAt
+      id
+      logoBackgroundColor
+      logoUrl
+      updatedAt
+      url
+    }
+    secondaryCategory {
+      id
+      name
+      resourcePath
+      url
+    }
+    fullDescription
+    hasPublishedFreeTrialPlans
+    hasTermsOfService
+    hasVerifiedOwner
+    howItWorksHTML
+    id
+    installationUrl
+    isArchived
+    isUnverified
+    isVerificationPendingFromDraft
+    isVerificationPendingFromUnverified
+    logoBackgroundColor
+    name
+    privacyPolicyUrl
+    screenshotUrls
+    shortDescription
+    statusUrl
+    supportEmail
+    supportUrl
+    termsOfServiceUrl
+    viewerCanAddPlans
+    viewerCanDelist
+    viewerCanEdit
+    viewerCanEditCategories
+    viewerCanRedraft
+    viewerCanReject
+    viewerIsListingAdmin
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    totalCount
+  }
+  organization(login: $Query__organization__login) {
+    announcement
+    announcementCreatedAt
+    announcementExpiresAt
+    announcementUserDismissible
+    anyPinnableItems
+    databaseId
+    description
+    ipAllowListEnabledSetting
+    isSponsoredBy(accountLogin: $Organization__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    location
+    name
+    newTeamUrl
+    notificationDeliveryRestrictionEnabledSetting
+    organizationBillingEmail
+    pinnedItemsRemaining
+    projectsResourcePath
+    projectsUrl
+    teamsUrl
+    totalSponsorshipAmountAsSponsorInCents
+    url
+    viewerCanAdminister
+    viewerCanCreateTeams
+    viewerCanSponsor
+    viewerIsFollowing
+    viewerIsSponsoring
+    websiteUrl
+  }
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    allowUpdateBranch
+    autoMergeAllowed
+    databaseId
+    deleteBranchOnMerge
+    description
+    descriptionHTML
+    forkCount
+    forkingAllowed
+    hasDiscussionsEnabled
+    hasVulnerabilityAlertsEnabled
+    isDisabled
+    isEmpty
+    isFork
+    isMirror
+    isUserConfigurationRepository
+    lockReason
+    mergeCommitAllowed
+    mergeCommitMessage
+    mergeCommitTitle
+    nameWithOwner
+    openGraphImageUrl
+    projectsResourcePath
+    pushedAt
+    resourcePath
+    securityPolicyUrl
+    squashMergeCommitMessage
+    sshUrl
+    stargazerCount
+    tempCloneToken
+    viewerCanCreateProjects
+    viewerCanSubscribe
+    viewerPossibleCommitEmails
+    viewerSubscription
+    visibility
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    pageInfo {
+      endCursor
+      hasPreviousPage
+    }
+    edges {
+      textMatches {
+        fragment
+      }
+      cursor
+    }
+    wikiCount
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    nodes {
+      classification
+      severity
+      withdrawnAt
+    }
+  }
+  id
+}

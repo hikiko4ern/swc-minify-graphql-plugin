@@ -1,0 +1,17 @@
+mutation RandomMutation($Mutation__createCheckRun__input: CreateCheckRunInput!) {
+  createCheckRun(input: $Mutation__createCheckRun__input) {
+    checkRun {
+      conclusion
+      databaseId
+      externalId
+      isRequired
+      name
+      permalink
+      resourcePath
+      summary
+      text
+      title
+      url
+    }
+  }
+}

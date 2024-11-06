@@ -1,0 +1,52 @@
+query RandomQuery($User__isSponsoredBy__accountLogin: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!) {
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    invitee {
+      avatarUrl
+      company
+      companyHTML
+      estimatedNextSponsorsPayoutInCents
+      id
+      isBountyHunter
+      isDeveloperProgramMember
+      isSiteAdmin
+      login
+      monthlyEstimatedSponsorsIncomeInCents
+      name
+      pinnedItemsRemaining
+      projectsResourcePath
+      pronouns
+      url
+      viewerCanFollow
+      viewerCanSponsor
+      viewerIsFollowing
+      websiteUrl
+    }
+    inviter {
+      avatarUrl
+      bioHTML
+      company
+      companyHTML
+      estimatedNextSponsorsPayoutInCents
+      hasSponsorsListing
+      id
+      isBountyHunter
+      isEmployee
+      isFollowingViewer
+      isGitHubStar
+      isHireable
+      isSiteAdmin
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      isSponsoringViewer
+      isViewer
+      location
+      monthlyEstimatedSponsorsIncomeInCents
+      projectsUrl
+      pronouns
+      viewerCanCreateProjects
+      viewerCanSponsor
+      viewerIsFollowing
+    }
+    email
+    role
+  }
+}

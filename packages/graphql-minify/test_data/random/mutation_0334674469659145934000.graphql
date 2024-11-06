@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__mergeBranch__input: MergeBranchInput!) {
+  mergeBranch(input: $Mutation__mergeBranch__input) {
+    clientMutationId
+  }
+}

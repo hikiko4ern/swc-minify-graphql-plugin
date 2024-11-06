@@ -1,0 +1,75 @@
+mutation RandomMutation($User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!, $Mutation__inviteEnterpriseMember__input: InviteEnterpriseMemberInput!) {
+  inviteEnterpriseMember(input: $Mutation__inviteEnterpriseMember__input) {
+    invitation {
+      inviter {
+        anyPinnableItems
+        bioHTML
+        company
+        companyHTML
+        createdAt
+        databaseId
+        hasSponsorsListing
+        id
+        isBountyHunter
+        isCampusExpert
+        isDeveloperProgramMember
+        isEmployee
+        isFollowingViewer
+        isGitHubStar
+        isHireable
+        isSiteAdmin
+        isSponsoringViewer
+        isViewer
+        location
+        login
+        projectsUrl
+        pronouns
+        resourcePath
+        totalSponsorshipAmountAsSponsorInCents
+        twitterUsername
+        updatedAt
+        viewerCanCreateProjects
+        viewerCanSponsor
+        websiteUrl
+      }
+      enterprise {
+        announcement
+        announcementUserDismissible
+        avatarUrl
+        billingEmail
+        createdAt
+        databaseId
+        descriptionHTML
+        location
+        name
+        resourcePath
+        url
+      }
+      invitee {
+        anyPinnableItems
+        bio
+        bioHTML
+        companyHTML
+        createdAt
+        databaseId
+        isEmployee
+        isFollowingViewer
+        isGitHubStar
+        isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+        login
+        monthlyEstimatedSponsorsIncomeInCents
+        name
+        organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+        projectsResourcePath
+        totalSponsorshipAmountAsSponsorInCents
+        twitterUsername
+        updatedAt
+        viewerCanCreateProjects
+        viewerCanSponsor
+      }
+      createdAt
+      id
+    }
+    clientMutationId
+  }
+}

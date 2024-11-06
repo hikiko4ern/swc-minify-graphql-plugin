@@ -1,0 +1,71 @@
+query RandomQuery($Topic__repositories__first: Int, $Topic__relatedTopics__first: Int, $Topic__stargazers__first: Int, $Query__topic__name: String!) {
+  topic(name: $Query__topic__name) {
+    repositories(first: $Topic__repositories__first) {
+      nodes {
+        allowUpdateBranch
+        autoMergeAllowed
+        databaseId
+        forkCount
+        hasDiscussionsEnabled
+        hasIssuesEnabled
+        hasProjectsEnabled
+        hasVulnerabilityAlertsEnabled
+        homepageUrl
+        id
+        isArchived
+        isDisabled
+        isEmpty
+        isFork
+        isPrivate
+        isTemplate
+        isUserConfigurationRepository
+        lockReason
+        mergeCommitAllowed
+        mergeCommitMessage
+        mergeCommitTitle
+        projectsUrl
+        pushedAt
+        rebaseMergeAllowed
+        securityPolicyUrl
+        shortDescriptionHTML
+        squashMergeCommitMessage
+        stargazerCount
+        viewerDefaultCommitEmail
+        viewerHasStarred
+        viewerPossibleCommitEmails
+        webCommitSignoffRequired
+      }
+      edges {
+        cursor
+      }
+      totalCount
+    }
+    relatedTopics(first: $Topic__relatedTopics__first) {
+      id
+    }
+    stargazers(first: $Topic__stargazers__first) {
+      edges {
+        node {
+          anyPinnableItems
+          avatarUrl
+          bio
+          company
+          id
+          isCampusExpert
+          isFollowingViewer
+          isViewer
+          login
+          monthlyEstimatedSponsorsIncomeInCents
+          url
+          viewerCanCreateProjects
+          viewerCanSponsor
+          websiteUrl
+        }
+      }
+      pageInfo {
+        endCursor
+      }
+    }
+    stargazerCount
+  }
+}

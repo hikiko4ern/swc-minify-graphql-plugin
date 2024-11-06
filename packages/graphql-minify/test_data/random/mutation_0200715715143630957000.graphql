@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__unminimizeComment__input: UnminimizeCommentInput!) {
+  unminimizeComment(input: $Mutation__unminimizeComment__input) {
+    clientMutationId
+  }
+}

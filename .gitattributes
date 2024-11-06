@@ -2,4 +2,5 @@
 *.wasm binary
 
 # test data
-test_data/** binary linguist-generated=true
+**/test_data/** binary linguist-generated=true
+**/afl_in/**    binary linguist-generated=true

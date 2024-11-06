@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__createSponsorships__input: CreateSponsorshipsInput!) {
+  createSponsorships(input: $Mutation__createSponsorships__input) {
+    clientMutationId
+  }
+}

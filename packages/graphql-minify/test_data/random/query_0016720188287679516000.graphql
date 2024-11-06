@@ -1,0 +1,7 @@
+query RandomQuery($Query__sponsorables__first: Int) {
+  sponsorables(first: $Query__sponsorables__first) {
+    edges {
+      cursor
+    }
+  }
+}

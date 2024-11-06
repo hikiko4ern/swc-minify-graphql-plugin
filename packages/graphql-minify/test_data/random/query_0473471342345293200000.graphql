@@ -1,0 +1,124 @@
+query RandomQuery($Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__codeOfConduct__key: String!, $Query__enterprise__slug: String!, $Query__marketplaceCategory__slug: String!, $App__ipAllowListEntries__first: Int, $Query__marketplaceListing__slug: String!, $Query__marketplaceListings__first: Int, $Query__repository__name: String!, $Query__repository__owner: String!, $Query__securityAdvisory__ghsaId: String!) {
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    wikiCount
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    id
+    key
+    url
+  }
+  codesOfConduct {
+    body
+    key
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcement
+    announcementCreatedAt
+    avatarUrl
+    billingEmail
+    createdAt
+    description
+    descriptionHTML
+    location
+    readme
+    resourcePath
+    url
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    name
+    primaryListingCount
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    app {
+      ipAllowListEntries(first: $App__ipAllowListEntries__first) {
+        totalCount
+      }
+      createdAt
+      id
+      logoBackgroundColor
+      slug
+    }
+    secondaryCategory {
+      description
+      howItWorks
+      name
+      resourcePath
+      url
+    }
+    companyUrl
+    configurationResourcePath
+    configurationUrl
+    extendedDescriptionHTML
+    hasVerifiedOwner
+    id
+    installationUrl
+    isArchived
+    isUnverified
+    isVerificationPendingFromDraft
+    logoBackgroundColor
+    logoUrl
+    pricingUrl
+    screenshotUrls
+    url
+    viewerCanEdit
+    viewerCanEditPlans
+    viewerCanRedraft
+    viewerCanRequestApproval
+    viewerHasPurchased
+    viewerHasPurchasedForAllOrganizations
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    totalCount
+  }
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    autoMergeAllowed
+    createdAt
+    databaseId
+    descriptionHTML
+    diskUsage
+    forkCount
+    forkingAllowed
+    hasDiscussionsEnabled
+    hasProjectsEnabled
+    hasSponsorshipsEnabled
+    homepageUrl
+    id
+    isBlankIssuesEnabled
+    isDisabled
+    isMirror
+    isPrivate
+    isSecurityPolicyEnabled
+    isTemplate
+    mergeCommitAllowed
+    mirrorUrl
+    name
+    nameWithOwner
+    openGraphImageUrl
+    resourcePath
+    shortDescriptionHTML
+    squashMergeAllowed
+    squashMergeCommitMessage
+    sshUrl
+    tempCloneToken
+    usesCustomOpenGraphImage
+    viewerCanCreateProjects
+    viewerCanSubscribe
+    viewerHasStarred
+    viewerPermission
+    viewerPossibleCommitEmails
+    webCommitSignoffRequired
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    classification
+    databaseId
+    ghsaId
+    id
+    notificationsPermalink
+    permalink
+    publishedAt
+    severity
+    updatedAt
+    withdrawnAt
+  }
+  id
+}

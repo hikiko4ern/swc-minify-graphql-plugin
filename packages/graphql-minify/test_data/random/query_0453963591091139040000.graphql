@@ -1,0 +1,35 @@
+query RandomQuery($Query__securityVulnerabilities__first: Int) {
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    edges {
+      node {
+        firstPatchedVersion {
+          identifier
+        }
+        advisory {
+          identifiers {
+            type
+          }
+          cvss {
+            vectorString
+          }
+          references {
+            url
+          }
+          classification
+          databaseId
+          notificationsPermalink
+          origin
+          permalink
+          severity
+          updatedAt
+        }
+        package {
+          ecosystem
+        }
+        severity
+        updatedAt
+        vulnerableVersionRange
+      }
+    }
+  }
+}

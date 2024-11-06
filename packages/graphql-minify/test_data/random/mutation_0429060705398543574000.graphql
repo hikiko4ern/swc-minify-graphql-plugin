@@ -1,0 +1,19 @@
+mutation RandomMutation($Mutation__dismissPullRequestReview__input: DismissPullRequestReviewInput!) {
+  dismissPullRequestReview(input: $Mutation__dismissPullRequestReview__input) {
+    pullRequestReview {
+      authorAssociation
+      authorCanPushToRepository
+      body
+      createdViaEmail
+      databaseId
+      includesCreatedEdit
+      isMinimized
+      lastEditedAt
+      submittedAt
+      url
+      viewerCanMinimize
+      viewerCanReact
+      viewerCanUpdate
+    }
+  }
+}

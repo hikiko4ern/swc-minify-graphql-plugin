@@ -1,0 +1,18 @@
+query RandomQuery($Query__securityAdvisory__ghsaId: String!) {
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    identifiers {
+      type
+    }
+    cvss {
+      score
+    }
+    references {
+      url
+    }
+    classification
+    databaseId
+    id
+    notificationsPermalink
+    withdrawnAt
+  }
+}

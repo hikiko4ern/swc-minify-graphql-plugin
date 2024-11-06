@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__createPullRequest__input: CreatePullRequestInput!) {
+  createPullRequest(input: $Mutation__createPullRequest__input) {
+    clientMutationId
+  }
+}

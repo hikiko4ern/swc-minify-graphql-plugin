@@ -1,0 +1,19 @@
+mutation RandomMutation($Mutation__updateEnterpriseMembersCanInviteCollaboratorsSetting__input: UpdateEnterpriseMembersCanInviteCollaboratorsSettingInput!) {
+  updateEnterpriseMembersCanInviteCollaboratorsSetting(input: $Mutation__updateEnterpriseMembersCanInviteCollaboratorsSetting__input) {
+    enterprise {
+      announcement
+      billingEmail
+      createdAt
+      databaseId
+      description
+      descriptionHTML
+      id
+      location
+      name
+      readme
+      readmeHTML
+      slug
+      url
+    }
+  }
+}

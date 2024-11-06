@@ -1,0 +1,226 @@
+query RandomQuery($Query__marketplaceListing__slug: String!, $Enterprise__members__first: Int, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $SecurityAdvisory__cwes__first: Int, $SecurityAdvisory__vulnerabilities__first: Int, $Query__securityAdvisory__ghsaId: String!, $Query__topic__name: String!, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!, $Query__user__login: String!) {
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    primaryCategory {
+      name
+    }
+    secondaryCategory {
+      description
+      howItWorks
+      id
+      url
+    }
+    companyUrl
+    configurationResourcePath
+    extendedDescriptionHTML
+    hasTermsOfService
+    hasVerifiedOwner
+    howItWorksHTML
+    id
+    installedForViewer
+    isArchived
+    isPublic
+    isRejected
+    isUnverifiedPending
+    isVerificationPendingFromDraft
+    logoUrl
+    name
+    shortDescription
+    slug
+    supportEmail
+    url
+    viewerCanAddPlans
+    viewerCanApprove
+    viewerCanDelist
+    viewerCanEditCategories
+    viewerCanEditPlans
+    viewerCanReject
+    viewerCanRequestApproval
+    viewerIsListingAdmin
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    invitee {
+      avatarUrl
+      bioHTML
+      company
+      companyHTML
+      databaseId
+      estimatedNextSponsorsPayoutInCents
+      hasSponsorsListing
+      isCampusExpert
+      isGitHubStar
+      isViewer
+      location
+      login
+      monthlyEstimatedSponsorsIncomeInCents
+      name
+      pinnedItemsRemaining
+      projectsResourcePath
+      resourcePath
+      totalSponsorshipAmountAsSponsorInCents
+      twitterUsername
+      url
+      viewerCanCreateProjects
+      viewerCanFollow
+    }
+    enterprise {
+      members(first: $Enterprise__members__first) {
+        pageInfo {
+          hasNextPage
+        }
+      }
+      billingInfo {
+        allLicensableUsersCount
+        bandwidthQuota
+        bandwidthUsage
+        bandwidthUsagePercentage
+        storageQuota
+        storageUsage
+      }
+      ownerInfo {
+        allowPrivateRepositoryForkingSetting
+        isUpdatingDefaultRepositoryPermission
+        membersCanDeleteIssuesSetting
+        membersCanMakePurchasesSetting
+        membersCanViewDependencyInsightsSetting
+        notificationDeliveryRestrictionEnabledSetting
+        organizationProjectsSetting
+        repositoryProjectsSetting
+        twoFactorRequiredSetting
+      }
+      announcement
+      announcementCreatedAt
+      announcementUserDismissible
+      createdAt
+      databaseId
+      descriptionHTML
+      id
+      location
+      readme
+      readmeHTML
+      url
+      websiteUrl
+    }
+    inviter {
+      anyPinnableItems
+      databaseId
+      email
+      id
+      isCampusExpert
+      isDeveloperProgramMember
+      isEmployee
+      isFollowingViewer
+      isHireable
+      isSponsoringViewer
+      isViewer
+      pinnedItemsRemaining
+      projectsUrl
+      pronouns
+      resourcePath
+      totalSponsorshipAmountAsSponsorInCents
+      updatedAt
+      url
+      userViewType
+      viewerCanCreateProjects
+      viewerIsFollowing
+      websiteUrl
+    }
+    email
+    id
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    role
+  }
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    createdAt
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    createdAt
+    email
+  }
+  marketplaceCategories {
+    id
+    slug
+  }
+  meta {
+    gitIpAddresses
+    hookIpAddresses
+    isPasswordAuthenticationVerifiable
+    pagesIpAddresses
+  }
+  rateLimit {
+    resetAt
+  }
+  relay {
+    id
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    edges {
+      textMatches {
+        property
+      }
+    }
+    codeCount
+    discussionCount
+    issueCount
+    wikiCount
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    cwes(first: $SecurityAdvisory__cwes__first) {
+      edges {
+        node {
+          cweId
+          id
+        }
+      }
+    }
+    cvss {
+      score
+    }
+    epss {
+      percentage
+    }
+    vulnerabilities(first: $SecurityAdvisory__vulnerabilities__first) {
+      pageInfo {
+        hasPreviousPage
+        startCursor
+      }
+    }
+    id
+    notificationsPermalink
+    severity
+    updatedAt
+    withdrawnAt
+  }
+  topic(name: $Query__topic__name) {
+    name
+  }
+  user(login: $Query__user__login) {
+    anyPinnableItems
+    bio
+    bioHTML
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    companyHTML
+    createdAt
+    estimatedNextSponsorsPayoutInCents
+    isBountyHunter
+    isFollowingViewer
+    isGitHubStar
+    isSiteAdmin
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    isViewer
+    location
+    login
+    name
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    pronouns
+    resourcePath
+    twitterUsername
+    url
+    userViewType
+    viewerCanChangePinnedItems
+    viewerCanCreateProjects
+    viewerIsFollowing
+    websiteUrl
+  }
+}

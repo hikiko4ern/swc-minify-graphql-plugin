@@ -1,0 +1,8 @@
+mutation RandomMutation($Mutation__createDeploymentStatus__input: CreateDeploymentStatusInput!) {
+  createDeploymentStatus(input: $Mutation__createDeploymentStatus__input) {
+    deploymentStatus {
+      environment
+      logUrl
+    }
+  }
+}

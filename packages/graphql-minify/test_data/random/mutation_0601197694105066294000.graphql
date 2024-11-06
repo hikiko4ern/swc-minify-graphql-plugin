@@ -1,0 +1,12 @@
+mutation RandomMutation($Mutation__updateProjectColumn__input: UpdateProjectColumnInput!) {
+  updateProjectColumn(input: $Mutation__updateProjectColumn__input) {
+    projectColumn {
+      createdAt
+      databaseId
+      resourcePath
+      updatedAt
+      url
+    }
+    clientMutationId
+  }
+}

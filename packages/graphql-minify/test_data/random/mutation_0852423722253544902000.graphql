@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__updateEnterpriseMembersCanViewDependencyInsightsSetting__input: UpdateEnterpriseMembersCanViewDependencyInsightsSettingInput!) {
+  updateEnterpriseMembersCanViewDependencyInsightsSetting(input: $Mutation__updateEnterpriseMembersCanViewDependencyInsightsSetting__input) {
+    clientMutationId
+  }
+}

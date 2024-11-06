@@ -1,0 +1,128 @@
+query RandomQuery($Query__enterprise__slug: String!, $Query__license__key: String!, $Query__marketplaceListings__first: Int, $Query__securityVulnerabilities__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__isSponsoredBy__accountLogin: String!, $Query__user__login: String!, $User__organizationVerifiedDomainEmails__login: String!) {
+  licenses {
+    conditions {
+      description
+      label
+    }
+    limitations {
+      key
+      label
+    }
+    description
+    hidden
+    id
+    key
+    name
+  }
+  codesOfConduct {
+    resourcePath
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcement
+    announcementCreatedAt
+    announcementUserDismissible
+    billingEmail
+    createdAt
+    databaseId
+    description
+    descriptionHTML
+    name
+    url
+  }
+  license(key: $Query__license__key) {
+    conditions {
+      description
+    }
+    permissions {
+      description
+    }
+    body
+    featured
+    id
+    implementation
+    key
+    name
+    pseudoLicense
+    spdxId
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    edges {
+      cursor
+    }
+  }
+  rateLimit {
+    limit
+    nodeCount
+    remaining
+    resetAt
+    used
+  }
+  relay {
+    id
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    nodes {
+      severity
+      updatedAt
+      vulnerableVersionRange
+    }
+  }
+  user(login: $Query__user__login) {
+    bio
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    createdAt
+    databaseId
+    isBountyHunter
+    isDeveloperProgramMember
+    isFollowingViewer
+    isHireable
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    isViewer
+    location
+    login
+    monthlyEstimatedSponsorsIncomeInCents
+    name
+    resourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    updatedAt
+    url
+    userViewType
+    viewerCanCreateProjects
+    viewerCanFollow
+    viewerCanSponsor
+    websiteUrl
+  }
+  viewer {
+    anyPinnableItems
+    avatarUrl
+    bio
+    company
+    createdAt
+    estimatedNextSponsorsPayoutInCents
+    id
+    isBountyHunter
+    isEmployee
+    isFollowingViewer
+    isGitHubStar
+    isHireable
+    isSiteAdmin
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    isViewer
+    login
+    name
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    pinnedItemsRemaining
+    projectsResourcePath
+    projectsUrl
+    totalSponsorshipAmountAsSponsorInCents
+    updatedAt
+    userViewType
+    viewerCanChangePinnedItems
+    viewerCanSponsor
+    viewerIsFollowing
+    viewerIsSponsoring
+    websiteUrl
+  }
+}

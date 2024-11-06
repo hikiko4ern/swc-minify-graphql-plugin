@@ -1,0 +1,43 @@
+mutation RandomMutation($RepositoryRuleset__bypassActors__first: Int, $Mutation__updateRepositoryRuleset__input: UpdateRepositoryRulesetInput!) {
+  updateRepositoryRuleset(input: $Mutation__updateRepositoryRuleset__input) {
+    ruleset {
+      conditions {
+        repositoryName {
+          exclude
+        }
+        refName {
+          include
+        }
+      }
+      bypassActors(first: $RepositoryRuleset__bypassActors__first) {
+        nodes {
+          repositoryRuleset {
+            createdAt
+            databaseId
+            id
+            target
+            updatedAt
+          }
+          enterpriseOwner
+          repositoryRoleName
+        }
+        edges {
+          node {
+            bypassMode
+            enterpriseOwner
+            organizationAdmin
+            repositoryRoleName
+          }
+          cursor
+        }
+        pageInfo {
+          hasNextPage
+        }
+        totalCount
+      }
+      databaseId
+      enforcement
+      name
+    }
+  }
+}

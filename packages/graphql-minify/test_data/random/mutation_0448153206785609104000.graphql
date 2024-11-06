@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__deleteRepositoryRuleset__input: DeleteRepositoryRulesetInput!) {
+  deleteRepositoryRuleset(input: $Mutation__deleteRepositoryRuleset__input) {
+    clientMutationId
+  }
+}

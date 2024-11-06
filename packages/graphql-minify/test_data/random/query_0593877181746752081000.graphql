@@ -1,0 +1,81 @@
+query RandomQuery($Query__marketplaceListings__first: Int) {
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    nodes {
+      documentationUrl
+      extendedDescription
+      extendedDescriptionHTML
+      fullDescription
+      fullDescriptionHTML
+      hasVerifiedOwner
+      howItWorks
+      howItWorksHTML
+      installationUrl
+      isDraft
+      isPublic
+      isUnverifiedPending
+      isVerificationPendingFromDraft
+      logoBackgroundColor
+      logoUrl
+      normalizedShortDescription
+      screenshotUrls
+      shortDescription
+      slug
+      termsOfServiceUrl
+      viewerCanAddPlans
+      viewerCanApprove
+      viewerCanDelist
+      viewerCanEditPlans
+      viewerCanReject
+      viewerHasPurchased
+      viewerHasPurchasedForAllOrganizations
+    }
+    edges {
+      node {
+        app {
+          databaseId
+          logoBackgroundColor
+          name
+          slug
+        }
+        configurationResourcePath
+        configurationUrl
+        documentationUrl
+        extendedDescriptionHTML
+        fullDescription
+        hasPublishedFreeTrialPlans
+        hasTermsOfService
+        hasVerifiedOwner
+        howItWorksHTML
+        id
+        installedForViewer
+        isArchived
+        isDraft
+        isPublic
+        isRejected
+        isVerificationPendingFromDraft
+        isVerificationPendingFromUnverified
+        logoUrl
+        name
+        pricingUrl
+        screenshotUrls
+        shortDescription
+        slug
+        statusUrl
+        supportUrl
+        termsOfServiceUrl
+        url
+        viewerCanAddPlans
+        viewerCanDelist
+        viewerCanEdit
+        viewerCanEditCategories
+        viewerCanEditPlans
+        viewerCanReject
+        viewerCanRequestApproval
+        viewerHasPurchased
+        viewerIsListingAdmin
+      }
+      cursor
+    }
+    totalCount
+  }
+}

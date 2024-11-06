@@ -1,0 +1,110 @@
+mutation RandomMutation($Discussion__reactions__first: Int, $Discussion__comments__first: Int, $DiscussionPoll__options__first: Int, $ReactionGroup__reactors__first: Int, $Discussion__userContentEdits__first: Int, $Mutation__unmarkDiscussionCommentAsAnswer__input: UnmarkDiscussionCommentAsAnswerInput!) {
+  unmarkDiscussionCommentAsAnswer(input: $Mutation__unmarkDiscussionCommentAsAnswer__input) {
+    discussion {
+      reactions(first: $Discussion__reactions__first) {
+        totalCount
+      }
+      comments(first: $Discussion__comments__first) {
+        pageInfo {
+          endCursor
+        }
+        edges {
+          node {
+            bodyHTML
+            createdAt
+            createdViaEmail
+            includesCreatedEdit
+            isMinimized
+            publishedAt
+            resourcePath
+            updatedAt
+            viewerCannotUpdateReasons
+            viewerCanUpdate
+            viewerDidAuthor
+            viewerHasUpvoted
+          }
+          cursor
+        }
+      }
+      poll {
+        options(first: $DiscussionPoll__options__first) {
+          totalCount
+        }
+        viewerHasVoted
+      }
+      reactionGroups {
+        reactors(first: $ReactionGroup__reactors__first) {
+          edges {
+            reactedAt
+          }
+        }
+        content
+        createdAt
+      }
+      repository {
+        allowUpdateBranch
+        createdAt
+        deleteBranchOnMerge
+        description
+        descriptionHTML
+        diskUsage
+        hasIssuesEnabled
+        hasVulnerabilityAlertsEnabled
+        hasWikiEnabled
+        homepageUrl
+        isDisabled
+        isMirror
+        isSecurityPolicyEnabled
+        isTemplate
+        lockReason
+        mirrorUrl
+        name
+        projectsResourcePath
+        pushedAt
+        rebaseMergeAllowed
+        securityPolicyUrl
+        squashMergeAllowed
+        squashMergeCommitMessage
+        squashPrTitleUsedAsDefault
+        sshUrl
+        stargazerCount
+        usesCustomOpenGraphImage
+        viewerCanCreateProjects
+        viewerCanSubscribe
+        viewerDefaultCommitEmail
+        viewerDefaultMergeMethod
+        viewerHasStarred
+        viewerPermission
+        visibility
+      }
+      userContentEdits(first: $Discussion__userContentEdits__first) {
+        pageInfo {
+          endCursor
+          hasPreviousPage
+          startCursor
+        }
+        edges {
+          cursor
+        }
+        totalCount
+      }
+      bodyText
+      createdViaEmail
+      databaseId
+      id
+      includesCreatedEdit
+      locked
+      number
+      resourcePath
+      stateReason
+      title
+      updatedAt
+      viewerCanClose
+      viewerCanReact
+      viewerCanUpvote
+      viewerDidAuthor
+      viewerHasUpvoted
+    }
+    clientMutationId
+  }
+}

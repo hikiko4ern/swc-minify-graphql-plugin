@@ -1,0 +1,9 @@
+query RandomQuery($Query__enterprise__slug: String!) {
+  enterprise(slug: $Query__enterprise__slug) {
+    announcementUserDismissible
+    billingEmail
+    id
+    location
+    name
+  }
+}

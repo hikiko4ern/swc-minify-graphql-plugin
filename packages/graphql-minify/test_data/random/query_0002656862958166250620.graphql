@@ -1,0 +1,20 @@
+query RandomQuery {
+  licenses {
+    conditions {
+      description
+      key
+    }
+    limitations {
+      key
+    }
+    body
+    description
+    hidden
+    id
+    implementation
+    name
+    nickname
+    pseudoLicense
+    url
+  }
+}

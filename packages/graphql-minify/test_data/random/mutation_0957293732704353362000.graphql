@@ -1,0 +1,34 @@
+mutation RandomMutation($Mutation__unmarkFileAsViewed__input: UnmarkFileAsViewedInput!) {
+  unmarkFileAsViewed(input: $Mutation__unmarkFileAsViewed__input) {
+    pullRequest {
+      baseRefName
+      bodyText
+      checksUrl
+      closed
+      closedAt
+      createdAt
+      databaseId
+      fullDatabaseId
+      headRefName
+      headRefOid
+      isCrossRepository
+      isReadByViewer
+      locked
+      maintainerCanModify
+      merged
+      publishedAt
+      resourcePath
+      titleHTML
+      viewerCanApplySuggestion
+      viewerCanDeleteHeadRef
+      viewerCanEditFiles
+      viewerCanLabel
+      viewerCanMergeAsAdmin
+      viewerCannotUpdateReasons
+      viewerCanReopen
+      viewerCanSubscribe
+      viewerDidAuthor
+    }
+    clientMutationId
+  }
+}

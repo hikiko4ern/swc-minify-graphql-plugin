@@ -1,0 +1,41 @@
+mutation RandomMutation($Mutation__updateTopics__input: UpdateTopicsInput!) {
+  updateTopics(input: $Mutation__updateTopics__input) {
+    repository {
+      archivedAt
+      databaseId
+      deleteBranchOnMerge
+      descriptionHTML
+      diskUsage
+      forkingAllowed
+      hasProjectsEnabled
+      hasSponsorshipsEnabled
+      hasVulnerabilityAlertsEnabled
+      hasWikiEnabled
+      id
+      isArchived
+      isBlankIssuesEnabled
+      isDisabled
+      isEmpty
+      isMirror
+      isPrivate
+      isSecurityPolicyEnabled
+      mergeCommitAllowed
+      mergeCommitMessage
+      nameWithOwner
+      openGraphImageUrl
+      projectsUrl
+      resourcePath
+      securityPolicyUrl
+      squashMergeAllowed
+      squashMergeCommitMessage
+      sshUrl
+      stargazerCount
+      viewerCanCreateProjects
+      viewerCanSubscribe
+      viewerDefaultCommitEmail
+      viewerHasStarred
+      viewerPossibleCommitEmails
+      webCommitSignoffRequired
+    }
+  }
+}

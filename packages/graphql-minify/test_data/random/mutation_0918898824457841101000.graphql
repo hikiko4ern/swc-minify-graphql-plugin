@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__approveVerifiableDomain__input: ApproveVerifiableDomainInput!) {
+  approveVerifiableDomain(input: $Mutation__approveVerifiableDomain__input) {
+    clientMutationId
+  }
+}

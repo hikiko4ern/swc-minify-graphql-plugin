@@ -1,0 +1,187 @@
+query RandomQuery($Query__marketplaceListing__slug: String!, $Query__codeOfConduct__key: String!, $Query__enterprise__slug: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__marketplaceCategory__slug: String!, $Query__repository__name: String!, $Query__repository__owner: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityAdvisories__first: Int, $Query__sponsorables__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!, $Query__user__login: String!) {
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    app {
+      databaseId
+      description
+      id
+      logoUrl
+      name
+      slug
+      updatedAt
+    }
+    primaryCategory {
+      id
+      name
+      resourcePath
+      url
+    }
+    secondaryCategory {
+      id
+      name
+      resourcePath
+      secondaryListingCount
+      slug
+    }
+    companyUrl
+    configurationUrl
+    extendedDescription
+    extendedDescriptionHTML
+    fullDescription
+    hasPublishedFreeTrialPlans
+    howItWorks
+    id
+    isArchived
+    isDraft
+    isPaid
+    isRejected
+    isUnverified
+    isVerificationPendingFromUnverified
+    name
+    normalizedShortDescription
+    shortDescription
+    statusUrl
+    supportUrl
+    url
+    viewerCanApprove
+    viewerCanDelist
+    viewerCanEditPlans
+    viewerCanReject
+    viewerHasPurchased
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    body
+    resourcePath
+    url
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    ownerInfo {
+      defaultRepositoryPermissionSetting
+      membersCanCreatePrivateRepositoriesSetting
+      membersCanCreateRepositoriesSetting
+      membersCanDeleteIssuesSetting
+      membersCanDeleteRepositoriesSetting
+      membersCanInviteCollaboratorsSetting
+      membersCanViewDependencyInsightsSetting
+      organizationProjectsSetting
+      twoFactorRequiredSetting
+    }
+    announcement
+    announcementCreatedAt
+    announcementExpiresAt
+    avatarUrl
+    billingEmail
+    descriptionHTML
+    id
+    location
+    readmeHTML
+    slug
+    url
+    viewerIsAdmin
+    websiteUrl
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    createdAt
+    email
+    id
+    role
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    createdAt
+    id
+    role
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    createdAt
+    id
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    howItWorks
+    id
+    slug
+    url
+  }
+  rateLimit {
+    limit
+    remaining
+  }
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    allowUpdateBranch
+    archivedAt
+    createdAt
+    forkCount
+    forkingAllowed
+    hasDiscussionsEnabled
+    hasIssuesEnabled
+    hasProjectsEnabled
+    hasSponsorshipsEnabled
+    hasVulnerabilityAlertsEnabled
+    homepageUrl
+    isFork
+    isInOrganization
+    isPrivate
+    isTemplate
+    isUserConfigurationRepository
+    mergeCommitAllowed
+    mergeCommitMessage
+    mirrorUrl
+    name
+    openGraphImageUrl
+    rebaseMergeAllowed
+    sshUrl
+    stargazerCount
+    tempCloneToken
+    viewerCanAdminister
+    viewerCanSubscribe
+    viewerCanUpdateTopics
+    viewerDefaultMergeMethod
+    viewerPermission
+    visibility
+    webCommitSignoffRequired
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    pageInfo {
+      hasPreviousPage
+    }
+    codeCount
+    repositoryCount
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    totalCount
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    edges {
+      cursor
+    }
+    totalCount
+  }
+  user(login: $Query__user__login) {
+    avatarUrl
+    bio
+    bioHTML
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    company
+    companyHTML
+    createdAt
+    id
+    isCampusExpert
+    isDeveloperProgramMember
+    isEmployee
+    isFollowingViewer
+    isHireable
+    isSiteAdmin
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    isViewer
+    name
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    pinnedItemsRemaining
+    pronouns
+    resourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    twitterUsername
+    viewerCanChangePinnedItems
+    viewerCanCreateProjects
+    viewerCanFollow
+    viewerCanSponsor
+  }
+}

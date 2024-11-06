@@ -1,0 +1,41 @@
+mutation RandomMutation($Enterprise__members__first: Int, $Mutation__updateEnterpriseTwoFactorAuthenticationRequiredSetting__input: UpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput!) {
+  updateEnterpriseTwoFactorAuthenticationRequiredSetting(input: $Mutation__updateEnterpriseTwoFactorAuthenticationRequiredSetting__input) {
+    enterprise {
+      ownerInfo {
+        allowPrivateRepositoryForkingSetting
+        ipAllowListForInstalledAppsEnabledSetting
+        isUpdatingDefaultRepositoryPermission
+        isUpdatingTwoFactorRequirement
+        membersCanCreatePrivateRepositoriesSetting
+        membersCanDeleteIssuesSetting
+        membersCanDeleteRepositoriesSetting
+        membersCanMakePurchasesSetting
+        membersCanViewDependencyInsightsSetting
+        notificationDeliveryRestrictionEnabledSetting
+        organizationProjectsSetting
+        repositoryProjectsSetting
+        teamDiscussionsSetting
+      }
+      members(first: $Enterprise__members__first) {
+        edges {
+          cursor
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
+      }
+      announcementCreatedAt
+      announcementExpiresAt
+      announcementUserDismissible
+      billingEmail
+      description
+      id
+      name
+      readme
+      readmeHTML
+      resourcePath
+      slug
+    }
+  }
+}

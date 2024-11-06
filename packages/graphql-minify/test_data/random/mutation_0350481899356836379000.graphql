@@ -1,0 +1,10 @@
+mutation RandomMutation($Mutation__createMigrationSource__input: CreateMigrationSourceInput!) {
+  createMigrationSource(input: $Mutation__createMigrationSource__input) {
+    migrationSource {
+      id
+      type
+      url
+    }
+    clientMutationId
+  }
+}

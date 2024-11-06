@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__addStar__input: AddStarInput!) {
+  addStar(input: $Mutation__addStar__input) {
+    clientMutationId
+  }
+}

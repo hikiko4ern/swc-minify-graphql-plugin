@@ -1,0 +1,53 @@
+mutation RandomMutation($Label__pullRequests__first: Int, $Mutation__createLabel__input: CreateLabelInput!) {
+  createLabel(input: $Mutation__createLabel__input) {
+    label {
+      pullRequests(first: $Label__pullRequests__first) {
+        pageInfo {
+          hasPreviousPage
+          startCursor
+        }
+        nodes {
+          authorAssociation
+          baseRefOid
+          body
+          bodyHTML
+          bodyText
+          canBeRebased
+          changedFiles
+          closed
+          closedAt
+          createdAt
+          databaseId
+          headRefName
+          id
+          includesCreatedEdit
+          isCrossRepository
+          isMergeQueueEnabled
+          isReadByViewer
+          lastEditedAt
+          maintainerCanModify
+          mergeable
+          mergeStateStatus
+          permalink
+          resourcePath
+          revertResourcePath
+          revertUrl
+          totalCommentsCount
+          viewerCanApplySuggestion
+          viewerCanDeleteHeadRef
+          viewerCanEnableAutoMerge
+          viewerCanLabel
+          viewerCannotUpdateReasons
+          viewerMergeBodyText
+          viewerMergeHeadlineText
+          viewerSubscription
+        }
+        totalCount
+      }
+      color
+      isDefault
+      updatedAt
+    }
+    clientMutationId
+  }
+}

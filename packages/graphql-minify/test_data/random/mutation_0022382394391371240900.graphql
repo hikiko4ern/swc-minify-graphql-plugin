@@ -1,0 +1,10 @@
+mutation RandomMutation($Mutation__deleteIpAllowListEntry__input: DeleteIpAllowListEntryInput!) {
+  deleteIpAllowListEntry(input: $Mutation__deleteIpAllowListEntry__input) {
+    ipAllowListEntry {
+      allowListValue
+      createdAt
+      isActive
+    }
+    clientMutationId
+  }
+}

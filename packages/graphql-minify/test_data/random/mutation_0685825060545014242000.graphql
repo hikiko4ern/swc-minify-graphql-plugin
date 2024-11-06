@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__addDiscussionComment__input: AddDiscussionCommentInput!) {
+  addDiscussionComment(input: $Mutation__addDiscussionComment__input) {
+    clientMutationId
+  }
+}

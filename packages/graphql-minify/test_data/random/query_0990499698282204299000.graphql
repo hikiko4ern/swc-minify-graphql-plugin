@@ -1,0 +1,9 @@
+query RandomQuery {
+  relay {
+    marketplaceCategories {
+      description
+      id
+      secondaryListingCount
+    }
+  }
+}

@@ -1,0 +1,13 @@
+query RandomQuery($Query__enterprise__slug: String!) {
+  enterprise(slug: $Query__enterprise__slug) {
+    announcementCreatedAt
+    avatarUrl
+    databaseId
+    descriptionHTML
+    id
+    slug
+    url
+    viewerIsAdmin
+    websiteUrl
+  }
+}

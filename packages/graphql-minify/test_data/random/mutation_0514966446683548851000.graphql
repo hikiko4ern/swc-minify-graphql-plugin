@@ -1,0 +1,31 @@
+mutation RandomMutation($Mutation__createAttributionInvitation__input: CreateAttributionInvitationInput!) {
+  createAttributionInvitation(input: $Mutation__createAttributionInvitation__input) {
+    owner {
+      announcement
+      anyPinnableItems
+      archivedAt
+      description
+      descriptionHTML
+      email
+      estimatedNextSponsorsPayoutInCents
+      ipAllowListEnabledSetting
+      ipAllowListForInstalledAppsEnabledSetting
+      location
+      login
+      membersCanForkPrivateRepositories
+      organizationBillingEmail
+      projectsResourcePath
+      requiresTwoFactorAuthentication
+      resourcePath
+      teamsResourcePath
+      teamsUrl
+      totalSponsorshipAmountAsSponsorInCents
+      twitterUsername
+      updatedAt
+      viewerCanCreateRepositories
+      viewerCanCreateTeams
+      viewerIsAMember
+      webCommitSignoffRequired
+    }
+  }
+}

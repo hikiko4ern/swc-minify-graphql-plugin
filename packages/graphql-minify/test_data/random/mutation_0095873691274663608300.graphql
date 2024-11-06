@@ -1,0 +1,19 @@
+mutation RandomMutation($TeamDiscussionComment__reactions__first: Int, $Mutation__updateTeamDiscussionComment__input: UpdateTeamDiscussionCommentInput!) {
+  updateTeamDiscussionComment(input: $Mutation__updateTeamDiscussionComment__input) {
+    teamDiscussionComment {
+      reactions(first: $TeamDiscussionComment__reactions__first) {
+        totalCount
+        viewerHasReacted
+      }
+      authorAssociation
+      body
+      createdViaEmail
+      includesCreatedEdit
+      number
+      publishedAt
+      url
+      viewerCannotUpdateReasons
+    }
+    clientMutationId
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__convertProjectV2DraftIssueItemToIssue__input: ConvertProjectV2DraftIssueItemToIssueInput!) {
+  convertProjectV2DraftIssueItemToIssue(input: $Mutation__convertProjectV2DraftIssueItemToIssue__input) {
+    clientMutationId
+  }
+}

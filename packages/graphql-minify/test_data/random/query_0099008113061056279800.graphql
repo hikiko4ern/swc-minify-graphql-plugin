@@ -1,0 +1,8 @@
+query RandomQuery($Query__enterpriseMemberInvitationByToken__invitationToken: String!) {
+  relay {
+    enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+      email
+      id
+    }
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__archiveRepository__input: ArchiveRepositoryInput!) {
+  archiveRepository(input: $Mutation__archiveRepository__input) {
+    clientMutationId
+  }
+}

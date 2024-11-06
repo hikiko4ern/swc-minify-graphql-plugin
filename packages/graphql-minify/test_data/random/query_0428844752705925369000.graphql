@@ -1,0 +1,11 @@
+query RandomQuery($Query__securityAdvisories__first: Int) {
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    nodes {
+      description
+      id
+      severity
+      summary
+      withdrawnAt
+    }
+  }
+}

@@ -1,0 +1,28 @@
+mutation RandomMutation($Mutation__deleteLinkedBranch__input: DeleteLinkedBranchInput!) {
+  deleteLinkedBranch(input: $Mutation__deleteLinkedBranch__input) {
+    issue {
+      body
+      bodyHTML
+      bodyResourcePath
+      closed
+      closedAt
+      includesCreatedEdit
+      lastEditedAt
+      number
+      stateReason
+      trackedIssuesCount
+      url
+      viewerCanClose
+      viewerCanDelete
+      viewerCanLabel
+      viewerCannotUpdateReasons
+      viewerCanReact
+      viewerCanReopen
+      viewerCanUpdate
+      viewerDidAuthor
+      viewerSubscription
+      viewerThreadSubscriptionFormAction
+    }
+    clientMutationId
+  }
+}

@@ -18,11 +18,12 @@ lerna-debug.log*
 *.sw?
 
 # caches
-/.bin
+.bin
 /.cspellcache
+*.tsbuildinfo
 
 # packages
 /lib
 target
-/node_modules
+node_modules
 *.tgz

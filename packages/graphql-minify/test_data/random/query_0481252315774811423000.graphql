@@ -1,0 +1,10 @@
+query RandomQuery($Query__securityAdvisory__ghsaId: String!) {
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    id
+    publishedAt
+    severity
+    summary
+    updatedAt
+    withdrawnAt
+  }
+}

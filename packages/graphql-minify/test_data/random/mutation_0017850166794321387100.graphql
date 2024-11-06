@@ -1,0 +1,10 @@
+mutation RandomMutation($Mutation__setEnterpriseIdentityProvider__input: SetEnterpriseIdentityProviderInput!) {
+  setEnterpriseIdentityProvider(input: $Mutation__setEnterpriseIdentityProvider__input) {
+    identityProvider {
+      digestMethod
+      idpCertificate
+      issuer
+    }
+    clientMutationId
+  }
+}

@@ -1,0 +1,33 @@
+query RandomQuery($User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__organizationVerifiedDomainEmails__login: String!, $Query__user__login: String!) {
+  user(login: $Query__user__login) {
+    avatarUrl
+    bio
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    company
+    databaseId
+    estimatedNextSponsorsPayoutInCents
+    hasSponsorsListing
+    isBountyHunter
+    isEmployee
+    isFollowingViewer
+    isGitHubStar
+    isHireable
+    isSponsoringViewer
+    location
+    monthlyEstimatedSponsorsIncomeInCents
+    name
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    projectsUrl
+    pronouns
+    resourcePath
+    updatedAt
+    url
+    userViewType
+    viewerCanChangePinnedItems
+    viewerCanCreateProjects
+    viewerCanFollow
+    viewerCanSponsor
+    viewerIsSponsoring
+    websiteUrl
+  }
+}

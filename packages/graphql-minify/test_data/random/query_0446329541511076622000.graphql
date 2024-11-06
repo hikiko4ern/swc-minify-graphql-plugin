@@ -1,0 +1,32 @@
+query RandomQuery($Query__marketplaceListing__slug: String!) {
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    companyUrl
+    configurationResourcePath
+    extendedDescription
+    fullDescriptionHTML
+    hasPublishedFreeTrialPlans
+    hasVerifiedOwner
+    howItWorksHTML
+    id
+    installedForViewer
+    isPaid
+    isRejected
+    isUnverified
+    isUnverifiedPending
+    isVerificationPendingFromUnverified
+    logoBackgroundColor
+    logoUrl
+    normalizedShortDescription
+    pricingUrl
+    screenshotUrls
+    statusUrl
+    supportUrl
+    termsOfServiceUrl
+    viewerCanApprove
+    viewerCanDelist
+    viewerCanEdit
+    viewerCanEditPlans
+    viewerCanRedraft
+    viewerCanReject
+  }
+}

@@ -1,0 +1,187 @@
+query RandomQuery($Query__repository__name: String!, $Query__repository__owner: String!, $Query__codeOfConduct__key: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__license__key: String!, $Query__marketplaceListing__slug: String!, $Query__marketplaceListings__first: Int, $SecurityAdvisory__cwes__first: Int, $SecurityAdvisory__vulnerabilities__first: Int, $Query__securityAdvisories__first: Int, $Query__securityAdvisory__ghsaId: String!, $Query__securityVulnerabilities__first: Int, $User__isSponsoredBy__accountLogin: String!, $Query__user__login: String!) {
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    archivedAt
+    databaseId
+    description
+    diskUsage
+    forkingAllowed
+    hasProjectsEnabled
+    hasVulnerabilityAlertsEnabled
+    hasWikiEnabled
+    id
+    isDisabled
+    isMirror
+    isPrivate
+    isSecurityPolicyEnabled
+    name
+    nameWithOwner
+    openGraphImageUrl
+    pushedAt
+    resourcePath
+    securityPolicyUrl
+    shortDescriptionHTML
+    squashMergeCommitTitle
+    sshUrl
+    stargazerCount
+    tempCloneToken
+    updatedAt
+    viewerCanCreateProjects
+    viewerHasStarred
+    viewerPermission
+    viewerPossibleCommitEmails
+    viewerSubscription
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    body
+    id
+    name
+    url
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    enterprise {
+      announcement
+      announcementCreatedAt
+      announcementExpiresAt
+      announcementUserDismissible
+      createdAt
+      databaseId
+      id
+      resourcePath
+      slug
+      url
+    }
+  }
+  license(key: $Query__license__key) {
+    body
+    implementation
+    key
+    spdxId
+    url
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    documentationUrl
+    extendedDescriptionHTML
+    fullDescriptionHTML
+    hasPublishedFreeTrialPlans
+    hasTermsOfService
+    hasVerifiedOwner
+    howItWorks
+    howItWorksHTML
+    installedForViewer
+    isArchived
+    isPaid
+    isPublic
+    isUnverified
+    isVerificationPendingFromUnverified
+    isVerified
+    logoBackgroundColor
+    normalizedShortDescription
+    privacyPolicyUrl
+    resourcePath
+    screenshotUrls
+    shortDescription
+    statusUrl
+    supportUrl
+    viewerCanReject
+    viewerCanRequestApproval
+    viewerIsListingAdmin
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+  }
+  meta {
+    githubEnterpriseImporterIpAddresses
+    gitIpAddresses
+    hookIpAddresses
+    importerIpAddresses
+    pagesIpAddresses
+  }
+  rateLimit {
+    cost
+    limit
+    nodeCount
+    remaining
+    resetAt
+    used
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    pageInfo {
+      hasNextPage
+      startCursor
+    }
+    edges {
+      node {
+        identifiers {
+          type
+        }
+        cvss {
+          score
+        }
+        cwes(first: $SecurityAdvisory__cwes__first) {
+          nodes {
+            cweId
+          }
+        }
+        references {
+          url
+        }
+        vulnerabilities(first: $SecurityAdvisory__vulnerabilities__first) {
+          pageInfo {
+            hasPreviousPage
+            startCursor
+          }
+          totalCount
+        }
+        classification
+        ghsaId
+        id
+        notificationsPermalink
+        origin
+        publishedAt
+        severity
+        withdrawnAt
+      }
+      cursor
+    }
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    identifiers {
+      type
+    }
+    epss {
+      percentile
+    }
+    classification
+    id
+    permalink
+    publishedAt
+    summary
+    withdrawnAt
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    totalCount
+  }
+  user(login: $Query__user__login) {
+    email
+    id
+    isBountyHunter
+    isCampusExpert
+    isFollowingViewer
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    location
+    monthlyEstimatedSponsorsIncomeInCents
+    name
+    projectsResourcePath
+    projectsUrl
+    resourcePath
+    userViewType
+    viewerCanCreateProjects
+    viewerIsSponsoring
+  }
+  id
+}

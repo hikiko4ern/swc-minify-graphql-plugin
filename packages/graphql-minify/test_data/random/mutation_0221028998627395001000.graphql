@@ -1,0 +1,14 @@
+mutation RandomMutation($Mutation__updateLabel__input: UpdateLabelInput!) {
+  updateLabel(input: $Mutation__updateLabel__input) {
+    label {
+      color
+      description
+      id
+      isDefault
+      name
+      resourcePath
+      updatedAt
+      url
+    }
+  }
+}

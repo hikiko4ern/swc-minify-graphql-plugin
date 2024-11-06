@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__revokeEnterpriseOrganizationsMigratorRole__input: RevokeEnterpriseOrganizationsMigratorRoleInput!) {
+  revokeEnterpriseOrganizationsMigratorRole(input: $Mutation__revokeEnterpriseOrganizationsMigratorRole__input) {
+    clientMutationId
+  }
+}

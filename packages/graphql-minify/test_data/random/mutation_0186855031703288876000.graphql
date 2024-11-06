@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__addUpvote__input: AddUpvoteInput!) {
+  addUpvote(input: $Mutation__addUpvote__input) {
+    clientMutationId
+  }
+}

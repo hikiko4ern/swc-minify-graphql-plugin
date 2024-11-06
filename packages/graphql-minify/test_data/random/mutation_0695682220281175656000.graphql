@@ -1,0 +1,16 @@
+mutation RandomMutation($Mutation__deleteProjectColumn__input: DeleteProjectColumnInput!) {
+  deleteProjectColumn(input: $Mutation__deleteProjectColumn__input) {
+    project {
+      body
+      closed
+      closedAt
+      createdAt
+      databaseId
+      number
+      resourcePath
+      updatedAt
+      viewerCanUpdate
+    }
+    clientMutationId
+  }
+}

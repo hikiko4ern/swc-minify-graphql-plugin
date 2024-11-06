@@ -1,0 +1,146 @@
+query RandomQuery($Query__marketplaceListings__first: Int, $Query__codeOfConduct__key: String!, $Query__enterprise__slug: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__license__key: String!, $Query__marketplaceCategory__slug: String!, $Query__repository__name: String!, $Query__repository__owner: String!, $Query__securityAdvisory__ghsaId: String!, $Query__securityVulnerabilities__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__isSponsoredBy__accountLogin: String!) {
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    nodes {
+      configurationResourcePath
+      fullDescription
+      fullDescriptionHTML
+      isDraft
+      isPaid
+      isPublic
+      isUnverifiedPending
+      isVerified
+      logoUrl
+      normalizedShortDescription
+      privacyPolicyUrl
+      screenshotUrls
+      shortDescription
+      supportUrl
+      termsOfServiceUrl
+      url
+      viewerCanAddPlans
+      viewerCanEditPlans
+      viewerCanRedraft
+      viewerHasPurchased
+      viewerHasPurchasedForAllOrganizations
+      viewerIsListingAdmin
+    }
+    pageInfo {
+      endCursor
+    }
+    totalCount
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    body
+    key
+    name
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcementExpiresAt
+    avatarUrl
+    databaseId
+    description
+    resourcePath
+    url
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    createdAt
+    email
+    role
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    id
+  }
+  license(key: $Query__license__key) {
+    body
+    hidden
+    url
+  }
+  licenses {
+    hidden
+    implementation
+    name
+    nickname
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    slug
+  }
+  rateLimit {
+    cost
+    limit
+    nodeCount
+    used
+  }
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    autoMergeAllowed
+    deleteBranchOnMerge
+    description
+    forkCount
+    hasDiscussionsEnabled
+    hasSponsorshipsEnabled
+    hasWikiEnabled
+    id
+    isBlankIssuesEnabled
+    isDisabled
+    isFork
+    isInOrganization
+    isPrivate
+    mergeCommitAllowed
+    name
+    projectsUrl
+    pushedAt
+    rebaseMergeAllowed
+    resourcePath
+    squashMergeAllowed
+    stargazerCount
+    tempCloneToken
+    updatedAt
+    viewerCanSubscribe
+    viewerCanUpdateTopics
+    viewerDefaultMergeMethod
+    viewerHasStarred
+    viewerPossibleCommitEmails
+    viewerSubscription
+    visibility
+    webCommitSignoffRequired
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    description
+    notificationsPermalink
+    origin
+    permalink
+    severity
+    summary
+    withdrawnAt
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    nodes {
+      vulnerableVersionRange
+    }
+    pageInfo {
+      endCursor
+      hasPreviousPage
+    }
+    totalCount
+  }
+  viewer {
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    company
+    companyHTML
+    databaseId
+    email
+    isCampusExpert
+    isFollowingViewer
+    isHireable
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    location
+    login
+    projectsResourcePath
+    pronouns
+    totalSponsorshipAmountAsSponsorInCents
+    userViewType
+    viewerCanChangePinnedItems
+    viewerIsFollowing
+  }
+  id
+}

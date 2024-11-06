@@ -1,0 +1,38 @@
+mutation RandomMutation($Mutation__cloneTemplateRepository__input: CloneTemplateRepositoryInput!) {
+  cloneTemplateRepository(input: $Mutation__cloneTemplateRepository__input) {
+    repository {
+      createdAt
+      databaseId
+      deleteBranchOnMerge
+      description
+      diskUsage
+      hasDiscussionsEnabled
+      hasIssuesEnabled
+      hasSponsorshipsEnabled
+      hasWikiEnabled
+      id
+      isArchived
+      isDisabled
+      isEmpty
+      isFork
+      isLocked
+      isPrivate
+      isTemplate
+      mirrorUrl
+      name
+      nameWithOwner
+      projectsResourcePath
+      pushedAt
+      resourcePath
+      securityPolicyUrl
+      squashMergeAllowed
+      squashPrTitleUsedAsDefault
+      tempCloneToken
+      viewerCanAdminister
+      viewerDefaultCommitEmail
+      viewerPossibleCommitEmails
+      viewerSubscription
+      visibility
+    }
+  }
+}

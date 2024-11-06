@@ -1,0 +1,6 @@
+mutation RandomMutation($Mutation__addEnterpriseSupportEntitlement__input: AddEnterpriseSupportEntitlementInput!) {
+  addEnterpriseSupportEntitlement(input: $Mutation__addEnterpriseSupportEntitlement__input) {
+    clientMutationId
+    message
+  }
+}

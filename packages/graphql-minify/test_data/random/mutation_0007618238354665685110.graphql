@@ -1,0 +1,23 @@
+mutation RandomMutation($Mutation__unlinkProjectV2FromTeam__input: UnlinkProjectV2FromTeamInput!) {
+  unlinkProjectV2FromTeam(input: $Mutation__unlinkProjectV2FromTeam__input) {
+    team {
+      combinedSlug
+      createdAt
+      databaseId
+      discussionsResourcePath
+      editTeamResourcePath
+      editTeamUrl
+      id
+      membersUrl
+      name
+      newTeamResourcePath
+      newTeamUrl
+      privacy
+      reviewRequestDelegationEnabled
+      reviewRequestDelegationNotifyTeam
+      url
+      viewerSubscription
+    }
+    clientMutationId
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__deleteProjectV2Field__input: DeleteProjectV2FieldInput!) {
+  deleteProjectV2Field(input: $Mutation__deleteProjectV2Field__input) {
+    clientMutationId
+  }
+}

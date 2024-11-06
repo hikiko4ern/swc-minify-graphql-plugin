@@ -1,0 +1,134 @@
+mutation RandomMutation($SponsorsTierAdminInfo__sponsorships__first: Int, $SponsorsListing__tiers__first: Int, $Mutation__publishSponsorsTier__input: PublishSponsorsTierInput!) {
+  publishSponsorsTier(input: $Mutation__publishSponsorsTier__input) {
+    sponsorsTier {
+      closestLesserValueTier {
+        sponsorsListing {
+          featuredItems {
+            description
+          }
+          tiers(first: $SponsorsListing__tiers__first) {
+            nodes {
+              sponsorsListing {
+                contactEmailAddress
+                fullDescriptionHTML
+                id
+                nextPayoutDate
+                residenceCountryOrRegion
+                resourcePath
+              }
+              adminInfo {
+                sponsorships(first: $SponsorsTierAdminInfo__sponsorships__first) {
+                  pageInfo {
+                    endCursor
+                    hasPreviousPage
+                    startCursor
+                  }
+                  edges {
+                    cursor
+                  }
+                  nodes {
+                    isSponsorOptedIntoEmail
+                    paymentSource
+                    privacyLevel
+                    tierSelectedAt
+                  }
+                  totalRecurringMonthlyPriceInCents
+                  totalRecurringMonthlyPriceInDollars
+                }
+                isRetired
+              }
+              closestLesserValueTier {
+                closestLesserValueTier {
+                  createdAt
+                  id
+                  isOneTime
+                  monthlyPriceInDollars
+                  name
+                }
+                adminInfo {
+                  sponsorships(first: $SponsorsTierAdminInfo__sponsorships__first) {
+                    totalRecurringMonthlyPriceInDollars
+                  }
+                  isRetired
+                }
+                sponsorsListing {
+                  activeStripeConnectAccount {
+                    accountId
+                    countryOrRegion
+                    stripeDashboardUrl
+                  }
+                  fiscalHost {
+                    announcement
+                    announcementCreatedAt
+                    announcementExpiresAt
+                    announcementUserDismissible
+                    archivedAt
+                    description
+                    email
+                    estimatedNextSponsorsPayoutInCents
+                    ipAllowListEnabledSetting
+                    ipAllowListForInstalledAppsEnabledSetting
+                    isVerified
+                    membersCanForkPrivateRepositories
+                    monthlyEstimatedSponsorsIncomeInCents
+                    name
+                    newTeamResourcePath
+                    organizationBillingEmail
+                    pinnedItemsRemaining
+                    resourcePath
+                    twitterUsername
+                    updatedAt
+                    url
+                    viewerCanAdminister
+                    viewerCanCreateRepositories
+                    viewerCanCreateTeams
+                    viewerCanSponsor
+                    viewerIsAMember
+                    viewerIsFollowing
+                    viewerIsSponsoring
+                  }
+                  tiers(first: $SponsorsListing__tiers__first) {
+                    totalCount
+                  }
+                  dashboardResourcePath
+                  fullDescription
+                  fullDescriptionHTML
+                  residenceCountryOrRegion
+                  shortDescription
+                }
+                descriptionHTML
+                monthlyPriceInCents
+                monthlyPriceInDollars
+                name
+              }
+              createdAt
+              description
+              id
+              name
+              updatedAt
+            }
+            pageInfo {
+              hasNextPage
+              hasPreviousPage
+            }
+          }
+          billingCountryOrRegion
+          contactEmailAddress
+          dashboardResourcePath
+          fullDescription
+          fullDescriptionHTML
+          resourcePath
+          shortDescription
+        }
+        description
+        descriptionHTML
+        id
+        isOneTime
+        monthlyPriceInDollars
+        updatedAt
+      }
+      createdAt
+    }
+    clientMutationId
+  }
+}

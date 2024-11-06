@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__unlockLockable__input: UnlockLockableInput!) {
+  unlockLockable(input: $Mutation__unlockLockable__input) {
+    clientMutationId
+  }
+}

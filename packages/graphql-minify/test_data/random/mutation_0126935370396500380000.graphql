@@ -1,0 +1,19 @@
+mutation RandomMutation($Mutation__updateEnterpriseMembersCanMakePurchasesSetting__input: UpdateEnterpriseMembersCanMakePurchasesSettingInput!) {
+  updateEnterpriseMembersCanMakePurchasesSetting(input: $Mutation__updateEnterpriseMembersCanMakePurchasesSetting__input) {
+    enterprise {
+      announcement
+      announcementCreatedAt
+      announcementExpiresAt
+      avatarUrl
+      billingEmail
+      databaseId
+      description
+      location
+      name
+      readmeHTML
+      slug
+      url
+      viewerIsAdmin
+    }
+  }
+}

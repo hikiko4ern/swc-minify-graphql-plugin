@@ -1,0 +1,63 @@
+query RandomQuery($Query__securityVulnerabilities__first: Int, $Query__enterprise__slug: String!, $Enterprise__members__first: Int, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $Query__marketplaceCategory__slug: String!, $Query__securityAdvisory__ghsaId: String!) {
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    totalCount
+  }
+  codesOfConduct {
+    body
+    id
+    key
+    resourcePath
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcementUserDismissible
+    databaseId
+    descriptionHTML
+    id
+    name
+    readme
+    resourcePath
+    url
+    viewerIsAdmin
+    websiteUrl
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    enterprise {
+      members(first: $Enterprise__members__first) {
+        totalCount
+      }
+      avatarUrl
+      createdAt
+      description
+      descriptionHTML
+      location
+      name
+      readme
+      readmeHTML
+      slug
+      websiteUrl
+    }
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    id
+    role
+  }
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    createdAt
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    primaryListingCount
+    resourcePath
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    classification
+    databaseId
+    description
+    origin
+    permalink
+    publishedAt
+    severity
+    summary
+    withdrawnAt
+  }
+}

@@ -1,0 +1,33 @@
+mutation RandomMutation($Mutation__closeIssue__input: CloseIssueInput!) {
+  closeIssue(input: $Mutation__closeIssue__input) {
+    issue {
+      activeLockReason
+      authorAssociation
+      bodyResourcePath
+      bodyText
+      closed
+      closedAt
+      createdAt
+      createdViaEmail
+      fullDatabaseId
+      id
+      includesCreatedEdit
+      isPinned
+      isReadByViewer
+      locked
+      resourcePath
+      stateReason
+      titleHTML
+      url
+      viewerCanClose
+      viewerCanDelete
+      viewerCannotUpdateReasons
+      viewerCanReact
+      viewerCanSubscribe
+      viewerDidAuthor
+      viewerSubscription
+      viewerThreadSubscriptionFormAction
+    }
+    clientMutationId
+  }
+}

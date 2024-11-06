@@ -1,0 +1,37 @@
+query RandomQuery($Query__marketplaceListing__slug: String!) {
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    secondaryCategory {
+      description
+      howItWorks
+      name
+      primaryListingCount
+      resourcePath
+    }
+    configurationUrl
+    documentationUrl
+    extendedDescription
+    extendedDescriptionHTML
+    fullDescription
+    fullDescriptionHTML
+    hasTermsOfService
+    howItWorksHTML
+    id
+    installationUrl
+    isArchived
+    isPaid
+    isPublic
+    isUnverifiedPending
+    isVerified
+    logoBackgroundColor
+    normalizedShortDescription
+    screenshotUrls
+    shortDescription
+    statusUrl
+    supportUrl
+    url
+    viewerCanDelist
+    viewerCanEditPlans
+    viewerCanRedraft
+    viewerHasPurchased
+  }
+}

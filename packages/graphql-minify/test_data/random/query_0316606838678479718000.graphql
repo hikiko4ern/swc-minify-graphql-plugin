@@ -1,0 +1,8 @@
+query RandomQuery {
+  rateLimit {
+    limit
+    nodeCount
+    remaining
+    used
+  }
+}

@@ -1,0 +1,16 @@
+mutation RandomMutation($Mutation__unlinkRepositoryFromProject__input: UnlinkRepositoryFromProjectInput!) {
+  unlinkRepositoryFromProject(input: $Mutation__unlinkRepositoryFromProject__input) {
+    project {
+      body
+      closed
+      createdAt
+      databaseId
+      id
+      name
+      resourcePath
+      url
+      viewerCanClose
+      viewerCanReopen
+    }
+  }
+}

@@ -1,0 +1,6 @@
+mutation RandomMutation($Mutation__updateEnterpriseAllowPrivateRepositoryForkingSetting__input: UpdateEnterpriseAllowPrivateRepositoryForkingSettingInput!) {
+  updateEnterpriseAllowPrivateRepositoryForkingSetting(input: $Mutation__updateEnterpriseAllowPrivateRepositoryForkingSetting__input) {
+    clientMutationId
+    message
+  }
+}

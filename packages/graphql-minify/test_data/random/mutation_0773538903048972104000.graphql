@@ -1,0 +1,29 @@
+mutation RandomMutation($User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $Mutation__setUserInteractionLimit__input: SetUserInteractionLimitInput!) {
+  setUserInteractionLimit(input: $Mutation__setUserInteractionLimit__input) {
+    user {
+      bio
+      bioHTML
+      canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+      companyHTML
+      databaseId
+      email
+      id
+      isBountyHunter
+      isCampusExpert
+      isDeveloperProgramMember
+      isEmployee
+      isFollowingViewer
+      isHireable
+      isSponsoringViewer
+      isViewer
+      location
+      monthlyEstimatedSponsorsIncomeInCents
+      name
+      projectsUrl
+      twitterUsername
+      url
+      userViewType
+    }
+    clientMutationId
+  }
+}

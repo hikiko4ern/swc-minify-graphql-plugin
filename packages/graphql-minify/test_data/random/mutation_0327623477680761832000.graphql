@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__createProjectV2StatusUpdate__input: CreateProjectV2StatusUpdateInput!) {
+  createProjectV2StatusUpdate(input: $Mutation__createProjectV2StatusUpdate__input) {
+    clientMutationId
+  }
+}

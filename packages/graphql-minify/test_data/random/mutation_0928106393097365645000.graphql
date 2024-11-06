@@ -1,0 +1,24 @@
+mutation RandomMutation($Mutation__markDiscussionCommentAsAnswer__input: MarkDiscussionCommentAsAnswerInput!) {
+  markDiscussionCommentAsAnswer(input: $Mutation__markDiscussionCommentAsAnswer__input) {
+    discussion {
+      bodyHTML
+      closed
+      createdViaEmail
+      id
+      includesCreatedEdit
+      lastEditedAt
+      number
+      resourcePath
+      stateReason
+      title
+      url
+      viewerCanLabel
+      viewerCanReact
+      viewerCanSubscribe
+      viewerCanUpdate
+      viewerCanUpvote
+      viewerDidAuthor
+      viewerSubscription
+    }
+  }
+}

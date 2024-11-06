@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__deleteProjectCard__input: DeleteProjectCardInput!) {
+  deleteProjectCard(input: $Mutation__deleteProjectCard__input) {
+    clientMutationId
+  }
+}

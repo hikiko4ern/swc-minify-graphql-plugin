@@ -1,0 +1,13 @@
+mutation RandomMutation($Mutation__unresolveReviewThread__input: UnresolveReviewThreadInput!) {
+  unresolveReviewThread(input: $Mutation__unresolveReviewThread__input) {
+    thread {
+      isOutdated
+      originalLine
+      originalStartLine
+      path
+      viewerCanReply
+      viewerCanUnresolve
+    }
+    clientMutationId
+  }
+}

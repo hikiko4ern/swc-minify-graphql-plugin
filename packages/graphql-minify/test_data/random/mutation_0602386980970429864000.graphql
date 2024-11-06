@@ -1,0 +1,8 @@
+mutation RandomMutation($Mutation__inviteEnterpriseAdmin__input: InviteEnterpriseAdminInput!) {
+  inviteEnterpriseAdmin(input: $Mutation__inviteEnterpriseAdmin__input) {
+    invitation {
+      email
+      id
+    }
+  }
+}

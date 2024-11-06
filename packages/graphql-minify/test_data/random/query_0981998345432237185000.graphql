@@ -1,0 +1,115 @@
+query RandomQuery($Query__enterprise__slug: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $Query__license__key: String!, $Query__marketplaceCategory__slug: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityVulnerabilities__first: Int, $Query__sponsorables__first: Int, $User__isSponsoredBy__accountLogin: String!, $Query__user__login: String!) {
+  marketplaceCategories {
+    description
+    howItWorks
+    id
+    primaryListingCount
+    resourcePath
+    secondaryListingCount
+    slug
+    url
+  }
+  codesOfConduct {
+    body
+    name
+    url
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcementCreatedAt
+    createdAt
+    databaseId
+    description
+    descriptionHTML
+    id
+    location
+    readmeHTML
+    resourcePath
+    slug
+    websiteUrl
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    email
+    role
+  }
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    email
+    id
+  }
+  license(key: $Query__license__key) {
+    limitations {
+      description
+      label
+    }
+    permissions {
+      description
+      label
+    }
+    body
+    description
+    featured
+    id
+    implementation
+    key
+    name
+    url
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    name
+    primaryListingCount
+    url
+  }
+  meta {
+    gitIpAddresses
+    pagesIpAddresses
+  }
+  rateLimit {
+    limit
+    nodeCount
+    remaining
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    codeCount
+    issueCount
+    wikiCount
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    totalCount
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    pageInfo {
+      startCursor
+    }
+    edges {
+      cursor
+    }
+  }
+  user(login: $Query__user__login) {
+    anyPinnableItems
+    bioHTML
+    companyHTML
+    databaseId
+    email
+    estimatedNextSponsorsPayoutInCents
+    id
+    isBountyHunter
+    isCampusExpert
+    isFollowingViewer
+    isGitHubStar
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    isViewer
+    location
+    monthlyEstimatedSponsorsIncomeInCents
+    pinnedItemsRemaining
+    projectsResourcePath
+    resourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    twitterUsername
+    userViewType
+    viewerCanCreateProjects
+    viewerCanSponsor
+    viewerIsSponsoring
+    websiteUrl
+  }
+}

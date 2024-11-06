@@ -1,0 +1,32 @@
+query RandomQuery($Enterprise__members__first: Int, $Query__enterprise__slug: String!) {
+  enterprise(slug: $Query__enterprise__slug) {
+    members(first: $Enterprise__members__first) {
+      edges {
+        cursor
+      }
+      pageInfo {
+        startCursor
+      }
+      totalCount
+    }
+    billingInfo {
+      assetPacks
+      bandwidthUsage
+      storageQuota
+      storageUsage
+      totalAvailableLicenses
+    }
+    announcement
+    announcementCreatedAt
+    announcementExpiresAt
+    announcementUserDismissible
+    createdAt
+    databaseId
+    id
+    location
+    readmeHTML
+    url
+    viewerIsAdmin
+    websiteUrl
+  }
+}

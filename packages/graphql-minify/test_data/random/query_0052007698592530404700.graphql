@@ -1,0 +1,28 @@
+query RandomQuery($Enterprise__members__first: Int, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!) {
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    enterprise {
+      billingInfo {
+        bandwidthQuota
+        bandwidthUsage
+        storageUsagePercentage
+        totalAvailableLicenses
+        totalLicenses
+      }
+      members(first: $Enterprise__members__first) {
+        totalCount
+      }
+      announcement
+      announcementCreatedAt
+      announcementExpiresAt
+      announcementUserDismissible
+      billingEmail
+      createdAt
+      descriptionHTML
+      location
+      resourcePath
+      url
+      viewerIsAdmin
+    }
+    id
+  }
+}

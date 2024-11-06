@@ -1,0 +1,11 @@
+query RandomQuery($Topic__relatedTopics__first: Int, $Query__topic__name: String!) {
+  topic(name: $Query__topic__name) {
+    relatedTopics(first: $Topic__relatedTopics__first) {
+      id
+    }
+    id
+    name
+    stargazerCount
+    viewerHasStarred
+  }
+}

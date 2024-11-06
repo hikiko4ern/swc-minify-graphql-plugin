@@ -1,0 +1,24 @@
+mutation RandomMutation($DeploymentProtectionRule__reviewers__first: Int, $Environment__protectionRules__first: Int, $Mutation__pinEnvironment__input: PinEnvironmentInput!) {
+  pinEnvironment(input: $Mutation__pinEnvironment__input) {
+    environment {
+      protectionRules(first: $Environment__protectionRules__first) {
+        nodes {
+          reviewers(first: $DeploymentProtectionRule__reviewers__first) {
+            edges {
+              cursor
+            }
+            totalCount
+          }
+          databaseId
+          type
+        }
+      }
+      databaseId
+      name
+    }
+    pinnedEnvironment {
+      id
+      position
+    }
+  }
+}

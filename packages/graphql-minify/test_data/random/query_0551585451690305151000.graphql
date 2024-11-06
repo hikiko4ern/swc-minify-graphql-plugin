@@ -1,0 +1,9 @@
+query RandomQuery($Query__securityVulnerabilities__first: Int) {
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    pageInfo {
+      hasPreviousPage
+      startCursor
+    }
+    totalCount
+  }
+}

@@ -1,0 +1,62 @@
+mutation RandomMutation($ProjectV2__teams__first: Int, $ProjectV2__views__first: Int, $ProjectV2__workflow__number: Int!, $ProjectV2__workflows__first: Int, $Mutation__markProjectV2AsTemplate__input: MarkProjectV2AsTemplateInput!) {
+  markProjectV2AsTemplate(input: $Mutation__markProjectV2AsTemplate__input) {
+    projectV2 {
+      teams(first: $ProjectV2__teams__first) {
+        edges {
+          node {
+            avatarUrl
+            combinedSlug
+            description
+            discussionsUrl
+            editTeamResourcePath
+            id
+            membersResourcePath
+            name
+            newTeamResourcePath
+            newTeamUrl
+            notificationSetting
+            repositoriesResourcePath
+            repositoriesUrl
+            resourcePath
+            reviewRequestDelegationEnabled
+            reviewRequestDelegationMemberCount
+            updatedAt
+            url
+            viewerCanAdminister
+            viewerCanSubscribe
+            viewerSubscription
+          }
+        }
+        pageInfo {
+          hasNextPage
+        }
+        totalCount
+      }
+      views(first: $ProjectV2__views__first) {
+        totalCount
+      }
+      workflow(number: $ProjectV2__workflow__number) {
+        createdAt
+        databaseId
+        fullDatabaseId
+        name
+        number
+        updatedAt
+      }
+      workflows(first: $ProjectV2__workflows__first) {
+        totalCount
+      }
+      closed
+      createdAt
+      fullDatabaseId
+      id
+      readme
+      resourcePath
+      shortDescription
+      template
+      updatedAt
+      viewerCanUpdate
+    }
+    clientMutationId
+  }
+}

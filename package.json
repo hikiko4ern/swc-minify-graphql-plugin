@@ -18,15 +18,19 @@
 		"version:gen-changelog": "git-cliff --bump -o",
 		"version:cargo-version": "./utils/cargo_set_version.sh",
 		"version:add-files": "git add Cargo.toml Cargo.lock CHANGELOG.md",
-		"_watch": "cargo bin cargo-watch -w src -w packages/graphql-minify -w Cargo.lock -w Cargo.toml -w rust-toolchain.toml"
+		"_watch": "cargo bin cargo-watch -w src -w packages/graphql-minify -w packages/graphql_semantic_compare -w Cargo.lock -w Cargo.toml -w rust-toolchain.toml",
+		"fuzz": "pnpm --filter=\"swc-plugin-minify-graphql-fuzz\""
 	},
 	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@types/node": "^22.9.0",
 		"binaryen": "^119.0.0",
 		"cspell": "^8.15.4",
 		"dprint": "^0.47.4",
 		"git-cliff": "^2.6.1",
 		"lefthook": "^1.7.22",
-		"npm-run-all2": "^7.0.0"
+		"npm-run-all2": "^7.0.0",
+		"typescript": "^5.6.3"
 	},
 	"files": [
 		"README.md",

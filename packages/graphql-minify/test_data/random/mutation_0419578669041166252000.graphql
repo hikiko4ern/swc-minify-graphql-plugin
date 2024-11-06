@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__cancelEnterpriseMemberInvitation__input: CancelEnterpriseMemberInvitationInput!) {
+  cancelEnterpriseMemberInvitation(input: $Mutation__cancelEnterpriseMemberInvitation__input) {
+    message
+  }
+}

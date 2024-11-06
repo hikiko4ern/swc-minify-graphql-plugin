@@ -1,0 +1,12 @@
+mutation RandomMutation($Mutation__retireSponsorsTier__input: RetireSponsorsTierInput!) {
+  retireSponsorsTier(input: $Mutation__retireSponsorsTier__input) {
+    sponsorsTier {
+      createdAt
+      description
+      descriptionHTML
+      monthlyPriceInCents
+      monthlyPriceInDollars
+    }
+    clientMutationId
+  }
+}

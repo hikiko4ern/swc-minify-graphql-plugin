@@ -1,0 +1,20 @@
+mutation RandomMutation($Mutation__deleteDiscussionComment__input: DeleteDiscussionCommentInput!) {
+  deleteDiscussionComment(input: $Mutation__deleteDiscussionComment__input) {
+    comment {
+      bodyHTML
+      bodyText
+      createdViaEmail
+      includesCreatedEdit
+      isMinimized
+      lastEditedAt
+      updatedAt
+      upvoteCount
+      viewerCanDelete
+      viewerCanMarkAsAnswer
+      viewerCannotUpdateReasons
+      viewerCanUnmarkAsAnswer
+      viewerCanUpvote
+    }
+    clientMutationId
+  }
+}

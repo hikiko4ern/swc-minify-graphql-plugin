@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__approveDeployments__input: ApproveDeploymentsInput!) {
+  approveDeployments(input: $Mutation__approveDeployments__input) {
+    clientMutationId
+  }
+}

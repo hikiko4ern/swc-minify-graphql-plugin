@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__removeOutsideCollaborator__input: RemoveOutsideCollaboratorInput!) {
+  removeOutsideCollaborator(input: $Mutation__removeOutsideCollaborator__input) {
+    clientMutationId
+  }
+}

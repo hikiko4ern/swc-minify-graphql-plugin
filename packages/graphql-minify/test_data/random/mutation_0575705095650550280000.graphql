@@ -1,0 +1,45 @@
+mutation RandomMutation($DiscussionComment__replies__first: Int, $ReactionGroup__users__first: Int, $DiscussionComment__userContentEdits__first: Int, $Mutation__updateDiscussionComment__input: UpdateDiscussionCommentInput!) {
+  updateDiscussionComment(input: $Mutation__updateDiscussionComment__input) {
+    comment {
+      replies(first: $DiscussionComment__replies__first) {
+        totalCount
+      }
+      reactionGroups {
+        users(first: $ReactionGroup__users__first) {
+          edges {
+            cursor
+            reactedAt
+          }
+          pageInfo {
+            endCursor
+            hasNextPage
+            hasPreviousPage
+          }
+        }
+        content
+        createdAt
+        viewerHasReacted
+      }
+      userContentEdits(first: $DiscussionComment__userContentEdits__first) {
+        nodes {
+          deletedAt
+          id
+          updatedAt
+        }
+      }
+      authorAssociation
+      bodyHTML
+      createdAt
+      deletedAt
+      includesCreatedEdit
+      isAnswer
+      lastEditedAt
+      resourcePath
+      url
+      viewerCanDelete
+      viewerCanReact
+      viewerCanUpdate
+      viewerHasUpvoted
+    }
+  }
+}

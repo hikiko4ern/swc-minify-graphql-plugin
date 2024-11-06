@@ -1,0 +1,28 @@
+query RandomQuery($Query__organization__login: String!) {
+  organization(login: $Query__organization__login) {
+    announcement
+    announcementExpiresAt
+    archivedAt
+    avatarUrl
+    createdAt
+    databaseId
+    description
+    descriptionHTML
+    email
+    id
+    ipAllowListForInstalledAppsEnabledSetting
+    location
+    login
+    name
+    newTeamResourcePath
+    pinnedItemsRemaining
+    projectsResourcePath
+    projectsUrl
+    requiresTwoFactorAuthentication
+    resourcePath
+    updatedAt
+    viewerCanCreateRepositories
+    viewerCanCreateTeams
+    viewerIsAMember
+  }
+}

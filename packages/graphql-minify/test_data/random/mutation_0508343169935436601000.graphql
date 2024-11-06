@@ -1,0 +1,23 @@
+mutation RandomMutation($Mutation__unmarkDiscussionCommentAsAnswer__input: UnmarkDiscussionCommentAsAnswerInput!) {
+  unmarkDiscussionCommentAsAnswer(input: $Mutation__unmarkDiscussionCommentAsAnswer__input) {
+    discussion {
+      activeLockReason
+      answerChosenAt
+      authorAssociation
+      bodyHTML
+      createdViaEmail
+      id
+      includesCreatedEdit
+      locked
+      number
+      publishedAt
+      resourcePath
+      stateReason
+      title
+      upvoteCount
+      url
+      viewerCanUpvote
+    }
+    clientMutationId
+  }
+}

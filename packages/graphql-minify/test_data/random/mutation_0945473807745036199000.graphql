@@ -1,0 +1,10 @@
+mutation RandomMutation($Mutation__clearProjectV2ItemFieldValue__input: ClearProjectV2ItemFieldValueInput!) {
+  clearProjectV2ItemFieldValue(input: $Mutation__clearProjectV2ItemFieldValue__input) {
+    projectV2Item {
+      createdAt
+      databaseId
+      id
+    }
+    clientMutationId
+  }
+}

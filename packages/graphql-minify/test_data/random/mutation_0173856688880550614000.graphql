@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__removeEnterpriseSupportEntitlement__input: RemoveEnterpriseSupportEntitlementInput!) {
+  removeEnterpriseSupportEntitlement(input: $Mutation__removeEnterpriseSupportEntitlement__input) {
+    clientMutationId
+  }
+}

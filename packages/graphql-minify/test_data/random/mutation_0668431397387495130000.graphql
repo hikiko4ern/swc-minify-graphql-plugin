@@ -1,0 +1,46 @@
+mutation RandomMutation($Mutation__disablePullRequestAutoMerge__input: DisablePullRequestAutoMergeInput!) {
+  disablePullRequestAutoMerge(input: $Mutation__disablePullRequestAutoMerge__input) {
+    pullRequest {
+      activeLockReason
+      authorAssociation
+      baseRefOid
+      bodyText
+      changedFiles
+      closed
+      closedAt
+      createdAt
+      createdViaEmail
+      databaseId
+      deletions
+      headRefName
+      headRefOid
+      id
+      includesCreatedEdit
+      isCrossRepository
+      isInMergeQueue
+      isMergeQueueEnabled
+      isReadByViewer
+      locked
+      maintainerCanModify
+      merged
+      mergedAt
+      mergeStateStatus
+      number
+      permalink
+      resourcePath
+      totalCommentsCount
+      updatedAt
+      viewerCanClose
+      viewerCanDisableAutoMerge
+      viewerCanEditFiles
+      viewerCanEnableAutoMerge
+      viewerCanLabel
+      viewerCanMergeAsAdmin
+      viewerCanReact
+      viewerCanUpdate
+      viewerCanUpdateBranch
+      viewerMergeBodyText
+      viewerMergeHeadlineText
+    }
+  }
+}

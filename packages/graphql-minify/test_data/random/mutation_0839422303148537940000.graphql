@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__cloneProject__input: CloneProjectInput!) {
+  cloneProject(input: $Mutation__cloneProject__input) {
+    jobStatusId
+  }
+}

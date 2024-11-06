@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__addProjectV2DraftIssue__input: AddProjectV2DraftIssueInput!) {
+  addProjectV2DraftIssue(input: $Mutation__addProjectV2DraftIssue__input) {
+    clientMutationId
+  }
+}

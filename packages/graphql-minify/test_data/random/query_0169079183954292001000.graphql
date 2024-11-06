@@ -1,0 +1,337 @@
+query RandomQuery($App__ipAllowListEntries__first: Int, $Query__marketplaceListings__first: Int, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!, $Enterprise__organizations__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__organization__login: String!, $Query__securityAdvisory__ghsaId: String!, $Topic__repositories__first: Int, $Topic__stargazers__first: Int, $Query__topic__name: String!) {
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    edges {
+      node {
+        configurationResourcePath
+        fullDescription
+        hasPublishedFreeTrialPlans
+        howItWorks
+        howItWorksHTML
+        installedForViewer
+        isArchived
+        isDraft
+        isPublic
+        isUnverified
+        isVerificationPendingFromUnverified
+        logoBackgroundColor
+        name
+        normalizedShortDescription
+        privacyPolicyUrl
+        resourcePath
+        termsOfServiceUrl
+        url
+        viewerCanAddPlans
+        viewerCanApprove
+        viewerCanReject
+        viewerCanRequestApproval
+        viewerHasPurchased
+        viewerHasPurchasedForAllOrganizations
+      }
+      cursor
+    }
+    nodes {
+      primaryCategory {
+        description
+        howItWorks
+        name
+        secondaryListingCount
+        slug
+        url
+      }
+      app {
+        ipAllowListEntries(first: $App__ipAllowListEntries__first) {
+          edges {
+            cursor
+          }
+          nodes {
+            allowListValue
+            createdAt
+            isActive
+            name
+            updatedAt
+          }
+          pageInfo {
+            endCursor
+            hasNextPage
+          }
+        }
+        name
+        slug
+        updatedAt
+        url
+      }
+      configurationResourcePath
+      configurationUrl
+      extendedDescriptionHTML
+      fullDescriptionHTML
+      hasTermsOfService
+      howItWorks
+      id
+      installationUrl
+      installedForViewer
+      isArchived
+      isDraft
+      isPaid
+      isUnverified
+      isUnverifiedPending
+      isVerificationPendingFromDraft
+      isVerified
+      logoBackgroundColor
+      logoUrl
+      name
+      normalizedShortDescription
+      pricingUrl
+      privacyPolicyUrl
+      resourcePath
+      screenshotUrls
+      shortDescription
+      slug
+      supportUrl
+      url
+      viewerCanDelist
+      viewerCanEdit
+      viewerCanEditCategories
+      viewerCanRedraft
+      viewerCanRequestApproval
+      viewerIsListingAdmin
+    }
+    pageInfo {
+      hasNextPage
+      startCursor
+    }
+    totalCount
+  }
+  codesOfConduct {
+    body
+    id
+    key
+    resourcePath
+    url
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    id
+    role
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    invitee {
+      anyPinnableItems
+      bioHTML
+      company
+      createdAt
+      databaseId
+      id
+      isCampusExpert
+      isEmployee
+      isFollowingViewer
+      isHireable
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      isSponsoringViewer
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      projectsUrl
+      updatedAt
+      url
+      userViewType
+      viewerIsSponsoring
+    }
+    enterprise {
+      organizations(first: $Enterprise__organizations__first) {
+        pageInfo {
+          hasPreviousPage
+        }
+      }
+      ownerInfo {
+        allowPrivateRepositoryForkingSetting
+        ipAllowListEnabledSetting
+        isUpdatingDefaultRepositoryPermission
+        isUpdatingTwoFactorRequirement
+        membersCanCreatePublicRepositoriesSetting
+        membersCanMakePurchasesSetting
+        notificationDeliveryRestrictionEnabledSetting
+        organizationProjectsSetting
+        repositoryProjectsSetting
+        teamDiscussionsSetting
+        twoFactorDisallowedMethodsSetting
+        twoFactorRequiredSetting
+      }
+      announcement
+      announcementExpiresAt
+      avatarUrl
+      createdAt
+      databaseId
+      description
+      descriptionHTML
+      location
+      name
+      readme
+      readmeHTML
+      resourcePath
+      slug
+      url
+      viewerIsAdmin
+    }
+    inviter {
+      avatarUrl
+      bioHTML
+      canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+      createdAt
+      hasSponsorsListing
+      isCampusExpert
+      isHireable
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      isSponsoringViewer
+      isViewer
+      name
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      projectsResourcePath
+      projectsUrl
+      resourcePath
+      updatedAt
+      url
+      userViewType
+      viewerCanChangePinnedItems
+      viewerIsFollowing
+      viewerIsSponsoring
+      websiteUrl
+    }
+    createdAt
+  }
+  licenses {
+    permissions {
+      description
+      key
+      label
+    }
+    limitations {
+      description
+      key
+      label
+    }
+    body
+    hidden
+    id
+    key
+    nickname
+    spdxId
+  }
+  organization(login: $Query__organization__login) {
+    avatarUrl
+    createdAt
+    databaseId
+    descriptionHTML
+    estimatedNextSponsorsPayoutInCents
+    ipAllowListForInstalledAppsEnabledSetting
+    isSponsoringViewer
+    membersCanForkPrivateRepositories
+    newTeamResourcePath
+    newTeamUrl
+    notificationDeliveryRestrictionEnabledSetting
+    organizationBillingEmail
+    projectsResourcePath
+    projectsUrl
+    requiresTwoFactorAuthentication
+    teamsResourcePath
+    viewerCanChangePinnedItems
+    viewerCanCreateTeams
+    viewerIsAMember
+    viewerIsFollowing
+    viewerIsSponsoring
+    websiteUrl
+  }
+  rateLimit {
+    cost
+    nodeCount
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    databaseId
+    description
+    ghsaId
+    id
+    origin
+    publishedAt
+    severity
+    summary
+    updatedAt
+    withdrawnAt
+  }
+  topic(name: $Query__topic__name) {
+    repositories(first: $Topic__repositories__first) {
+      edges {
+        node {
+          databaseId
+          deleteBranchOnMerge
+          forkCount
+          hasDiscussionsEnabled
+          hasIssuesEnabled
+          hasVulnerabilityAlertsEnabled
+          id
+          isArchived
+          isEmpty
+          isFork
+          isPrivate
+          isUserConfigurationRepository
+          mergeCommitAllowed
+          mergeCommitMessage
+          mirrorUrl
+          nameWithOwner
+          projectsResourcePath
+          projectsUrl
+          pushedAt
+          resourcePath
+          securityPolicyUrl
+          shortDescriptionHTML
+          squashMergeCommitMessage
+          squashMergeCommitTitle
+          sshUrl
+          stargazerCount
+          updatedAt
+          url
+          usesCustomOpenGraphImage
+          viewerDefaultCommitEmail
+          viewerPermission
+          viewerPossibleCommitEmails
+          visibility
+        }
+      }
+      totalDiskUsage
+    }
+    stargazers(first: $Topic__stargazers__first) {
+      edges {
+        cursor
+      }
+      nodes {
+        anyPinnableItems
+        canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+        company
+        databaseId
+        email
+        estimatedNextSponsorsPayoutInCents
+        isBountyHunter
+        isCampusExpert
+        isEmployee
+        isGitHubStar
+        monthlyEstimatedSponsorsIncomeInCents
+        name
+        projectsResourcePath
+        projectsUrl
+        pronouns
+        twitterUsername
+        updatedAt
+        userViewType
+        viewerCanChangePinnedItems
+        viewerCanCreateProjects
+        viewerCanSponsor
+        viewerIsFollowing
+        viewerIsSponsoring
+      }
+      pageInfo {
+        endCursor
+        hasPreviousPage
+        startCursor
+      }
+      totalCount
+    }
+    name
+    viewerHasStarred
+  }
+  id
+}

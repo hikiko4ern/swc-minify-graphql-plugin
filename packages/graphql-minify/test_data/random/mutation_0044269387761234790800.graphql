@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__removeUpvote__input: RemoveUpvoteInput!) {
+  removeUpvote(input: $Mutation__removeUpvote__input) {
+    clientMutationId
+  }
+}

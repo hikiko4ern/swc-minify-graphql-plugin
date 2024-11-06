@@ -1,0 +1,11 @@
+query RandomQuery {
+  licenses {
+    body
+    description
+    hidden
+    id
+    implementation
+    key
+    url
+  }
+}

@@ -1,0 +1,37 @@
+query RandomQuery($Organization__isSponsoredBy__accountLogin: String!, $Query__organization__login: String!) {
+  organization(login: $Query__organization__login) {
+    announcement
+    announcementCreatedAt
+    anyPinnableItems
+    archivedAt
+    createdAt
+    description
+    descriptionHTML
+    ipAllowListForInstalledAppsEnabledSetting
+    isSponsoredBy(accountLogin: $Organization__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    isVerified
+    membersCanForkPrivateRepositories
+    name
+    newTeamResourcePath
+    newTeamUrl
+    notificationDeliveryRestrictionEnabledSetting
+    organizationBillingEmail
+    pinnedItemsRemaining
+    projectsResourcePath
+    projectsUrl
+    requiresTwoFactorAuthentication
+    teamsUrl
+    twitterUsername
+    viewerCanAdminister
+    viewerCanChangePinnedItems
+    viewerCanCreateProjects
+    viewerCanCreateRepositories
+    viewerCanCreateTeams
+    viewerCanSponsor
+    viewerIsAMember
+    viewerIsFollowing
+    webCommitSignoffRequired
+    websiteUrl
+  }
+}

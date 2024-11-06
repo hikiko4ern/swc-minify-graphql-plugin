@@ -1,0 +1,7 @@
+mutation RandomMutation($Mutation__moveProjectColumn__input: MoveProjectColumnInput!) {
+  moveProjectColumn(input: $Mutation__moveProjectColumn__input) {
+    columnEdge {
+      cursor
+    }
+  }
+}

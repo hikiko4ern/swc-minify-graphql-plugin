@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__deleteIssueComment__input: DeleteIssueCommentInput!) {
+  deleteIssueComment(input: $Mutation__deleteIssueComment__input) {
+    clientMutationId
+  }
+}

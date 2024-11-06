@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__addPullRequestReviewThread__input: AddPullRequestReviewThreadInput!) {
+  addPullRequestReviewThread(input: $Mutation__addPullRequestReviewThread__input) {
+    clientMutationId
+  }
+}

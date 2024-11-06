@@ -1,0 +1,33 @@
+mutation RandomMutation($User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $Mutation__cancelEnterpriseMemberInvitation__input: CancelEnterpriseMemberInvitationInput!) {
+  cancelEnterpriseMemberInvitation(input: $Mutation__cancelEnterpriseMemberInvitation__input) {
+    invitation {
+      inviter {
+        anyPinnableItems
+        avatarUrl
+        bioHTML
+        canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+        databaseId
+        email
+        hasSponsorsListing
+        id
+        isCampusExpert
+        isDeveloperProgramMember
+        isEmployee
+        isGitHubStar
+        isHireable
+        isSiteAdmin
+        isSponsoringViewer
+        isViewer
+        location
+        monthlyEstimatedSponsorsIncomeInCents
+        projectsUrl
+        resourcePath
+        url
+        viewerCanCreateProjects
+        viewerCanFollow
+        viewerCanSponsor
+      }
+    }
+    message
+  }
+}

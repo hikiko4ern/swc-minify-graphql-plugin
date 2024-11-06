@@ -1,0 +1,106 @@
+query RandomQuery($Topic__repositories__first: Int, $Topic__stargazers__first: Int, $Topic__relatedTopics__first: Int, $Query__topic__name: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__license__key: String!, $Query__marketplaceCategory__slug: String!, $Query__securityVulnerabilities__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!) {
+  topic(name: $Query__topic__name) {
+    repositories(first: $Topic__repositories__first) {
+      totalDiskUsage
+    }
+    relatedTopics(first: $Topic__relatedTopics__first) {
+      stargazers(first: $Topic__stargazers__first) {
+        pageInfo {
+          hasNextPage
+        }
+        edges {
+          cursor
+        }
+        totalCount
+      }
+      relatedTopics(first: $Topic__relatedTopics__first) {
+        name
+        stargazerCount
+      }
+      id
+      name
+      stargazerCount
+    }
+    stargazers(first: $Topic__stargazers__first) {
+      totalCount
+    }
+    name
+    viewerHasStarred
+  }
+  codesOfConduct {
+    body
+    id
+    key
+    url
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    createdAt
+    role
+  }
+  license(key: $Query__license__key) {
+    permissions {
+      key
+      label
+    }
+    limitations {
+      description
+    }
+    description
+    implementation
+    key
+    name
+    nickname
+    pseudoLicense
+  }
+  marketplaceCategories {
+    description
+    primaryListingCount
+    resourcePath
+    secondaryListingCount
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    howItWorks
+    primaryListingCount
+    secondaryListingCount
+  }
+  meta {
+    gitHubServicesSha
+    importerIpAddresses
+  }
+  rateLimit {
+    cost
+    nodeCount
+    resetAt
+    used
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    edges {
+      cursor
+    }
+  }
+  viewer {
+    bio
+    bioHTML
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    company
+    companyHTML
+    estimatedNextSponsorsPayoutInCents
+    hasSponsorsListing
+    isBountyHunter
+    isEmployee
+    isFollowingViewer
+    isGitHubStar
+    isHireable
+    isSiteAdmin
+    name
+    projectsUrl
+    resourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    url
+    viewerCanChangePinnedItems
+    viewerIsFollowing
+    viewerIsSponsoring
+    websiteUrl
+  }
+  id
+}

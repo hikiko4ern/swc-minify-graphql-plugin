@@ -1,0 +1,12 @@
+mutation RandomMutation($Ref__rules__first: Int, $Mutation__updateRef__input: UpdateRefInput!) {
+  updateRef(input: $Mutation__updateRef__input) {
+    ref {
+      rules(first: $Ref__rules__first) {
+        nodes {
+          id
+          type
+        }
+      }
+    }
+  }
+}

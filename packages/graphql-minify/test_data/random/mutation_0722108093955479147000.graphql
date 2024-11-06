@@ -1,0 +1,57 @@
+mutation RandomMutation($Label__issues__first: Int, $Label__pullRequests__first: Int, $Mutation__createLabel__input: CreateLabelInput!) {
+  createLabel(input: $Mutation__createLabel__input) {
+    label {
+      issues(first: $Label__issues__first) {
+        totalCount
+      }
+      pullRequests(first: $Label__pullRequests__first) {
+        edges {
+          cursor
+        }
+        nodes {
+          activeLockReason
+          authorAssociation
+          baseRefName
+          baseRefOid
+          body
+          bodyText
+          canBeRebased
+          checksUrl
+          closedAt
+          databaseId
+          headRefName
+          id
+          includesCreatedEdit
+          isCrossRepository
+          isInMergeQueue
+          lastEditedAt
+          maintainerCanModify
+          mergeable
+          mergeStateStatus
+          publishedAt
+          resourcePath
+          revertResourcePath
+          revertUrl
+          reviewDecision
+          titleHTML
+          viewerCanClose
+          viewerCanEnableAutoMerge
+          viewerCanMergeAsAdmin
+          viewerCannotUpdateReasons
+          viewerCanUpdateBranch
+          viewerMergeBodyText
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
+          hasPreviousPage
+          startCursor
+        }
+      }
+      createdAt
+      updatedAt
+      url
+    }
+    clientMutationId
+  }
+}

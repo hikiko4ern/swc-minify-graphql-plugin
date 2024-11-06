@@ -15,8 +15,10 @@ logos = "0.14.2"
 memchr = "2.7.4"
 
 [dev-dependencies]
-criterion = "0.5.1"
-indoc = "2.0.5"
+criterion = { version = "0.5.1", features = ["real_blackbox"] }
+graphql_semantic_compare = { version = "*", path = "../graphql_semantic_compare" }
+indoc = "2.0"
+test_each_file = "0.3"
 
 [[bench]]
 name = "minify"

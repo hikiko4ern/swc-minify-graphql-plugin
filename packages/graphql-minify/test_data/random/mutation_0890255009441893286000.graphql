@@ -1,0 +1,94 @@
+mutation RandomMutation($ProjectV2__repositories__first: Int, $ProjectV2__fields__first: Int, $ProjectV2__teams__first: Int, $ProjectV2__views__first: Int, $ProjectV2__items__first: Int, $ProjectV2__workflow__number: Int!, $ProjectV2__workflows__first: Int, $Mutation__updateProjectV2__input: UpdateProjectV2Input!) {
+  updateProjectV2(input: $Mutation__updateProjectV2__input) {
+    projectV2 {
+      repositories(first: $ProjectV2__repositories__first) {
+        totalCount
+      }
+      fields(first: $ProjectV2__fields__first) {
+        pageInfo {
+          endCursor
+          hasPreviousPage
+        }
+      }
+      teams(first: $ProjectV2__teams__first) {
+        totalCount
+      }
+      views(first: $ProjectV2__views__first) {
+        pageInfo {
+          endCursor
+          hasNextPage
+          hasPreviousPage
+          startCursor
+        }
+      }
+      workflow(number: $ProjectV2__workflow__number) {
+        project {
+          views(first: $ProjectV2__views__first) {
+            totalCount
+          }
+          items(first: $ProjectV2__items__first) {
+            totalCount
+          }
+          teams(first: $ProjectV2__teams__first) {
+            pageInfo {
+              endCursor
+              hasNextPage
+            }
+          }
+          workflow(number: $ProjectV2__workflow__number) {
+            project {
+              closed
+              closedAt
+              readme
+              resourcePath
+              shortDescription
+              template
+              title
+              url
+              viewerCanClose
+              viewerCanReopen
+              viewerCanUpdate
+            }
+            databaseId
+            enabled
+            fullDatabaseId
+            name
+          }
+          workflows(first: $ProjectV2__workflows__first) {
+            pageInfo {
+              endCursor
+              startCursor
+            }
+          }
+          createdAt
+          databaseId
+          fullDatabaseId
+          public
+          resourcePath
+          shortDescription
+          viewerCanClose
+          viewerCanReopen
+          viewerCanUpdate
+        }
+        databaseId
+        name
+        number
+      }
+      closed
+      closedAt
+      createdAt
+      databaseId
+      fullDatabaseId
+      number
+      public
+      shortDescription
+      template
+      title
+      updatedAt
+      url
+      viewerCanReopen
+      viewerCanUpdate
+    }
+    clientMutationId
+  }
+}

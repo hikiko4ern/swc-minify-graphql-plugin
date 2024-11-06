@@ -1,0 +1,36 @@
+mutation RandomMutation($Mutation__reopenPullRequest__input: ReopenPullRequestInput!) {
+  reopenPullRequest(input: $Mutation__reopenPullRequest__input) {
+    pullRequest {
+      activeLockReason
+      body
+      bodyHTML
+      checksUrl
+      closedAt
+      fullDatabaseId
+      id
+      isCrossRepository
+      isInMergeQueue
+      isMergeQueueEnabled
+      locked
+      mergeStateStatus
+      publishedAt
+      resourcePath
+      revertResourcePath
+      reviewDecision
+      state
+      updatedAt
+      viewerCanClose
+      viewerCanDeleteHeadRef
+      viewerCanDisableAutoMerge
+      viewerCanLabel
+      viewerCanMergeAsAdmin
+      viewerCannotUpdateReasons
+      viewerCanReact
+      viewerCanReopen
+      viewerCanUpdate
+      viewerDidAuthor
+      viewerMergeHeadlineText
+      viewerSubscription
+    }
+  }
+}

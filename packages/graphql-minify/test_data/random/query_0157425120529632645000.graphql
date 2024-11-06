@@ -1,0 +1,96 @@
+query RandomQuery($Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__codeOfConduct__key: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__marketplaceCategory__slug: String!, $Query__marketplaceListing__slug: String!, $Query__securityAdvisories__first: Int, $Query__securityVulnerabilities__first: Int, $Query__sponsorables__first: Int) {
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    edges {
+      textMatches {
+        highlights {
+          beginIndice
+        }
+        fragment
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+    issueCount
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    body
+    key
+    name
+    resourcePath
+    url
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    email
+    id
+    role
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    createdAt
+    id
+  }
+  licenses {
+    id
+    name
+    nickname
+    pseudoLicense
+    url
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    id
+    name
+    secondaryListingCount
+    url
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    companyUrl
+    configurationResourcePath
+    configurationUrl
+    extendedDescription
+    fullDescription
+    fullDescriptionHTML
+    hasPublishedFreeTrialPlans
+    hasTermsOfService
+    hasVerifiedOwner
+    id
+    installationUrl
+    isArchived
+    isDraft
+    isRejected
+    isUnverified
+    logoUrl
+    resourcePath
+    screenshotUrls
+    shortDescription
+    slug
+    termsOfServiceUrl
+    url
+    viewerCanApprove
+    viewerCanDelist
+    viewerCanEditPlans
+    viewerHasPurchasedForAllOrganizations
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    totalCount
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    edges {
+      node {
+        firstPatchedVersion {
+          identifier
+        }
+        severity
+        vulnerableVersionRange
+      }
+    }
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    edges {
+      cursor
+    }
+  }
+  id
+}

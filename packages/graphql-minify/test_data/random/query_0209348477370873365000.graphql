@@ -1,0 +1,33 @@
+query RandomQuery($Query__securityVulnerabilities__first: Int) {
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    pageInfo {
+      startCursor
+    }
+    nodes {
+      advisory {
+        cvss {
+          vectorString
+        }
+        identifiers {
+          value
+        }
+        references {
+          url
+        }
+        description
+        ghsaId
+        id
+        permalink
+        publishedAt
+        severity
+        summary
+        updatedAt
+      }
+      firstPatchedVersion {
+        identifier
+      }
+      updatedAt
+      vulnerableVersionRange
+    }
+  }
+}

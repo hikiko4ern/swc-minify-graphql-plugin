@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__createLinkedBranch__input: CreateLinkedBranchInput!) {
+  createLinkedBranch(input: $Mutation__createLinkedBranch__input) {
+    clientMutationId
+  }
+}

@@ -1,0 +1,103 @@
+query RandomQuery($Query__marketplaceCategory__slug: String!, $Query__codeOfConduct__key: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__marketplaceListings__first: Int, $Query__organization__login: String!, $Topic__relatedTopics__first: Int, $Topic__repositories__first: Int, $Query__topic__name: String!, $User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!) {
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    howItWorks
+    name
+    primaryListingCount
+    resourcePath
+    secondaryListingCount
+    url
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    name
+    resourcePath
+  }
+  codesOfConduct {
+    body
+    id
+    name
+    resourcePath
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    email
+    id
+  }
+  marketplaceCategories {
+    primaryListingCount
+    resourcePath
+    slug
+    url
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+  organization(login: $Query__organization__login) {
+    announcement
+    announcementExpiresAt
+    announcementUserDismissible
+    anyPinnableItems
+    archivedAt
+    avatarUrl
+    description
+    email
+    estimatedNextSponsorsPayoutInCents
+    hasSponsorsListing
+    id
+    ipAllowListForInstalledAppsEnabledSetting
+    isSponsoringViewer
+    isVerified
+    location
+    membersCanForkPrivateRepositories
+    notificationDeliveryRestrictionEnabledSetting
+    projectsResourcePath
+    projectsUrl
+    updatedAt
+    viewerCanChangePinnedItems
+    viewerCanCreateRepositories
+    viewerCanCreateTeams
+    viewerIsFollowing
+  }
+  rateLimit {
+    limit
+    resetAt
+  }
+  topic(name: $Query__topic__name) {
+    relatedTopics(first: $Topic__relatedTopics__first) {
+      name
+    }
+    repositories(first: $Topic__repositories__first) {
+      edges {
+        cursor
+      }
+      totalCount
+      totalDiskUsage
+    }
+    id
+    stargazerCount
+  }
+  viewer {
+    anyPinnableItems
+    bioHTML
+    companyHTML
+    createdAt
+    databaseId
+    hasSponsorsListing
+    id
+    isCampusExpert
+    isDeveloperProgramMember
+    isEmployee
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    login
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    pinnedItemsRemaining
+    projectsResourcePath
+    projectsUrl
+    updatedAt
+    viewerCanCreateProjects
+    viewerCanSponsor
+    websiteUrl
+  }
+}

@@ -1,0 +1,73 @@
+mutation RandomMutation($Project__columns__first: Int, $Project__pendingCards__first: Int, $ProjectColumn__cards__first: Int, $Mutation__addProjectCard__input: AddProjectCardInput!) {
+  addProjectCard(input: $Mutation__addProjectCard__input) {
+    cardEdge {
+      node {
+        project {
+          columns(first: $Project__columns__first) {
+            edges {
+              node {
+                createdAt
+                databaseId
+                name
+                resourcePath
+                updatedAt
+              }
+            }
+          }
+          pendingCards(first: $Project__pendingCards__first) {
+            totalCount
+          }
+          body
+          bodyHTML
+          closed
+          createdAt
+          id
+          resourcePath
+          updatedAt
+          url
+          viewerCanReopen
+        }
+        column {
+          project {
+            progress {
+              doneCount
+              enabled
+              inProgressCount
+              todoPercentage
+            }
+            columns(first: $Project__columns__first) {
+              totalCount
+            }
+            closedAt
+            databaseId
+            id
+            name
+            state
+            viewerCanClose
+            viewerCanUpdate
+          }
+          cards(first: $ProjectColumn__cards__first) {
+            totalCount
+          }
+          createdAt
+          databaseId
+        }
+        createdAt
+        databaseId
+        isArchived
+        state
+        updatedAt
+        url
+      }
+      cursor
+    }
+    projectColumn {
+      databaseId
+      name
+      purpose
+      resourcePath
+      updatedAt
+    }
+    clientMutationId
+  }
+}

@@ -1,0 +1,19 @@
+mutation RandomMutation($Mutation__updateIssueComment__input: UpdateIssueCommentInput!) {
+  updateIssueComment(input: $Mutation__updateIssueComment__input) {
+    issueComment {
+      body
+      bodyText
+      createdAt
+      fullDatabaseId
+      id
+      includesCreatedEdit
+      isMinimized
+      minimizedReason
+      resourcePath
+      url
+      viewerCanMinimize
+      viewerCannotUpdateReasons
+      viewerDidAuthor
+    }
+  }
+}

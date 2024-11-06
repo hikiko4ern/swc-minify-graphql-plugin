@@ -1,0 +1,10 @@
+query RandomQuery {
+  meta {
+    githubEnterpriseImporterIpAddresses
+    gitHubServicesSha
+    gitIpAddresses
+    importerIpAddresses
+    isPasswordAuthenticationVerifiable
+    pagesIpAddresses
+  }
+}

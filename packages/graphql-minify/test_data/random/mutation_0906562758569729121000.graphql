@@ -1,0 +1,23 @@
+mutation RandomMutation($Mutation__addDiscussionComment__input: AddDiscussionCommentInput!) {
+  addDiscussionComment(input: $Mutation__addDiscussionComment__input) {
+    comment {
+      bodyText
+      createdAt
+      createdViaEmail
+      deletedAt
+      includesCreatedEdit
+      isAnswer
+      isMinimized
+      lastEditedAt
+      publishedAt
+      resourcePath
+      upvoteCount
+      viewerCanDelete
+      viewerCanMarkAsAnswer
+      viewerCanReact
+      viewerCanUnmarkAsAnswer
+      viewerCanUpvote
+      viewerDidAuthor
+    }
+  }
+}

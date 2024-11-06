@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__updateCheckSuitePreferences__input: UpdateCheckSuitePreferencesInput!) {
+  updateCheckSuitePreferences(input: $Mutation__updateCheckSuitePreferences__input) {
+    clientMutationId
+  }
+}

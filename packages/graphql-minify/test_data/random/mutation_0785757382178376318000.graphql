@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__submitPullRequestReview__input: SubmitPullRequestReviewInput!) {
+  submitPullRequestReview(input: $Mutation__submitPullRequestReview__input) {
+    clientMutationId
+  }
+}

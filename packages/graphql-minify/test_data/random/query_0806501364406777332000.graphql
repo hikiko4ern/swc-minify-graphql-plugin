@@ -1,0 +1,150 @@
+query RandomQuery($Query__marketplaceListings__first: Int, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Organization__isSponsoredBy__accountLogin: String!, $Query__organization__login: String!, $Query__securityAdvisories__first: Int, $SecurityAdvisory__cwes__first: Int, $Query__securityAdvisory__ghsaId: String!, $Query__securityVulnerabilities__first: Int, $Query__sponsorables__first: Int, $Query__topic__name: String!, $User__organizationVerifiedDomainEmails__login: String!, $Query__user__login: String!) {
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+    }
+    totalCount
+  }
+  codesOfConduct {
+    body
+    resourcePath
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    email
+  }
+  marketplaceCategories {
+    howItWorks
+    id
+    slug
+  }
+  organization(login: $Query__organization__login) {
+    announcementUserDismissible
+    anyPinnableItems
+    databaseId
+    description
+    ipAllowListForInstalledAppsEnabledSetting
+    isSponsoredBy(accountLogin: $Organization__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    isVerified
+    location
+    login
+    monthlyEstimatedSponsorsIncomeInCents
+    projectsResourcePath
+    teamsResourcePath
+    teamsUrl
+    totalSponsorshipAmountAsSponsorInCents
+    twitterUsername
+    url
+    viewerCanAdminister
+    viewerCanCreateRepositories
+    viewerCanCreateTeams
+    viewerCanSponsor
+    viewerIsFollowing
+    websiteUrl
+  }
+  rateLimit {
+    cost
+    nodeCount
+    remaining
+    resetAt
+    used
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    totalCount
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    identifiers {
+      value
+    }
+    cwes(first: $SecurityAdvisory__cwes__first) {
+      pageInfo {
+        hasPreviousPage
+      }
+      edges {
+        node {
+          cweId
+          description
+          id
+        }
+        cursor
+      }
+      nodes {
+        id
+        name
+      }
+      totalCount
+    }
+    epss {
+      percentage
+      percentile
+    }
+    references {
+      url
+    }
+    databaseId
+    description
+    notificationsPermalink
+    updatedAt
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    nodes {
+      severity
+      updatedAt
+      vulnerableVersionRange
+    }
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    edges {
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+    totalCount
+  }
+  topic(name: $Query__topic__name) {
+    id
+  }
+  user(login: $Query__user__login) {
+    bio
+    bioHTML
+    company
+    companyHTML
+    createdAt
+    estimatedNextSponsorsPayoutInCents
+    hasSponsorsListing
+    id
+    isBountyHunter
+    isEmployee
+    isHireable
+    isSponsoringViewer
+    isViewer
+    location
+    login
+    monthlyEstimatedSponsorsIncomeInCents
+    name
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    projectsResourcePath
+    projectsUrl
+    pronouns
+    totalSponsorshipAmountAsSponsorInCents
+    twitterUsername
+    updatedAt
+    url
+    userViewType
+    viewerCanCreateProjects
+    viewerCanFollow
+    viewerCanSponsor
+    websiteUrl
+  }
+  id
+}

@@ -1,0 +1,11 @@
+mutation RandomMutation($Mutation__updateProjectCard__input: UpdateProjectCardInput!) {
+  updateProjectCard(input: $Mutation__updateProjectCard__input) {
+    projectCard {
+      createdAt
+      databaseId
+      id
+      state
+    }
+    clientMutationId
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__abortQueuedMigrations__input: AbortQueuedMigrationsInput!) {
+  abortQueuedMigrations(input: $Mutation__abortQueuedMigrations__input) {
+    success
+  }
+}

@@ -1,0 +1,312 @@
+query RandomQuery($Query__securityAdvisory__ghsaId: String!, $Query__codeOfConduct__key: String!, $Query__enterprise__slug: String!, $Query__license__key: String!, $Query__marketplaceCategory__slug: String!, $Query__marketplaceListing__slug: String!, $Query__marketplaceListings__first: Int, $SecurityAdvisory__cwes__first: Int, $SecurityAdvisory__vulnerabilities__first: Int, $Query__securityAdvisories__first: Int, $Query__securityVulnerabilities__first: Int, $Query__sponsorables__first: Int, $Query__topic__name: String!, $User__isSponsoredBy__accountLogin: String!, $Query__user__login: String!) {
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    references {
+      url
+    }
+    cvss {
+      score
+    }
+    databaseId
+    description
+    id
+    notificationsPermalink
+    publishedAt
+    updatedAt
+    withdrawnAt
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    body
+    key
+    resourcePath
+    url
+  }
+  codesOfConduct {
+    body
+    key
+    name
+    resourcePath
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcement
+    billingEmail
+    databaseId
+    description
+    location
+    name
+    readme
+    resourcePath
+    slug
+    websiteUrl
+  }
+  license(key: $Query__license__key) {
+    description
+    featured
+    hidden
+    id
+    implementation
+    name
+    url
+  }
+  licenses {
+    permissions {
+      description
+      key
+      label
+    }
+    conditions {
+      description
+      key
+    }
+    limitations {
+      key
+    }
+    body
+    description
+    featured
+    id
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    id
+    secondaryListingCount
+    url
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    app {
+      createdAt
+      id
+      logoBackgroundColor
+      slug
+      url
+    }
+    companyUrl
+    configurationResourcePath
+    documentationUrl
+    extendedDescription
+    extendedDescriptionHTML
+    fullDescription
+    fullDescriptionHTML
+    hasPublishedFreeTrialPlans
+    hasTermsOfService
+    howItWorks
+    howItWorksHTML
+    id
+    installedForViewer
+    isArchived
+    isRejected
+    isUnverified
+    isUnverifiedPending
+    logoBackgroundColor
+    logoUrl
+    normalizedShortDescription
+    pricingUrl
+    privacyPolicyUrl
+    screenshotUrls
+    shortDescription
+    slug
+    statusUrl
+    supportUrl
+    termsOfServiceUrl
+    viewerCanAddPlans
+    viewerCanDelist
+    viewerCanEdit
+    viewerCanRedraft
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    edges {
+      node {
+        configurationResourcePath
+        documentationUrl
+        extendedDescription
+        hasVerifiedOwner
+        howItWorks
+        howItWorksHTML
+        isDraft
+        isPublic
+        isRejected
+        isUnverified
+        isVerificationPendingFromDraft
+        normalizedShortDescription
+        pricingUrl
+        resourcePath
+        screenshotUrls
+        shortDescription
+        slug
+        supportEmail
+        supportUrl
+        viewerCanDelist
+        viewerCanEdit
+        viewerCanReject
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+  }
+  meta {
+    importerIpAddresses
+  }
+  rateLimit {
+    limit
+    nodeCount
+    remaining
+    resetAt
+    used
+  }
+  relay {
+    viewer {
+      anyPinnableItems
+      hasSponsorsListing
+      id
+      isSiteAdmin
+      isViewer
+      monthlyEstimatedSponsorsIncomeInCents
+      pinnedItemsRemaining
+      projectsUrl
+      resourcePath
+      userViewType
+      viewerIsFollowing
+      viewerIsSponsoring
+    }
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    pageInfo {
+      hasPreviousPage
+      startCursor
+    }
+    edges {
+      node {
+        classification
+        severity
+        summary
+      }
+      cursor
+    }
+    nodes {
+      cwes(first: $SecurityAdvisory__cwes__first) {
+        edges {
+          node {
+            cweId
+            description
+            name
+          }
+        }
+        pageInfo {
+          endCursor
+          hasPreviousPage
+        }
+      }
+      cvss {
+        score
+        vectorString
+      }
+      references {
+        url
+      }
+      vulnerabilities(first: $SecurityAdvisory__vulnerabilities__first) {
+        pageInfo {
+          startCursor
+        }
+      }
+      classification
+      description
+      id
+      notificationsPermalink
+      origin
+      updatedAt
+    }
+    totalCount
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    nodes {
+      firstPatchedVersion {
+        identifier
+      }
+      advisory {
+        epss {
+          percentage
+        }
+        cwes(first: $SecurityAdvisory__cwes__first) {
+          edges {
+            cursor
+          }
+        }
+        references {
+          url
+        }
+        vulnerabilities(first: $SecurityAdvisory__vulnerabilities__first) {
+          pageInfo {
+            endCursor
+            hasNextPage
+            hasPreviousPage
+          }
+          edges {
+            node {
+              updatedAt
+              vulnerableVersionRange
+            }
+            cursor
+          }
+        }
+        description
+        ghsaId
+        notificationsPermalink
+        permalink
+        publishedAt
+        severity
+        updatedAt
+        withdrawnAt
+      }
+      package {
+        ecosystem
+        name
+      }
+      severity
+      vulnerableVersionRange
+    }
+    pageInfo {
+      startCursor
+    }
+    totalCount
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    pageInfo {
+      endCursor
+      startCursor
+    }
+    edges {
+      cursor
+    }
+  }
+  topic(name: $Query__topic__name) {
+    name
+    stargazerCount
+  }
+  user(login: $Query__user__login) {
+    bio
+    bioHTML
+    companyHTML
+    estimatedNextSponsorsPayoutInCents
+    isBountyHunter
+    isDeveloperProgramMember
+    isEmployee
+    isFollowingViewer
+    isHireable
+    isSiteAdmin
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isViewer
+    name
+    pinnedItemsRemaining
+    projectsUrl
+    resourcePath
+    twitterUsername
+    userViewType
+    viewerCanCreateProjects
+    viewerCanFollow
+    viewerIsSponsoring
+    websiteUrl
+  }
+  id
+}

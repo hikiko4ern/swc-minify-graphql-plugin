@@ -1,0 +1,16 @@
+mutation RandomMutation($Mutation__deleteProjectV2__input: DeleteProjectV2Input!) {
+  deleteProjectV2(input: $Mutation__deleteProjectV2__input) {
+    projectV2 {
+      createdAt
+      fullDatabaseId
+      id
+      number
+      resourcePath
+      template
+      title
+      updatedAt
+      viewerCanClose
+      viewerCanReopen
+    }
+  }
+}

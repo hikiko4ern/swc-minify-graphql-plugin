@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__regenerateEnterpriseIdentityProviderRecoveryCodes__input: RegenerateEnterpriseIdentityProviderRecoveryCodesInput!) {
+  regenerateEnterpriseIdentityProviderRecoveryCodes(input: $Mutation__regenerateEnterpriseIdentityProviderRecoveryCodes__input) {
+    clientMutationId
+  }
+}

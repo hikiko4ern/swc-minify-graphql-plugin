@@ -1,0 +1,23 @@
+mutation RandomMutation($Mutation__updateTeamDiscussion__input: UpdateTeamDiscussionInput!) {
+  updateTeamDiscussion(input: $Mutation__updateTeamDiscussion__input) {
+    teamDiscussion {
+      reactionGroups {
+        createdAt
+      }
+      body
+      bodyHTML
+      bodyText
+      commentsResourcePath
+      createdViaEmail
+      databaseId
+      includesCreatedEdit
+      isPinned
+      number
+      resourcePath
+      url
+      viewerCanDelete
+      viewerCanUpdate
+    }
+    clientMutationId
+  }
+}

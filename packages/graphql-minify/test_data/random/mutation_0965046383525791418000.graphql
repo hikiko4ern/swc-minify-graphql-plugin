@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__updatePatreonSponsorability__input: UpdatePatreonSponsorabilityInput!) {
+  updatePatreonSponsorability(input: $Mutation__updatePatreonSponsorability__input) {
+    clientMutationId
+  }
+}

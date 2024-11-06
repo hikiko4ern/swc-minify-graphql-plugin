@@ -1,0 +1,133 @@
+query RandomQuery($Query__marketplaceCategory__slug: String!, $Query__enterprise__slug: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__license__key: String!, $Query__marketplaceListing__slug: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityAdvisory__ghsaId: String!, $Query__sponsorables__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!) {
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    howItWorks
+    id
+    name
+    primaryListingCount
+    url
+  }
+  codesOfConduct {
+    name
+    url
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    avatarUrl
+    createdAt
+    databaseId
+    id
+    location
+    name
+    readme
+    resourcePath
+    slug
+    url
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    email
+    role
+  }
+  license(key: $Query__license__key) {
+    conditions {
+      description
+      key
+    }
+    limitations {
+      key
+    }
+    permissions {
+      label
+    }
+    body
+    featured
+    hidden
+    implementation
+    key
+    nickname
+    pseudoLicense
+    spdxId
+    url
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    companyUrl
+    documentationUrl
+    extendedDescriptionHTML
+    fullDescription
+    hasTermsOfService
+    hasVerifiedOwner
+    howItWorksHTML
+    installationUrl
+    isDraft
+    isPublic
+    isRejected
+    isUnverifiedPending
+    logoBackgroundColor
+    logoUrl
+    name
+    pricingUrl
+    privacyPolicyUrl
+    resourcePath
+    screenshotUrls
+    slug
+    statusUrl
+    url
+    viewerCanEdit
+    viewerCanEditCategories
+    viewerCanRedraft
+    viewerHasPurchased
+    viewerHasPurchasedForAllOrganizations
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    codeCount
+    userCount
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    classification
+    ghsaId
+    severity
+    summary
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    pageInfo {
+      hasPreviousPage
+    }
+  }
+  viewer {
+    avatarUrl
+    bio
+    bioHTML
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    companyHTML
+    email
+    hasSponsorsListing
+    id
+    isBountyHunter
+    isCampusExpert
+    isDeveloperProgramMember
+    isFollowingViewer
+    isGitHubStar
+    isHireable
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    isViewer
+    location
+    login
+    monthlyEstimatedSponsorsIncomeInCents
+    name
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    pinnedItemsRemaining
+    projectsUrl
+    pronouns
+    resourcePath
+    twitterUsername
+    updatedAt
+    userViewType
+    viewerCanChangePinnedItems
+    viewerCanCreateProjects
+    viewerCanFollow
+    viewerCanSponsor
+    viewerIsFollowing
+    viewerIsSponsoring
+  }
+  id
+}

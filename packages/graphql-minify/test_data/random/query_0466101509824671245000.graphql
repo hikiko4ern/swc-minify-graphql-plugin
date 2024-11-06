@@ -1,0 +1,21 @@
+query RandomQuery($User__organizationVerifiedDomainEmails__login: String!, $Query__user__login: String!) {
+  user(login: $Query__user__login) {
+    anyPinnableItems
+    isCampusExpert
+    isEmployee
+    isSponsoringViewer
+    isViewer
+    monthlyEstimatedSponsorsIncomeInCents
+    name
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    pinnedItemsRemaining
+    projectsResourcePath
+    projectsUrl
+    resourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    updatedAt
+    viewerCanCreateProjects
+    viewerIsFollowing
+    viewerIsSponsoring
+  }
+}

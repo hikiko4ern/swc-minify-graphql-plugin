@@ -1,0 +1,27 @@
+mutation RandomMutation($User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!, $Mutation__deleteUserList__input: DeleteUserListInput!) {
+  deleteUserList(input: $Mutation__deleteUserList__input) {
+    user {
+      bioHTML
+      canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+      companyHTML
+      email
+      hasSponsorsListing
+      id
+      isEmployee
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      isSponsoringViewer
+      isViewer
+      location
+      monthlyEstimatedSponsorsIncomeInCents
+      name
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      pinnedItemsRemaining
+      pronouns
+      totalSponsorshipAmountAsSponsorInCents
+      viewerCanChangePinnedItems
+      viewerCanSponsor
+      viewerIsFollowing
+      websiteUrl
+    }
+  }
+}

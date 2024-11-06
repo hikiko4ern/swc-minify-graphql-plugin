@@ -1,0 +1,9 @@
+query RandomQuery($Query__marketplaceCategory__slug: String!) {
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    howItWorks
+    id
+    resourcePath
+    slug
+    url
+  }
+}

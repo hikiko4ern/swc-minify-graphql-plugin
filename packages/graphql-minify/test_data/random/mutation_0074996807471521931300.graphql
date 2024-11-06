@@ -1,0 +1,24 @@
+mutation RandomMutation($Mutation__unpinIssue__input: UnpinIssueInput!) {
+  unpinIssue(input: $Mutation__unpinIssue__input) {
+    issue {
+      body
+      bodyText
+      closedAt
+      createdAt
+      fullDatabaseId
+      id
+      isReadByViewer
+      lastEditedAt
+      resourcePath
+      updatedAt
+      url
+      viewerCanDelete
+      viewerCanLabel
+      viewerCannotUpdateReasons
+      viewerCanReopen
+      viewerThreadSubscriptionStatus
+    }
+    clientMutationId
+    id
+  }
+}

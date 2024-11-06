@@ -1,0 +1,25 @@
+mutation RandomMutation($User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $Mutation__updateUserListsForItem__input: UpdateUserListsForItemInput!) {
+  updateUserListsForItem(input: $Mutation__updateUserListsForItem__input) {
+    user {
+      bio
+      canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+      company
+      companyHTML
+      createdAt
+      email
+      estimatedNextSponsorsPayoutInCents
+      isBountyHunter
+      isFollowingViewer
+      isHireable
+      isSponsoringViewer
+      name
+      pinnedItemsRemaining
+      resourcePath
+      twitterUsername
+      url
+      viewerCanChangePinnedItems
+      viewerCanCreateProjects
+      viewerIsSponsoring
+    }
+  }
+}

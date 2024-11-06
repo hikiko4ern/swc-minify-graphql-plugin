@@ -1,0 +1,7 @@
+mutation RandomMutation($GrantEnterpriseOrganizationsMigratorRolePayload__organizations__first: Int, $Mutation__grantEnterpriseOrganizationsMigratorRole__input: GrantEnterpriseOrganizationsMigratorRoleInput!) {
+  grantEnterpriseOrganizationsMigratorRole(input: $Mutation__grantEnterpriseOrganizationsMigratorRole__input) {
+    organizations(first: $GrantEnterpriseOrganizationsMigratorRolePayload__organizations__first) {
+      totalCount
+    }
+  }
+}

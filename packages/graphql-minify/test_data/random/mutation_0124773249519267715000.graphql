@@ -1,0 +1,9 @@
+mutation RandomMutation($Mutation__createSponsorsTier__input: CreateSponsorsTierInput!) {
+  createSponsorsTier(input: $Mutation__createSponsorsTier__input) {
+    sponsorsTier {
+      createdAt
+      description
+      isCustomAmount
+    }
+  }
+}

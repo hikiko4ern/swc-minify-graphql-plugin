@@ -1,0 +1,28 @@
+query RandomQuery($Query__securityAdvisories__first: Int) {
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    nodes {
+      identifiers {
+        value
+      }
+      cvss {
+        vectorString
+      }
+      references {
+        url
+      }
+      ghsaId
+      id
+      notificationsPermalink
+      origin
+      updatedAt
+    }
+    edges {
+      node {
+        classification
+        ghsaId
+        origin
+        summary
+      }
+    }
+  }
+}

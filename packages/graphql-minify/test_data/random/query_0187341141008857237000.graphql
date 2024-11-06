@@ -1,0 +1,20 @@
+query RandomQuery($Query__license__key: String!) {
+  license(key: $Query__license__key) {
+    limitations {
+      label
+    }
+    conditions {
+      description
+    }
+    permissions {
+      key
+      label
+    }
+    description
+    hidden
+    id
+    implementation
+    nickname
+    pseudoLicense
+  }
+}

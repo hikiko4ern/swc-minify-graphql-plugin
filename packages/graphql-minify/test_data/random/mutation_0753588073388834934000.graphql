@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__enablePullRequestAutoMerge__input: EnablePullRequestAutoMergeInput!) {
+  enablePullRequestAutoMerge(input: $Mutation__enablePullRequestAutoMerge__input) {
+    clientMutationId
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__unmarkIssueAsDuplicate__input: UnmarkIssueAsDuplicateInput!) {
+  unmarkIssueAsDuplicate(input: $Mutation__unmarkIssueAsDuplicate__input) {
+    clientMutationId
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__updateEnterpriseTwoFactorAuthenticationRequiredSetting__input: UpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput!) {
+  updateEnterpriseTwoFactorAuthenticationRequiredSetting(input: $Mutation__updateEnterpriseTwoFactorAuthenticationRequiredSetting__input) {
+    message
+  }
+}

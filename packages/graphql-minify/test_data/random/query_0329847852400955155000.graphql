@@ -1,0 +1,18 @@
+query RandomQuery {
+  licenses {
+    conditions {
+      description
+    }
+    limitations {
+      description
+    }
+    permissions {
+      key
+    }
+    description
+    key
+    name
+    nickname
+    url
+  }
+}

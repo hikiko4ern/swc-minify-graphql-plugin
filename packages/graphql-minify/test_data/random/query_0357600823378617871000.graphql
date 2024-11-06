@@ -1,0 +1,97 @@
+query RandomQuery($User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__organizationVerifiedDomainEmails__login: String!, $Query__user__login: String!, $Query__codeOfConduct__key: String!, $Query__license__key: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__sponsorables__first: Int, $Topic__stargazers__first: Int, $Topic__relatedTopics__first: Int, $Query__topic__name: String!) {
+  user(login: $Query__user__login) {
+    bioHTML
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    email
+    isBountyHunter
+    isDeveloperProgramMember
+    isHireable
+    isSiteAdmin
+    isSponsoringViewer
+    monthlyEstimatedSponsorsIncomeInCents
+    name
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    pinnedItemsRemaining
+    projectsResourcePath
+    pronouns
+    resourcePath
+    twitterUsername
+    userViewType
+    viewerCanChangePinnedItems
+    viewerIsFollowing
+    viewerIsSponsoring
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    id
+    key
+    name
+  }
+  license(key: $Query__license__key) {
+    permissions {
+      description
+      key
+      label
+    }
+    conditions {
+      key
+      label
+    }
+    limitations {
+      key
+    }
+    implementation
+    key
+    name
+    pseudoLicense
+    spdxId
+  }
+  relay {
+    id
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    repositoryCount
+    wikiCount
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    edges {
+      cursor
+    }
+  }
+  topic(name: $Query__topic__name) {
+    stargazers(first: $Topic__stargazers__first) {
+      totalCount
+    }
+    relatedTopics(first: $Topic__relatedTopics__first) {
+      id
+      stargazerCount
+      viewerHasStarred
+    }
+    id
+    stargazerCount
+    viewerHasStarred
+  }
+  viewer {
+    anyPinnableItems
+    avatarUrl
+    bio
+    company
+    createdAt
+    databaseId
+    email
+    estimatedNextSponsorsPayoutInCents
+    hasSponsorsListing
+    isBountyHunter
+    isCampusExpert
+    isEmployee
+    isGitHubStar
+    isHireable
+    isSponsoringViewer
+    isViewer
+    login
+    pronouns
+    viewerCanFollow
+    viewerCanSponsor
+    viewerIsSponsoring
+    websiteUrl
+  }
+}

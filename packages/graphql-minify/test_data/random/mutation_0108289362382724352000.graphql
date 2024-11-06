@@ -1,0 +1,15 @@
+mutation RandomMutation($Mutation__copyProjectV2__input: CopyProjectV2Input!) {
+  copyProjectV2(input: $Mutation__copyProjectV2__input) {
+    projectV2 {
+      createdAt
+      fullDatabaseId
+      id
+      number
+      public
+      template
+      title
+      url
+      viewerCanUpdate
+    }
+  }
+}

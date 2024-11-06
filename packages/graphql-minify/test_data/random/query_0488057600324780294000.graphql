@@ -1,0 +1,103 @@
+query RandomQuery($Query__sponsorables__first: Int, $Query__codeOfConduct__key: String!, $Query__enterprise__slug: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__license__key: String!, $Query__marketplaceCategory__slug: String!, $Query__marketplaceListing__slug: String!, $Query__securityAdvisories__first: Int, $Query__securityAdvisory__ghsaId: String!, $Query__topic__name: String!) {
+  sponsorables(first: $Query__sponsorables__first) {
+    pageInfo {
+      hasPreviousPage
+    }
+    totalCount
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    id
+    key
+    resourcePath
+    url
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcementUserDismissible
+    createdAt
+    databaseId
+    descriptionHTML
+    readmeHTML
+    resourcePath
+    slug
+    url
+    viewerIsAdmin
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    email
+  }
+  license(key: $Query__license__key) {
+    body
+    description
+    featured
+    id
+    implementation
+    spdxId
+    url
+  }
+  licenses {
+    description
+    featured
+    id
+    key
+    pseudoLicense
+    url
+  }
+  marketplaceCategories {
+    description
+    name
+    primaryListingCount
+    resourcePath
+    secondaryListingCount
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    primaryListingCount
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    companyUrl
+    configurationResourcePath
+    extendedDescription
+    hasTermsOfService
+    id
+    installationUrl
+    isDraft
+    isPaid
+    isRejected
+    isUnverified
+    isUnverifiedPending
+    isVerificationPendingFromDraft
+    logoBackgroundColor
+    logoUrl
+    name
+    pricingUrl
+    shortDescription
+    slug
+    statusUrl
+    termsOfServiceUrl
+    url
+    viewerCanEdit
+    viewerCanEditPlans
+  }
+  rateLimit {
+    limit
+    nodeCount
+    used
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    edges {
+      cursor
+    }
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    databaseId
+    description
+    notificationsPermalink
+    origin
+    permalink
+    withdrawnAt
+  }
+  topic(name: $Query__topic__name) {
+    name
+    viewerHasStarred
+  }
+  id
+}

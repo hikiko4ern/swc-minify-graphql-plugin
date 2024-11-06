@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__updateProjectV2ItemPosition__input: UpdateProjectV2ItemPositionInput!) {
+  updateProjectV2ItemPosition(input: $Mutation__updateProjectV2ItemPosition__input) {
+    clientMutationId
+  }
+}

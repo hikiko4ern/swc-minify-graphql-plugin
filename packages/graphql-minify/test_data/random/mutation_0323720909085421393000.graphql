@@ -1,0 +1,43 @@
+mutation RandomMutation($Mutation__pinEnvironment__input: PinEnvironmentInput!) {
+  pinEnvironment(input: $Mutation__pinEnvironment__input) {
+    pinnedEnvironment {
+      repository {
+        autoMergeAllowed
+        deleteBranchOnMerge
+        forkingAllowed
+        hasDiscussionsEnabled
+        homepageUrl
+        isArchived
+        isBlankIssuesEnabled
+        isDisabled
+        isEmpty
+        isInOrganization
+        isMirror
+        isPrivate
+        isSecurityPolicyEnabled
+        lockReason
+        name
+        projectsUrl
+        pushedAt
+        rebaseMergeAllowed
+        resourcePath
+        securityPolicyUrl
+        squashMergeCommitTitle
+        stargazerCount
+        usesCustomOpenGraphImage
+        viewerCanAdminister
+        viewerCanCreateProjects
+        viewerPermission
+        viewerSubscription
+        webCommitSignoffRequired
+      }
+      environment {
+        databaseId
+        isPinned
+        pinnedPosition
+      }
+      databaseId
+    }
+    clientMutationId
+  }
+}

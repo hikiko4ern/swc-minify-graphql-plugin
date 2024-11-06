@@ -1,0 +1,43 @@
+query RandomQuery($Enterprise__members__first: Int, $Enterprise__organizations__first: Int, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!) {
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    enterprise {
+      ownerInfo {
+        affiliatedUsersWithTwoFactorDisabledExist
+        ipAllowListEnabledSetting
+        isUpdatingTwoFactorRequirement
+        membersCanCreateInternalRepositoriesSetting
+        membersCanCreatePrivateRepositoriesSetting
+        membersCanDeleteRepositoriesSetting
+        membersCanInviteCollaboratorsSetting
+        membersCanMakePurchasesSetting
+        organizationProjectsSetting
+        twoFactorRequiredSetting
+      }
+      members(first: $Enterprise__members__first) {
+        pageInfo {
+          hasPreviousPage
+          startCursor
+        }
+      }
+      organizations(first: $Enterprise__organizations__first) {
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
+      }
+      announcement
+      announcementExpiresAt
+      announcementUserDismissible
+      createdAt
+      description
+      descriptionHTML
+      id
+      name
+      readmeHTML
+      resourcePath
+      url
+    }
+    createdAt
+    id
+  }
+}

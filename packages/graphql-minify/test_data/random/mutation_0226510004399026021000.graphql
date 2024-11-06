@@ -1,0 +1,40 @@
+mutation RandomMutation($Enterprise__organizations__first: Int, $Mutation__updateEnterpriseOrganizationProjectsSetting__input: UpdateEnterpriseOrganizationProjectsSettingInput!) {
+  updateEnterpriseOrganizationProjectsSetting(input: $Mutation__updateEnterpriseOrganizationProjectsSetting__input) {
+    enterprise {
+      ownerInfo {
+        defaultRepositoryPermissionSetting
+        ipAllowListForInstalledAppsEnabledSetting
+        membersCanCreatePrivateRepositoriesSetting
+        membersCanCreatePublicRepositoriesSetting
+        membersCanCreateRepositoriesSetting
+        repositoryProjectsSetting
+        twoFactorDisallowedMethodsSetting
+      }
+      billingInfo {
+        allLicensableUsersCount
+        assetPacks
+        bandwidthQuota
+        bandwidthUsage
+        bandwidthUsagePercentage
+        storageQuota
+        storageUsage
+        storageUsagePercentage
+      }
+      organizations(first: $Enterprise__organizations__first) {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          startCursor
+        }
+      }
+      announcement
+      announcementCreatedAt
+      description
+      name
+      readmeHTML
+      url
+      viewerIsAdmin
+      websiteUrl
+    }
+  }
+}

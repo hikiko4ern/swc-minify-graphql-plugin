@@ -1,0 +1,1080 @@
+query RandomQuery($Query__repository__name: String!, $Query__repository__owner: String!, $Query__codeOfConduct__key: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $Query__marketplaceCategory__slug: String!, $Query__marketplaceListing__slug: String!, $Query__marketplaceListings__first: Int, $Organization__pinnableItems__first: Int, $Organization__domains__first: Int, $Organization__ipAllowListEntries__first: Int, $ProfileItemShowcase__items__first: Int, $Organization__lifetimeReceivedSponsorshipValues__first: Int, $Organization__memberStatuses__first: Int, $Organization__membersWithRole__first: Int, $Organization__pendingMembers__first: Int, $Organization__pinnedItems__first: Int, $Organization__project__number: Int!, $Organization__projects__first: Int, $Organization__projectsV2__first: Int, $ProjectV2__statusUpdates__first: Int, $ProjectV2__fields__first: Int, $ProjectV2__repositories__first: Int, $ProjectV2__teams__first: Int, $ProjectV2__views__first: Int, $Organization__projectV2__number: Int!, $Organization__repository__name: String!, $Organization__repositoryDiscussions__first: Int, $Organization__rulesets__first: Int, $Organization__sponsoring__first: Int, $Organization__sponsorshipNewsletters__first: Int, $User__commitComments__first: Int, $Gist__forks__first: Int, $User__gist__name: String!, $User__gistComments__first: Int, $User__lifetimeReceivedSponsorshipValues__first: Int, $User__pinnedItems__first: Int, $User__projectsV2__first: Int, $User__projectV2__number: Int!, $User__recentProjects__first: Int, $User__sponsoring__first: Int, $User__sponsors__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__organizationVerifiedDomainEmails__login: String!, $User__following__first: Int, $User__issueComments__first: Int, $User__pinnableItems__first: Int, $User__project__number: Int!, $User__projects__first: Int, $User__publicKeys__first: Int, $User__repositories__first: Int, $User__repositoriesContributedTo__first: Int, $User__repository__name: String!, $User__repositoryDiscussions__first: Int, $User__sponsorsActivities__first: Int, $User__sponsorshipsAsSponsor__first: Int, $User__starredRepositories__first: Int, $User__topRepositories__first: Int, $User__topRepositories__orderBy: RepositoryOrder!, $User__watching__first: Int, $User__sponsorshipNewsletters__first: Int, $User__sponsorshipsAsMaintainer__first: Int, $Repository__collaborators__first: Int, $Repository__dependencyGraphManifests__first: Int, $Repository__deployKeys__first: Int, $Repository__discussionCategories__first: Int, $Repository__discussionCategory__slug: String!, $Repository__environments__first: Int, $Repository__forks__first: Int, $Repository__issues__first: Int, $Repository__languages__first: Int, $Repository__mentionableUsers__first: Int, $Repository__pinnedDiscussions__first: Int, $Repository__pinnedIssues__first: Int, $Repository__project__number: Int!, $Repository__projectV2__number: Int!, $Repository__pullRequest__number: Int!, $Repository__pullRequests__first: Int, $Repository__recentProjects__first: Int, $Repository__release__tagName: String!, $Repository__releases__first: Int, $Repository__repositoryTopics__first: Int, $Repository__rulesets__first: Int, $Repository__stargazers__first: Int, $Repository__vulnerabilityAlerts__first: Int, $Organization__sponsorshipsAsMaintainer__first: Int, $Organization__team__slug: String!, $Query__organization__login: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityAdvisory__ghsaId: String!, $Query__topic__name: String!, $User__isSponsoredBy__accountLogin: String!, $Query__user__login: String!) {
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    archivedAt
+    autoMergeAllowed
+    deleteBranchOnMerge
+    descriptionHTML
+    diskUsage
+    forkingAllowed
+    hasDiscussionsEnabled
+    hasIssuesEnabled
+    hasProjectsEnabled
+    id
+    isLocked
+    isSecurityPolicyEnabled
+    isUserConfigurationRepository
+    mergeCommitMessage
+    mergeCommitTitle
+    projectsResourcePath
+    projectsUrl
+    rebaseMergeAllowed
+    shortDescriptionHTML
+    squashMergeCommitTitle
+    squashPrTitleUsedAsDefault
+    updatedAt
+    usesCustomOpenGraphImage
+    viewerCanSubscribe
+    viewerCanUpdateTopics
+    viewerDefaultCommitEmail
+    viewerDefaultMergeMethod
+    viewerHasStarred
+    viewerPermission
+    viewerSubscription
+    visibility
+    webCommitSignoffRequired
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    id
+    key
+    name
+    resourcePath
+    url
+  }
+  codesOfConduct {
+    body
+    id
+    key
+    resourcePath
+    url
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    createdAt
+    email
+    id
+    role
+  }
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    email
+    id
+  }
+  marketplaceCategories {
+    name
+    secondaryListingCount
+    slug
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    howItWorks
+    id
+    name
+    primaryListingCount
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    configurationResourcePath
+    extendedDescription
+    extendedDescriptionHTML
+    fullDescriptionHTML
+    hasPublishedFreeTrialPlans
+    hasTermsOfService
+    howItWorks
+    id
+    installedForViewer
+    isDraft
+    isUnverified
+    isVerificationPendingFromUnverified
+    logoBackgroundColor
+    pricingUrl
+    supportUrl
+    termsOfServiceUrl
+    url
+    viewerCanAddPlans
+    viewerCanApprove
+    viewerCanDelist
+    viewerCanEdit
+    viewerCanEditPlans
+    viewerCanRedraft
+    viewerHasPurchased
+    viewerIsListingAdmin
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    totalCount
+  }
+  organization(login: $Query__organization__login) {
+    pinnableItems(first: $Organization__pinnableItems__first) {
+      edges {
+        cursor
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+    domains(first: $Organization__domains__first) {
+      edges {
+        node {
+          id
+          punycodeEncodedDomain
+          updatedAt
+          verificationToken
+        }
+      }
+    }
+    ipAllowListEntries(first: $Organization__ipAllowListEntries__first) {
+      nodes {
+        isActive
+        name
+      }
+    }
+    itemShowcase {
+      items(first: $ProfileItemShowcase__items__first) {
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
+        edges {
+          cursor
+        }
+      }
+      hasPinnedItems
+    }
+    lifetimeReceivedSponsorshipValues(first: $Organization__lifetimeReceivedSponsorshipValues__first) {
+      totalCount
+    }
+    memberStatuses(first: $Organization__memberStatuses__first) {
+      edges {
+        node {
+          createdAt
+          emojiHTML
+          id
+          indicatesLimitedAvailability
+        }
+      }
+    }
+    membersWithRole(first: $Organization__membersWithRole__first) {
+      pageInfo {
+        endCursor
+        hasNextPage
+        startCursor
+      }
+      edges {
+        hasTwoFactorEnabled
+      }
+      totalCount
+    }
+    pendingMembers(first: $Organization__pendingMembers__first) {
+      totalCount
+    }
+    pinnedItems(first: $Organization__pinnedItems__first) {
+      totalCount
+    }
+    project(number: $Organization__project__number) {
+      bodyHTML
+      closedAt
+      createdAt
+      databaseId
+      id
+      name
+      number
+      resourcePath
+      updatedAt
+      url
+      viewerCanUpdate
+    }
+    projects(first: $Organization__projects__first) {
+      nodes {
+        body
+        bodyHTML
+        closedAt
+        createdAt
+        id
+        name
+        number
+        resourcePath
+        state
+        url
+        viewerCanClose
+        viewerCanReopen
+      }
+    }
+    projectsV2(first: $Organization__projectsV2__first) {
+      totalCount
+    }
+    projectV2(number: $Organization__projectV2__number) {
+      statusUpdates(first: $ProjectV2__statusUpdates__first) {
+        edges {
+          cursor
+        }
+        pageInfo {
+          endCursor
+          startCursor
+        }
+      }
+      fields(first: $ProjectV2__fields__first) {
+        totalCount
+      }
+      repositories(first: $ProjectV2__repositories__first) {
+        totalCount
+        totalDiskUsage
+      }
+      teams(first: $ProjectV2__teams__first) {
+        nodes {
+          avatarUrl
+          databaseId
+          discussionsResourcePath
+          membersUrl
+          newTeamResourcePath
+          repositoriesResourcePath
+          repositoriesUrl
+          reviewRequestDelegationAlgorithm
+          reviewRequestDelegationEnabled
+          reviewRequestDelegationNotifyTeam
+          slug
+          teamsResourcePath
+        }
+        edges {
+          cursor
+        }
+      }
+      views(first: $ProjectV2__views__first) {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          startCursor
+        }
+        edges {
+          cursor
+        }
+        nodes {
+          databaseId
+          filter
+          fullDatabaseId
+          number
+        }
+        totalCount
+      }
+      closed
+      closedAt
+      fullDatabaseId
+      number
+      public
+      template
+      title
+      updatedAt
+      url
+    }
+    repository(name: $Organization__repository__name) {
+      databaseId
+      description
+      forkingAllowed
+      hasDiscussionsEnabled
+      hasSponsorshipsEnabled
+      hasVulnerabilityAlertsEnabled
+      isBlankIssuesEnabled
+      isMirror
+      isPrivate
+      isTemplate
+      mergeCommitAllowed
+      mergeCommitMessage
+      mirrorUrl
+      nameWithOwner
+      projectsUrl
+      shortDescriptionHTML
+      squashMergeAllowed
+      squashMergeCommitTitle
+      squashPrTitleUsedAsDefault
+      stargazerCount
+      updatedAt
+      viewerCanAdminister
+      viewerCanSubscribe
+      viewerCanUpdateTopics
+      viewerDefaultCommitEmail
+      viewerHasStarred
+      viewerPossibleCommitEmails
+      viewerSubscription
+      visibility
+    }
+    repositoryDiscussions(first: $Organization__repositoryDiscussions__first) {
+      pageInfo {
+        hasNextPage
+        startCursor
+      }
+    }
+    rulesets(first: $Organization__rulesets__first) {
+      totalCount
+    }
+    sponsoring(first: $Organization__sponsoring__first) {
+      pageInfo {
+        endCursor
+        startCursor
+      }
+    }
+    sponsorshipForViewerAsSponsorable {
+      createdAt
+      id
+      isOneTimePayment
+      isSponsorOptedIntoEmail
+    }
+    sponsorshipNewsletters(first: $Organization__sponsorshipNewsletters__first) {
+      nodes {
+        body
+        isPublished
+        subject
+      }
+      edges {
+        cursor
+      }
+      totalCount
+    }
+    sponsorshipsAsMaintainer(first: $Organization__sponsorshipsAsMaintainer__first) {
+      edges {
+        node {
+          tier {
+            adminInfo {
+              isDraft
+              isPublished
+            }
+            closestLesserValueTier {
+              sponsorsListing {
+                billingCountryOrRegion
+                contactEmailAddress
+                createdAt
+                dashboardUrl
+                id
+                name
+                nextPayoutDate
+                url
+              }
+              description
+              descriptionHTML
+              id
+              isCustomAmount
+              monthlyPriceInDollars
+            }
+            sponsorsListing {
+              activeGoal {
+                percentComplete
+                title
+              }
+              dashboardUrl
+              fullDescriptionHTML
+              isPublic
+              nextPayoutDate
+              residenceCountryOrRegion
+              shortDescription
+              slug
+            }
+            id
+            monthlyPriceInCents
+            monthlyPriceInDollars
+            name
+          }
+          maintainer {
+            commitComments(first: $User__commitComments__first) {
+              pageInfo {
+                endCursor
+              }
+              totalCount
+            }
+            contributionsCollection {
+              doesEndInCurrentMonth
+              hasActivityInThePast
+              hasAnyRestrictedContributions
+              isSingleDay
+              restrictedContributionsCount
+              startedAt
+              totalCommitContributions
+              totalIssueContributions
+              totalPullRequestContributions
+              totalRepositoriesWithContributedCommits
+              totalRepositoriesWithContributedPullRequestReviews
+              totalRepositoryContributions
+            }
+            copilotEndpoints {
+              originTracker
+            }
+            gist(name: $User__gist__name) {
+              forks(first: $Gist__forks__first) {
+                pageInfo {
+                  endCursor
+                  startCursor
+                }
+              }
+              description
+              isFork
+              name
+              resourcePath
+              stargazerCount
+              updatedAt
+              viewerHasStarred
+            }
+            gistComments(first: $User__gistComments__first) {
+              edges {
+                cursor
+              }
+              nodes {
+                authorAssociation
+                bodyHTML
+                bodyText
+                createdAt
+                minimizedReason
+                publishedAt
+                viewerCanDelete
+                viewerCanMinimize
+                viewerDidAuthor
+              }
+            }
+            lifetimeReceivedSponsorshipValues(first: $User__lifetimeReceivedSponsorshipValues__first) {
+              pageInfo {
+                endCursor
+                hasNextPage
+                hasPreviousPage
+                startCursor
+              }
+            }
+            pinnedItems(first: $User__pinnedItems__first) {
+              edges {
+                cursor
+              }
+            }
+            projectsV2(first: $User__projectsV2__first) {
+              totalCount
+            }
+            projectV2(number: $User__projectV2__number) {
+              closedAt
+              createdAt
+              databaseId
+              fullDatabaseId
+              id
+              public
+              resourcePath
+              template
+              title
+              updatedAt
+              url
+              viewerCanReopen
+            }
+            recentProjects(first: $User__recentProjects__first) {
+              edges {
+                cursor
+              }
+            }
+            sponsoring(first: $User__sponsoring__first) {
+              pageInfo {
+                hasNextPage
+                startCursor
+              }
+              edges {
+                cursor
+              }
+            }
+            sponsors(first: $User__sponsors__first) {
+              totalCount
+            }
+            sponsorshipForViewerAsSponsor {
+              maintainer {
+                anyPinnableItems
+                canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+                company
+                databaseId
+                email
+                estimatedNextSponsorsPayoutInCents
+                hasSponsorsListing
+                isDeveloperProgramMember
+                isFollowingViewer
+                isSponsoringViewer
+                isViewer
+                login
+                name
+                organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+                pinnedItemsRemaining
+                projectsResourcePath
+                projectsUrl
+                pronouns
+                resourcePath
+                twitterUsername
+                updatedAt
+                viewerCanCreateProjects
+                viewerIsFollowing
+                websiteUrl
+              }
+              createdAt
+              id
+              isActive
+              paymentSource
+              tierSelectedAt
+            }
+            sponsorshipNewsletters(first: $User__sponsorshipNewsletters__first) {
+              nodes {
+                author {
+                  sponsorshipForViewerAsSponsor {
+                    id
+                    isOneTimePayment
+                    isSponsorOptedIntoEmail
+                    paymentSource
+                    tierSelectedAt
+                  }
+                  copilotEndpoints {
+                    originTracker
+                    proxy
+                  }
+                  following(first: $User__following__first) {
+                    totalCount
+                  }
+                  gist(name: $User__gist__name) {
+                    createdAt
+                    id
+                    isPublic
+                    name
+                    pushedAt
+                    stargazerCount
+                  }
+                  issueComments(first: $User__issueComments__first) {
+                    totalCount
+                  }
+                  itemShowcase {
+                    hasPinnedItems
+                  }
+                  lifetimeReceivedSponsorshipValues(first: $User__lifetimeReceivedSponsorshipValues__first) {
+                    totalCount
+                  }
+                  pinnableItems(first: $User__pinnableItems__first) {
+                    totalCount
+                  }
+                  pinnedItems(first: $User__pinnedItems__first) {
+                    totalCount
+                  }
+                  project(number: $User__project__number) {
+                    bodyHTML
+                    databaseId
+                    id
+                    name
+                    number
+                    resourcePath
+                    updatedAt
+                    viewerCanReopen
+                    viewerCanUpdate
+                  }
+                  projects(first: $User__projects__first) {
+                    totalCount
+                  }
+                  projectsV2(first: $User__projectsV2__first) {
+                    totalCount
+                  }
+                  publicKeys(first: $User__publicKeys__first) {
+                    totalCount
+                  }
+                  repositories(first: $User__repositories__first) {
+                    totalCount
+                  }
+                  repositoriesContributedTo(first: $User__repositoriesContributedTo__first) {
+                    totalCount
+                    totalDiskUsage
+                  }
+                  repository(name: $User__repository__name) {
+                    archivedAt
+                    description
+                    descriptionHTML
+                    diskUsage
+                    forkingAllowed
+                    hasIssuesEnabled
+                    homepageUrl
+                    isArchived
+                    isDisabled
+                    isInOrganization
+                    isMirror
+                    isTemplate
+                    mergeCommitMessage
+                    mirrorUrl
+                    name
+                    nameWithOwner
+                    openGraphImageUrl
+                    projectsResourcePath
+                    pushedAt
+                    securityPolicyUrl
+                    shortDescriptionHTML
+                    squashMergeAllowed
+                    usesCustomOpenGraphImage
+                    viewerCanAdminister
+                    viewerCanSubscribe
+                    viewerCanUpdateTopics
+                    viewerHasStarred
+                    viewerSubscription
+                    webCommitSignoffRequired
+                  }
+                  repositoryDiscussions(first: $User__repositoryDiscussions__first) {
+                    totalCount
+                  }
+                  sponsoring(first: $User__sponsoring__first) {
+                    totalCount
+                  }
+                  sponsorsActivities(first: $User__sponsorsActivities__first) {
+                    totalCount
+                  }
+                  sponsorshipForViewerAsSponsorable {
+                    createdAt
+                    isActive
+                    isOneTimePayment
+                    isSponsorOptedIntoEmail
+                    paymentSource
+                    tierSelectedAt
+                  }
+                  sponsorshipsAsSponsor(first: $User__sponsorshipsAsSponsor__first) {
+                    totalCount
+                  }
+                  starredRepositories(first: $User__starredRepositories__first) {
+                    totalCount
+                  }
+                  status {
+                    createdAt
+                    emoji
+                    expiresAt
+                    id
+                  }
+                  suggestedListNames {
+                    id
+                    name
+                  }
+                  topRepositories(first: $User__topRepositories__first, orderBy: $User__topRepositories__orderBy) {
+                    totalCount
+                    totalDiskUsage
+                  }
+                  watching(first: $User__watching__first) {
+                    totalDiskUsage
+                  }
+                  anyPinnableItems
+                  avatarUrl
+                  bio
+                  canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+                  companyHTML
+                  createdAt
+                  id
+                  isCampusExpert
+                  isEmployee
+                  isFollowingViewer
+                  isGitHubStar
+                  isHireable
+                  isSiteAdmin
+                  organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+                  pinnedItemsRemaining
+                  projectsResourcePath
+                  pronouns
+                  resourcePath
+                  totalSponsorshipAmountAsSponsorInCents
+                  userViewType
+                  viewerCanChangePinnedItems
+                  viewerCanFollow
+                }
+                id
+                updatedAt
+              }
+              totalCount
+            }
+            sponsorshipsAsMaintainer(first: $User__sponsorshipsAsMaintainer__first) {
+              edges {
+                cursor
+              }
+              nodes {
+                id
+                isActive
+                isOneTimePayment
+                isSponsorOptedIntoEmail
+                paymentSource
+              }
+              totalRecurringMonthlyPriceInDollars
+            }
+            sponsorshipsAsSponsor(first: $User__sponsorshipsAsSponsor__first) {
+              edges {
+                cursor
+              }
+              totalCount
+            }
+            suggestedListNames {
+              id
+            }
+            topRepositories(first: $User__topRepositories__first, orderBy: $User__topRepositories__orderBy) {
+              edges {
+                node {
+                  planFeatures {
+                    maximumManualReviewRequests
+                  }
+                  codeOfConduct {
+                    id
+                    key
+                    url
+                  }
+                  collaborators(first: $Repository__collaborators__first) {
+                    totalCount
+                  }
+                  contactLinks {
+                    name
+                  }
+                  dependencyGraphManifests(first: $Repository__dependencyGraphManifests__first) {
+                    totalCount
+                  }
+                  deployKeys(first: $Repository__deployKeys__first) {
+                    totalCount
+                  }
+                  discussionCategories(first: $Repository__discussionCategories__first) {
+                    totalCount
+                  }
+                  discussionCategory(slug: $Repository__discussionCategory__slug) {
+                    emojiHTML
+                    slug
+                  }
+                  environments(first: $Repository__environments__first) {
+                    totalCount
+                  }
+                  forks(first: $Repository__forks__first) {
+                    totalCount
+                    totalDiskUsage
+                  }
+                  issues(first: $Repository__issues__first) {
+                    totalCount
+                  }
+                  languages(first: $Repository__languages__first) {
+                    totalSize
+                  }
+                  mentionableUsers(first: $Repository__mentionableUsers__first) {
+                    totalCount
+                  }
+                  mergeQueue {
+                    nextEntryEstimatedTimeToMerge
+                    resourcePath
+                    url
+                  }
+                  parent {
+                    archivedAt
+                    autoMergeAllowed
+                    createdAt
+                    description
+                    descriptionHTML
+                    diskUsage
+                    hasDiscussionsEnabled
+                    hasProjectsEnabled
+                    hasVulnerabilityAlertsEnabled
+                    hasWikiEnabled
+                    homepageUrl
+                    isArchived
+                    isBlankIssuesEnabled
+                    isFork
+                    isPrivate
+                    isUserConfigurationRepository
+                    lockReason
+                    mergeCommitAllowed
+                    mergeCommitMessage
+                    mergeCommitTitle
+                    name
+                    nameWithOwner
+                    openGraphImageUrl
+                    rebaseMergeAllowed
+                    squashMergeAllowed
+                    squashMergeCommitMessage
+                    sshUrl
+                    updatedAt
+                    viewerCanAdminister
+                    viewerDefaultMergeMethod
+                    viewerPermission
+                    viewerPossibleCommitEmails
+                    viewerSubscription
+                    webCommitSignoffRequired
+                  }
+                  pinnedDiscussions(first: $Repository__pinnedDiscussions__first) {
+                    totalCount
+                  }
+                  pinnedIssues(first: $Repository__pinnedIssues__first) {
+                    totalCount
+                  }
+                  project(number: $Repository__project__number) {
+                    body
+                    closedAt
+                    createdAt
+                    name
+                    state
+                    updatedAt
+                    url
+                    viewerCanReopen
+                  }
+                  projectV2(number: $Repository__projectV2__number) {
+                    closedAt
+                    number
+                    readme
+                    resourcePath
+                    shortDescription
+                    updatedAt
+                    url
+                  }
+                  pullRequest(number: $Repository__pullRequest__number) {
+                    additions
+                    body
+                    bodyText
+                    canBeRebased
+                    createdAt
+                    headRefOid
+                    isDraft
+                    isMergeQueueEnabled
+                    isReadByViewer
+                    maintainerCanModify
+                    merged
+                    number
+                    resourcePath
+                    revertUrl
+                    updatedAt
+                    viewerCanApplySuggestion
+                    viewerCanClose
+                    viewerCanDeleteHeadRef
+                    viewerCanDisableAutoMerge
+                    viewerCanEditFiles
+                    viewerCanMergeAsAdmin
+                    viewerCanReact
+                    viewerCanReopen
+                    viewerCanSubscribe
+                    viewerCanUpdateBranch
+                    viewerMergeHeadlineText
+                  }
+                  pullRequests(first: $Repository__pullRequests__first) {
+                    totalCount
+                  }
+                  recentProjects(first: $Repository__recentProjects__first) {
+                    totalCount
+                  }
+                  release(tagName: $Repository__release__tagName) {
+                    createdAt
+                    id
+                    isLatest
+                    isPrerelease
+                    name
+                    publishedAt
+                    shortDescriptionHTML
+                    tagName
+                    updatedAt
+                    viewerCanReact
+                  }
+                  releases(first: $Repository__releases__first) {
+                    totalCount
+                  }
+                  repositoryTopics(first: $Repository__repositoryTopics__first) {
+                    totalCount
+                  }
+                  rulesets(first: $Repository__rulesets__first) {
+                    totalCount
+                  }
+                  stargazers(first: $Repository__stargazers__first) {
+                    totalCount
+                  }
+                  templateRepository {
+                    archivedAt
+                    autoMergeAllowed
+                    createdAt
+                    databaseId
+                    deleteBranchOnMerge
+                    description
+                    descriptionHTML
+                    diskUsage
+                    forkCount
+                    hasDiscussionsEnabled
+                    hasIssuesEnabled
+                    hasWikiEnabled
+                    isArchived
+                    isBlankIssuesEnabled
+                    isDisabled
+                    isEmpty
+                    isLocked
+                    isSecurityPolicyEnabled
+                    lockReason
+                    mergeCommitMessage
+                    mergeCommitTitle
+                    mirrorUrl
+                    name
+                    openGraphImageUrl
+                    projectsUrl
+                    pushedAt
+                    rebaseMergeAllowed
+                    shortDescriptionHTML
+                    stargazerCount
+                    updatedAt
+                    usesCustomOpenGraphImage
+                    viewerCanCreateProjects
+                    viewerCanSubscribe
+                    viewerSubscription
+                    visibility
+                  }
+                  vulnerabilityAlerts(first: $Repository__vulnerabilityAlerts__first) {
+                    totalCount
+                  }
+                  databaseId
+                  description
+                  descriptionHTML
+                  forkCount
+                  forkingAllowed
+                  hasDiscussionsEnabled
+                  hasIssuesEnabled
+                  hasWikiEnabled
+                  isInOrganization
+                  isPrivate
+                  isSecurityPolicyEnabled
+                  isTemplate
+                  mergeCommitAllowed
+                  mergeCommitMessage
+                  mergeCommitTitle
+                  mirrorUrl
+                  nameWithOwner
+                  openGraphImageUrl
+                  projectsResourcePath
+                  projectsUrl
+                  pushedAt
+                  resourcePath
+                  securityPolicyUrl
+                  shortDescriptionHTML
+                  squashMergeAllowed
+                  sshUrl
+                  updatedAt
+                  url
+                  viewerCanUpdateTopics
+                  viewerHasStarred
+                  viewerSubscription
+                }
+                cursor
+              }
+              totalDiskUsage
+            }
+            watching(first: $User__watching__first) {
+              edges {
+                cursor
+              }
+              pageInfo {
+                endCursor
+                hasNextPage
+              }
+              totalCount
+              totalDiskUsage
+            }
+            avatarUrl
+            bio
+            bioHTML
+            canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+            company
+            companyHTML
+            databaseId
+            email
+            hasSponsorsListing
+            isFollowingViewer
+            isHireable
+            isViewer
+            pinnedItemsRemaining
+            projectsResourcePath
+            projectsUrl
+            resourcePath
+            twitterUsername
+            updatedAt
+            url
+            userViewType
+            viewerCanChangePinnedItems
+            viewerIsFollowing
+            viewerIsSponsoring
+          }
+          createdAt
+          id
+          isActive
+          isOneTimePayment
+          paymentSource
+          tierSelectedAt
+        }
+      }
+      nodes {
+        isActive
+        isSponsorOptedIntoEmail
+        tierSelectedAt
+      }
+      totalCount
+      totalRecurringMonthlyPriceInCents
+    }
+    team(slug: $Organization__team__slug) {
+      databaseId
+      description
+      discussionsUrl
+      editTeamUrl
+      id
+      membersResourcePath
+      membersUrl
+      newTeamResourcePath
+      privacy
+      repositoriesUrl
+      reviewRequestDelegationAlgorithm
+      reviewRequestDelegationEnabled
+      reviewRequestDelegationNotifyTeam
+      slug
+      teamsResourcePath
+      updatedAt
+      url
+      viewerCanSubscribe
+      viewerSubscription
+    }
+    announcement
+    announcementCreatedAt
+    announcementExpiresAt
+    announcementUserDismissible
+    anyPinnableItems
+    createdAt
+    databaseId
+    descriptionHTML
+    email
+    estimatedNextSponsorsPayoutInCents
+    hasSponsorsListing
+    id
+    isSponsoringViewer
+    membersCanForkPrivateRepositories
+    name
+    notificationDeliveryRestrictionEnabledSetting
+    organizationBillingEmail
+    pinnedItemsRemaining
+    projectsUrl
+    teamsUrl
+    totalSponsorshipAmountAsSponsorInCents
+    url
+    viewerCanCreateProjects
+    viewerIsAMember
+    websiteUrl
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    pageInfo {
+      endCursor
+      hasPreviousPage
+    }
+    issueCount
+    userCount
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    classification
+    databaseId
+    notificationsPermalink
+    origin
+  }
+  topic(name: $Query__topic__name) {
+    stargazerCount
+    viewerHasStarred
+  }
+  user(login: $Query__user__login) {
+    anyPinnableItems
+    bio
+    bioHTML
+    company
+    companyHTML
+    email
+    estimatedNextSponsorsPayoutInCents
+    hasSponsorsListing
+    id
+    isCampusExpert
+    isFollowingViewer
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isViewer
+    login
+    pinnedItemsRemaining
+    projectsUrl
+    updatedAt
+    viewerCanCreateProjects
+    viewerCanFollow
+    viewerCanSponsor
+    websiteUrl
+  }
+  id
+}

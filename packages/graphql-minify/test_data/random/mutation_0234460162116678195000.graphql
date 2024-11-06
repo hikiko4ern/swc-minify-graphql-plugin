@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__publishSponsorsTier__input: PublishSponsorsTierInput!) {
+  publishSponsorsTier(input: $Mutation__publishSponsorsTier__input) {
+    clientMutationId
+  }
+}

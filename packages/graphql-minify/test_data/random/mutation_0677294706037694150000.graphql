@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__updateNotificationRestrictionSetting__input: UpdateNotificationRestrictionSettingInput!) {
+  updateNotificationRestrictionSetting(input: $Mutation__updateNotificationRestrictionSetting__input) {
+    clientMutationId
+  }
+}

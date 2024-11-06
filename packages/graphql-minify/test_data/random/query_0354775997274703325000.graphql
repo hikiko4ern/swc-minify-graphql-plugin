@@ -1,0 +1,165 @@
+query RandomQuery($Query__marketplaceListings__first: Int, $Query__enterprise__slug: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $User__organizationVerifiedDomainEmails__login: String!, $User__isSponsoredBy__accountLogin: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__license__key: String!, $Query__marketplaceCategory__slug: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityAdvisories__first: Int, $Query__securityAdvisory__ghsaId: String!, $Query__sponsorables__first: Int) {
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    pageInfo {
+      hasNextPage
+      startCursor
+    }
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcement
+    announcementCreatedAt
+    announcementExpiresAt
+    announcementUserDismissible
+    avatarUrl
+    billingEmail
+    createdAt
+    databaseId
+    description
+    descriptionHTML
+    id
+    readmeHTML
+    resourcePath
+    url
+    viewerIsAdmin
+    websiteUrl
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    createdAt
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    enterprise {
+      announcement
+      announcementExpiresAt
+      announcementUserDismissible
+      createdAt
+      description
+      descriptionHTML
+      id
+      readmeHTML
+      resourcePath
+      slug
+      viewerIsAdmin
+      websiteUrl
+    }
+    invitee {
+      anyPinnableItems
+      avatarUrl
+      bio
+      bioHTML
+      company
+      companyHTML
+      createdAt
+      email
+      estimatedNextSponsorsPayoutInCents
+      id
+      isBountyHunter
+      isDeveloperProgramMember
+      isGitHubStar
+      isHireable
+      location
+      login
+      monthlyEstimatedSponsorsIncomeInCents
+      name
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      pinnedItemsRemaining
+      projectsResourcePath
+      projectsUrl
+      pronouns
+      resourcePath
+      totalSponsorshipAmountAsSponsorInCents
+      viewerCanChangePinnedItems
+      viewerCanCreateProjects
+    }
+    inviter {
+      anyPinnableItems
+      avatarUrl
+      databaseId
+      email
+      estimatedNextSponsorsPayoutInCents
+      hasSponsorsListing
+      isDeveloperProgramMember
+      isEmployee
+      isGitHubStar
+      isHireable
+      isSiteAdmin
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      isViewer
+      name
+      pinnedItemsRemaining
+      projectsResourcePath
+      resourcePath
+      twitterUsername
+      viewerCanChangePinnedItems
+      viewerCanCreateProjects
+      viewerCanSponsor
+      viewerIsSponsoring
+      websiteUrl
+    }
+    id
+    role
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    email
+    id
+  }
+  license(key: $Query__license__key) {
+    conditions {
+      description
+    }
+    limitations {
+      description
+      label
+    }
+    hidden
+    implementation
+    key
+    pseudoLicense
+    url
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    id
+    name
+    primaryListingCount
+    slug
+    url
+  }
+  meta {
+    githubEnterpriseImporterIpAddresses
+    isPasswordAuthenticationVerifiable
+  }
+  rateLimit {
+    cost
+    nodeCount
+    remaining
+    resetAt
+    used
+  }
+  relay {
+    id
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    codeCount
+    discussionCount
+    wikiCount
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    totalCount
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    id
+    notificationsPermalink
+    publishedAt
+    summary
+    withdrawnAt
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+    }
+  }
+  id
+}

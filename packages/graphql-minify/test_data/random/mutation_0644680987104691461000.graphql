@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__deletePullRequestReview__input: DeletePullRequestReviewInput!) {
+  deletePullRequestReview(input: $Mutation__deletePullRequestReview__input) {
+    clientMutationId
+  }
+}

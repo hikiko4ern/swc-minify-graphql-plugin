@@ -1,0 +1,5 @@
+query RandomQuery($Query__marketplaceListings__first: Int) {
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    totalCount
+  }
+}

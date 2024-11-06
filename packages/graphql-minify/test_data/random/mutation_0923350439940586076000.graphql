@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__convertPullRequestToDraft__input: ConvertPullRequestToDraftInput!) {
+  convertPullRequestToDraft(input: $Mutation__convertPullRequestToDraft__input) {
+    clientMutationId
+  }
+}

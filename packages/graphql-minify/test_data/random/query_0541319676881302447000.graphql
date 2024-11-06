@@ -1,0 +1,243 @@
+query RandomQuery($Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $App__ipAllowListEntries__first: Int, $Query__marketplaceListing__slug: String!, $Query__marketplaceListings__first: Int, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $SecurityAdvisory__cwes__first: Int, $SecurityAdvisory__vulnerabilities__first: Int, $Query__securityAdvisories__first: Int, $Query__securityAdvisory__ghsaId: String!, $Query__topic__name: String!) {
+  licenses {
+    id
+    url
+  }
+  codesOfConduct {
+    id
+    key
+    name
+    resourcePath
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    email
+    id
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    email
+  }
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    createdAt
+    email
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    invitee {
+      anyPinnableItems
+      avatarUrl
+      bio
+      canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+      company
+      databaseId
+      id
+      isBountyHunter
+      isCampusExpert
+      isFollowingViewer
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      login
+      monthlyEstimatedSponsorsIncomeInCents
+      name
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      projectsResourcePath
+      pronouns
+      resourcePath
+      totalSponsorshipAmountAsSponsorInCents
+      url
+      userViewType
+      viewerIsFollowing
+      viewerIsSponsoring
+      websiteUrl
+    }
+    inviter {
+      anyPinnableItems
+      bio
+      bioHTML
+      estimatedNextSponsorsPayoutInCents
+      hasSponsorsListing
+      id
+      isBountyHunter
+      isCampusExpert
+      isEmployee
+      isFollowingViewer
+      isGitHubStar
+      isHireable
+      isSiteAdmin
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      login
+      monthlyEstimatedSponsorsIncomeInCents
+      name
+      pinnedItemsRemaining
+      projectsResourcePath
+      projectsUrl
+      resourcePath
+      totalSponsorshipAmountAsSponsorInCents
+      twitterUsername
+      updatedAt
+      viewerCanCreateProjects
+      viewerCanFollow
+      viewerIsFollowing
+      viewerIsSponsoring
+      websiteUrl
+    }
+    email
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    secondaryCategory {
+      howItWorks
+      id
+      secondaryListingCount
+      slug
+    }
+    app {
+      ipAllowListEntries(first: $App__ipAllowListEntries__first) {
+        pageInfo {
+          endCursor
+          hasPreviousPage
+        }
+      }
+      clientId
+      createdAt
+      description
+      name
+      slug
+      url
+    }
+    primaryCategory {
+      description
+      id
+      name
+      url
+    }
+    companyUrl
+    configurationResourcePath
+    configurationUrl
+    extendedDescription
+    extendedDescriptionHTML
+    hasVerifiedOwner
+    howItWorksHTML
+    id
+    installationUrl
+    installedForViewer
+    isArchived
+    isDraft
+    isPublic
+    isRejected
+    isVerificationPendingFromDraft
+    name
+    normalizedShortDescription
+    privacyPolicyUrl
+    resourcePath
+    shortDescription
+    slug
+    statusUrl
+    supportEmail
+    supportUrl
+    termsOfServiceUrl
+    url
+    viewerCanAddPlans
+    viewerCanEdit
+    viewerCanEditPlans
+    viewerCanRedraft
+    viewerCanReject
+    viewerCanRequestApproval
+    viewerIsListingAdmin
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    totalCount
+  }
+  relay {
+    viewer {
+      bioHTML
+      company
+      companyHTML
+      databaseId
+      hasSponsorsListing
+      id
+      isDeveloperProgramMember
+      isSiteAdmin
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      isViewer
+      location
+      monthlyEstimatedSponsorsIncomeInCents
+      name
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      projectsResourcePath
+      pronouns
+      resourcePath
+      totalSponsorshipAmountAsSponsorInCents
+      url
+      userViewType
+      viewerCanSponsor
+      viewerIsFollowing
+      viewerIsSponsoring
+    }
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    codeCount
+    userCount
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    nodes {
+      cwes(first: $SecurityAdvisory__cwes__first) {
+        totalCount
+      }
+      epss {
+        percentage
+      }
+      references {
+        url
+      }
+      vulnerabilities(first: $SecurityAdvisory__vulnerabilities__first) {
+        pageInfo {
+          startCursor
+        }
+        edges {
+          cursor
+        }
+      }
+      classification
+      databaseId
+      description
+      id
+      notificationsPermalink
+      origin
+      severity
+      summary
+      withdrawnAt
+    }
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    epss {
+      percentage
+    }
+    identifiers {
+      value
+    }
+    origin
+    permalink
+    updatedAt
+  }
+  topic(name: $Query__topic__name) {
+    viewerHasStarred
+  }
+  viewer {
+    anyPinnableItems
+    avatarUrl
+    bioHTML
+    createdAt
+    estimatedNextSponsorsPayoutInCents
+    hasSponsorsListing
+    isDeveloperProgramMember
+    isEmployee
+    isGitHubStar
+    isHireable
+    isSiteAdmin
+    isViewer
+    location
+    login
+    name
+    pinnedItemsRemaining
+    projectsResourcePath
+    resourcePath
+    url
+  }
+}

@@ -1,0 +1,64 @@
+query RandomQuery($App__ipAllowListEntries__first: Int, $Query__marketplaceListing__slug: String!) {
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    primaryCategory {
+      description
+      resourcePath
+      secondaryListingCount
+      url
+    }
+    app {
+      ipAllowListEntries(first: $App__ipAllowListEntries__first) {
+        pageInfo {
+          endCursor
+          startCursor
+        }
+        nodes {
+          allowListValue
+          createdAt
+          id
+          name
+          updatedAt
+        }
+      }
+      clientId
+      createdAt
+      logoBackgroundColor
+      logoUrl
+      slug
+      updatedAt
+      url
+    }
+    secondaryCategory {
+      primaryListingCount
+      secondaryListingCount
+      slug
+    }
+    configurationUrl
+    documentationUrl
+    extendedDescription
+    extendedDescriptionHTML
+    fullDescription
+    fullDescriptionHTML
+    hasTermsOfService
+    hasVerifiedOwner
+    howItWorksHTML
+    id
+    isDraft
+    isPaid
+    isRejected
+    isUnverified
+    isVerificationPendingFromDraft
+    isVerified
+    name
+    normalizedShortDescription
+    resourcePath
+    slug
+    statusUrl
+    termsOfServiceUrl
+    viewerCanAddPlans
+    viewerCanDelist
+    viewerCanEditPlans
+    viewerCanReject
+    viewerCanRequestApproval
+  }
+}

@@ -1,0 +1,9 @@
+mutation RandomMutation($Mutation__pinEnvironment__input: PinEnvironmentInput!) {
+  pinEnvironment(input: $Mutation__pinEnvironment__input) {
+    environment {
+      isPinned
+      name
+      pinnedPosition
+    }
+  }
+}

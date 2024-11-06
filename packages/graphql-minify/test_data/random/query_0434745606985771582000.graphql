@@ -1,0 +1,15 @@
+query RandomQuery {
+  licenses {
+    permissions {
+      description
+      key
+      label
+    }
+    description
+    featured
+    id
+    implementation
+    key
+    url
+  }
+}

@@ -1,0 +1,176 @@
+query RandomQuery($Query__topic__name: String!, $Enterprise__members__first: Int, $Query__enterprise__slug: String!, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $Query__license__key: String!, $Query__marketplaceCategory__slug: String!, $Query__marketplaceListings__first: Int, $Query__repository__name: String!, $Query__repository__owner: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityAdvisories__first: Int, $Query__sponsorables__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__organizationVerifiedDomainEmails__login: String!) {
+  topic(name: $Query__topic__name) {
+    name
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    billingInfo {
+      bandwidthUsage
+      storageUsagePercentage
+    }
+    members(first: $Enterprise__members__first) {
+      edges {
+        cursor
+      }
+      totalCount
+    }
+    announcementCreatedAt
+    avatarUrl
+    billingEmail
+    createdAt
+    databaseId
+    description
+    descriptionHTML
+    location
+    slug
+    viewerIsAdmin
+    websiteUrl
+  }
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    email
+    id
+  }
+  license(key: $Query__license__key) {
+    featured
+    id
+    implementation
+    key
+    name
+    nickname
+    url
+  }
+  licenses {
+    body
+    hidden
+    key
+    spdxId
+  }
+  marketplaceCategories {
+    howItWorks
+    name
+    resourcePath
+    secondaryListingCount
+    url
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    howItWorks
+    name
+    resourcePath
+    secondaryListingCount
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    pageInfo {
+      hasPreviousPage
+    }
+  }
+  meta {
+    githubEnterpriseImporterIpAddresses
+    hookIpAddresses
+    importerIpAddresses
+    isPasswordAuthenticationVerifiable
+    pagesIpAddresses
+  }
+  rateLimit {
+    limit
+    nodeCount
+    resetAt
+    used
+  }
+  relay {
+    marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+      primaryListingCount
+      slug
+      url
+    }
+  }
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    allowUpdateBranch
+    autoMergeAllowed
+    createdAt
+    databaseId
+    descriptionHTML
+    forkingAllowed
+    hasProjectsEnabled
+    hasSponsorshipsEnabled
+    hasVulnerabilityAlertsEnabled
+    hasWikiEnabled
+    isArchived
+    isBlankIssuesEnabled
+    isEmpty
+    isFork
+    isInOrganization
+    isMirror
+    isTemplate
+    isUserConfigurationRepository
+    mergeCommitTitle
+    projectsResourcePath
+    pushedAt
+    resourcePath
+    securityPolicyUrl
+    shortDescriptionHTML
+    squashMergeCommitMessage
+    squashMergeCommitTitle
+    squashPrTitleUsedAsDefault
+    viewerCanAdminister
+    viewerCanCreateProjects
+    viewerCanSubscribe
+    viewerDefaultCommitEmail
+    viewerHasStarred
+    viewerSubscription
+    visibility
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    pageInfo {
+      endCursor
+    }
+    codeCount
+    userCount
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    nodes {
+      classification
+      publishedAt
+      severity
+      summary
+      updatedAt
+    }
+    edges {
+      cursor
+    }
+    pageInfo {
+      hasPreviousPage
+    }
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    edges {
+      cursor
+    }
+  }
+  viewer {
+    anyPinnableItems
+    bio
+    bioHTML
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    company
+    createdAt
+    email
+    isBountyHunter
+    isCampusExpert
+    isEmployee
+    isFollowingViewer
+    isSiteAdmin
+    isSponsoringViewer
+    login
+    monthlyEstimatedSponsorsIncomeInCents
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    projectsResourcePath
+    pronouns
+    twitterUsername
+    updatedAt
+    userViewType
+    viewerCanChangePinnedItems
+    viewerCanFollow
+    viewerIsSponsoring
+    websiteUrl
+  }
+}

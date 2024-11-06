@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__updateRef__input: UpdateRefInput!) {
+  updateRef(input: $Mutation__updateRef__input) {
+    clientMutationId
+  }
+}

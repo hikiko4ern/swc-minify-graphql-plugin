@@ -1,0 +1,8 @@
+query RandomQuery {
+  rateLimit {
+    limit
+    remaining
+    resetAt
+    used
+  }
+}

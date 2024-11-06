@@ -1,0 +1,6 @@
+query RandomQuery($Query__enterpriseMemberInvitationByToken__invitationToken: String!) {
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    createdAt
+    id
+  }
+}

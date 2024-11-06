@@ -1,0 +1,33 @@
+query RandomQuery($Query__repository__name: String!, $Query__repository__owner: String!) {
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    archivedAt
+    createdAt
+    databaseId
+    forkCount
+    hasIssuesEnabled
+    hasVulnerabilityAlertsEnabled
+    homepageUrl
+    isDisabled
+    isEmpty
+    isFork
+    isPrivate
+    isUserConfigurationRepository
+    mergeCommitAllowed
+    mirrorUrl
+    name
+    openGraphImageUrl
+    projectsUrl
+    resourcePath
+    shortDescriptionHTML
+    squashMergeCommitTitle
+    sshUrl
+    stargazerCount
+    viewerCanCreateProjects
+    viewerCanUpdateTopics
+    viewerDefaultCommitEmail
+    viewerHasStarred
+    viewerPossibleCommitEmails
+    viewerSubscription
+    webCommitSignoffRequired
+  }
+}

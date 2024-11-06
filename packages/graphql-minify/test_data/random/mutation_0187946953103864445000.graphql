@@ -1,0 +1,43 @@
+mutation RandomMutation($Ref__compare__headRef: String!, $BranchProtectionRule__bypassForcePushAllowances__first: Int, $Mutation__createCommitOnBranch__input: CreateCommitOnBranchInput!) {
+  createCommitOnBranch(input: $Mutation__createCommitOnBranch__input) {
+    ref {
+      compare(headRef: $Ref__compare__headRef) {
+        aheadBy
+        behindBy
+      }
+      branchProtectionRule {
+        bypassForcePushAllowances(first: $BranchProtectionRule__bypassForcePushAllowances__first) {
+          totalCount
+        }
+        allowsDeletions
+        allowsForcePushes
+        id
+        isAdminEnforced
+        lockBranch
+        pattern
+        requiredDeploymentEnvironments
+        requiredStatusCheckContexts
+        requireLastPushApproval
+        requiresApprovingReviews
+        requiresCommitSignatures
+        requiresDeployments
+        requiresStatusChecks
+        requiresStrictStatusChecks
+        restrictsPushes
+        restrictsReviewDismissals
+      }
+      refUpdateRule {
+        allowsDeletions
+        blocksCreations
+        pattern
+        requiredApprovingReviewCount
+        requiredStatusCheckContexts
+        viewerAllowedToDismissReviews
+        viewerCanPush
+      }
+      id
+      prefix
+    }
+    clientMutationId
+  }
+}

@@ -1,0 +1,168 @@
+query RandomQuery($Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__license__key: String!, $App__ipAllowListEntries__first: Int, $Query__marketplaceListing__slug: String!, $Query__marketplaceListings__first: Int, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityAdvisories__first: Int) {
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    id
+  }
+  codesOfConduct {
+    body
+    url
+  }
+  license(key: $Query__license__key) {
+    featured
+    hidden
+    implementation
+    key
+    nickname
+    pseudoLicense
+    spdxId
+    url
+  }
+  licenses {
+    conditions {
+      description
+    }
+    permissions {
+      key
+    }
+    body
+    description
+    featured
+    hidden
+    implementation
+    key
+    spdxId
+  }
+  marketplaceCategories {
+    description
+    howItWorks
+    id
+    slug
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    primaryCategory {
+      description
+      howItWorks
+      id
+      name
+      resourcePath
+      secondaryListingCount
+      slug
+    }
+    app {
+      ipAllowListEntries(first: $App__ipAllowListEntries__first) {
+        edges {
+          node {
+            allowListValue
+            createdAt
+            id
+          }
+        }
+      }
+      description
+      id
+      logoBackgroundColor
+      logoUrl
+      name
+      updatedAt
+      url
+    }
+    secondaryCategory {
+      description
+      name
+      resourcePath
+      slug
+    }
+    companyUrl
+    configurationResourcePath
+    extendedDescription
+    extendedDescriptionHTML
+    fullDescription
+    fullDescriptionHTML
+    hasPublishedFreeTrialPlans
+    hasVerifiedOwner
+    howItWorks
+    isArchived
+    isUnverified
+    isUnverifiedPending
+    isVerificationPendingFromDraft
+    isVerificationPendingFromUnverified
+    logoBackgroundColor
+    logoUrl
+    name
+    pricingUrl
+    resourcePath
+    shortDescription
+    statusUrl
+    supportEmail
+    termsOfServiceUrl
+    url
+    viewerCanEditCategories
+    viewerHasPurchased
+    viewerIsListingAdmin
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    edges {
+      node {
+        companyUrl
+        configurationResourcePath
+        configurationUrl
+        extendedDescription
+        extendedDescriptionHTML
+        fullDescription
+        fullDescriptionHTML
+        hasTermsOfService
+        howItWorks
+        id
+        installationUrl
+        installedForViewer
+        isArchived
+        isDraft
+        isUnverifiedPending
+        isVerified
+        logoBackgroundColor
+        logoUrl
+        normalizedShortDescription
+        pricingUrl
+        resourcePath
+        screenshotUrls
+        supportEmail
+        supportUrl
+        url
+        viewerCanEditPlans
+        viewerCanRedraft
+        viewerCanRequestApproval
+        viewerHasPurchased
+        viewerHasPurchasedForAllOrganizations
+        viewerIsListingAdmin
+      }
+    }
+    pageInfo {
+      endCursor
+      startCursor
+    }
+    totalCount
+  }
+  meta {
+    gitHubServicesSha
+    isPasswordAuthenticationVerifiable
+  }
+  rateLimit {
+    cost
+  }
+  relay {
+    id
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    pageInfo {
+      hasPreviousPage
+      startCursor
+    }
+    codeCount
+    discussionCount
+    issueCount
+    repositoryCount
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    totalCount
+  }
+  id
+}

@@ -1,0 +1,10 @@
+query RandomQuery($Topic__repositories__first: Int, $Query__topic__name: String!) {
+  topic(name: $Query__topic__name) {
+    repositories(first: $Topic__repositories__first) {
+      totalCount
+      totalDiskUsage
+    }
+    name
+    stargazerCount
+  }
+}

@@ -1,0 +1,22 @@
+mutation RandomMutation($Mutation__updateEnterpriseDefaultRepositoryPermissionSetting__input: UpdateEnterpriseDefaultRepositoryPermissionSettingInput!) {
+  updateEnterpriseDefaultRepositoryPermissionSetting(input: $Mutation__updateEnterpriseDefaultRepositoryPermissionSetting__input) {
+    enterprise {
+      announcement
+      announcementCreatedAt
+      announcementExpiresAt
+      announcementUserDismissible
+      billingEmail
+      databaseId
+      descriptionHTML
+      id
+      location
+      name
+      resourcePath
+      slug
+      viewerIsAdmin
+      websiteUrl
+    }
+    clientMutationId
+    message
+  }
+}

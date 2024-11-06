@@ -1,0 +1,21 @@
+mutation RandomMutation($Mutation__createProject__input: CreateProjectInput!) {
+  createProject(input: $Mutation__createProject__input) {
+    project {
+      progress {
+        doneCount
+        todoPercentage
+      }
+      createdAt
+      databaseId
+      name
+      number
+      resourcePath
+      state
+      updatedAt
+      url
+      viewerCanClose
+      viewerCanReopen
+      viewerCanUpdate
+    }
+  }
+}

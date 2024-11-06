@@ -1,0 +1,42 @@
+query RandomQuery($SecurityAdvisory__cwes__first: Int, $Query__securityVulnerabilities__first: Int) {
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    edges {
+      node {
+        advisory {
+          cwes(first: $SecurityAdvisory__cwes__first) {
+            nodes {
+              cweId
+              description
+              name
+            }
+          }
+          epss {
+            percentage
+          }
+          references {
+            url
+          }
+          classification
+          description
+          ghsaId
+          id
+          notificationsPermalink
+          origin
+          permalink
+          updatedAt
+        }
+        package {
+          ecosystem
+        }
+        updatedAt
+        vulnerableVersionRange
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      startCursor
+    }
+    totalCount
+  }
+}

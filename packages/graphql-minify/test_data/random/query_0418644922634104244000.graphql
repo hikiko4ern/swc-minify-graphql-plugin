@@ -1,0 +1,230 @@
+query RandomQuery($User__organizationVerifiedDomainEmails__login: String!, $Enterprise__members__first: Int, $Enterprise__organizations__first: Int, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $Query__codeOfConduct__key: String!, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__isSponsoredBy__accountLogin: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__marketplaceCategory__slug: String!, $Organization__isSponsoredBy__accountLogin: String!, $Query__organization__login: String!, $Query__repository__name: String!, $Query__repository__owner: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityAdvisory__ghsaId: String!, $Query__securityVulnerabilities__first: Int, $Topic__stargazers__first: Int, $Topic__relatedTopics__first: Int, $Query__topic__name: String!) {
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    inviter {
+      avatarUrl
+      bio
+      bioHTML
+      email
+      estimatedNextSponsorsPayoutInCents
+      hasSponsorsListing
+      id
+      isBountyHunter
+      isCampusExpert
+      isGitHubStar
+      isSiteAdmin
+      isSponsoringViewer
+      isViewer
+      location
+      login
+      monthlyEstimatedSponsorsIncomeInCents
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      pronouns
+      resourcePath
+      url
+      viewerCanFollow
+      viewerIsSponsoring
+    }
+    enterprise {
+      members(first: $Enterprise__members__first) {
+        totalCount
+      }
+      billingInfo {
+        allLicensableUsersCount
+        bandwidthUsage
+        bandwidthUsagePercentage
+        storageQuota
+        storageUsage
+        totalLicenses
+      }
+      organizations(first: $Enterprise__organizations__first) {
+        pageInfo {
+          startCursor
+        }
+      }
+      announcement
+      announcementCreatedAt
+      announcementExpiresAt
+      avatarUrl
+      billingEmail
+      createdAt
+      description
+      descriptionHTML
+      id
+      location
+      resourcePath
+    }
+    email
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    name
+    url
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    enterprise {
+      announcementCreatedAt
+      announcementExpiresAt
+      billingEmail
+      databaseId
+      id
+      readmeHTML
+      viewerIsAdmin
+      websiteUrl
+    }
+    invitee {
+      avatarUrl
+      bioHTML
+      canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+      company
+      companyHTML
+      email
+      id
+      isDeveloperProgramMember
+      isEmployee
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      login
+      monthlyEstimatedSponsorsIncomeInCents
+      name
+      resourcePath
+      totalSponsorshipAmountAsSponsorInCents
+      updatedAt
+      url
+      viewerCanChangePinnedItems
+      viewerCanCreateProjects
+      viewerCanFollow
+      viewerIsFollowing
+      viewerIsSponsoring
+      websiteUrl
+    }
+    createdAt
+    email
+    id
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    createdAt
+    email
+    id
+    role
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    createdAt
+  }
+  licenses {
+    body
+    description
+    id
+    implementation
+    spdxId
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    primaryListingCount
+    secondaryListingCount
+  }
+  organization(login: $Query__organization__login) {
+    announcementCreatedAt
+    archivedAt
+    avatarUrl
+    createdAt
+    description
+    estimatedNextSponsorsPayoutInCents
+    hasSponsorsListing
+    ipAllowListForInstalledAppsEnabledSetting
+    isSponsoredBy(accountLogin: $Organization__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    name
+    newTeamUrl
+    notificationDeliveryRestrictionEnabledSetting
+    organizationBillingEmail
+    resourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    twitterUsername
+    updatedAt
+    viewerCanAdminister
+    viewerCanChangePinnedItems
+    viewerCanCreateRepositories
+    viewerIsAMember
+    viewerIsFollowing
+    viewerIsSponsoring
+    websiteUrl
+  }
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    allowUpdateBranch
+    archivedAt
+    autoMergeAllowed
+    databaseId
+    description
+    diskUsage
+    forkCount
+    forkingAllowed
+    hasDiscussionsEnabled
+    hasProjectsEnabled
+    hasSponsorshipsEnabled
+    hasVulnerabilityAlertsEnabled
+    hasWikiEnabled
+    homepageUrl
+    isArchived
+    isBlankIssuesEnabled
+    isEmpty
+    isFork
+    isMirror
+    isPrivate
+    isSecurityPolicyEnabled
+    mergeCommitMessage
+    mirrorUrl
+    name
+    nameWithOwner
+    openGraphImageUrl
+    projectsResourcePath
+    rebaseMergeAllowed
+    resourcePath
+    securityPolicyUrl
+    shortDescriptionHTML
+    squashMergeAllowed
+    squashMergeCommitMessage
+    squashPrTitleUsedAsDefault
+    sshUrl
+    usesCustomOpenGraphImage
+    viewerCanCreateProjects
+    viewerCanSubscribe
+    viewerDefaultMergeMethod
+    viewerHasStarred
+    visibility
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    discussionCount
+    issueCount
+    userCount
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    databaseId
+    notificationsPermalink
+    origin
+    permalink
+    publishedAt
+    summary
+    withdrawnAt
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    totalCount
+  }
+  topic(name: $Query__topic__name) {
+    stargazers(first: $Topic__stargazers__first) {
+      edges {
+        starredAt
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      totalCount
+    }
+    relatedTopics(first: $Topic__relatedTopics__first) {
+      name
+    }
+    id
+    name
+    stargazerCount
+    viewerHasStarred
+  }
+  id
+}

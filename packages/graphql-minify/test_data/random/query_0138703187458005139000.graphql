@@ -1,0 +1,10 @@
+query RandomQuery {
+  licenses {
+    body
+    hidden
+    id
+    name
+    pseudoLicense
+    spdxId
+  }
+}

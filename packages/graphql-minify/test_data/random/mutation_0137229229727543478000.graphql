@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__deleteEnvironment__input: DeleteEnvironmentInput!) {
+  deleteEnvironment(input: $Mutation__deleteEnvironment__input) {
+    clientMutationId
+  }
+}

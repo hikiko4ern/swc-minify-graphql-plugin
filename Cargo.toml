@@ -1,5 +1,5 @@
 [workspace]
-members = [".", "packages/graphql-minify"]
+members = [".", "packages/graphql-minify", "packages/graphql_semantic_compare"]
 
 [workspace.package]
 version = "0.1.2"
@@ -7,6 +7,7 @@ authors = ["hikiko4ern"]
 edition = "2021"
 license = "Unlicense"
 publish = false
+repository = "https://github.com/hikiko4ern/swc-plugin-minify-graphql"
 
 [package]
 name = "swc-plugin-minify-graphql"
@@ -16,7 +17,7 @@ categories = ["swc-plugin"]
 edition.workspace = true
 license.workspace = true
 publish.workspace = true
-repository = "https://github.com/hikiko4ern/swc-plugin-minify-graphql"
+repository.workspace = true
 description = "GraphQL query and schema minimizer plugin for SWC"
 
 [lib]

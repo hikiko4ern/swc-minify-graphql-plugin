@@ -1,0 +1,11 @@
+mutation RandomMutation($Mutation__createProjectV2__input: CreateProjectV2Input!) {
+  createProjectV2(input: $Mutation__createProjectV2__input) {
+    projectV2 {
+      closed
+      closedAt
+      fullDatabaseId
+      number
+      resourcePath
+    }
+  }
+}

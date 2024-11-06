@@ -1,0 +1,13 @@
+mutation RandomMutation($Mutation__updateProject__input: UpdateProjectInput!) {
+  updateProject(input: $Mutation__updateProject__input) {
+    project {
+      closed
+      closedAt
+      id
+      state
+      updatedAt
+      viewerCanClose
+      viewerCanUpdate
+    }
+  }
+}

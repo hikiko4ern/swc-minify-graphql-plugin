@@ -10,9 +10,16 @@ pre-commit:
     clippy:
       glob: '{*.rs,Cargo.toml,Cargo.lock,rust-toolchain.toml}'
       run: cargo clippy -- -D warnings
+    biome:
+      glob: '*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'
+      run: pnpm biome check --write --error-on-warnings {staged_files}
+      stage_fixed: true
     dprint:
       glob: '*.{json,jsonc,json5,md,toml}'
       run: pnpm dprint fmt "{staged_files}"
       stage_fixed: true
+    type-check:
+      glob: 'fuzz/scripts/**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'
+      run: pnpm tsc -p fuzz/tsconfig.json --noEmit
     spell-check:
       run: pnpm cspell lint --no-progress --no-summary --no-must-find-files "{staged_files}"

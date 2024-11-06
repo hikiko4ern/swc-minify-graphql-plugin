@@ -1,0 +1,9 @@
+mutation RandomMutation($Mutation__updateEnvironment__input: UpdateEnvironmentInput!) {
+  updateEnvironment(input: $Mutation__updateEnvironment__input) {
+    environment {
+      databaseId
+      id
+      pinnedPosition
+    }
+  }
+}

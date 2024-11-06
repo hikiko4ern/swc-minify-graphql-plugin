@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__updateIpAllowListEntry__input: UpdateIpAllowListEntryInput!) {
+  updateIpAllowListEntry(input: $Mutation__updateIpAllowListEntry__input) {
+    clientMutationId
+  }
+}

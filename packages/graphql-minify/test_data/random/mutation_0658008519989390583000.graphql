@@ -1,0 +1,10 @@
+mutation RandomMutation($Mutation__updateUserList__input: UpdateUserListInput!) {
+  updateUserList(input: $Mutation__updateUserList__input) {
+    list {
+      createdAt
+      description
+      updatedAt
+    }
+    clientMutationId
+  }
+}

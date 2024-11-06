@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__moveProjectCard__input: MoveProjectCardInput!) {
+  moveProjectCard(input: $Mutation__moveProjectCard__input) {
+    clientMutationId
+  }
+}

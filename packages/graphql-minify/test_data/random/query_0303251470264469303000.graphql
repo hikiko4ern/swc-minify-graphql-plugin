@@ -1,0 +1,161 @@
+query RandomQuery($Query__enterprise__slug: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__marketplaceListing__slug: String!, $Query__organization__login: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityAdvisories__first: Int, $Query__sponsorables__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__organizationVerifiedDomainEmails__login: String!) {
+  rateLimit {
+    cost
+    nodeCount
+    remaining
+    resetAt
+    used
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcementExpiresAt
+    announcementUserDismissible
+    avatarUrl
+    billingEmail
+    location
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    email
+    role
+  }
+  licenses {
+    permissions {
+      key
+      label
+    }
+    limitations {
+      label
+    }
+    body
+    description
+    featured
+    hidden
+    id
+    implementation
+    nickname
+    url
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    configurationResourcePath
+    documentationUrl
+    extendedDescriptionHTML
+    fullDescription
+    fullDescriptionHTML
+    hasPublishedFreeTrialPlans
+    hasVerifiedOwner
+    howItWorksHTML
+    installedForViewer
+    isArchived
+    isDraft
+    isPaid
+    isRejected
+    isUnverified
+    isUnverifiedPending
+    isVerificationPendingFromDraft
+    logoBackgroundColor
+    name
+    normalizedShortDescription
+    resourcePath
+    screenshotUrls
+    statusUrl
+    supportEmail
+    termsOfServiceUrl
+    viewerCanApprove
+    viewerCanEditCategories
+    viewerCanRedraft
+    viewerCanReject
+  }
+  organization(login: $Query__organization__login) {
+    announcement
+    announcementExpiresAt
+    announcementUserDismissible
+    archivedAt
+    createdAt
+    descriptionHTML
+    estimatedNextSponsorsPayoutInCents
+    ipAllowListForInstalledAppsEnabledSetting
+    isVerified
+    login
+    name
+    newTeamResourcePath
+    notificationDeliveryRestrictionEnabledSetting
+    organizationBillingEmail
+    pinnedItemsRemaining
+    projectsResourcePath
+    projectsUrl
+    requiresTwoFactorAuthentication
+    resourcePath
+    teamsUrl
+    updatedAt
+    viewerCanChangePinnedItems
+    viewerCanCreateProjects
+    viewerCanCreateRepositories
+    viewerCanCreateTeams
+    viewerCanSponsor
+    viewerIsFollowing
+    webCommitSignoffRequired
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    edges {
+      textMatches {
+        highlights {
+          beginIndice
+          endIndice
+          text
+        }
+      }
+      cursor
+    }
+    discussionCount
+    repositoryCount
+    userCount
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    edges {
+      node {
+        ghsaId
+        notificationsPermalink
+        permalink
+        publishedAt
+        summary
+        withdrawnAt
+      }
+      cursor
+    }
+    nodes {
+      databaseId
+      description
+      id
+      permalink
+      publishedAt
+    }
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    totalCount
+  }
+  viewer {
+    avatarUrl
+    bio
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    companyHTML
+    createdAt
+    databaseId
+    isBountyHunter
+    isCampusExpert
+    isDeveloperProgramMember
+    isEmployee
+    isFollowingViewer
+    isHireable
+    isSiteAdmin
+    location
+    login
+    name
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    projectsResourcePath
+    twitterUsername
+    updatedAt
+    userViewType
+    viewerCanCreateProjects
+    viewerCanFollow
+    viewerCanSponsor
+  }
+}

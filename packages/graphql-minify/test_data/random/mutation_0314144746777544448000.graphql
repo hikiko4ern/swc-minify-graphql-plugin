@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__updateSubscription__input: UpdateSubscriptionInput!) {
+  updateSubscription(input: $Mutation__updateSubscription__input) {
+    clientMutationId
+  }
+}

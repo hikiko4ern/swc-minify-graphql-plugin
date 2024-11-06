@@ -1,0 +1,310 @@
+query RandomQuery($Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__license__key: String!, $Query__marketplaceListing__slug: String!, $App__ipAllowListEntries__first: Int, $Query__marketplaceListings__first: Int, $Query__organization__login: String!, $Query__repository__name: String!, $Query__repository__owner: String!, $Query__securityAdvisories__first: Int, $SecurityAdvisory__cwes__first: Int, $SecurityAdvisory__vulnerabilities__first: Int, $Query__securityAdvisory__ghsaId: String!, $Query__securityVulnerabilities__first: Int, $User__isSponsoredBy__accountLogin: String!) {
+  rateLimit {
+    remaining
+    resetAt
+  }
+  codesOfConduct {
+    body
+    id
+    key
+    resourcePath
+    url
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    createdAt
+  }
+  license(key: $Query__license__key) {
+    featured
+    id
+    implementation
+    pseudoLicense
+    spdxId
+  }
+  licenses {
+    conditions {
+      description
+      key
+      label
+    }
+    limitations {
+      key
+    }
+    permissions {
+      key
+    }
+    description
+    id
+    name
+  }
+  marketplaceCategories {
+    description
+    howItWorks
+    name
+    primaryListingCount
+    secondaryListingCount
+    slug
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    secondaryCategory {
+      description
+      name
+      primaryListingCount
+      secondaryListingCount
+      slug
+    }
+    documentationUrl
+    extendedDescription
+    fullDescription
+    hasTermsOfService
+    hasVerifiedOwner
+    howItWorks
+    installedForViewer
+    isDraft
+    isPaid
+    isPublic
+    isRejected
+    isVerificationPendingFromDraft
+    isVerificationPendingFromUnverified
+    isVerified
+    logoUrl
+    name
+    pricingUrl
+    statusUrl
+    supportEmail
+    url
+    viewerCanAddPlans
+    viewerCanApprove
+    viewerCanDelist
+    viewerCanEdit
+    viewerCanEditPlans
+    viewerCanRedraft
+    viewerCanReject
+    viewerCanRequestApproval
+    viewerHasPurchased
+    viewerHasPurchasedForAllOrganizations
+    viewerIsListingAdmin
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      node {
+        extendedDescriptionHTML
+        fullDescription
+        fullDescriptionHTML
+        hasTermsOfService
+        howItWorks
+        id
+        installationUrl
+        installedForViewer
+        isArchived
+        isPaid
+        isPublic
+        isUnverifiedPending
+        isVerificationPendingFromDraft
+        logoBackgroundColor
+        logoUrl
+        privacyPolicyUrl
+        slug
+        statusUrl
+        supportEmail
+        supportUrl
+        viewerCanAddPlans
+        viewerCanApprove
+        viewerCanEdit
+        viewerCanEditCategories
+        viewerCanReject
+        viewerCanRequestApproval
+        viewerHasPurchased
+      }
+    }
+    nodes {
+      app {
+        ipAllowListEntries(first: $App__ipAllowListEntries__first) {
+          totalCount
+        }
+        clientId
+        databaseId
+        name
+        updatedAt
+        url
+      }
+      secondaryCategory {
+        description
+        primaryListingCount
+        secondaryListingCount
+        slug
+        url
+      }
+      companyUrl
+      configurationResourcePath
+      documentationUrl
+      fullDescription
+      hasPublishedFreeTrialPlans
+      hasTermsOfService
+      hasVerifiedOwner
+      howItWorks
+      id
+      installationUrl
+      installedForViewer
+      isArchived
+      isPaid
+      isPublic
+      isRejected
+      isUnverified
+      isUnverifiedPending
+      isVerificationPendingFromDraft
+      logoBackgroundColor
+      logoUrl
+      name
+      normalizedShortDescription
+      screenshotUrls
+      supportEmail
+      supportUrl
+      url
+      viewerCanAddPlans
+      viewerCanEdit
+      viewerCanEditCategories
+      viewerCanEditPlans
+      viewerCanRedraft
+      viewerHasPurchasedForAllOrganizations
+      viewerIsListingAdmin
+    }
+  }
+  organization(login: $Query__organization__login) {
+    announcement
+    announcementExpiresAt
+    announcementUserDismissible
+    archivedAt
+    avatarUrl
+    createdAt
+    descriptionHTML
+    id
+    ipAllowListForInstalledAppsEnabledSetting
+    location
+    newTeamUrl
+    notificationDeliveryRestrictionEnabledSetting
+    organizationBillingEmail
+    requiresTwoFactorAuthentication
+    resourcePath
+    teamsResourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    twitterUsername
+    updatedAt
+    url
+    viewerCanChangePinnedItems
+    viewerCanCreateProjects
+    viewerCanCreateTeams
+    viewerCanSponsor
+    viewerIsAMember
+    websiteUrl
+  }
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    autoMergeAllowed
+    databaseId
+    deleteBranchOnMerge
+    forkCount
+    hasIssuesEnabled
+    hasSponsorshipsEnabled
+    hasWikiEnabled
+    id
+    isArchived
+    isDisabled
+    isFork
+    isInOrganization
+    isLocked
+    isMirror
+    isPrivate
+    isTemplate
+    lockReason
+    mergeCommitAllowed
+    mergeCommitTitle
+    projectsResourcePath
+    pushedAt
+    rebaseMergeAllowed
+    securityPolicyUrl
+    squashMergeAllowed
+    squashMergeCommitTitle
+    sshUrl
+    viewerCanUpdateTopics
+    viewerDefaultMergeMethod
+    viewerPermission
+    viewerSubscription
+    visibility
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    edges {
+      node {
+        classification
+        databaseId
+        ghsaId
+        id
+        severity
+        summary
+        withdrawnAt
+      }
+      cursor
+    }
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    references {
+      url
+    }
+    cvss {
+      vectorString
+    }
+    cwes(first: $SecurityAdvisory__cwes__first) {
+      edges {
+        cursor
+      }
+      totalCount
+    }
+    identifiers {
+      type
+    }
+    vulnerabilities(first: $SecurityAdvisory__vulnerabilities__first) {
+      totalCount
+    }
+    description
+    origin
+    permalink
+    severity
+    summary
+    updatedAt
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+    totalCount
+  }
+  viewer {
+    company
+    createdAt
+    email
+    hasSponsorsListing
+    id
+    isCampusExpert
+    isDeveloperProgramMember
+    isFollowingViewer
+    isHireable
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isViewer
+    location
+    monthlyEstimatedSponsorsIncomeInCents
+    name
+    pinnedItemsRemaining
+    projectsResourcePath
+    projectsUrl
+    totalSponsorshipAmountAsSponsorInCents
+    twitterUsername
+    updatedAt
+    viewerCanFollow
+    viewerIsSponsoring
+    websiteUrl
+  }
+}

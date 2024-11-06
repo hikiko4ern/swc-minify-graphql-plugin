@@ -1,0 +1,111 @@
+query RandomQuery($Query__securityAdvisories__first: Int, $Query__enterprise__slug: String!, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__marketplaceCategory__slug: String!, $Query__marketplaceListings__first: Int, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityVulnerabilities__first: Int, $Query__sponsorables__first: Int, $Query__topic__name: String!) {
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    pageInfo {
+      endCursor
+    }
+  }
+  codesOfConduct {
+    id
+    key
+    name
+    resourcePath
+    url
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcement
+    announcementCreatedAt
+    createdAt
+    databaseId
+    description
+    descriptionHTML
+    id
+    location
+    name
+    resourcePath
+    url
+  }
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    email
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    createdAt
+    id
+  }
+  marketplaceCategories {
+    description
+    name
+    primaryListingCount
+    url
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    name
+    secondaryListingCount
+    url
+  }
+  meta {
+    gitHubServicesSha
+    importerIpAddresses
+  }
+  relay {
+    marketplaceListings(first: $Query__marketplaceListings__first) {
+      edges {
+        node {
+          companyUrl
+          configurationResourcePath
+          configurationUrl
+          extendedDescriptionHTML
+          fullDescription
+          hasPublishedFreeTrialPlans
+          hasTermsOfService
+          hasVerifiedOwner
+          howItWorksHTML
+          id
+          installedForViewer
+          isPaid
+          isPublic
+          isVerificationPendingFromDraft
+          isVerificationPendingFromUnverified
+          logoBackgroundColor
+          pricingUrl
+          privacyPolicyUrl
+          resourcePath
+          shortDescription
+          slug
+          statusUrl
+          supportUrl
+          url
+          viewerCanAddPlans
+          viewerCanApprove
+          viewerCanDelist
+          viewerCanEdit
+          viewerCanRedraft
+          viewerCanReject
+          viewerHasPurchased
+          viewerHasPurchasedForAllOrganizations
+          viewerIsListingAdmin
+        }
+      }
+    }
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    discussionCount
+    repositoryCount
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    edges {
+      cursor
+    }
+    nodes {
+      updatedAt
+    }
+    totalCount
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    totalCount
+  }
+  topic(name: $Query__topic__name) {
+    id
+  }
+  id
+}

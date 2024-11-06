@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__reopenDiscussion__input: ReopenDiscussionInput!) {
+  reopenDiscussion(input: $Mutation__reopenDiscussion__input) {
+    clientMutationId
+  }
+}

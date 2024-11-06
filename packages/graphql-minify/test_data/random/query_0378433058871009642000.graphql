@@ -1,0 +1,64 @@
+query RandomQuery($SecurityAdvisory__cwes__first: Int, $SecurityAdvisory__vulnerabilities__first: Int, $Query__securityAdvisory__ghsaId: String!) {
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    cvss {
+      vectorString
+    }
+    identifiers {
+      type
+      value
+    }
+    references {
+      url
+    }
+    vulnerabilities(first: $SecurityAdvisory__vulnerabilities__first) {
+      pageInfo {
+        endCursor
+      }
+      edges {
+        cursor
+      }
+      nodes {
+        firstPatchedVersion {
+          identifier
+        }
+        advisory {
+          identifiers {
+            type
+          }
+          cvss {
+            vectorString
+          }
+          cwes(first: $SecurityAdvisory__cwes__first) {
+            pageInfo {
+              endCursor
+            }
+            edges {
+              node {
+                id
+              }
+            }
+            nodes {
+              id
+            }
+            totalCount
+          }
+          references {
+            url
+          }
+          classification
+          origin
+          permalink
+          updatedAt
+        }
+        updatedAt
+        vulnerableVersionRange
+      }
+    }
+    databaseId
+    ghsaId
+    id
+    notificationsPermalink
+    severity
+    summary
+  }
+}

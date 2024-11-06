@@ -1,0 +1,41 @@
+query RandomQuery($User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!) {
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    invitee {
+      avatarUrl
+      bioHTML
+      canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+      company
+      companyHTML
+      createdAt
+      databaseId
+      estimatedNextSponsorsPayoutInCents
+      hasSponsorsListing
+      isBountyHunter
+      isCampusExpert
+      isFollowingViewer
+      isSiteAdmin
+      isSponsoringViewer
+      name
+      pinnedItemsRemaining
+      pronouns
+      totalSponsorshipAmountAsSponsorInCents
+      url
+      userViewType
+      viewerCanChangePinnedItems
+      viewerCanSponsor
+      viewerIsFollowing
+      viewerIsSponsoring
+    }
+    enterprise {
+      announcement
+      announcementCreatedAt
+      databaseId
+      readme
+      readmeHTML
+      slug
+      url
+      websiteUrl
+    }
+    id
+  }
+}

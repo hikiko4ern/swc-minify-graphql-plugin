@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__addLabelsToLabelable__input: AddLabelsToLabelableInput!) {
+  addLabelsToLabelable(input: $Mutation__addLabelsToLabelable__input) {
+    clientMutationId
+  }
+}

@@ -1,0 +1,10 @@
+query RandomQuery($Query__license__key: String!) {
+  license(key: $Query__license__key) {
+    body
+    featured
+    hidden
+    id
+    name
+    pseudoLicense
+  }
+}

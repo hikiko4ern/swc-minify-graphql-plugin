@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__copyProjectV2__input: CopyProjectV2Input!) {
+  copyProjectV2(input: $Mutation__copyProjectV2__input) {
+    clientMutationId
+  }
+}

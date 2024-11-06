@@ -1,0 +1,152 @@
+query RandomQuery($Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__enterprise__slug: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__marketplaceCategory__slug: String!, $Query__marketplaceListing__slug: String!, $Query__marketplaceListings__first: Int, $Query__repository__name: String!, $Query__repository__owner: String!, $Query__securityAdvisories__first: Int, $Query__sponsorables__first: Int) {
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    enterprise {
+      announcementExpiresAt
+      description
+      descriptionHTML
+      id
+      name
+      readme
+      readmeHTML
+      resourcePath
+      url
+      viewerIsAdmin
+      websiteUrl
+    }
+    createdAt
+    id
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcementExpiresAt
+    announcementUserDismissible
+    avatarUrl
+    billingEmail
+    databaseId
+    descriptionHTML
+    id
+    name
+    readme
+    readmeHTML
+    resourcePath
+    slug
+    url
+    viewerIsAdmin
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    createdAt
+    id
+    role
+  }
+  licenses {
+    body
+    featured
+    hidden
+    id
+    implementation
+    spdxId
+    url
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    howItWorks
+    id
+    name
+    primaryListingCount
+    resourcePath
+    secondaryListingCount
+    url
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    primaryCategory {
+      description
+      howItWorks
+      slug
+    }
+    companyUrl
+    configurationUrl
+    fullDescription
+    hasPublishedFreeTrialPlans
+    hasTermsOfService
+    hasVerifiedOwner
+    isDraft
+    isPaid
+    isRejected
+    isUnverifiedPending
+    isVerificationPendingFromUnverified
+    logoBackgroundColor
+    name
+    normalizedShortDescription
+    pricingUrl
+    resourcePath
+    screenshotUrls
+    shortDescription
+    slug
+    statusUrl
+    supportEmail
+    termsOfServiceUrl
+    viewerCanAddPlans
+    viewerCanDelist
+    viewerCanEdit
+    viewerCanEditCategories
+    viewerCanRedraft
+    viewerCanReject
+    viewerCanRequestApproval
+    viewerHasPurchased
+    viewerIsListingAdmin
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    totalCount
+  }
+  meta {
+    githubEnterpriseImporterIpAddresses
+    gitHubServicesSha
+    gitIpAddresses
+    hookIpAddresses
+    isPasswordAuthenticationVerifiable
+  }
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    archivedAt
+    forkCount
+    hasDiscussionsEnabled
+    hasProjectsEnabled
+    hasSponsorshipsEnabled
+    hasVulnerabilityAlertsEnabled
+    hasWikiEnabled
+    homepageUrl
+    id
+    isArchived
+    isBlankIssuesEnabled
+    isEmpty
+    isFork
+    isInOrganization
+    isPrivate
+    isSecurityPolicyEnabled
+    isUserConfigurationRepository
+    mergeCommitAllowed
+    mergeCommitTitle
+    nameWithOwner
+    projectsResourcePath
+    pushedAt
+    rebaseMergeAllowed
+    securityPolicyUrl
+    squashMergeAllowed
+    squashMergeCommitMessage
+    stargazerCount
+    tempCloneToken
+    updatedAt
+    viewerCanSubscribe
+    viewerCanUpdateTopics
+    viewerDefaultMergeMethod
+    visibility
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    totalCount
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    edges {
+      cursor
+    }
+    totalCount
+  }
+  id
+}

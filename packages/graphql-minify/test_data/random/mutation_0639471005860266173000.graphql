@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__unlinkRepositoryFromProject__input: UnlinkRepositoryFromProjectInput!) {
+  unlinkRepositoryFromProject(input: $Mutation__unlinkRepositoryFromProject__input) {
+    clientMutationId
+  }
+}

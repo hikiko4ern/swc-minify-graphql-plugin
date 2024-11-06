@@ -1,0 +1,8 @@
+query RandomQuery {
+  marketplaceCategories {
+    description
+    name
+    primaryListingCount
+    slug
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__unsubscribeFromNotifications__input: UnsubscribeFromNotificationsInput!) {
+  unsubscribeFromNotifications(input: $Mutation__unsubscribeFromNotifications__input) {
+    clientMutationId
+  }
+}

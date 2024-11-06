@@ -1,0 +1,161 @@
+query RandomQuery($Enterprise__members__first: Int, $Enterprise__organizations__first: Int, $Query__enterprise__slug: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__marketplaceListings__first: Int, $Organization__isSponsoredBy__accountLogin: String!, $Query__organization__login: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityAdvisory__ghsaId: String!, $Query__sponsorables__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $Query__user__login: String!) {
+  marketplaceCategories {
+    howItWorks
+    resourcePath
+    secondaryListingCount
+    slug
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    members(first: $Enterprise__members__first) {
+      edges {
+        cursor
+      }
+      totalCount
+    }
+    organizations(first: $Enterprise__organizations__first) {
+      edges {
+        cursor
+      }
+      nodes {
+        announcement
+        announcementExpiresAt
+        announcementUserDismissible
+        createdAt
+        description
+        descriptionHTML
+        email
+        estimatedNextSponsorsPayoutInCents
+        id
+        isSponsoringViewer
+        isVerified
+        location
+        login
+        monthlyEstimatedSponsorsIncomeInCents
+        newTeamResourcePath
+        pinnedItemsRemaining
+        teamsResourcePath
+        teamsUrl
+        totalSponsorshipAmountAsSponsorInCents
+        twitterUsername
+        updatedAt
+        viewerCanAdminister
+        viewerCanChangePinnedItems
+        viewerCanCreateTeams
+        viewerIsSponsoring
+        webCommitSignoffRequired
+        websiteUrl
+      }
+      totalCount
+    }
+    announcementUserDismissible
+    billingEmail
+    createdAt
+    databaseId
+    description
+    descriptionHTML
+    id
+    location
+    name
+    readme
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    enterprise {
+      announcement
+      announcementCreatedAt
+      announcementUserDismissible
+      billingEmail
+      databaseId
+      id
+      location
+      name
+      readme
+      readmeHTML
+      slug
+      url
+      viewerIsAdmin
+      websiteUrl
+    }
+    createdAt
+    id
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    totalCount
+  }
+  meta {
+    hookIpAddresses
+    importerIpAddresses
+    pagesIpAddresses
+  }
+  organization(login: $Query__organization__login) {
+    announcementCreatedAt
+    announcementExpiresAt
+    announcementUserDismissible
+    anyPinnableItems
+    archivedAt
+    avatarUrl
+    createdAt
+    ipAllowListEnabledSetting
+    isSponsoredBy(accountLogin: $Organization__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    location
+    login
+    membersCanForkPrivateRepositories
+    name
+    pinnedItemsRemaining
+    requiresTwoFactorAuthentication
+    resourcePath
+    teamsResourcePath
+    teamsUrl
+    twitterUsername
+    url
+    viewerCanCreateProjects
+    viewerCanSponsor
+    viewerIsFollowing
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    pageInfo {
+      endCursor
+      hasPreviousPage
+    }
+    userCount
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    classification
+    description
+    id
+    notificationsPermalink
+    origin
+    severity
+    summary
+    withdrawnAt
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    edges {
+      cursor
+    }
+  }
+  user(login: $Query__user__login) {
+    anyPinnableItems
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    companyHTML
+    createdAt
+    isBountyHunter
+    isCampusExpert
+    isDeveloperProgramMember
+    isEmployee
+    isHireable
+    isSiteAdmin
+    isSponsoringViewer
+    monthlyEstimatedSponsorsIncomeInCents
+    projectsUrl
+    resourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    twitterUsername
+    updatedAt
+    url
+    viewerCanChangePinnedItems
+    viewerCanCreateProjects
+    viewerIsSponsoring
+  }
+  id
+}

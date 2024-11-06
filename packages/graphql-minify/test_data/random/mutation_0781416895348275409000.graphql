@@ -1,0 +1,6 @@
+mutation RandomMutation($Mutation__updateEnterpriseMembersCanInviteCollaboratorsSetting__input: UpdateEnterpriseMembersCanInviteCollaboratorsSettingInput!) {
+  updateEnterpriseMembersCanInviteCollaboratorsSetting(input: $Mutation__updateEnterpriseMembersCanInviteCollaboratorsSetting__input) {
+    clientMutationId
+    message
+  }
+}

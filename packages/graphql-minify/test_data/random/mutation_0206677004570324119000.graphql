@@ -1,0 +1,24 @@
+mutation RandomMutation($RepositoryRuleset__rules__first: Int, $RepositoryRuleset__bypassActors__first: Int, $Mutation__createRepositoryRuleset__input: CreateRepositoryRulesetInput!) {
+  createRepositoryRuleset(input: $Mutation__createRepositoryRuleset__input) {
+    ruleset {
+      rules(first: $RepositoryRuleset__rules__first) {
+        nodes {
+          id
+        }
+      }
+      bypassActors(first: $RepositoryRuleset__bypassActors__first) {
+        totalCount
+      }
+      conditions {
+        repositoryName {
+          include
+        }
+      }
+      createdAt
+      databaseId
+      enforcement
+      id
+      target
+    }
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__deleteVerifiableDomain__input: DeleteVerifiableDomainInput!) {
+  deleteVerifiableDomain(input: $Mutation__deleteVerifiableDomain__input) {
+    clientMutationId
+  }
+}

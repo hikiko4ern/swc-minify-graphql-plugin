@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__unmarkDiscussionCommentAsAnswer__input: UnmarkDiscussionCommentAsAnswerInput!) {
+  unmarkDiscussionCommentAsAnswer(input: $Mutation__unmarkDiscussionCommentAsAnswer__input) {
+    clientMutationId
+  }
+}

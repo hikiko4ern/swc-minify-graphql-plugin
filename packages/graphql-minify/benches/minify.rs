@@ -12,22 +12,22 @@ macro_rules! bench {
 }
 
 fn bench_query(c: &mut Criterion) {
-    const HERO_BASIC: &str = include_str!("../test_data/hero_basic.graphql");
-    const HERO_MULTIPLE: &str = include_str!("../test_data/hero_multiple.graphql");
+    const HERO_BASIC: &str = include_str!("../test_data/valid/hero_basic.graphql");
+    const HERO_COMPARISON: &str = include_str!("../test_data/valid/hero_comparison.graphql");
     const KITCHEN_SINK: &str = include_str!("../test_data/kitchen_sink_query.graphql");
 
     let mut g = c.benchmark_group("query");
 
     bench!(g, "hero (basic)", HERO_BASIC);
-    bench!(g, "hero (multiple)", HERO_MULTIPLE);
+    bench!(g, "hero (multiple)", HERO_COMPARISON);
     bench!(g, "kitchen sink", KITCHEN_SINK);
 
     g.finish();
 }
 
 fn bench_schema(c: &mut Criterion) {
-    const KITCHEN_SINK: &str = include_str!("../test_data/kitchen_sink_schema.graphql");
-    const GITHUB: &str = include_str!("../test_data/github_schema.graphql");
+    const KITCHEN_SINK: &str = include_str!("../test_data/valid/kitchen_sink_schema.graphql");
+    const GITHUB: &str = include_str!("../test_data/valid/github_schema.graphql");
 
     let mut g = c.benchmark_group("schema");
 

@@ -1,0 +1,10 @@
+mutation RandomMutation($Mutation__acceptEnterpriseAdministratorInvitation__input: AcceptEnterpriseAdministratorInvitationInput!) {
+  acceptEnterpriseAdministratorInvitation(input: $Mutation__acceptEnterpriseAdministratorInvitation__input) {
+    invitation {
+      createdAt
+      role
+    }
+    clientMutationId
+    message
+  }
+}

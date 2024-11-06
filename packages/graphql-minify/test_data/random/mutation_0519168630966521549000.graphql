@@ -1,0 +1,15 @@
+mutation RandomMutation($Mutation__updateEnterpriseMembersCanViewDependencyInsightsSetting__input: UpdateEnterpriseMembersCanViewDependencyInsightsSettingInput!) {
+  updateEnterpriseMembersCanViewDependencyInsightsSetting(input: $Mutation__updateEnterpriseMembersCanViewDependencyInsightsSetting__input) {
+    enterprise {
+      announcementExpiresAt
+      databaseId
+      descriptionHTML
+      id
+      location
+      name
+      slug
+      url
+      websiteUrl
+    }
+  }
+}

@@ -1,0 +1,81 @@
+mutation RandomMutation($ProjectV2__fields__first: Int, $ProjectV2__items__first: Int, $ProjectV2__statusUpdates__first: Int, $ProjectV2__views__first: Int, $ProjectV2__teams__first: Int, $ProjectV2__view__number: Int!, $ProjectV2__workflows__first: Int, $ProjectV2__workflow__number: Int!, $Mutation__createProjectV2__input: CreateProjectV2Input!) {
+  createProjectV2(input: $Mutation__createProjectV2__input) {
+    projectV2 {
+      fields(first: $ProjectV2__fields__first) {
+        totalCount
+      }
+      items(first: $ProjectV2__items__first) {
+        pageInfo {
+          endCursor
+        }
+        nodes {
+          project {
+            closed
+            closedAt
+            fullDatabaseId
+            readme
+            resourcePath
+            template
+            url
+          }
+          databaseId
+          isArchived
+        }
+        totalCount
+      }
+      statusUpdates(first: $ProjectV2__statusUpdates__first) {
+        nodes {
+          body
+          createdAt
+          databaseId
+          status
+          targetDate
+          updatedAt
+        }
+      }
+      workflow(number: $ProjectV2__workflow__number) {
+        project {
+          views(first: $ProjectV2__views__first) {
+            totalCount
+          }
+          fields(first: $ProjectV2__fields__first) {
+            edges {
+              cursor
+            }
+          }
+          teams(first: $ProjectV2__teams__first) {
+            totalCount
+          }
+          view(number: $ProjectV2__view__number) {
+            databaseId
+            filter
+            number
+            updatedAt
+          }
+          workflows(first: $ProjectV2__workflows__first) {
+            totalCount
+          }
+          closedAt
+          databaseId
+          fullDatabaseId
+          number
+          resourcePath
+          updatedAt
+          viewerCanClose
+          viewerCanReopen
+        }
+        enabled
+        fullDatabaseId
+        id
+      }
+      id
+      readme
+      resourcePath
+      shortDescription
+      template
+      updatedAt
+      url
+      viewerCanReopen
+    }
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__acceptEnterpriseMemberInvitation__input: AcceptEnterpriseMemberInvitationInput!) {
+  acceptEnterpriseMemberInvitation(input: $Mutation__acceptEnterpriseMemberInvitation__input) {
+    clientMutationId
+  }
+}

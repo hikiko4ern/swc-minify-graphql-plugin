@@ -1,0 +1,20 @@
+mutation RandomMutation($Mutation__linkProjectV2ToTeam__input: LinkProjectV2ToTeamInput!) {
+  linkProjectV2ToTeam(input: $Mutation__linkProjectV2ToTeam__input) {
+    team {
+      combinedSlug
+      databaseId
+      discussionsResourcePath
+      editTeamResourcePath
+      membersUrl
+      name
+      newTeamUrl
+      repositoriesResourcePath
+      reviewRequestDelegationAlgorithm
+      reviewRequestDelegationEnabled
+      reviewRequestDelegationNotifyTeam
+      teamsResourcePath
+      updatedAt
+      viewerCanAdminister
+    }
+  }
+}

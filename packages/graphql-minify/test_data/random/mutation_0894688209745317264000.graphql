@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__removeAssigneesFromAssignable__input: RemoveAssigneesFromAssignableInput!) {
+  removeAssigneesFromAssignable(input: $Mutation__removeAssigneesFromAssignable__input) {
+    clientMutationId
+  }
+}

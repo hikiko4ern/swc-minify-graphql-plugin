@@ -1,0 +1,18 @@
+mutation RandomMutation($Mutation__updateBranchProtectionRule__input: UpdateBranchProtectionRuleInput!) {
+  updateBranchProtectionRule(input: $Mutation__updateBranchProtectionRule__input) {
+    branchProtectionRule {
+      allowsDeletions
+      allowsForcePushes
+      blocksCreations
+      databaseId
+      id
+      lockAllowsFetchAndMerge
+      pattern
+      requiredApprovingReviewCount
+      requiresConversationResolution
+      requiresDeployments
+      requiresLinearHistory
+    }
+    clientMutationId
+  }
+}

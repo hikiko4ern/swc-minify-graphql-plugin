@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__setOrganizationInteractionLimit__input: SetOrganizationInteractionLimitInput!) {
+  setOrganizationInteractionLimit(input: $Mutation__setOrganizationInteractionLimit__input) {
+    clientMutationId
+  }
+}

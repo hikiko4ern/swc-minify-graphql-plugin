@@ -1,0 +1,162 @@
+mutation RandomMutation($ProjectV2__view__number: Int!, $ProjectV2__items__first: Int, $ProjectV2__repositories__first: Int, $ProjectV2__statusUpdates__first: Int, $ProjectV2View__verticalGroupByFields__first: Int, $ProjectV2View__groupByFields__first: Int, $ProjectV2__workflow__number: Int!, $ProjectV2__views__first: Int, $ProjectV2View__verticalGroupBy__first: Int, $ProjectV2__workflows__first: Int, $Mutation__unmarkProjectV2AsTemplate__input: UnmarkProjectV2AsTemplateInput!) {
+  unmarkProjectV2AsTemplate(input: $Mutation__unmarkProjectV2AsTemplate__input) {
+    projectV2 {
+      view(number: $ProjectV2__view__number) {
+        createdAt
+        fullDatabaseId
+        id
+        name
+        updatedAt
+      }
+      items(first: $ProjectV2__items__first) {
+        nodes {
+          project {
+            closedAt
+            createdAt
+            fullDatabaseId
+            public
+            readme
+            resourcePath
+            updatedAt
+            url
+            viewerCanReopen
+            viewerCanUpdate
+          }
+          databaseId
+        }
+      }
+      repositories(first: $ProjectV2__repositories__first) {
+        totalCount
+        totalDiskUsage
+      }
+      statusUpdates(first: $ProjectV2__statusUpdates__first) {
+        totalCount
+      }
+      views(first: $ProjectV2__views__first) {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          startCursor
+        }
+        edges {
+          node {
+            verticalGroupByFields(first: $ProjectV2View__verticalGroupByFields__first) {
+              edges {
+                cursor
+              }
+            }
+            groupByFields(first: $ProjectV2View__groupByFields__first) {
+              edges {
+                cursor
+              }
+            }
+            project {
+              workflow(number: $ProjectV2__workflow__number) {
+                createdAt
+                databaseId
+                enabled
+                id
+                name
+              }
+              items(first: $ProjectV2__items__first) {
+                edges {
+                  cursor
+                }
+                pageInfo {
+                  hasNextPage
+                  startCursor
+                }
+              }
+              repositories(first: $ProjectV2__repositories__first) {
+                totalCount
+                totalDiskUsage
+              }
+              statusUpdates(first: $ProjectV2__statusUpdates__first) {
+                nodes {
+                  createdAt
+                  fullDatabaseId
+                  id
+                  startDate
+                  updatedAt
+                }
+                edges {
+                  cursor
+                }
+                pageInfo {
+                  hasPreviousPage
+                }
+              }
+              views(first: $ProjectV2__views__first) {
+                nodes {
+                  createdAt
+                  databaseId
+                  updatedAt
+                }
+                edges {
+                  node {
+                    filter
+                    fullDatabaseId
+                    id
+                    layout
+                    number
+                    updatedAt
+                  }
+                }
+              }
+              closed
+              databaseId
+              fullDatabaseId
+              id
+              resourcePath
+              shortDescription
+              updatedAt
+              url
+            }
+            verticalGroupBy(first: $ProjectV2View__verticalGroupBy__first) {
+              pageInfo {
+                hasNextPage
+              }
+            }
+            createdAt
+            databaseId
+            filter
+            fullDatabaseId
+            id
+            name
+            number
+          }
+        }
+        nodes {
+          createdAt
+          filter
+          fullDatabaseId
+          id
+          layout
+          name
+        }
+      }
+      workflow(number: $ProjectV2__workflow__number) {
+        createdAt
+        databaseId
+        enabled
+        fullDatabaseId
+        name
+        updatedAt
+      }
+      workflows(first: $ProjectV2__workflows__first) {
+        edges {
+          cursor
+        }
+      }
+      closedAt
+      createdAt
+      databaseId
+      readme
+      resourcePath
+      title
+      updatedAt
+      viewerCanReopen
+      viewerCanUpdate
+    }
+  }
+}

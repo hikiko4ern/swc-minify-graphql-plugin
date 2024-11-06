@@ -1,0 +1,29 @@
+mutation RandomMutation($User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!, $Mutation__followUser__input: FollowUserInput!) {
+  followUser(input: $Mutation__followUser__input) {
+    user {
+      avatarUrl
+      bio
+      bioHTML
+      companyHTML
+      hasSponsorsListing
+      id
+      isDeveloperProgramMember
+      isFollowingViewer
+      isGitHubStar
+      isHireable
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      pinnedItemsRemaining
+      projectsUrl
+      pronouns
+      totalSponsorshipAmountAsSponsorInCents
+      url
+      userViewType
+      viewerCanChangePinnedItems
+      viewerCanCreateProjects
+      viewerCanSponsor
+      viewerIsFollowing
+    }
+    clientMutationId
+  }
+}

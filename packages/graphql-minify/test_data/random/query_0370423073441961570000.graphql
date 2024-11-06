@@ -1,0 +1,6 @@
+query RandomQuery($Query__topic__name: String!) {
+  topic(name: $Query__topic__name) {
+    id
+    name
+  }
+}

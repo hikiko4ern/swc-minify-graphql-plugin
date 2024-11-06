@@ -1,0 +1,9 @@
+query RandomQuery {
+  marketplaceCategories {
+    description
+    howItWorks
+    name
+    resourcePath
+    url
+  }
+}

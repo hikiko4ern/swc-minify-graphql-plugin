@@ -1,0 +1,6 @@
+query RandomQuery {
+  codesOfConduct {
+    key
+    url
+  }
+}

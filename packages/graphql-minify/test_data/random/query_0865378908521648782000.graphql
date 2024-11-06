@@ -1,0 +1,191 @@
+query RandomQuery($User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $Query__user__login: String!, $Query__codeOfConduct__key: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__license__key: String!, $Query__marketplaceListings__first: Int, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__securityAdvisory__ghsaId: String!, $Query__securityVulnerabilities__first: Int, $Query__topic__name: String!) {
+  user(login: $Query__user__login) {
+    avatarUrl
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    companyHTML
+    createdAt
+    databaseId
+    email
+    estimatedNextSponsorsPayoutInCents
+    hasSponsorsListing
+    id
+    isDeveloperProgramMember
+    isSponsoringViewer
+    isViewer
+    location
+    login
+    monthlyEstimatedSponsorsIncomeInCents
+    name
+    twitterUsername
+    updatedAt
+    userViewType
+    viewerCanChangePinnedItems
+    viewerCanCreateProjects
+    viewerCanFollow
+    viewerCanSponsor
+    websiteUrl
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    body
+    name
+    resourcePath
+    url
+  }
+  codesOfConduct {
+    id
+    key
+    url
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    createdAt
+    email
+  }
+  license(key: $Query__license__key) {
+    conditions {
+      label
+    }
+    permissions {
+      description
+      label
+    }
+    description
+    nickname
+    pseudoLicense
+    spdxId
+    url
+  }
+  licenses {
+    body
+    featured
+    id
+    implementation
+    key
+    spdxId
+    url
+  }
+  marketplaceCategories {
+    description
+    primaryListingCount
+    resourcePath
+    secondaryListingCount
+    url
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    nodes {
+      primaryCategory {
+        id
+        primaryListingCount
+        resourcePath
+      }
+      app {
+        databaseId
+        description
+        id
+        logoBackgroundColor
+        logoUrl
+        name
+      }
+      secondaryCategory {
+        description
+        slug
+        url
+      }
+      companyUrl
+      configurationResourcePath
+      configurationUrl
+      documentationUrl
+      extendedDescription
+      extendedDescriptionHTML
+      fullDescriptionHTML
+      hasTermsOfService
+      howItWorks
+      id
+      installationUrl
+      installedForViewer
+      isArchived
+      isDraft
+      isPaid
+      isRejected
+      isUnverifiedPending
+      isVerificationPendingFromUnverified
+      name
+      normalizedShortDescription
+      privacyPolicyUrl
+      resourcePath
+      shortDescription
+      slug
+      statusUrl
+      supportEmail
+      supportUrl
+      url
+      viewerCanAddPlans
+      viewerCanEditCategories
+      viewerCanEditPlans
+      viewerCanRequestApproval
+      viewerHasPurchased
+    }
+    edges {
+      node {
+        companyUrl
+        configurationResourcePath
+        documentationUrl
+        extendedDescription
+        fullDescription
+        hasTermsOfService
+        howItWorksHTML
+        id
+        installationUrl
+        installedForViewer
+        isArchived
+        isDraft
+        isPublic
+        isRejected
+        isUnverified
+        isVerificationPendingFromDraft
+        isVerificationPendingFromUnverified
+        logoBackgroundColor
+        normalizedShortDescription
+        privacyPolicyUrl
+        statusUrl
+        termsOfServiceUrl
+        viewerCanApprove
+        viewerCanDelist
+        viewerCanEdit
+        viewerCanEditPlans
+        viewerCanRedraft
+        viewerCanReject
+        viewerIsListingAdmin
+      }
+      cursor
+    }
+  }
+  meta {
+    gitIpAddresses
+    importerIpAddresses
+    isPasswordAuthenticationVerifiable
+    pagesIpAddresses
+  }
+  rateLimit {
+    limit
+    resetAt
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    discussionCount
+    issueCount
+    repositoryCount
+    wikiCount
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    classification
+    origin
+    severity
+    summary
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    totalCount
+  }
+  topic(name: $Query__topic__name) {
+    name
+  }
+  id
+}

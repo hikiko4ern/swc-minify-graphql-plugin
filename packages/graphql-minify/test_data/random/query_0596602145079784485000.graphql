@@ -1,0 +1,91 @@
+query RandomQuery($User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $Enterprise__organizations__first: Int, $User__organizationVerifiedDomainEmails__login: String!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!) {
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    invitee {
+      bio
+      canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+      company
+      createdAt
+      email
+      estimatedNextSponsorsPayoutInCents
+      id
+      isCampusExpert
+      isEmployee
+      isFollowingViewer
+      isGitHubStar
+      isSponsoringViewer
+      location
+      login
+      pronouns
+      totalSponsorshipAmountAsSponsorInCents
+      twitterUsername
+      updatedAt
+      url
+      viewerCanFollow
+      viewerIsFollowing
+      viewerIsSponsoring
+    }
+    enterprise {
+      billingInfo {
+        allLicensableUsersCount
+        bandwidthQuota
+        bandwidthUsage
+        storageUsagePercentage
+      }
+      organizations(first: $Enterprise__organizations__first) {
+        totalCount
+      }
+      ownerInfo {
+        allowPrivateRepositoryForkingSetting
+        allowPrivateRepositoryForkingSettingPolicyValue
+        ipAllowListEnabledSetting
+        ipAllowListForInstalledAppsEnabledSetting
+        isUpdatingTwoFactorRequirement
+        membersCanChangeRepositoryVisibilitySetting
+        membersCanCreatePrivateRepositoriesSetting
+        membersCanCreatePublicRepositoriesSetting
+        membersCanCreateRepositoriesSetting
+        membersCanDeleteIssuesSetting
+        membersCanDeleteRepositoriesSetting
+        membersCanInviteCollaboratorsSetting
+        membersCanUpdateProtectedBranchesSetting
+        membersCanViewDependencyInsightsSetting
+        repositoryProjectsSetting
+        twoFactorDisallowedMethodsSetting
+      }
+      announcementExpiresAt
+      createdAt
+      description
+      id
+      location
+      name
+      slug
+      url
+    }
+    inviter {
+      bio
+      bioHTML
+      company
+      databaseId
+      email
+      isBountyHunter
+      isFollowingViewer
+      isHireable
+      isSiteAdmin
+      isViewer
+      name
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      pinnedItemsRemaining
+      projectsResourcePath
+      pronouns
+      resourcePath
+      url
+      viewerCanSponsor
+      viewerIsSponsoring
+      websiteUrl
+    }
+    createdAt
+    email
+    id
+    role
+  }
+}

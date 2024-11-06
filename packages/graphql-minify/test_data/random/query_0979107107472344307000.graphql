@@ -1,0 +1,10 @@
+query RandomQuery($Query__marketplaceCategory__slug: String!) {
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    howItWorks
+    name
+    primaryListingCount
+    secondaryListingCount
+    slug
+  }
+}

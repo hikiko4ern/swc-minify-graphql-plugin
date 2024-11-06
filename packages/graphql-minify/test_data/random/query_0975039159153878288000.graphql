@@ -1,0 +1,30 @@
+query RandomQuery($Query__organization__login: String!) {
+  organization(login: $Query__organization__login) {
+    announcement
+    anyPinnableItems
+    archivedAt
+    avatarUrl
+    createdAt
+    description
+    hasSponsorsListing
+    isSponsoringViewer
+    isVerified
+    location
+    login
+    monthlyEstimatedSponsorsIncomeInCents
+    name
+    notificationDeliveryRestrictionEnabledSetting
+    organizationBillingEmail
+    pinnedItemsRemaining
+    projectsResourcePath
+    projectsUrl
+    requiresTwoFactorAuthentication
+    teamsUrl
+    updatedAt
+    viewerCanAdminister
+    viewerCanCreateRepositories
+    viewerIsFollowing
+    webCommitSignoffRequired
+    websiteUrl
+  }
+}

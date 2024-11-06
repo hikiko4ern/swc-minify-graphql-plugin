@@ -1,0 +1,23 @@
+mutation RandomMutation($Mutation__updatePullRequestReview__input: UpdatePullRequestReviewInput!) {
+  updatePullRequestReview(input: $Mutation__updatePullRequestReview__input) {
+    pullRequestReview {
+      authorAssociation
+      authorCanPushToRepository
+      body
+      bodyHTML
+      bodyText
+      createdAt
+      id
+      includesCreatedEdit
+      publishedAt
+      submittedAt
+      url
+      viewerCanDelete
+      viewerCanMinimize
+      viewerCannotUpdateReasons
+      viewerCanReact
+      viewerCanUpdate
+    }
+    clientMutationId
+  }
+}

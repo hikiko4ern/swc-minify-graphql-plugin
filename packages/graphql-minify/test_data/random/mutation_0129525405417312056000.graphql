@@ -1,0 +1,35 @@
+mutation RandomMutation($Mutation__markFileAsViewed__input: MarkFileAsViewedInput!) {
+  markFileAsViewed(input: $Mutation__markFileAsViewed__input) {
+    pullRequest {
+      additions
+      baseRefName
+      changedFiles
+      checksUrl
+      closed
+      databaseId
+      deletions
+      isReadByViewer
+      lastEditedAt
+      locked
+      maintainerCanModify
+      mergedAt
+      publishedAt
+      resourcePath
+      revertUrl
+      state
+      titleHTML
+      updatedAt
+      url
+      viewerCanApplySuggestion
+      viewerCanDisableAutoMerge
+      viewerCanEditFiles
+      viewerCanEnableAutoMerge
+      viewerCanLabel
+      viewerCanSubscribe
+      viewerCanUpdate
+      viewerCanUpdateBranch
+      viewerMergeBodyText
+      viewerMergeHeadlineText
+    }
+  }
+}

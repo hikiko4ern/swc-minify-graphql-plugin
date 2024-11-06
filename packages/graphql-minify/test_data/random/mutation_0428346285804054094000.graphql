@@ -1,0 +1,36 @@
+mutation RandomMutation($Organization__isSponsoredBy__accountLogin: String!, $Mutation__updateOrganizationWebCommitSignoffSetting__input: UpdateOrganizationWebCommitSignoffSettingInput!) {
+  updateOrganizationWebCommitSignoffSetting(input: $Mutation__updateOrganizationWebCommitSignoffSetting__input) {
+    organization {
+      archivedAt
+      avatarUrl
+      createdAt
+      description
+      email
+      ipAllowListForInstalledAppsEnabledSetting
+      isSponsoredBy(accountLogin: $Organization__isSponsoredBy__accountLogin)
+      isSponsoringViewer
+      membersCanForkPrivateRepositories
+      monthlyEstimatedSponsorsIncomeInCents
+      name
+      newTeamResourcePath
+      newTeamUrl
+      organizationBillingEmail
+      projectsUrl
+      requiresTwoFactorAuthentication
+      teamsResourcePath
+      teamsUrl
+      totalSponsorshipAmountAsSponsorInCents
+      twitterUsername
+      updatedAt
+      url
+      viewerCanChangePinnedItems
+      viewerCanCreateRepositories
+      viewerIsAMember
+      viewerIsSponsoring
+      webCommitSignoffRequired
+      websiteUrl
+    }
+    clientMutationId
+    message
+  }
+}

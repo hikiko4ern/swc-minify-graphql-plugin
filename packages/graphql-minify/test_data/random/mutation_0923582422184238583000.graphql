@@ -1,0 +1,568 @@
+mutation RandomMutation($DiscussionComment__userContentEdits__first: Int, $Discussion__comments__first: Int, $DiscussionComment__reactions__first: Int, $ReactionGroup__reactors__first: Int, $User__commitComments__first: Int, $Enterprise__members__first: Int, $Enterprise__organizations__first: Int, $User__enterprises__first: Int, $User__followers__first: Int, $GistComment__userContentEdits__first: Int, $User__gistComments__first: Int, $User__gists__first: Int, $IssueComment__reactions__first: Int, $User__issueComments__first: Int, $User__lifetimeReceivedSponsorshipValues__first: Int, $User__lists__first: Int, $User__organizations__first: Int, $Project__pendingCards__first: Int, $Project__columns__first: Int, $User__project__number: Int!, $User__repositories__first: Int, $User__repositoriesContributedTo__first: Int, $User__repositoryDiscussionComments__first: Int, $User__sponsors__first: Int, $User__sponsorshipNewsletters__first: Int, $User__sponsorshipsAsMaintainer__first: Int, $User__sponsorshipsAsSponsor__first: Int, $User__watching__first: Int, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__organizationVerifiedDomainEmails__login: String!, $Mutation__addDiscussionComment__input: AddDiscussionCommentInput!) {
+  addDiscussionComment(input: $Mutation__addDiscussionComment__input) {
+    comment {
+      userContentEdits(first: $DiscussionComment__userContentEdits__first) {
+        totalCount
+      }
+      discussion {
+        answer {
+          authorAssociation
+          bodyHTML
+          createdViaEmail
+          isMinimized
+          minimizedReason
+          resourcePath
+          upvoteCount
+          url
+          viewerCanDelete
+          viewerCanReact
+          viewerCanUnmarkAsAnswer
+          viewerCanUpdate
+          viewerDidAuthor
+          viewerHasUpvoted
+        }
+        category {
+          description
+          emoji
+          name
+          slug
+          updatedAt
+        }
+        comments(first: $Discussion__comments__first) {
+          nodes {
+            body
+            bodyHTML
+            createdAt
+            createdViaEmail
+            deletedAt
+            id
+            includesCreatedEdit
+            lastEditedAt
+            resourcePath
+            url
+            viewerCanDelete
+            viewerCannotUpdateReasons
+            viewerHasUpvoted
+          }
+          pageInfo {
+            endCursor
+            hasNextPage
+            hasPreviousPage
+          }
+        }
+        poll {
+          question
+          totalVoteCount
+          viewerCanVote
+          viewerHasVoted
+        }
+        reactionGroups {
+          content
+          viewerHasReacted
+        }
+        closed
+        closedAt
+        isAnswered
+        locked
+        number
+        stateReason
+        title
+        url
+        viewerCanSubscribe
+        viewerCanUpvote
+        viewerHasUpvoted
+        viewerSubscription
+      }
+      reactions(first: $DiscussionComment__reactions__first) {
+        edges {
+          cursor
+        }
+        nodes {
+          id
+        }
+        pageInfo {
+          hasPreviousPage
+          startCursor
+        }
+        viewerHasReacted
+      }
+      replyTo {
+        discussion {
+          activeLockReason
+          authorAssociation
+          body
+          closedAt
+          createdViaEmail
+          databaseId
+          id
+          includesCreatedEdit
+          number
+          publishedAt
+          resourcePath
+          title
+          updatedAt
+          upvoteCount
+          url
+          viewerCanReact
+          viewerCanUpvote
+          viewerSubscription
+        }
+        reactionGroups {
+          reactors(first: $ReactionGroup__reactors__first) {
+            pageInfo {
+              hasPreviousPage
+              startCursor
+            }
+            totalCount
+          }
+        }
+        reactions(first: $DiscussionComment__reactions__first) {
+          edges {
+            cursor
+          }
+          nodes {
+            user {
+              suggestedListNames {
+                name
+              }
+              commitComments(first: $User__commitComments__first) {
+                pageInfo {
+                  startCursor
+                }
+              }
+              contributionsCollection {
+                earliestRestrictedContributionDate
+                hasActivityInThePast
+                isSingleDay
+                restrictedContributionsCount
+                totalPullRequestReviewContributions
+                totalRepositoriesWithContributedPullRequestReviews
+              }
+              copilotEndpoints {
+                api
+                telemetry
+              }
+              enterprises(first: $User__enterprises__first) {
+                edges {
+                  node {
+                    announcement
+                    announcementExpiresAt
+                    databaseId
+                    description
+                    descriptionHTML
+                    id
+                    name
+                    resourcePath
+                  }
+                }
+                nodes {
+                  members(first: $Enterprise__members__first) {
+                    totalCount
+                  }
+                  organizations(first: $Enterprise__organizations__first) {
+                    totalCount
+                  }
+                  announcementUserDismissible
+                  avatarUrl
+                  billingEmail
+                  createdAt
+                  description
+                  id
+                  location
+                  name
+                  readme
+                  slug
+                  url
+                  viewerIsAdmin
+                }
+              }
+              followers(first: $User__followers__first) {
+                pageInfo {
+                  endCursor
+                  hasPreviousPage
+                  startCursor
+                }
+              }
+              gistComments(first: $User__gistComments__first) {
+                nodes {
+                  userContentEdits(first: $GistComment__userContentEdits__first) {
+                    totalCount
+                  }
+                  bodyText
+                  databaseId
+                  id
+                  isMinimized
+                  lastEditedAt
+                  updatedAt
+                  viewerCanDelete
+                  viewerCanMinimize
+                  viewerCanUpdate
+                  viewerDidAuthor
+                }
+              }
+              gists(first: $User__gists__first) {
+                totalCount
+              }
+              interactionAbility {
+                limit
+              }
+              issueComments(first: $User__issueComments__first) {
+                nodes {
+                  reactions(first: $IssueComment__reactions__first) {
+                    totalCount
+                    viewerHasReacted
+                  }
+                  issue {
+                    body
+                    bodyHTML
+                    bodyText
+                    bodyUrl
+                    closed
+                    closedAt
+                    includesCreatedEdit
+                    isPinned
+                    isReadByViewer
+                    lastEditedAt
+                    number
+                    resourcePath
+                    titleHTML
+                    trackedIssuesCount
+                    viewerCanLabel
+                    viewerCannotUpdateReasons
+                    viewerCanUpdate
+                    viewerSubscription
+                  }
+                  pullRequest {
+                    authorAssociation
+                    checksUrl
+                    closedAt
+                    createdAt
+                    createdViaEmail
+                    deletions
+                    headRefName
+                    isInMergeQueue
+                    locked
+                    maintainerCanModify
+                    mergeable
+                    mergeStateStatus
+                    number
+                    revertUrl
+                    state
+                    title
+                    totalCommentsCount
+                    updatedAt
+                    url
+                    viewerCanApplySuggestion
+                    viewerCanDeleteHeadRef
+                    viewerCanEditFiles
+                    viewerCanEnableAutoMerge
+                    viewerCanMergeAsAdmin
+                    viewerCanReopen
+                    viewerCanSubscribe
+                    viewerCanUpdate
+                    viewerSubscription
+                  }
+                  repository {
+                    autoMergeAllowed
+                    databaseId
+                    deleteBranchOnMerge
+                    descriptionHTML
+                    diskUsage
+                    forkCount
+                    forkingAllowed
+                    hasDiscussionsEnabled
+                    hasProjectsEnabled
+                    hasSponsorshipsEnabled
+                    hasWikiEnabled
+                    homepageUrl
+                    isBlankIssuesEnabled
+                    isEmpty
+                    lockReason
+                    mergeCommitAllowed
+                    mergeCommitTitle
+                    mirrorUrl
+                    name
+                    projectsResourcePath
+                    projectsUrl
+                    rebaseMergeAllowed
+                    securityPolicyUrl
+                    squashMergeCommitMessage
+                    sshUrl
+                    tempCloneToken
+                    usesCustomOpenGraphImage
+                    viewerCanAdminister
+                    viewerCanCreateProjects
+                    viewerCanUpdateTopics
+                    viewerDefaultCommitEmail
+                    viewerHasStarred
+                    viewerPermission
+                    webCommitSignoffRequired
+                  }
+                  authorAssociation
+                  body
+                  bodyHTML
+                  createdAt
+                  createdViaEmail
+                  id
+                  includesCreatedEdit
+                  isMinimized
+                  lastEditedAt
+                  publishedAt
+                  url
+                  viewerCanDelete
+                  viewerCannotUpdateReasons
+                  viewerDidAuthor
+                }
+                edges {
+                  node {
+                    body
+                    bodyText
+                    databaseId
+                    fullDatabaseId
+                    id
+                    isMinimized
+                    publishedAt
+                    resourcePath
+                    viewerCanDelete
+                    viewerCanMinimize
+                    viewerCannotUpdateReasons
+                    viewerCanReact
+                    viewerCanUpdate
+                  }
+                }
+              }
+              lifetimeReceivedSponsorshipValues(first: $User__lifetimeReceivedSponsorshipValues__first) {
+                edges {
+                  cursor
+                }
+                nodes {
+                  amountInCents
+                }
+              }
+              lists(first: $User__lists__first) {
+                pageInfo {
+                  hasNextPage
+                  hasPreviousPage
+                }
+                totalCount
+              }
+              organizations(first: $User__organizations__first) {
+                pageInfo {
+                  hasNextPage
+                }
+                edges {
+                  cursor
+                }
+                totalCount
+              }
+              project(number: $User__project__number) {
+                pendingCards(first: $Project__pendingCards__first) {
+                  nodes {
+                    id
+                    state
+                  }
+                  edges {
+                    cursor
+                  }
+                  totalCount
+                }
+                columns(first: $Project__columns__first) {
+                  edges {
+                    cursor
+                  }
+                  pageInfo {
+                    hasPreviousPage
+                  }
+                }
+                closed
+                closedAt
+                createdAt
+                name
+                resourcePath
+                state
+                updatedAt
+                viewerCanClose
+                viewerCanReopen
+                viewerCanUpdate
+              }
+              repositories(first: $User__repositories__first) {
+                totalDiskUsage
+              }
+              repositoriesContributedTo(first: $User__repositoriesContributedTo__first) {
+                edges {
+                  cursor
+                }
+                pageInfo {
+                  hasPreviousPage
+                  startCursor
+                }
+              }
+              repositoryDiscussionComments(first: $User__repositoryDiscussionComments__first) {
+                nodes {
+                  body
+                  createdAt
+                  databaseId
+                  id
+                  isAnswer
+                  isMinimized
+                  lastEditedAt
+                  publishedAt
+                  resourcePath
+                  updatedAt
+                  upvoteCount
+                  url
+                  viewerCanDelete
+                  viewerCanMarkAsAnswer
+                  viewerCanMinimize
+                  viewerCannotUpdateReasons
+                  viewerCanUpdate
+                  viewerCanUpvote
+                  viewerHasUpvoted
+                }
+                edges {
+                  cursor
+                }
+                pageInfo {
+                  hasNextPage
+                  startCursor
+                }
+                totalCount
+              }
+              sponsors(first: $User__sponsors__first) {
+                pageInfo {
+                  endCursor
+                  hasNextPage
+                  hasPreviousPage
+                  startCursor
+                }
+                edges {
+                  cursor
+                }
+                totalCount
+              }
+              sponsorshipForViewerAsSponsor {
+                createdAt
+                id
+                isActive
+                isOneTimePayment
+                paymentSource
+                privacyLevel
+              }
+              sponsorshipForViewerAsSponsorable {
+                createdAt
+                isOneTimePayment
+                isSponsorOptedIntoEmail
+                paymentSource
+                tierSelectedAt
+              }
+              sponsorshipNewsletters(first: $User__sponsorshipNewsletters__first) {
+                pageInfo {
+                  endCursor
+                  hasPreviousPage
+                  startCursor
+                }
+              }
+              sponsorshipsAsMaintainer(first: $User__sponsorshipsAsMaintainer__first) {
+                pageInfo {
+                  hasNextPage
+                }
+                nodes {
+                  createdAt
+                  id
+                  isActive
+                }
+                totalCount
+              }
+              sponsorshipsAsSponsor(first: $User__sponsorshipsAsSponsor__first) {
+                totalRecurringMonthlyPriceInCents
+                totalRecurringMonthlyPriceInDollars
+              }
+              watching(first: $User__watching__first) {
+                totalCount
+              }
+              anyPinnableItems
+              avatarUrl
+              canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+              company
+              createdAt
+              databaseId
+              email
+              isCampusExpert
+              isDeveloperProgramMember
+              isEmployee
+              isSiteAdmin
+              isViewer
+              location
+              name
+              organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+              totalSponsorshipAmountAsSponsorInCents
+              userViewType
+              viewerCanChangePinnedItems
+              viewerCanFollow
+              viewerCanSponsor
+              viewerIsFollowing
+            }
+            content
+            createdAt
+            databaseId
+            id
+          }
+          pageInfo {
+            hasNextPage
+            hasPreviousPage
+          }
+          totalCount
+        }
+        replyTo {
+          authorAssociation
+          bodyHTML
+          bodyText
+          createdAt
+          databaseId
+          deletedAt
+          isAnswer
+          resourcePath
+          viewerCanDelete
+          viewerCanMarkAsAnswer
+          viewerCanReact
+          viewerCanUnmarkAsAnswer
+          viewerCanUpvote
+          viewerHasUpvoted
+        }
+        authorAssociation
+        bodyText
+        createdAt
+        createdViaEmail
+        databaseId
+        id
+        includesCreatedEdit
+        isMinimized
+        lastEditedAt
+        minimizedReason
+        upvoteCount
+        viewerCanMarkAsAnswer
+        viewerCanMinimize
+        viewerCannotUpdateReasons
+        viewerCanUpdate
+        viewerCanUpvote
+        viewerDidAuthor
+        viewerHasUpvoted
+      }
+      bodyText
+      id
+      includesCreatedEdit
+      isMinimized
+      minimizedReason
+      publishedAt
+      updatedAt
+      viewerCanDelete
+      viewerCanMarkAsAnswer
+      viewerCanMinimize
+      viewerCanReact
+      viewerCanUpvote
+      viewerDidAuthor
+      viewerHasUpvoted
+    }
+    clientMutationId
+  }
+}

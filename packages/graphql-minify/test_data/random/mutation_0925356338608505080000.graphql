@@ -1,0 +1,29 @@
+mutation RandomMutation($User__organizationVerifiedDomainEmails__login: String!, $Mutation__removeOutsideCollaborator__input: RemoveOutsideCollaboratorInput!) {
+  removeOutsideCollaborator(input: $Mutation__removeOutsideCollaborator__input) {
+    removedUser {
+      avatarUrl
+      bioHTML
+      databaseId
+      id
+      isFollowingViewer
+      isSiteAdmin
+      isSponsoringViewer
+      isViewer
+      location
+      name
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      projectsResourcePath
+      projectsUrl
+      pronouns
+      resourcePath
+      twitterUsername
+      updatedAt
+      url
+      viewerCanChangePinnedItems
+      viewerCanCreateProjects
+      viewerCanFollow
+      websiteUrl
+    }
+    clientMutationId
+  }
+}

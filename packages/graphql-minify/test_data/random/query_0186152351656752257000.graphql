@@ -1,0 +1,340 @@
+query RandomQuery($Query__codeOfConduct__key: String!, $Query__enterprise__slug: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $Query__marketplaceListing__slug: String!, $Organization__ruleset__databaseId: Int!, $Organization__auditLog__first: Int, $Organization__ipAllowListEntries__first: Int, $Organization__mannequins__first: Int, $Organization__memberStatuses__first: Int, $Organization__pendingMembers__first: Int, $Organization__pinnableItems__first: Int, $Organization__projectsV2__first: Int, $Organization__projectV2__number: Int!, $Organization__repository__name: String!, $Organization__rulesets__first: Int, $Organization__sponsorsActivities__first: Int, $Organization__sponsorshipsAsSponsor__first: Int, $Query__organization__login: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $SecurityAdvisory__vulnerabilities__first: Int, $Query__securityAdvisories__first: Int, $Query__securityAdvisory__ghsaId: String!, $Query__topic__name: String!, $User__organizationVerifiedDomainEmails__login: String!) {
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    id
+    name
+  }
+  codesOfConduct {
+    id
+    key
+    name
+    resourcePath
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcementCreatedAt
+    announcementExpiresAt
+    billingEmail
+    createdAt
+    databaseId
+    name
+    readme
+    resourcePath
+    slug
+    url
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    createdAt
+    role
+  }
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    createdAt
+  }
+  licenses {
+    permissions {
+      key
+      label
+    }
+    limitations {
+      key
+    }
+    body
+    nickname
+  }
+  marketplaceListing(slug: $Query__marketplaceListing__slug) {
+    documentationUrl
+    fullDescription
+    fullDescriptionHTML
+    hasPublishedFreeTrialPlans
+    hasTermsOfService
+    howItWorksHTML
+    isDraft
+    isPaid
+    isPublic
+    isRejected
+    isUnverifiedPending
+    isVerificationPendingFromUnverified
+    isVerified
+    logoUrl
+    pricingUrl
+    resourcePath
+    screenshotUrls
+    shortDescription
+    slug
+    termsOfServiceUrl
+    viewerCanApprove
+    viewerCanRedraft
+    viewerCanReject
+    viewerCanRequestApproval
+    viewerHasPurchased
+    viewerHasPurchasedForAllOrganizations
+  }
+  organization(login: $Query__organization__login) {
+    ruleset(databaseId: $Organization__ruleset__databaseId) {
+      conditions {
+        repositoryId {
+          repositoryIds
+        }
+      }
+      createdAt
+      enforcement
+      id
+      name
+      target
+      updatedAt
+    }
+    auditLog(first: $Organization__auditLog__first) {
+      edges {
+        cursor
+      }
+      pageInfo {
+        hasNextPage
+      }
+      totalCount
+    }
+    interactionAbility {
+      origin
+    }
+    ipAllowListEntries(first: $Organization__ipAllowListEntries__first) {
+      nodes {
+        createdAt
+        id
+        name
+      }
+      edges {
+        node {
+          id
+          isActive
+          name
+          updatedAt
+        }
+      }
+    }
+    mannequins(first: $Organization__mannequins__first) {
+      totalCount
+    }
+    memberStatuses(first: $Organization__memberStatuses__first) {
+      edges {
+        node {
+          createdAt
+          id
+          indicatesLimitedAvailability
+          updatedAt
+        }
+      }
+    }
+    pendingMembers(first: $Organization__pendingMembers__first) {
+      totalCount
+    }
+    pinnableItems(first: $Organization__pinnableItems__first) {
+      edges {
+        cursor
+      }
+    }
+    projectsV2(first: $Organization__projectsV2__first) {
+      edges {
+        cursor
+      }
+    }
+    projectV2(number: $Organization__projectV2__number) {
+      closed
+      createdAt
+      databaseId
+      id
+      number
+      resourcePath
+      shortDescription
+      updatedAt
+      url
+      viewerCanUpdate
+    }
+    repository(name: $Organization__repository__name) {
+      archivedAt
+      deleteBranchOnMerge
+      diskUsage
+      forkCount
+      hasDiscussionsEnabled
+      hasIssuesEnabled
+      hasVulnerabilityAlertsEnabled
+      hasWikiEnabled
+      id
+      isArchived
+      isInOrganization
+      isPrivate
+      isSecurityPolicyEnabled
+      isUserConfigurationRepository
+      mergeCommitAllowed
+      mergeCommitMessage
+      mergeCommitTitle
+      mirrorUrl
+      name
+      nameWithOwner
+      openGraphImageUrl
+      projectsResourcePath
+      projectsUrl
+      pushedAt
+      rebaseMergeAllowed
+      securityPolicyUrl
+      sshUrl
+      url
+      usesCustomOpenGraphImage
+      viewerCanAdminister
+      viewerCanCreateProjects
+      viewerDefaultCommitEmail
+      viewerDefaultMergeMethod
+      viewerPermission
+      viewerPossibleCommitEmails
+      webCommitSignoffRequired
+    }
+    rulesets(first: $Organization__rulesets__first) {
+      pageInfo {
+        hasPreviousPage
+      }
+    }
+    sponsorsActivities(first: $Organization__sponsorsActivities__first) {
+      totalCount
+    }
+    sponsorshipsAsSponsor(first: $Organization__sponsorshipsAsSponsor__first) {
+      totalCount
+    }
+    announcementExpiresAt
+    announcementUserDismissible
+    createdAt
+    hasSponsorsListing
+    id
+    isSponsoringViewer
+    location
+    login
+    name
+    newTeamResourcePath
+    notificationDeliveryRestrictionEnabledSetting
+    organizationBillingEmail
+    pinnedItemsRemaining
+    projectsResourcePath
+    twitterUsername
+    updatedAt
+    viewerCanChangePinnedItems
+    viewerCanCreateProjects
+    viewerCanCreateRepositories
+    viewerCanCreateTeams
+    viewerIsFollowing
+    webCommitSignoffRequired
+    websiteUrl
+  }
+  rateLimit {
+    limit
+    remaining
+    used
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    edges {
+      textMatches {
+        highlights {
+          beginIndice
+          endIndice
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      startCursor
+    }
+    repositoryCount
+    userCount
+    wikiCount
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    nodes {
+      references {
+        url
+      }
+      cvss {
+        vectorString
+      }
+      epss {
+        percentile
+      }
+      identifiers {
+        value
+      }
+      vulnerabilities(first: $SecurityAdvisory__vulnerabilities__first) {
+        totalCount
+      }
+      classification
+      description
+      id
+      notificationsPermalink
+      permalink
+      summary
+      updatedAt
+    }
+    pageInfo {
+      endCursor
+      hasPreviousPage
+      startCursor
+    }
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    epss {
+      percentage
+    }
+    cvss {
+      score
+    }
+    identifiers {
+      value
+    }
+    vulnerabilities(first: $SecurityAdvisory__vulnerabilities__first) {
+      edges {
+        node {
+          firstPatchedVersion {
+            identifier
+          }
+          advisory {
+            databaseId
+            description
+            origin
+            permalink
+          }
+        }
+        cursor
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      totalCount
+    }
+    classification
+    databaseId
+    description
+    notificationsPermalink
+    origin
+    permalink
+    updatedAt
+  }
+  topic(name: $Query__topic__name) {
+    id
+    name
+    stargazerCount
+    viewerHasStarred
+  }
+  viewer {
+    anyPinnableItems
+    company
+    databaseId
+    email
+    estimatedNextSponsorsPayoutInCents
+    location
+    login
+    organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+    pinnedItemsRemaining
+    projectsUrl
+    resourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    url
+    userViewType
+    viewerCanCreateProjects
+    viewerCanSponsor
+    viewerIsFollowing
+  }
+}

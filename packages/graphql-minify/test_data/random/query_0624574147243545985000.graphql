@@ -1,0 +1,36 @@
+query RandomQuery($Query__marketplaceListings__first: Int) {
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    nodes {
+      app {
+        databaseId
+        logoBackgroundColor
+        logoUrl
+        slug
+        updatedAt
+      }
+      secondaryCategory {
+        name
+        secondaryListingCount
+      }
+      id
+      installedForViewer
+      isDraft
+      isPublic
+      isVerificationPendingFromUnverified
+      isVerified
+      logoUrl
+      pricingUrl
+      privacyPolicyUrl
+      resourcePath
+      slug
+      supportUrl
+      termsOfServiceUrl
+      url
+      viewerCanApprove
+      viewerCanEdit
+      viewerCanEditPlans
+      viewerCanRequestApproval
+      viewerHasPurchasedForAllOrganizations
+    }
+  }
+}

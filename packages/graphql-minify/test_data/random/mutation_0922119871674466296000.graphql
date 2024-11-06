@@ -1,0 +1,7 @@
+mutation RandomMutation($UpdateProjectV2ItemPositionPayload__items__first: Int, $Mutation__updateProjectV2ItemPosition__input: UpdateProjectV2ItemPositionInput!) {
+  updateProjectV2ItemPosition(input: $Mutation__updateProjectV2ItemPosition__input) {
+    items(first: $UpdateProjectV2ItemPositionPayload__items__first) {
+      totalCount
+    }
+  }
+}

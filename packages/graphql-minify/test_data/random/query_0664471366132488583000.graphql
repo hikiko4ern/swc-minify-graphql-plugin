@@ -1,0 +1,16 @@
+query RandomQuery($Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!) {
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    edges {
+      textMatches {
+        highlights {
+          text
+        }
+        fragment
+      }
+    }
+    codeCount
+    issueCount
+    userCount
+    wikiCount
+  }
+}

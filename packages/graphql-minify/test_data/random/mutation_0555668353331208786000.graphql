@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__createCheckSuite__input: CreateCheckSuiteInput!) {
+  createCheckSuite(input: $Mutation__createCheckSuite__input) {
+    clientMutationId
+  }
+}

@@ -1,0 +1,30 @@
+mutation RandomMutation($Mutation__setUserInteractionLimit__input: SetUserInteractionLimitInput!) {
+  setUserInteractionLimit(input: $Mutation__setUserInteractionLimit__input) {
+    user {
+      avatarUrl
+      bio
+      company
+      companyHTML
+      createdAt
+      databaseId
+      id
+      isBountyHunter
+      isCampusExpert
+      isEmployee
+      isGitHubStar
+      isHireable
+      isViewer
+      location
+      monthlyEstimatedSponsorsIncomeInCents
+      pinnedItemsRemaining
+      pronouns
+      totalSponsorshipAmountAsSponsorInCents
+      twitterUsername
+      updatedAt
+      userViewType
+      viewerIsFollowing
+      viewerIsSponsoring
+      websiteUrl
+    }
+  }
+}

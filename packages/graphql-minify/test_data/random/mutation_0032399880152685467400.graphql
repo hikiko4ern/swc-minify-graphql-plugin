@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__followUser__input: FollowUserInput!) {
+  followUser(input: $Mutation__followUser__input) {
+    clientMutationId
+  }
+}

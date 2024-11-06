@@ -1,0 +1,10 @@
+mutation RandomMutation($Mutation__createSponsorship__input: CreateSponsorshipInput!) {
+  createSponsorship(input: $Mutation__createSponsorship__input) {
+    sponsorship {
+      id
+      isActive
+      isOneTimePayment
+      tierSelectedAt
+    }
+  }
+}

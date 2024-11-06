@@ -1,0 +1,23 @@
+query RandomQuery($SecurityAdvisory__vulnerabilities__first: Int, $Query__securityAdvisory__ghsaId: String!) {
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    cvss {
+      vectorString
+    }
+    epss {
+      percentage
+      percentile
+    }
+    identifiers {
+      type
+    }
+    vulnerabilities(first: $SecurityAdvisory__vulnerabilities__first) {
+      totalCount
+    }
+    classification
+    ghsaId
+    id
+    permalink
+    summary
+    withdrawnAt
+  }
+}

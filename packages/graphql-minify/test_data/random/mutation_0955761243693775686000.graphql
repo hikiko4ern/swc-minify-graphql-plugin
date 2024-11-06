@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__updateEnterpriseOrganizationProjectsSetting__input: UpdateEnterpriseOrganizationProjectsSettingInput!) {
+  updateEnterpriseOrganizationProjectsSetting(input: $Mutation__updateEnterpriseOrganizationProjectsSetting__input) {
+    message
+  }
+}

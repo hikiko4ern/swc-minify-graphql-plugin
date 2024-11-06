@@ -1,0 +1,34 @@
+query RandomQuery($Enterprise__organizations__first: Int, $Query__enterprise__slug: String!) {
+  enterprise(slug: $Query__enterprise__slug) {
+    ownerInfo {
+      allowPrivateRepositoryForkingSetting
+      ipAllowListEnabledSetting
+      membersCanCreateRepositoriesSetting
+      membersCanDeleteIssuesSetting
+      membersCanDeleteRepositoriesSetting
+      membersCanInviteCollaboratorsSetting
+      membersCanMakePurchasesSetting
+      membersCanUpdateProtectedBranchesSetting
+      notificationDeliveryRestrictionEnabledSetting
+      organizationProjectsSetting
+      repositoryProjectsSetting
+      twoFactorDisallowedMethodsSetting
+      twoFactorRequiredSetting
+    }
+    organizations(first: $Enterprise__organizations__first) {
+      totalCount
+    }
+    announcement
+    announcementUserDismissible
+    avatarUrl
+    billingEmail
+    databaseId
+    id
+    name
+    readme
+    slug
+    url
+    viewerIsAdmin
+    websiteUrl
+  }
+}

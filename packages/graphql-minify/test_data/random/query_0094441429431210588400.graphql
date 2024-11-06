@@ -1,0 +1,11 @@
+query RandomQuery($Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!) {
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    enterprise {
+      announcementCreatedAt
+      createdAt
+      location
+      slug
+    }
+    id
+  }
+}

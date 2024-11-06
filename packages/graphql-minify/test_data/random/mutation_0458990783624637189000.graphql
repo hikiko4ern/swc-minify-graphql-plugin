@@ -1,0 +1,15 @@
+mutation RandomMutation($Mutation__addProjectCard__input: AddProjectCardInput!) {
+  addProjectCard(input: $Mutation__addProjectCard__input) {
+    cardEdge {
+      cursor
+    }
+    projectColumn {
+      createdAt
+      databaseId
+      id
+      name
+      resourcePath
+      updatedAt
+    }
+  }
+}

@@ -1,0 +1,27 @@
+mutation RandomMutation($Mutation__updateDiscussionComment__input: UpdateDiscussionCommentInput!) {
+  updateDiscussionComment(input: $Mutation__updateDiscussionComment__input) {
+    comment {
+      authorAssociation
+      body
+      bodyHTML
+      createdAt
+      createdViaEmail
+      databaseId
+      deletedAt
+      id
+      isAnswer
+      isMinimized
+      minimizedReason
+      publishedAt
+      resourcePath
+      updatedAt
+      url
+      viewerCanDelete
+      viewerCanMinimize
+      viewerCanReact
+      viewerCanUpvote
+      viewerDidAuthor
+    }
+    clientMutationId
+  }
+}

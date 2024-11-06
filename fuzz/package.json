@@ -1,0 +1,25 @@
+{
+	"name": "swc-plugin-minify-graphql-fuzz",
+	"version": "0.0.0",
+	"description": "fuzzy testingGraphQL query and schema minimizer plugin for SWC",
+	"type": "module",
+	"scripts": {
+		"random-graphql": "node ./scripts/generate-random-graphql.js"
+	},
+	"devDependencies": {
+		"@tsconfig/node22": "^22.0.0",
+		"@tsconfig/strictest": "^2.0.5",
+		"graphql": "^14",
+		"ibm-graphql-query-generator": "^1.3.0",
+		"log-update": "^6.1.0"
+	},
+	"license": "Unlicense",
+	"author": "hikiko4ern",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/hikiko4ern/swc-plugin-minify-graphql.git",
+		"directory": "fuzz"
+	},
+	"packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228",
+	"private": true
+}

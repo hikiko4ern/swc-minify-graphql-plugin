@@ -1,0 +1,12 @@
+mutation RandomMutation($Mutation__addProjectV2ItemById__input: AddProjectV2ItemByIdInput!) {
+  addProjectV2ItemById(input: $Mutation__addProjectV2ItemById__input) {
+    item {
+      databaseId
+      fullDatabaseId
+      id
+      isArchived
+      type
+      updatedAt
+    }
+  }
+}

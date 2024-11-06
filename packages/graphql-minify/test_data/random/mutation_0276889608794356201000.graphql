@@ -1,0 +1,13 @@
+mutation RandomMutation($Mutation__addProjectColumn__input: AddProjectColumnInput!) {
+  addProjectColumn(input: $Mutation__addProjectColumn__input) {
+    columnEdge {
+      node {
+        databaseId
+        purpose
+        updatedAt
+        url
+      }
+      cursor
+    }
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__disablePullRequestAutoMerge__input: DisablePullRequestAutoMergeInput!) {
+  disablePullRequestAutoMerge(input: $Mutation__disablePullRequestAutoMerge__input) {
+    clientMutationId
+  }
+}

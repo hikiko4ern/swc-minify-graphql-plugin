@@ -1,0 +1,256 @@
+query RandomQuery($Query__repository__name: String!, $Query__repository__owner: String!, $Query__codeOfConduct__key: String!, $Query__license__key: String!, $Query__marketplaceCategory__slug: String!, $Query__marketplaceListings__first: Int, $Organization__isSponsoredBy__accountLogin: String!, $Query__organization__login: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $SecurityAdvisory__cwes__first: Int, $Query__securityAdvisories__first: Int, $SecurityAdvisory__vulnerabilities__first: Int, $Query__securityAdvisory__ghsaId: String!, $Query__securityVulnerabilities__first: Int, $Query__sponsorables__first: Int) {
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    allowUpdateBranch
+    archivedAt
+    createdAt
+    databaseId
+    deleteBranchOnMerge
+    hasDiscussionsEnabled
+    hasIssuesEnabled
+    hasVulnerabilityAlertsEnabled
+    hasWikiEnabled
+    id
+    isDisabled
+    isFork
+    isInOrganization
+    isPrivate
+    isSecurityPolicyEnabled
+    isTemplate
+    lockReason
+    mergeCommitAllowed
+    mergeCommitTitle
+    mirrorUrl
+    nameWithOwner
+    projectsResourcePath
+    pushedAt
+    rebaseMergeAllowed
+    resourcePath
+    squashMergeAllowed
+    squashMergeCommitMessage
+    tempCloneToken
+    updatedAt
+    usesCustomOpenGraphImage
+    viewerCanAdminister
+    viewerCanCreateProjects
+    viewerCanUpdateTopics
+    viewerDefaultCommitEmail
+    viewerDefaultMergeMethod
+    viewerHasStarred
+    viewerPossibleCommitEmails
+    viewerSubscription
+    webCommitSignoffRequired
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    id
+    key
+    resourcePath
+  }
+  license(key: $Query__license__key) {
+    featured
+    hidden
+    key
+    url
+  }
+  licenses {
+    conditions {
+      description
+    }
+    limitations {
+      key
+    }
+    permissions {
+      label
+    }
+    body
+    description
+    implementation
+    nickname
+    pseudoLicense
+  }
+  marketplaceCategories {
+    description
+    howItWorks
+    name
+    primaryListingCount
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    primaryListingCount
+    resourcePath
+    secondaryListingCount
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    pageInfo {
+      endCursor
+      hasNextPage
+      startCursor
+    }
+    edges {
+      cursor
+    }
+    nodes {
+      companyUrl
+      configurationResourcePath
+      documentationUrl
+      fullDescription
+      hasPublishedFreeTrialPlans
+      hasTermsOfService
+      hasVerifiedOwner
+      howItWorksHTML
+      installationUrl
+      isArchived
+      isPublic
+      isRejected
+      isUnverified
+      logoUrl
+      name
+      privacyPolicyUrl
+      resourcePath
+      statusUrl
+      supportUrl
+      url
+      viewerCanEdit
+      viewerCanEditCategories
+      viewerCanEditPlans
+      viewerCanRedraft
+      viewerCanReject
+      viewerIsListingAdmin
+    }
+  }
+  meta {
+    gitHubServicesSha
+    gitIpAddresses
+  }
+  organization(login: $Query__organization__login) {
+    announcementExpiresAt
+    announcementUserDismissible
+    anyPinnableItems
+    description
+    descriptionHTML
+    hasSponsorsListing
+    ipAllowListEnabledSetting
+    isSponsoredBy(accountLogin: $Organization__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    name
+    newTeamResourcePath
+    newTeamUrl
+    pinnedItemsRemaining
+    teamsResourcePath
+    teamsUrl
+    totalSponsorshipAmountAsSponsorInCents
+    updatedAt
+    url
+    viewerCanCreateTeams
+    viewerCanSponsor
+    viewerIsFollowing
+    viewerIsSponsoring
+    webCommitSignoffRequired
+    websiteUrl
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    edges {
+      textMatches {
+        highlights {
+          text
+        }
+      }
+    }
+    pageInfo {
+      startCursor
+    }
+    wikiCount
+  }
+  securityAdvisories(first: $Query__securityAdvisories__first) {
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+    edges {
+      cursor
+    }
+    nodes {
+      cvss {
+        score
+        vectorString
+      }
+      cwes(first: $SecurityAdvisory__cwes__first) {
+        nodes {
+          description
+        }
+        edges {
+          node {
+            cweId
+            id
+            name
+          }
+        }
+        pageInfo {
+          endCursor
+        }
+      }
+      identifiers {
+        type
+        value
+      }
+      references {
+        url
+      }
+      ghsaId
+      notificationsPermalink
+      permalink
+      publishedAt
+      severity
+      summary
+      updatedAt
+    }
+    totalCount
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    references {
+      url
+    }
+    vulnerabilities(first: $SecurityAdvisory__vulnerabilities__first) {
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          package {
+            name
+          }
+        }
+      }
+    }
+    classification
+    ghsaId
+    origin
+    publishedAt
+    summary
+    updatedAt
+  }
+  securityVulnerabilities(first: $Query__securityVulnerabilities__first) {
+    nodes {
+      updatedAt
+      vulnerableVersionRange
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+    totalCount
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    edges {
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+    totalCount
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__deleteProjectV2Workflow__input: DeleteProjectV2WorkflowInput!) {
+  deleteProjectV2Workflow(input: $Mutation__deleteProjectV2Workflow__input) {
+    deletedWorkflowId
+  }
+}

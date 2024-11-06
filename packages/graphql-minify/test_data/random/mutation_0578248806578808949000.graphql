@@ -1,0 +1,41 @@
+mutation RandomMutation($Mutation__updateEnterpriseDefaultRepositoryPermissionSetting__input: UpdateEnterpriseDefaultRepositoryPermissionSettingInput!) {
+  updateEnterpriseDefaultRepositoryPermissionSetting(input: $Mutation__updateEnterpriseDefaultRepositoryPermissionSetting__input) {
+    enterprise {
+      billingInfo {
+        bandwidthUsagePercentage
+        storageQuota
+        storageUsage
+        storageUsagePercentage
+        totalAvailableLicenses
+      }
+      ownerInfo {
+        affiliatedUsersWithTwoFactorDisabledExist
+        allowPrivateRepositoryForkingSetting
+        allowPrivateRepositoryForkingSettingPolicyValue
+        defaultRepositoryPermissionSetting
+        ipAllowListEnabledSetting
+        isUpdatingDefaultRepositoryPermission
+        membersCanDeleteIssuesSetting
+        membersCanMakePurchasesSetting
+        membersCanUpdateProtectedBranchesSetting
+        notificationDeliveryRestrictionEnabledSetting
+        organizationProjectsSetting
+        repositoryProjectsSetting
+        teamDiscussionsSetting
+        twoFactorRequiredSetting
+      }
+      announcement
+      announcementExpiresAt
+      avatarUrl
+      billingEmail
+      createdAt
+      location
+      readmeHTML
+      resourcePath
+      url
+      viewerIsAdmin
+      websiteUrl
+    }
+    clientMutationId
+  }
+}

@@ -1,0 +1,12 @@
+{
+	"extends": ["@tsconfig/node22/tsconfig.json", "@tsconfig/strictest/tsconfig.json"],
+	"compilerOptions": {
+		"noEmit": true,
+		"allowJs": true,
+		"checkJs": true,
+		"verbatimModuleSyntax": true,
+		"incremental": true
+	},
+	"include": ["scripts"],
+	"exclude": ["node_modules"]
+}

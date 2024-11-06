@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__convertProjectCardNoteToIssue__input: ConvertProjectCardNoteToIssueInput!) {
+  convertProjectCardNoteToIssue(input: $Mutation__convertProjectCardNoteToIssue__input) {
+    clientMutationId
+  }
+}

@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__linkProjectV2ToTeam__input: LinkProjectV2ToTeamInput!) {
+  linkProjectV2ToTeam(input: $Mutation__linkProjectV2ToTeam__input) {
+    clientMutationId
+  }
+}

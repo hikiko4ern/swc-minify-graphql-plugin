@@ -1,0 +1,8 @@
+query RandomQuery {
+  codesOfConduct {
+    body
+    id
+    key
+    url
+  }
+}

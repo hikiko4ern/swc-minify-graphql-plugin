@@ -1,0 +1,93 @@
+query RandomQuery($Query__marketplaceListings__first: Int, $Query__enterprise__slug: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__marketplaceCategory__slug: String!, $Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $SecurityAdvisory__cwes__first: Int, $Query__securityAdvisory__ghsaId: String!, $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login: String!, $User__isSponsoredBy__accountLogin: String!, $Query__user__login: String!) {
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    totalCount
+  }
+  codesOfConduct {
+    url
+  }
+  enterprise(slug: $Query__enterprise__slug) {
+    announcement
+    announcementCreatedAt
+    announcementExpiresAt
+    announcementUserDismissible
+    avatarUrl
+    createdAt
+    description
+    id
+    location
+    name
+    resourcePath
+    slug
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    role
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    email
+    id
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    primaryListingCount
+    resourcePath
+    url
+  }
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    pageInfo {
+      startCursor
+    }
+    codeCount
+    repositoryCount
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    cwes(first: $SecurityAdvisory__cwes__first) {
+      nodes {
+        description
+        id
+      }
+      edges {
+        node {
+          cweId
+          description
+          id
+        }
+      }
+      pageInfo {
+        endCursor
+        startCursor
+      }
+    }
+    classification
+    description
+    id
+    origin
+    summary
+    withdrawnAt
+  }
+  user(login: $Query__user__login) {
+    bio
+    canReceiveOrganizationEmailsWhenNotificationsRestricted(login: $User__canReceiveOrganizationEmailsWhenNotificationsRestricted__login)
+    companyHTML
+    createdAt
+    estimatedNextSponsorsPayoutInCents
+    isBountyHunter
+    isEmployee
+    isFollowingViewer
+    isHireable
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    monthlyEstimatedSponsorsIncomeInCents
+    pinnedItemsRemaining
+    projectsResourcePath
+    projectsUrl
+    pronouns
+    resourcePath
+    twitterUsername
+    url
+    userViewType
+    viewerCanCreateProjects
+    viewerCanSponsor
+    viewerIsFollowing
+    viewerIsSponsoring
+  }
+}

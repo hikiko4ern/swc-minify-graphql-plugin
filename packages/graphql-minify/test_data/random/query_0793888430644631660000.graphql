@@ -1,0 +1,31 @@
+query RandomQuery($User__isSponsoredBy__accountLogin: String!, $User__organizationVerifiedDomainEmails__login: String!, $Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!) {
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    inviter {
+      bio
+      company
+      companyHTML
+      databaseId
+      email
+      hasSponsorsListing
+      isCampusExpert
+      isDeveloperProgramMember
+      isGitHubStar
+      isSiteAdmin
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      isSponsoringViewer
+      location
+      login
+      monthlyEstimatedSponsorsIncomeInCents
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      pinnedItemsRemaining
+      projectsUrl
+      twitterUsername
+      userViewType
+      viewerCanChangePinnedItems
+      viewerCanFollow
+      websiteUrl
+    }
+    createdAt
+    email
+  }
+}

@@ -1,0 +1,24 @@
+query RandomQuery($Query__user__login: String!) {
+  user(login: $Query__user__login) {
+    anyPinnableItems
+    bio
+    company
+    estimatedNextSponsorsPayoutInCents
+    isBountyHunter
+    isCampusExpert
+    isSiteAdmin
+    isSponsoringViewer
+    isViewer
+    location
+    monthlyEstimatedSponsorsIncomeInCents
+    name
+    pinnedItemsRemaining
+    projectsResourcePath
+    projectsUrl
+    pronouns
+    resourcePath
+    viewerCanChangePinnedItems
+    viewerCanFollow
+    viewerCanSponsor
+  }
+}

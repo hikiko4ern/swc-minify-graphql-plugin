@@ -1,0 +1,67 @@
+mutation RandomMutation($User__organizationVerifiedDomainEmails__login: String!, $Mutation__requestReviews__input: RequestReviewsInput!) {
+  requestReviews(input: $Mutation__requestReviews__input) {
+    requestedReviewersEdge {
+      node {
+        anyPinnableItems
+        avatarUrl
+        bio
+        bioHTML
+        company
+        databaseId
+        email
+        isDeveloperProgramMember
+        isEmployee
+        isGitHubStar
+        isSponsoringViewer
+        login
+        organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+        pinnedItemsRemaining
+        projectsResourcePath
+        projectsUrl
+        pronouns
+        resourcePath
+        totalSponsorshipAmountAsSponsorInCents
+        twitterUsername
+        viewerCanChangePinnedItems
+        viewerIsFollowing
+        viewerIsSponsoring
+      }
+    }
+    pullRequest {
+      authorAssociation
+      baseRefName
+      bodyHTML
+      canBeRebased
+      changedFiles
+      id
+      includesCreatedEdit
+      isInMergeQueue
+      isMergeQueueEnabled
+      isReadByViewer
+      lastEditedAt
+      locked
+      maintainerCanModify
+      merged
+      permalink
+      publishedAt
+      resourcePath
+      revertResourcePath
+      state
+      titleHTML
+      viewerCanClose
+      viewerCanEditFiles
+      viewerCanLabel
+      viewerCanMergeAsAdmin
+      viewerCannotUpdateReasons
+      viewerCanReact
+      viewerCanReopen
+      viewerCanSubscribe
+      viewerCanUpdate
+      viewerCanUpdateBranch
+      viewerDidAuthor
+      viewerMergeBodyText
+      viewerMergeHeadlineText
+      viewerSubscription
+    }
+  }
+}

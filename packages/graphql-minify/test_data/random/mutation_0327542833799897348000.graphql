@@ -1,0 +1,37 @@
+mutation RandomMutation($Mutation__revertPullRequest__input: RevertPullRequestInput!) {
+  revertPullRequest(input: $Mutation__revertPullRequest__input) {
+    revertPullRequest {
+      additions
+      baseRefName
+      baseRefOid
+      bodyHTML
+      bodyText
+      canBeRebased
+      closedAt
+      createdViaEmail
+      deletions
+      headRefName
+      id
+      isInMergeQueue
+      isMergeQueueEnabled
+      merged
+      mergedAt
+      mergeStateStatus
+      publishedAt
+      reviewDecision
+      title
+      totalCommentsCount
+      updatedAt
+      url
+      viewerCanApplySuggestion
+      viewerCanClose
+      viewerCanEditFiles
+      viewerCanEnableAutoMerge
+      viewerCanMergeAsAdmin
+      viewerCanReact
+      viewerCanReopen
+      viewerCanSubscribe
+      viewerMergeHeadlineText
+    }
+  }
+}

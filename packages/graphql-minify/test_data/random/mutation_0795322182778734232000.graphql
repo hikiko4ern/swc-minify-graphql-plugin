@@ -1,0 +1,20 @@
+mutation RandomMutation($Mutation__mergeBranch__input: MergeBranchInput!) {
+  mergeBranch(input: $Mutation__mergeBranch__input) {
+    mergeCommit {
+      additions
+      authoredByCommitter
+      commitResourcePath
+      committedDate
+      committedViaWeb
+      commitUrl
+      messageBodyHTML
+      messageHeadline
+      oid
+      pushedDate
+      tarballUrl
+      treeResourcePath
+      treeUrl
+    }
+    clientMutationId
+  }
+}

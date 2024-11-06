@@ -1,0 +1,6 @@
+query RandomQuery($Query__codeOfConduct__key: String!) {
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    key
+    resourcePath
+  }
+}

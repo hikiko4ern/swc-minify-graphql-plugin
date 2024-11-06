@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__createDeployment__input: CreateDeploymentInput!) {
+  createDeployment(input: $Mutation__createDeployment__input) {
+    clientMutationId
+  }
+}

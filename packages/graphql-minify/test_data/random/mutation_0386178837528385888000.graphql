@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__deletePackageVersion__input: DeletePackageVersionInput!) {
+  deletePackageVersion(input: $Mutation__deletePackageVersion__input) {
+    clientMutationId
+  }
+}

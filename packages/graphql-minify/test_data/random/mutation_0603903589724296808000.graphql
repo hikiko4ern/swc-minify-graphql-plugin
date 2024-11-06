@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__createProjectV2Field__input: CreateProjectV2FieldInput!) {
+  createProjectV2Field(input: $Mutation__createProjectV2Field__input) {
+    clientMutationId
+  }
+}

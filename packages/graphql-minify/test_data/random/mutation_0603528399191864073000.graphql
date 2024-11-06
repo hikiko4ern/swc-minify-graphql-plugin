@@ -1,0 +1,15 @@
+mutation RandomMutation($Mutation__updateEnterpriseMembersCanDeleteIssuesSetting__input: UpdateEnterpriseMembersCanDeleteIssuesSettingInput!) {
+  updateEnterpriseMembersCanDeleteIssuesSetting(input: $Mutation__updateEnterpriseMembersCanDeleteIssuesSetting__input) {
+    enterprise {
+      announcementCreatedAt
+      avatarUrl
+      createdAt
+      id
+      location
+      resourcePath
+      slug
+      url
+    }
+    clientMutationId
+  }
+}

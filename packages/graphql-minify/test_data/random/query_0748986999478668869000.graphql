@@ -1,0 +1,154 @@
+query RandomQuery($Query__enterpriseMemberInvitation__enterpriseSlug: String!, $Query__enterpriseMemberInvitation__userLogin: String!, $Query__codeOfConduct__key: String!, $Query__marketplaceCategory__slug: String!, $Query__marketplaceListings__first: Int, $Organization__isSponsoredBy__accountLogin: String!, $Query__organization__login: String!, $Query__repository__name: String!, $Query__repository__owner: String!, $Query__sponsorables__first: Int, $User__isSponsoredBy__accountLogin: String!, $Query__user__login: String!) {
+  enterpriseMemberInvitation(enterpriseSlug: $Query__enterpriseMemberInvitation__enterpriseSlug, userLogin: $Query__enterpriseMemberInvitation__userLogin) {
+    createdAt
+  }
+  codeOfConduct(key: $Query__codeOfConduct__key) {
+    body
+  }
+  codesOfConduct {
+    body
+    url
+  }
+  licenses {
+    body
+    description
+    id
+    name
+    nickname
+    pseudoLicense
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    id
+    primaryListingCount
+  }
+  marketplaceListings(first: $Query__marketplaceListings__first) {
+    nodes {
+      companyUrl
+      configurationUrl
+      documentationUrl
+      fullDescriptionHTML
+      hasPublishedFreeTrialPlans
+      hasTermsOfService
+      howItWorks
+      howItWorksHTML
+      isArchived
+      isDraft
+      isRejected
+      isUnverified
+      isUnverifiedPending
+      logoBackgroundColor
+      logoUrl
+      name
+      normalizedShortDescription
+      pricingUrl
+      resourcePath
+      screenshotUrls
+      slug
+      statusUrl
+      termsOfServiceUrl
+      url
+      viewerCanAddPlans
+      viewerCanApprove
+      viewerCanDelist
+      viewerCanEdit
+      viewerCanEditCategories
+      viewerHasPurchased
+    }
+  }
+  meta {
+    gitHubServicesSha
+    importerIpAddresses
+    isPasswordAuthenticationVerifiable
+  }
+  organization(login: $Query__organization__login) {
+    announcement
+    announcementCreatedAt
+    announcementUserDismissible
+    anyPinnableItems
+    archivedAt
+    avatarUrl
+    description
+    email
+    hasSponsorsListing
+    ipAllowListEnabledSetting
+    isSponsoredBy(accountLogin: $Organization__isSponsoredBy__accountLogin)
+    isVerified
+    location
+    name
+    newTeamUrl
+    organizationBillingEmail
+    pinnedItemsRemaining
+    projectsResourcePath
+    resourcePath
+    url
+    viewerCanAdminister
+    viewerCanCreateProjects
+    viewerCanSponsor
+    viewerIsFollowing
+    webCommitSignoffRequired
+  }
+  repository(name: $Query__repository__name, owner: $Query__repository__owner) {
+    forkingAllowed
+    hasDiscussionsEnabled
+    hasIssuesEnabled
+    hasProjectsEnabled
+    hasSponsorshipsEnabled
+    isBlankIssuesEnabled
+    isDisabled
+    isEmpty
+    isPrivate
+    isSecurityPolicyEnabled
+    isUserConfigurationRepository
+    mergeCommitAllowed
+    nameWithOwner
+    projectsUrl
+    pushedAt
+    resourcePath
+    securityPolicyUrl
+    shortDescriptionHTML
+    squashMergeAllowed
+    squashMergeCommitMessage
+    sshUrl
+    stargazerCount
+    tempCloneToken
+    updatedAt
+    viewerCanAdminister
+    viewerCanSubscribe
+    viewerHasStarred
+    webCommitSignoffRequired
+  }
+  sponsorables(first: $Query__sponsorables__first) {
+    totalCount
+  }
+  user(login: $Query__user__login) {
+    bio
+    company
+    companyHTML
+    estimatedNextSponsorsPayoutInCents
+    id
+    isCampusExpert
+    isEmployee
+    isGitHubStar
+    isHireable
+    isSiteAdmin
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isViewer
+    location
+    login
+    name
+    projectsUrl
+    pronouns
+    resourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    twitterUsername
+    updatedAt
+    url
+    userViewType
+    viewerCanChangePinnedItems
+    viewerCanFollow
+    viewerCanSponsor
+    websiteUrl
+  }
+  id
+}

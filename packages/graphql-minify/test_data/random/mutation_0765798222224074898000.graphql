@@ -1,0 +1,6 @@
+mutation RandomMutation($Mutation__updateEnterpriseOwnerOrganizationRole__input: UpdateEnterpriseOwnerOrganizationRoleInput!) {
+  updateEnterpriseOwnerOrganizationRole(input: $Mutation__updateEnterpriseOwnerOrganizationRole__input) {
+    clientMutationId
+    message
+  }
+}

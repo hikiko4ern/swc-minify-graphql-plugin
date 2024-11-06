@@ -1,0 +1,16 @@
+query RandomQuery {
+  licenses {
+    permissions {
+      description
+      key
+      label
+    }
+    conditions {
+      label
+    }
+    featured
+    hidden
+    implementation
+    spdxId
+  }
+}

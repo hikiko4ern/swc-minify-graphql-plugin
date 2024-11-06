@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__unlinkProjectV2FromTeam__input: UnlinkProjectV2FromTeamInput!) {
+  unlinkProjectV2FromTeam(input: $Mutation__unlinkProjectV2FromTeam__input) {
+    clientMutationId
+  }
+}

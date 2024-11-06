@@ -1,0 +1,29 @@
+mutation RandomMutation($User__organizationVerifiedDomainEmails__login: String!, $Mutation__unfollowUser__input: UnfollowUserInput!) {
+  unfollowUser(input: $Mutation__unfollowUser__input) {
+    user {
+      avatarUrl
+      bioHTML
+      company
+      companyHTML
+      createdAt
+      estimatedNextSponsorsPayoutInCents
+      hasSponsorsListing
+      isBountyHunter
+      isDeveloperProgramMember
+      isHireable
+      isSiteAdmin
+      isSponsoringViewer
+      isViewer
+      login
+      name
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      resourcePath
+      twitterUsername
+      viewerCanChangePinnedItems
+      viewerCanCreateProjects
+      viewerCanFollow
+      viewerCanSponsor
+      websiteUrl
+    }
+  }
+}

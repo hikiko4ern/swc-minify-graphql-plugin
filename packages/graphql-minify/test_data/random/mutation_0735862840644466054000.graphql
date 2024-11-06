@@ -1,0 +1,35 @@
+mutation RandomMutation($Mutation__createEnterpriseOrganization__input: CreateEnterpriseOrganizationInput!) {
+  createEnterpriseOrganization(input: $Mutation__createEnterpriseOrganization__input) {
+    organization {
+      announcementCreatedAt
+      announcementUserDismissible
+      createdAt
+      description
+      email
+      estimatedNextSponsorsPayoutInCents
+      ipAllowListEnabledSetting
+      ipAllowListForInstalledAppsEnabledSetting
+      isSponsoringViewer
+      login
+      membersCanForkPrivateRepositories
+      monthlyEstimatedSponsorsIncomeInCents
+      name
+      notificationDeliveryRestrictionEnabledSetting
+      organizationBillingEmail
+      projectsUrl
+      resourcePath
+      teamsResourcePath
+      teamsUrl
+      twitterUsername
+      updatedAt
+      viewerCanAdminister
+      viewerCanCreateProjects
+      viewerCanCreateRepositories
+      viewerIsAMember
+      viewerIsFollowing
+      viewerIsSponsoring
+      websiteUrl
+    }
+    clientMutationId
+  }
+}

@@ -1,0 +1,111 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"files": {
+		"ignore": ["**/*.json"]
+	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true,
+		"defaultBranch": "master"
+	},
+	"organizeImports": {
+		"enabled": true
+	},
+	"formatter": {
+		"formatWithErrors": true,
+		"indentStyle": "tab",
+		"lineWidth": 100
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"arrowParentheses": "asNeeded",
+			"lineWidth": 100
+		}
+	},
+	"json": {
+		"formatter": {
+			"enabled": false
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": false,
+			"complexity": {
+				"noBannedTypes": "error",
+				"noExtraBooleanCast": "warn",
+				"noForEach": "warn",
+				"noThisInStatic": "warn",
+				"noUselessEmptyExport": "warn",
+				"noUselessRename": "warn",
+				"noUselessSwitchCase": "warn",
+				"noUselessTypeConstraint": "warn",
+				"noUselessTernary": "warn",
+				"useArrowFunction": "warn",
+				"useLiteralKeys": "warn",
+				"useOptionalChain": "warn"
+			},
+			"correctness": {
+				"noInnerDeclarations": "error",
+				"noPrecisionLoss": "error",
+				"noSelfAssign": "warn",
+				"noStringCaseMismatch": "error",
+				"noSwitchDeclarations": "error",
+				"noUnreachable": "warn",
+				"noUnsafeFinally": "error",
+				"noUnsafeOptionalChaining": "error",
+				"noUnusedLabels": "warn",
+				"useValidForDirection": "error"
+			},
+			"performance": {
+				"noAccumulatingSpread": "error"
+			},
+			"security": {
+				"noGlobalEval": "error"
+			},
+			"style": {
+				"noArguments": "error",
+				"noInferrableTypes": "warn",
+				"noNegationElse": "warn",
+				"noNonNullAssertion": "warn",
+				"noRestrictedGlobals": "error",
+				"noUnusedTemplateLiteral": "warn",
+				"noUselessElse": "warn",
+				"noVar": "error",
+				"useAsConstAssertion": "warn",
+				"useBlockStatements": "warn",
+				"useCollapsedElseIf": "warn",
+				"useConst": "warn",
+				"useDefaultParameterLast": "warn",
+				"useEnumInitializers": "error",
+				"useExportType": "error",
+				"useFilenamingConvention": "warn",
+				"useLiteralEnumMembers": "error",
+				"useNumberNamespace": "warn",
+				"useShorthandArrayType": "warn",
+				"useShorthandAssign": "warn",
+				"useSingleCaseStatement": "warn"
+			},
+			"suspicious": {
+				"useAwait": "warn",
+				"noConstEnum": "error",
+				"noDebugger": "warn",
+				"noDoubleEquals": "error",
+				"noEmptyInterface": "warn",
+				"noExplicitAny": "error",
+				"noExtraNonNullAssertion": "warn",
+				"noFallthroughSwitchClause": "error",
+				"noImplicitAnyLet": "error",
+				"noMisleadingInstantiator": "error",
+				"noPrototypeBuiltins": "error",
+				"noSparseArray": "error",
+				"noThenProperty": "error",
+				"noUnsafeNegation": "error",
+				"useDefaultSwitchClauseLast": "warn",
+				"useNamespaceKeyword": "warn"
+			}
+		}
+	}
+}

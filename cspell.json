@@ -12,9 +12,22 @@
 	},
 	"validateDirectives": true,
 	"useGitignore": true,
-	"words": ["Binaryen", "bumpalo", "dedented", "fnm", "memchr", "rustup", "SWC", "whitespaces"],
+	"words": [
+		"Binaryen",
+		"bumpalo",
+		"dedented",
+		"fnm",
+		"fuzzer",
+		"idents",
+		"itertools",
+		"memchr",
+		"rustup",
+		"SWC",
+		"whitespaces"
+	],
 	"ignoreWords": [
 		"binstall",
+		"blackbox",
 		"cdylib",
 		"codegen",
 		"Corepack",
@@ -26,8 +39,17 @@
 		"lto",
 		"rustfmt",
 		"sed",
+		"textwrap",
 		"vec",
 		"xeo"
 	],
-	"ignorePaths": ["/.gitattributes", "/.gitignore", "/cspell.json", "/pnpm-lock.yaml", "test_data"]
+	"ignorePaths": [
+		"/.gitattributes",
+		"/.gitignore",
+		"/biome.json",
+		"/cspell.json",
+		"/pnpm-lock.yaml",
+		"test_data",
+		"afl_in"
+	]
 }

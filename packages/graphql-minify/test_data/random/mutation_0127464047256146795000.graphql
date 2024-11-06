@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__grantMigratorRole__input: GrantMigratorRoleInput!) {
+  grantMigratorRole(input: $Mutation__grantMigratorRole__input) {
+    clientMutationId
+  }
+}

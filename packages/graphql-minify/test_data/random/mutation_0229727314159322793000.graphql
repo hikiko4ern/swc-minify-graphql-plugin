@@ -1,0 +1,5 @@
+mutation RandomMutation($Mutation__markPullRequestReadyForReview__input: MarkPullRequestReadyForReviewInput!) {
+  markPullRequestReadyForReview(input: $Mutation__markPullRequestReadyForReview__input) {
+    clientMutationId
+  }
+}

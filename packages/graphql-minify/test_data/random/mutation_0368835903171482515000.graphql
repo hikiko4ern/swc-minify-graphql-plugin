@@ -1,0 +1,46 @@
+mutation RandomMutation($EnterpriseIdentityProvider__externalIdentities__first: Int, $Enterprise__organizations__first: Int, $Mutation__removeEnterpriseIdentityProvider__input: RemoveEnterpriseIdentityProviderInput!) {
+  removeEnterpriseIdentityProvider(input: $Mutation__removeEnterpriseIdentityProvider__input) {
+    identityProvider {
+      externalIdentities(first: $EnterpriseIdentityProvider__externalIdentities__first) {
+        totalCount
+      }
+      enterprise {
+        ownerInfo {
+          allowPrivateRepositoryForkingSettingPolicyValue
+          membersCanChangeRepositoryVisibilitySetting
+          membersCanCreateRepositoriesSetting
+          membersCanDeleteIssuesSetting
+          membersCanInviteCollaboratorsSetting
+          membersCanMakePurchasesSetting
+          membersCanViewDependencyInsightsSetting
+          notificationDeliveryRestrictionEnabledSetting
+          organizationProjectsSetting
+          repositoryProjectsSetting
+          teamDiscussionsSetting
+          twoFactorDisallowedMethodsSetting
+        }
+        organizations(first: $Enterprise__organizations__first) {
+          pageInfo {
+            endCursor
+            hasPreviousPage
+            startCursor
+          }
+        }
+        announcement
+        announcementExpiresAt
+        announcementUserDismissible
+        avatarUrl
+        billingEmail
+        createdAt
+        descriptionHTML
+        name
+        readmeHTML
+        resourcePath
+      }
+      idpCertificate
+      issuer
+      recoveryCodes
+      ssoUrl
+    }
+  }
+}

@@ -1,0 +1,224 @@
+query RandomQuery($Query__search__first: Int, $Query__search__query: String!, $Query__search__type: SearchType!, $Query__enterpriseAdministratorInvitation__enterpriseSlug: String!, $Query__enterpriseAdministratorInvitation__role: EnterpriseAdministratorRole!, $Query__enterpriseAdministratorInvitation__userLogin: String!, $Query__enterpriseAdministratorInvitationByToken__invitationToken: String!, $User__organizationVerifiedDomainEmails__login: String!, $User__isSponsoredBy__accountLogin: String!, $Query__enterpriseMemberInvitationByToken__invitationToken: String!, $Query__license__key: String!, $Query__marketplaceCategory__slug: String!, $Query__organization__login: String!, $SecurityAdvisory__cwes__first: Int, $SecurityAdvisory__vulnerabilities__first: Int, $Query__securityAdvisory__ghsaId: String!) {
+  search(first: $Query__search__first, query: $Query__search__query, type: $Query__search__type) {
+    codeCount
+    discussionCount
+    issueCount
+  }
+  codesOfConduct {
+    body
+    url
+  }
+  enterpriseAdministratorInvitation(enterpriseSlug: $Query__enterpriseAdministratorInvitation__enterpriseSlug, role: $Query__enterpriseAdministratorInvitation__role, userLogin: $Query__enterpriseAdministratorInvitation__userLogin) {
+    createdAt
+  }
+  enterpriseAdministratorInvitationByToken(invitationToken: $Query__enterpriseAdministratorInvitationByToken__invitationToken) {
+    enterprise {
+      avatarUrl
+      billingEmail
+      createdAt
+      databaseId
+      descriptionHTML
+      id
+      location
+      readme
+      resourcePath
+      slug
+    }
+  }
+  enterpriseMemberInvitationByToken(invitationToken: $Query__enterpriseMemberInvitationByToken__invitationToken) {
+    invitee {
+      company
+      hasSponsorsListing
+      isBountyHunter
+      isCampusExpert
+      isFollowingViewer
+      isSiteAdmin
+      isSponsoringViewer
+      isViewer
+      location
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      pinnedItemsRemaining
+      resourcePath
+      twitterUsername
+      updatedAt
+      url
+      viewerCanChangePinnedItems
+      viewerCanFollow
+      viewerIsFollowing
+    }
+    inviter {
+      anyPinnableItems
+      avatarUrl
+      bio
+      bioHTML
+      company
+      companyHTML
+      databaseId
+      isDeveloperProgramMember
+      isGitHubStar
+      isSiteAdmin
+      isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+      isViewer
+      login
+      name
+      organizationVerifiedDomainEmails(login: $User__organizationVerifiedDomainEmails__login)
+      projectsUrl
+      totalSponsorshipAmountAsSponsorInCents
+      twitterUsername
+      updatedAt
+      url
+      viewerCanChangePinnedItems
+      viewerCanCreateProjects
+      viewerCanSponsor
+      viewerIsSponsoring
+    }
+    createdAt
+    email
+  }
+  license(key: $Query__license__key) {
+    body
+    hidden
+    name
+    nickname
+    url
+  }
+  licenses {
+    featured
+    key
+    name
+    pseudoLicense
+    url
+  }
+  marketplaceCategories {
+    howItWorks
+    resourcePath
+    secondaryListingCount
+  }
+  marketplaceCategory(slug: $Query__marketplaceCategory__slug) {
+    description
+    id
+    name
+    slug
+  }
+  meta {
+    gitHubServicesSha
+    hookIpAddresses
+    isPasswordAuthenticationVerifiable
+    pagesIpAddresses
+  }
+  organization(login: $Query__organization__login) {
+    announcement
+    announcementExpiresAt
+    announcementUserDismissible
+    archivedAt
+    avatarUrl
+    databaseId
+    estimatedNextSponsorsPayoutInCents
+    hasSponsorsListing
+    id
+    isSponsoringViewer
+    location
+    membersCanForkPrivateRepositories
+    name
+    newTeamUrl
+    notificationDeliveryRestrictionEnabledSetting
+    organizationBillingEmail
+    projectsResourcePath
+    projectsUrl
+    resourcePath
+    teamsResourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    twitterUsername
+    updatedAt
+    url
+    viewerCanChangePinnedItems
+    viewerCanCreateProjects
+    viewerCanCreateRepositories
+    viewerCanCreateTeams
+    viewerCanSponsor
+    viewerIsFollowing
+  }
+  securityAdvisory(ghsaId: $Query__securityAdvisory__ghsaId) {
+    references {
+      url
+    }
+    cvss {
+      vectorString
+    }
+    epss {
+      percentage
+    }
+    vulnerabilities(first: $SecurityAdvisory__vulnerabilities__first) {
+      nodes {
+        advisory {
+          cwes(first: $SecurityAdvisory__cwes__first) {
+            pageInfo {
+              startCursor
+            }
+            nodes {
+              cweId
+              name
+            }
+          }
+          references {
+            url
+          }
+          classification
+          description
+          ghsaId
+          id
+          permalink
+          severity
+          withdrawnAt
+        }
+        firstPatchedVersion {
+          identifier
+        }
+        package {
+          name
+        }
+        severity
+        updatedAt
+        vulnerableVersionRange
+      }
+    }
+    classification
+    ghsaId
+    id
+    notificationsPermalink
+    origin
+    publishedAt
+    summary
+    withdrawnAt
+  }
+  viewer {
+    anyPinnableItems
+    avatarUrl
+    bio
+    bioHTML
+    companyHTML
+    createdAt
+    databaseId
+    email
+    isBountyHunter
+    isCampusExpert
+    isDeveloperProgramMember
+    isEmployee
+    isSiteAdmin
+    isSponsoredBy(accountLogin: $User__isSponsoredBy__accountLogin)
+    isSponsoringViewer
+    isViewer
+    location
+    login
+    projectsUrl
+    pronouns
+    resourcePath
+    totalSponsorshipAmountAsSponsorInCents
+    twitterUsername
+    updatedAt
+    userViewType
+    viewerCanSponsor
+    websiteUrl
+  }
+  id
+}
