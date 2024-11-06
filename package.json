@@ -34,7 +34,9 @@
 	},
 	"files": [
 		"README.md",
-		"**/LICENSE",
+		"UNLICENSE",
+		"LICENSE-MIT",
+		"packages/graphql-minify/LICENSE",
 		"lib/swc_plugin_minify_graphql.wasm"
 	],
 	"preferUnplugged": true,
