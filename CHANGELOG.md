@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.4] - 2024-11-06
+
+### Bug Fixes
+
+- fix the list of files to be packed
+
 ## [0.1.3] - 2024-11-06
 
 ### Bug Fixes
