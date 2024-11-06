@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.1.3] - 2024-11-06
+
+### Bug Fixes
+
+- **(graphql-minify)** potentially fix stack overflow during parsing of very long strings
+
+### Miscellaneous Tasks
+
+- **(license)** use dual Unlicense/MIT license
+
+### Performance
+
+- **(graphql-minify)** move comment from `skip` to a separate token
+
+### Testing
+
+- add fuzzing and test randomly generated queries and mutations
+
 ## [0.1.2] - 2024-10-26
 
 ### Bug Fixes
