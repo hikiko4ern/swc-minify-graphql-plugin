@@ -121,6 +121,17 @@ While the minified code may be correct in some cases, this usage is not intended
 
 - [`graphql-minify`](https://github.com/dan-lee/graphql-minify-rs): a re-implementation of [`stripIgnoredCharacters`](https://graphql-js.org/api/function/stripignoredcharacters/) from the [GraphQL.js reference implementation](https://github.com/graphql/graphql-js) in Rust
 
+## License
+
+Licensed under either of
+
+- The Unlicense
+  ([UNLICENSE](./UNLICENSE) or https://unlicense.org/UNLICENSE)
+- MIT license
+  ([LICENSE-MIT](./LICENSE-MIT) or http://opensource.org/licenses/MIT)
+
+at your option.
+
 <!-- links -->
 
 [GraphQL]: https://graphql.org

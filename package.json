@@ -38,7 +38,7 @@
 		"lib/swc_plugin_minify_graphql.wasm"
 	],
 	"preferUnplugged": true,
-	"license": "Unlicense",
+	"license": "(Unlicense OR MIT)",
 	"author": "hikiko4ern",
 	"repository": {
 		"type": "git",
