@@ -77,7 +77,7 @@ pub fn swc_plugin_minify_graphql(
 test_inline!(
     #[allow(clippy::default_trait_access)]
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     without_comment,
     r"
         export const FRAGMENT = `
@@ -103,7 +103,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     str_literal,
     r#"export const FRAGMENT = /** GraphQL */ "id  \n  url";"#,
     r#"export const FRAGMENT = "id url";"#
@@ -111,7 +111,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     tpl_without_expressions,
     r"
         export const FRAGMENT = /** GraphQL */ `
@@ -128,7 +128,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     various_comments,
     r"
         export const SINGLE_LINE = /* GraphQL */ `
@@ -167,7 +167,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     with_leading_expr,
     r"
         export const FRAGMENT = /** GraphQL */ `
@@ -184,7 +184,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     with_expr_in_middle,
     r"
         export const FRAGMENT = /** GraphQL */ `
@@ -202,7 +202,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     with_tail_expr,
     r"
         export const FRAGMENT = /** GraphQL */ `
@@ -219,7 +219,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     empty,
     r"export const FRAGMENT = /** GraphQL */ ``;",
     r"export const FRAGMENT = ``;"
@@ -227,7 +227,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     whitespace_only,
     r"
         export const FRAGMENT = /** GraphQL */ `
@@ -240,7 +240,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     whitespaces_with_expr,
     r"
         export const FRAGMENT = /** GraphQL */ `
@@ -252,7 +252,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     whitespaces_with_multiple_exprs,
     r"
         export const FRAGMENT = /** GraphQL */ `
@@ -265,7 +265,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     expr_breaks_token,
     r#"
         export const FLOAT_INVALID  = /** GraphQL */ `123.${FP}`;
@@ -286,7 +286,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     readme_basic_full,
     r"
         const QUERY = /* GraphQL */ `
@@ -307,7 +307,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     readme_basic_fragment_fields,
     r"
         const IMAGE_FIELDS = /* GraphQL */ `
@@ -320,7 +320,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     readme_basic_fragment,
     r"
         const IMAGE_FRAGMENT = /* GraphQL */ `
@@ -335,7 +335,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     readme_template_literals,
     r"
         const IMAGE_FRAGMENT = /* GraphQL */ `
@@ -350,7 +350,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     readme_template_literals_with_expressions,
     r"
         const IMAGE = /* GraphQL */ `
@@ -375,7 +375,7 @@ test_inline!(
 
 test_inline!(
     Default::default(),
-    |tr| swc_core::ecma::visit::as_folder(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
     readme_template_literals_with_expressions_invalid,
     r"
         const LONG = 'Long';

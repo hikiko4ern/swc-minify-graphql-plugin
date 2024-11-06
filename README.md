@@ -6,9 +6,10 @@
 
 Since WASM plugins are not backward compatible (see [swc-project/swc#5060][swc-wasm-compat-issue], [Selecting the version - SWC][selecting-swc-core]), use the table below to select the correct plugin version:
 
-| plugin version |                    `swc_core` version                    |
-| :------------: | :------------------------------------------------------: |
-|     `0.1`      | [`0.98.0` - *](https://plugins.swc.rs/versions/range/16) |
+| plugin version |                  `swc_core` version                   |
+| :------------: | :---------------------------------------------------: |
+|     `0.2`      | [`4.0.0`](https://plugins.swc.rs/versions/range/19)+  |
+|     `0.1`      | [`0.98.0`](https://plugins.swc.rs/versions/range/16)+ |
 
 ## Usage
 
