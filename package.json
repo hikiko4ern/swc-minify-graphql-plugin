@@ -23,14 +23,14 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
-		"@types/node": "^22.9.0",
-		"binaryen": "^119.0.0",
-		"cspell": "^8.15.4",
-		"dprint": "^0.47.4",
-		"git-cliff": "^2.6.1",
-		"lefthook": "^1.7.22",
-		"npm-run-all2": "^7.0.0",
-		"typescript": "^5.6.3"
+		"@types/node": "^22.10.7",
+		"binaryen": "^121.0.0",
+		"cspell": "^8.17.2",
+		"dprint": "^0.48.0",
+		"git-cliff": "^2.7.0",
+		"lefthook": "^1.10.10",
+		"npm-run-all2": "^7.0.2",
+		"typescript": "^5.7.3"
 	},
 	"files": [
 		"README.md",
@@ -46,5 +46,5 @@
 		"type": "git",
 		"url": "git+https://github.com/hikiko4ern/swc-plugin-minify-graphql.git"
 	},
-	"packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228"
+	"packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
 }

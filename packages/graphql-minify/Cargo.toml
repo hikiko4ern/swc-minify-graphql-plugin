@@ -11,7 +11,7 @@ description = "Minify GraphQL queries"
 
 [dependencies]
 bumpalo = { version = "3.16.0", features = ["collections"] }
-logos = "0.14.2"
+logos = "0.14.4"
 memchr = "2.7.4"
 
 [dev-dependencies]
