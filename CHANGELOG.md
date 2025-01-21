@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.0] - 2025-01-21
+
+### BREAKING CHANGES
+
+- update `swc_core` to `10.6`
+
+### Miscellaneous Tasks
+
+- **\[breaking\]** update `swc_core` to `10.6`
+
 ## [0.1.4] - 2024-11-06
 
 ### Bug Fixes
